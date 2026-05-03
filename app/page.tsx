@@ -22,11 +22,26 @@ import {
   MonitorPlay,
   Rocket,
   Sparkles,
-  X,
-  Zap,
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import {
+  siFramer,
+  siBetterauth,
+  siMongodb,
+  siNextdotjs,
+  siPosthog,
+  siReacthookform,
+  siResend,
+  siSentry,
+  siShadcnui,
+  siSocketdotio,
+  siStripe,
+  siTailwindcss,
+  siTypescript,
+  siVercel,
+  siZod,
+} from "simple-icons";
 import { HOME_PREVIEW_STUB_ORDER, WORK_STUBS } from "./work/stub-projects";
 
 const EASE_CURSOR: [number, number, number, number] = [0.16, 1, 0.3, 1];
@@ -70,6 +85,49 @@ const PROCESS_PHASES = [
   },
 ] as const;
 
+const WHY_US_POINTS = [
+  {
+    title: "Launch in weeks, not quarters",
+    body: "We ship usable product increments fast so you can validate with real users early.",
+  },
+  {
+    title: "Operator-grade quality bar",
+    body: "The same engineering and UX standards we enforce on TeraMotors and Gari go into client work.",
+  },
+  {
+    title: "Direct maker collaboration",
+    body: "You work with the people designing and building, without account-layer bottlenecks.",
+  },
+  {
+    title: "Decisions tied to traction",
+    body: "We optimize for adoption, retention, and measurable product momentum after launch.",
+  },
+] as const;
+
+const STACK_TECH = [
+  { label: "Next.js", icon: siNextdotjs },
+  { label: "Framer Motion", icon: siFramer },
+  { label: "Stripe", icon: siStripe },
+  { label: "MongoDB", icon: siMongodb },
+  { label: "Zod", icon: siZod },
+  { label: "React Hook Form", icon: siReacthookform },
+  { label: "Socket.io", icon: siSocketdotio },
+  { label: "Tailwind CSS", icon: siTailwindcss },
+  { label: "shadcn/ui", icon: siShadcnui },
+  { label: "TypeScript", icon: siTypescript },
+  { label: "Vercel", icon: siVercel },
+  { label: "Resend", icon: siResend },
+  { label: "Sentry", icon: siSentry },
+  { label: "PostHog", icon: siPosthog },
+  { label: "Better Auth / NextAuth", icon: siBetterauth },
+] as const;
+
+const STACK_ICON_FILL_OVERRIDES: Partial<Record<(typeof STACK_TECH)[number]["label"], string>> = {
+  "Next.js": "#FFFFFF",
+  Vercel: "#FFFFFF",
+  "shadcn/ui": "#FFFFFF",
+};
+
 const fadeSlide = {
   hidden: { opacity: 0, y: 18 },
   visible: {
@@ -100,6 +158,27 @@ function usePrefersReducedMotion() {
   }, []);
 
   return prefersReducedMotion;
+}
+
+function useCountUp(target: number, start: boolean) {
+  const [value, setValue] = useState(0);
+
+  useEffect(() => {
+    if (!start) return;
+    let raf = 0;
+    const t0 = performance.now();
+    const duration = 850;
+    const tick = (now: number) => {
+      const p = Math.min((now - t0) / duration, 1);
+      const eased = 1 - Math.pow(1 - p, 3);
+      setValue(Math.round(target * eased));
+      if (p < 1) raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [start, target]);
+
+  return value;
 }
 
 function SpotlightLayer({
@@ -671,6 +750,8 @@ function HeroOrbitCollage({ reduced }: { reduced: boolean }) {
 
 export default function Home() {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const [comparisonInView, setComparisonInView] = useState(false);
+  const [activeWhyIndex, setActiveWhyIndex] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const heroRef = useRef<HTMLElement>(null);
   const prefersReducedMotion = usePrefersReducedMotion();
@@ -713,6 +794,17 @@ export default function Home() {
   }, []);
 
   const magneticOn = !prefersReducedMotion;
+  const ownedCount = useCountUp(2, comparisonInView);
+  const clientCount = useCountUp(3, comparisonInView);
+  const rhythmCount = useCountUp(7, comparisonInView);
+
+  useEffect(() => {
+    if (!comparisonInView || prefersReducedMotion) return;
+    const id = window.setInterval(() => {
+      setActiveWhyIndex((prev) => (prev + 1) % WHY_US_POINTS.length);
+    }, 2600);
+    return () => window.clearInterval(id);
+  }, [comparisonInView, prefersReducedMotion]);
 
   const heroTitleStagger = {
     hidden: {},
@@ -938,49 +1030,243 @@ export default function Home() {
           </section>
 
           {/* Comparison */}
-          <section id="comparison" className="py-32 px-6 border-t border-white/[0.05]">
+          <section id="comparison" className="relative overflow-hidden border-t border-white/[0.05] px-6 py-32">
+            <div
+              aria-hidden
+              className="pointer-events-none absolute left-1/2 top-[44%] h-[520px] w-[min(100%,1100px)] -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent-indigo/[0.08] blur-[130px]"
+            />
             <motion.div
-              className="max-w-5xl mx-auto"
+              className="relative mx-auto max-w-6xl"
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, margin: "-80px" }}
               variants={staggerSection}
+              onViewportEnter={() => setComparisonInView(true)}
             >
-              <motion.div variants={fadeSlide} className="mb-20 text-center">
-                <h2 className="type-display-xl mb-5">A clearer way to build</h2>
-                <p className="type-intro mx-auto max-w-xl text-center">
-                  The familiar agency path, next to how we work side-by-side with you.
+              <motion.div variants={fadeSlide} className="mb-14 text-center md:mb-16">
+                <p className="type-meta-uppercase mb-4 text-accent-indigo/90">How We Operate</p>
+                <h2 className="type-display-xl mb-5 text-balance">Two lanes. One product engine.</h2>
+                <p className="type-intro mx-auto max-w-3xl text-center">
+                  We run our own products (TeraMotors, Gari) and ship client products (Araba, Aqua
+                  Marwa, Salasel) with the same operator-grade standards.
                 </p>
               </motion.div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <motion.div variants={fadeSlide}>
-                  <div className="p-10 rounded-[2.5rem] bg-white/[0.02] border border-white/5 opacity-65 h-full group">
-                    <h3 className="type-heading-comparison-col text-slate-400">Classic agency</h3>
-                    <ul className="space-y-6">
-                      <ComparisonItem icon={<X className="text-red-500/50" />} text="Many months before anyone outside your team can use the product" />
-                      <ComparisonItem icon={<X className="text-red-500/50" />} text="Big upfront budget before you prove the idea in the market" />
-                      <ComparisonItem icon={<X className="text-red-500/50" />} text="Updates filtered through layers—you rarely talk to the makers" />
-                      <ComparisonItem icon={<X className="text-red-500/50" />} text="Hand-off can feel like starting over with a black box" />
-                    </ul>
-                  </div>
-                </motion.div>
+              <motion.div
+                variants={fadeSlide}
+                className="relative"
+              >
+                <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(130%_80%_at_50%_-15%,rgba(99,102,241,0.12),transparent_55%)]" />
 
-                <motion.div variants={fadeSlide}>
-                  <div className="p-10 rounded-[2.5rem] bg-accent-indigo/5 border-2 border-accent-indigo/20 relative overflow-hidden h-full group hover:border-accent-indigo/35 transition-colors duration-300">
-                    <div className="absolute top-6 right-8 text-accent-indigo opacity-70">
-                      <Zap className="w-8 h-8 fill-accent-indigo" />
+                <div className="relative grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-stretch">
+                  <motion.div
+                    variants={fadeSlide}
+                    transition={{ ...fadeSlide.visible.transition, delay: prefersReducedMotion ? 0 : 0.05 }}
+                    className="order-2 rounded-[2rem] border border-accent-indigo/20 bg-gradient-to-br from-accent-indigo/[0.12] via-accent-indigo/[0.05] to-transparent p-8 md:p-10 lg:order-1"
+                  >
+                    <p className="type-meta-uppercase text-accent-indigo/85">Why teams choose us</p>
+                    <h3 className="mt-3 max-w-lg text-3xl font-semibold tracking-tight text-white md:text-4xl">
+                      Built like founders, shipped like operators.
+                    </h3>
+                    <p className="mt-5 max-w-xl text-base leading-relaxed text-slate-300 md:text-lg">
+                      We own products in market, so we build client products with the same real-world
+                      urgency, quality bar, and accountability.
+                    </p>
+
+                    <div className="mt-8 grid gap-3 sm:grid-cols-3">
+                      <div className="rounded-xl border border-white/[0.08] bg-black/30 px-4 py-3 text-center">
+                        <p className="type-meta-uppercase text-slate-400">Owned</p>
+                        <p className="mt-1 text-2xl font-semibold text-white">{ownedCount}</p>
+                      </div>
+                      <div className="rounded-xl border border-white/[0.08] bg-black/30 px-4 py-3 text-center">
+                        <p className="type-meta-uppercase text-slate-400">Client builds</p>
+                        <p className="mt-1 text-2xl font-semibold text-white">{clientCount}</p>
+                      </div>
+                      <div className="rounded-xl border border-white/[0.08] bg-black/30 px-4 py-3 text-center">
+                        <p className="type-meta-uppercase text-slate-400">Shipping rhythm</p>
+                        <p className="mt-1 text-2xl font-semibold text-white">~{rhythmCount}d</p>
+                      </div>
                     </div>
-                    <h3 className="type-heading-comparison-col text-accent-indigo">With VantLaunch</h3>
-                    <ul className="space-y-6">
-                      <ComparisonItem icon={<Check className="text-accent-indigo" />} text="A realistic launch window so customers can experience your product soon" />
-                      <ComparisonItem icon={<Check className="text-accent-indigo" />} text="Clear pricing before we start—extras only when you explicitly choose them" />
-                      <ComparisonItem icon={<Check className="text-accent-indigo" />} text="Modern, fast apps that feel polished on phones and desktops" />
-                      <ComparisonItem icon={<Check className="text-accent-indigo" />} text="You collaborate directly with the designers and engineers shaping the work" />
+
+                    <ul className="mt-8 space-y-3">
+                      {WHY_US_POINTS.map((point, idx) => {
+                        const active = idx === activeWhyIndex;
+                        return (
+                          <motion.li
+                            key={point.title}
+                            className="list-none"
+                            initial={prefersReducedMotion ? false : { opacity: 0, x: -8, scale: 0.99 }}
+                            whileInView={{ opacity: 1, x: 0, scale: 1 }}
+                            viewport={{ once: true, margin: "-40px" }}
+                            transition={{
+                              type: "spring",
+                              stiffness: 190,
+                              damping: 22,
+                              mass: 0.72,
+                              delay: prefersReducedMotion ? 0 : idx * 0.08,
+                            }}
+                          >
+                            <button
+                              type="button"
+                              onMouseEnter={() => setActiveWhyIndex(idx)}
+                              onFocus={() => setActiveWhyIndex(idx)}
+                              className={`w-full rounded-xl border px-4 py-3 text-left transition-all duration-300 ${
+                                active
+                                  ? "border-accent-indigo/45 bg-accent-indigo/[0.18] shadow-[0_0_42px_-20px_rgba(99,102,241,0.8)]"
+                                  : "border-white/[0.08] bg-black/20 hover:border-accent-indigo/30"
+                              }`}
+                            >
+                              <p className="flex items-center gap-3 text-sm font-semibold text-white md:text-base">
+                                <Check className="h-4 w-4 shrink-0 text-accent-indigo" />
+                                {point.title}
+                              </p>
+                              <p className="mt-2 pl-7 text-sm leading-relaxed text-slate-300">{point.body}</p>
+                            </button>
+                          </motion.li>
+                        );
+                      })}
                     </ul>
-                  </div>
-                </motion.div>
-              </div>
+                  </motion.div>
+
+                  <motion.div
+                    variants={fadeSlide}
+                    transition={{ ...fadeSlide.visible.transition, delay: prefersReducedMotion ? 0 : 0.2 }}
+                    className="order-1 flex h-full flex-col rounded-[2rem] border border-white/[0.08] bg-black/35 p-6 md:p-8 lg:order-2"
+                  >
+                    <p className="type-meta-uppercase text-white/55">Product engine</p>
+                    <div className="relative mx-auto mt-4 flex h-[320px] w-full max-w-[360px] items-center justify-center">
+                      <div className="absolute inset-0 rounded-full border border-white/[0.08]" />
+                      <motion.div
+                        aria-hidden
+                        className="absolute inset-5 rounded-full border border-accent-indigo/20"
+                        animate={prefersReducedMotion ? undefined : { rotate: 360 }}
+                        transition={{
+                          duration: [24, 20, 17, 14][activeWhyIndex],
+                          repeat: Infinity,
+                          ease: "linear",
+                        }}
+                      />
+                      <motion.div
+                        aria-hidden
+                        className="absolute inset-12 rounded-full border border-white/[0.1]"
+                        animate={prefersReducedMotion ? undefined : { rotate: -360 }}
+                        transition={{
+                          duration: [17, 14, 12, 10][activeWhyIndex],
+                          repeat: Infinity,
+                          ease: "linear",
+                        }}
+                      />
+                      <motion.div
+                        aria-hidden
+                        className="absolute inset-0 rounded-full bg-accent-indigo/[0.08] blur-2xl"
+                        animate={
+                          prefersReducedMotion
+                            ? undefined
+                            : {
+                                scale: [0.94, 1.04 + activeWhyIndex * 0.02, 0.94],
+                                opacity: [0.35, 0.62, 0.35],
+                              }
+                        }
+                        transition={{ duration: 3.8, repeat: Infinity, ease: "easeInOut" }}
+                      />
+                      <div className="relative z-[1] flex h-44 w-44 items-center justify-center rounded-full border border-accent-indigo/30 bg-obsidian/85 text-center shadow-[0_0_60px_-18px_rgba(99,102,241,0.7)] backdrop-blur-xl">
+                        <div>
+                          <p className="type-meta-uppercase text-accent-indigo/80">VantLaunch</p>
+                          <p className="mt-2 text-lg font-semibold text-white">MicroSaaS Studio</p>
+                          <p className="mt-2 text-xs text-slate-400">{WHY_US_POINTS[activeWhyIndex].title}</p>
+                        </div>
+                      </div>
+                      {!prefersReducedMotion ? (
+                        <>
+                          <motion.div
+                            className="absolute left-4 top-1/2 h-2 w-2 -translate-y-1/2 rounded-full bg-accent-indigo shadow-[0_0_14px_2px_rgba(99,102,241,0.7)]"
+                            animate={{ x: [0, 310, 0], y: [0, -72, 0] }}
+                            transition={{ duration: 4.8, repeat: Infinity, ease: "easeInOut" }}
+                          />
+                          <motion.div
+                            className="absolute right-6 top-1/2 h-2 w-2 -translate-y-1/2 rounded-full bg-indigo-200 shadow-[0_0_14px_2px_rgba(165,180,252,0.7)]"
+                            animate={{ x: [0, -300, 0], y: [0, 72, 0] }}
+                            transition={{ duration: 5.2, repeat: Infinity, ease: "easeInOut", delay: 0.4 }}
+                          />
+                        </>
+                      ) : null}
+                    </div>
+                    <p className="mt-4 text-center text-sm leading-relaxed text-slate-400">
+                      Own products: TeraMotors and Gari · Client builds: Araba, Aqua Marwa, Salasel.
+                    </p>
+
+                    <div className="mt-6 flex-1">
+                      <p className="type-meta-uppercase mb-3 text-center text-white/60">
+                        Stack powering our builds
+                      </p>
+                      <div className="grid h-full auto-rows-fr grid-cols-2 gap-2 sm:grid-cols-3">
+                        {STACK_TECH.map((tech, idx) => (
+                          <motion.div
+                            key={tech.label}
+                            initial={prefersReducedMotion ? false : { opacity: 0, y: 10, scale: 0.98 }}
+                            whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                            viewport={{ once: true }}
+                            animate={
+                              prefersReducedMotion
+                                ? undefined
+                                : idx % 3 === 0
+                                  ? { y: [0, -2.5, 0] }
+                                  : idx % 3 === 1
+                                    ? { y: [0, 2, 0] }
+                                    : { y: [0, -1.5, 0] }
+                            }
+                            transition={
+                              prefersReducedMotion
+                                ? { delay: 0, duration: 0.01 }
+                                : {
+                                    delay: 0.06 * idx,
+                                    duration: 3.8 + (idx % 4) * 0.35,
+                                    repeat: Infinity,
+                                    ease: "easeInOut",
+                                  }
+                            }
+                            className={`group relative flex min-h-[56px] items-center overflow-hidden rounded-xl border bg-obsidian/55 px-3 py-2 backdrop-blur-md transition-[border-color,box-shadow,transform] duration-300 ${
+                              idx === activeWhyIndex
+                                ? "border-accent-indigo/45 shadow-[0_0_44px_-22px_rgba(99,102,241,0.9)]"
+                                : "border-white/[0.10] hover:border-accent-indigo/30 hover:shadow-[0_0_40px_-26px_rgba(99,102,241,0.7)]"
+                            }`}
+                          >
+                            {!prefersReducedMotion ? (
+                              <motion.span
+                                aria-hidden
+                                className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100"
+                                initial={false}
+                                animate={{ opacity: [0, 0.55, 0] }}
+                                transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
+                                style={{
+                                  background:
+                                    "linear-gradient(90deg, transparent, rgba(99,102,241,0.18), transparent)",
+                                }}
+                              />
+                            ) : null}
+                            <div className="flex items-center gap-2">
+                              <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-white/[0.06]">
+                                <svg
+                                  role="img"
+                                  viewBox="0 0 24 24"
+                                  className="h-5 w-5 transition-transform duration-300 group-hover:scale-110"
+                                  aria-label={tech.icon.title}
+                                  fill={STACK_ICON_FILL_OVERRIDES[tech.label] ?? `#${tech.icon.hex}`}
+                                >
+                                  <path d={tech.icon.path} />
+                                </svg>
+                              </span>
+                              <span className="text-[11px] font-semibold leading-tight text-slate-200">
+                                {tech.label}
+                              </span>
+                            </div>
+                          </motion.div>
+                        ))}
+                      </div>
+                    </div>
+                  </motion.div>
+                </div>
+              </motion.div>
             </motion.div>
           </section>
 
@@ -1204,15 +1490,6 @@ function NavLink({ href, children }: { href: string; children: React.ReactNode }
 
 function Badge({ children }: { children: React.ReactNode }) {
   return <span className="type-badge-pill">{children}</span>;
-}
-
-function ComparisonItem({ icon, text }: { icon: React.ReactNode; text: string }) {
-  return (
-    <li className="type-body-list-relaxed">
-      <div className="shrink-0 mt-0.5">{icon}</div>
-      {text}
-    </li>
-  );
 }
 
 function ProcessOrbIcon({

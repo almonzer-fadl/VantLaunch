@@ -20,7 +20,6 @@ import {
   Check,
   Globe,
   Rocket,
-  ShieldCheck,
   Sparkles,
   X,
   Zap,
@@ -41,7 +40,7 @@ const extraVentures = [
     title: "Araba",
     description:
       "Pilgrim mobility — book pushers, watch the map, and pay with confidence during Hajj & Umrah.",
-    imgClass: "object-cover object-center opacity-50 sm:opacity-[0.48]",
+    imgClass: "object-contain object-center opacity-50 sm:opacity-[0.48]",
   },
   {
     key: "teramotors-mobile",
@@ -54,7 +53,7 @@ const extraVentures = [
     description:
       "Driver-side garage and services hub — browse maintenance, accessories, and your vehicles in one glow-up UI.",
     imgClass:
-      "object-cover object-[center_8%] opacity-42 transition-transform duration-700 group-hover:scale-[1.03]",
+      "object-contain object-center opacity-42 transition-transform duration-700 group-hover:scale-[1.03]",
   },
   {
     key: "water-delivery",
@@ -67,7 +66,7 @@ const extraVentures = [
     description:
       "Bottled water commerce with promos, featured SKUs, and delivery setup built for Saudi households.",
     imgClass:
-      "object-cover object-top opacity-45 transition-transform duration-700 group-hover:scale-[1.03]",
+      "object-contain object-top opacity-45 transition-transform duration-700 group-hover:scale-[1.03]",
   },
 ] as const;
 
@@ -805,10 +804,10 @@ export default function Home() {
               <div className="w-9 h-9 bg-white text-obsidian rounded-xl flex items-center justify-center shadow-lg hover:rotate-12 transition-transform cursor-pointer">
                 <Rocket className="w-5 h-5 fill-obsidian" />
               </div>
-              <span className="text-xl font-bold tracking-tighter">VantLaunch</span>
+              <span className="type-brand-xl">VantLaunch</span>
             </motion.div>
 
-            <div className="hidden md:flex items-center gap-10 text-sm">
+            <div className="hidden items-center gap-10 md:flex">
               <NavLink href="#ventures">Our work</NavLink>
               <NavLink href="#comparison">Why us</NavLink>
               <NavLink href="#process">How it works</NavLink>
@@ -822,7 +821,7 @@ export default function Home() {
             >
               <Link
                 href="https://github.com"
-                className="text-slate-500 hover:text-white transition-colors"
+                className="type-nav-link"
                 aria-label="GitHub"
               >
                 <Globe className="w-5 h-5" />
@@ -830,7 +829,7 @@ export default function Home() {
               <MagneticWrap active={magneticOn}>
                 <Link
                   href="mailto:build@vantlaunch.com"
-                  className="px-6 py-2.5 bg-accent-indigo text-white text-sm font-bold rounded-full hover:glow-indigo transition-shadow shadow-xl shadow-accent-indigo/20 inline-flex"
+                  className="type-btn-solid inline-flex"
                 >
                   Let&apos;s talk
                 </Link>
@@ -858,7 +857,7 @@ export default function Home() {
                     initial={{ opacity: 0, y: 12 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, ease: EASE_CURSOR }}
-                    className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/[0.08] bg-white/[0.04] px-3 py-1.5 text-[11px] font-medium tracking-wide text-slate-400"
+                    className="mb-6 type-kicker-inline"
                   >
                     <Sparkles className="h-3 w-3 shrink-0 text-accent-indigo opacity-90" />
                     Venture studio · products live in market
@@ -868,19 +867,13 @@ export default function Home() {
                     variants={heroTitleStagger}
                     initial="hidden"
                     animate="visible"
-                    className="max-w-[20rem] text-balance sm:max-w-sm lg:max-w-md"
+                    className="max-w-xl text-balance sm:max-w-2xl lg:max-w-[42rem]"
                   >
-                    <motion.span
-                      variants={heroLineReveal}
-                      className="block text-xl font-medium leading-snug tracking-tight text-slate-300 sm:text-[1.35rem] lg:text-[1.5rem]"
-                    >
+                    <motion.span variants={heroLineReveal} className="type-hero-line">
                       Turn the idea in your head into something
                     </motion.span>
-                    <motion.span
-                      variants={heroLineReveal}
-                      className="mt-2 block text-xl font-normal leading-snug tracking-tight sm:text-[1.35rem] lg:text-[1.5rem]"
-                    >
-                      <span className="bg-gradient-to-r from-white/95 via-white/85 to-white/55 bg-clip-text text-transparent">
+                    <motion.span variants={heroLineReveal} className="type-hero-line-accent">
+                      <span className="type-hero-gradient">
                         real customers open every day.
                       </span>
                     </motion.span>
@@ -890,7 +883,7 @@ export default function Home() {
                     variants={heroSubReveal}
                     initial="hidden"
                     animate="visible"
-                    className="mt-5 max-w-sm text-[13px] font-normal leading-[1.6] text-slate-500 sm:text-sm"
+                    className="type-intro mt-6 max-w-xl leading-relaxed"
                   >
                     Strategy, brand-feel, and engineering together — from investor decks to the
                     first time someone taps your product.
@@ -905,7 +898,7 @@ export default function Home() {
                     <MagneticWrap active={magneticOn}>
                       <Link
                         href="#ventures"
-                        className="group/browse relative isolate inline-flex w-full items-center justify-center gap-2 overflow-hidden rounded-full border border-white/[0.13] bg-gradient-to-b from-white/[0.09] to-white/[0.03] px-8 py-3 text-[13px] font-medium tracking-tight text-slate-50 shadow-[0_14px_40px_-18px_rgba(0,0,0,0.85),inset_0_1px_0_rgba(255,255,255,0.1)] backdrop-blur-md transition-[color,box-shadow,transform,border-color] duration-300 sm:w-auto hover:border-accent-indigo/55 hover:bg-gradient-to-b hover:from-accent-indigo/25 hover:to-accent-indigo/[0.06] hover:text-white hover:shadow-[0_18px_50px_-20px_rgba(99,102,241,0.45),inset_0_1px_0_rgba(255,255,255,0.14)] active:scale-[0.98]"
+                        className="group/browse type-btn-ghost-prominent relative isolate inline-flex w-full sm:w-auto"
                       >
                         <span
                           aria-hidden
@@ -930,7 +923,7 @@ export default function Home() {
                           </div>
                         ))}
                       </div>
-                      <p className="max-w-[11rem] text-xs leading-snug text-slate-600 sm:max-w-none sm:text-[13px] sm:text-slate-500">
+                      <p className="type-caption-micro">
                         Teams across the GCC ship with us
                       </p>
                     </div>
@@ -953,11 +946,9 @@ export default function Home() {
               viewport={{ once: true, margin: "-80px" }}
               variants={staggerSection}
             >
-              <motion.div variants={fadeSlide} className="text-center mb-20">
-                <h2 className="mb-5 text-4xl font-bold tracking-tight text-white md:text-6xl md:tracking-tighter">
-                  A clearer way to build
-                </h2>
-                <p className="mx-auto max-w-xl text-lg font-medium text-slate-500">
+              <motion.div variants={fadeSlide} className="mb-20 text-center">
+                <h2 className="type-display-xl mb-5">A clearer way to build</h2>
+                <p className="type-intro mx-auto max-w-xl text-center">
                   The familiar agency path, next to how we work side-by-side with you.
                 </p>
               </motion.div>
@@ -965,7 +956,7 @@ export default function Home() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <motion.div variants={fadeSlide}>
                   <div className="p-10 rounded-[2.5rem] bg-white/[0.02] border border-white/5 opacity-65 h-full group">
-                    <h3 className="mb-8 text-xl font-bold text-slate-400">Classic agency</h3>
+                    <h3 className="type-heading-comparison-col text-slate-400">Classic agency</h3>
                     <ul className="space-y-6">
                       <ComparisonItem icon={<X className="text-red-500/50" />} text="Many months before anyone outside your team can use the product" />
                       <ComparisonItem icon={<X className="text-red-500/50" />} text="Big upfront budget before you prove the idea in the market" />
@@ -980,7 +971,7 @@ export default function Home() {
                     <div className="absolute top-6 right-8 text-accent-indigo opacity-70">
                       <Zap className="w-8 h-8 fill-accent-indigo" />
                     </div>
-                    <h3 className="mb-8 text-xl font-bold text-accent-indigo">With VantLaunch</h3>
+                    <h3 className="type-heading-comparison-col text-accent-indigo">With VantLaunch</h3>
                     <ul className="space-y-6">
                       <ComparisonItem icon={<Check className="text-accent-indigo" />} text="A realistic launch window so customers can experience your product soon" />
                       <ComparisonItem icon={<Check className="text-accent-indigo" />} text="Clear pricing before we start—extras only when you explicitly choose them" />
@@ -1004,10 +995,8 @@ export default function Home() {
             >
               <motion.div variants={fadeSlide} className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
                 <div className="max-w-2xl">
-                  <h2 className="mb-5 text-5xl font-bold tracking-tight text-white md:text-7xl md:tracking-tighter">
-                    Work you can feel
-                  </h2>
-                  <p className="text-xl font-medium text-slate-500">
+                  <h2 className="type-display-lg mb-5">Work you can feel</h2>
+                  <p className="type-intro-wide max-w-xl">
                     Real products in market—from finance to everyday tools—with care for trust,
                     compliance, and joy in the details.
                   </p>
@@ -1016,7 +1005,7 @@ export default function Home() {
 
               <motion.div
                 variants={fadeSlide}
-                className="grid auto-rows-[minmax(380px,auto)] grid-cols-1 gap-6 md:auto-rows-[minmax(420px,auto)] md:grid-cols-12"
+                className="grid auto-rows-[minmax(380px,auto)] grid-cols-1 items-start gap-6 md:auto-rows-auto md:grid-cols-12"
               >
                 <CardPointerGlow className="relative isolate min-h-[380px] overflow-hidden rounded-[3rem] border border-white/[0.06] bg-white/[0.02] glass-card hover:border-accent-indigo/35 group transition-colors duration-500 md:col-span-6">
                   <div className="absolute inset-0">
@@ -1034,23 +1023,17 @@ export default function Home() {
                       <Badge>Automotive</Badge>
                       <Badge>Saudi Arabia · ZATCA</Badge>
                     </div>
-                    <h3 className="mb-4 text-5xl font-bold tracking-tighter text-white">TeraMotors</h3>
-                    <p className="mb-8 max-w-md text-lg font-medium text-slate-300">
+                    <h3 className="type-portfolio-product-title">TeraMotors</h3>
+                    <p className="type-portfolio-product-body">
                       Enterprise auto repair ops — bilingual UX, realtime job boards, Stripe, and
                       compliant invoicing for workshops scaling across the GCC.
                     </p>
                     <div className="relative z-[1] flex flex-wrap items-center gap-x-8 gap-y-4">
-                      <Link
-                        href="/work/teramotors"
-                        className="inline-flex items-center gap-2 font-bold text-white transition-all hover:gap-3"
-                      >
+                      <Link href="/work/teramotors" className="type-link-strong">
                         Full case study
                         <ArrowUpRight className="h-5 w-5" />
                       </Link>
-                      <Link
-                        href="https://app.teramotor.cc/"
-                        className="inline-flex items-center gap-2 text-base font-semibold text-slate-300 underline decoration-white/25 underline-offset-4 transition-colors hover:text-white hover:decoration-white/50"
-                      >
+                      <Link href="https://app.teramotor.cc/" className="type-link-soft">
                         Live app
                         <ArrowUpRight className="h-4 w-4 shrink-0" />
                       </Link>
@@ -1074,16 +1057,13 @@ export default function Home() {
                       <Badge>B2B marketplace</Badge>
                       <Badge>HORECA · KSA</Badge>
                     </div>
-                    <h3 className="mb-4 text-5xl font-bold tracking-tighter text-white">Salasel</h3>
-                    <p className="mb-8 max-w-md text-lg font-medium text-slate-300">
+                    <h3 className="type-portfolio-product-title">Salasel</h3>
+                    <p className="type-portfolio-product-body">
                       Procurement for hotels, cafés, and catering crews — BNPL-ready buying, logistics
                       handoffs, supplier orchestration inside one Laravel platform.
                     </p>
                     <div className="relative z-[1] flex flex-wrap items-center gap-x-8 gap-y-4">
-                      <Link
-                        href="/work/salasel"
-                        className="inline-flex items-center gap-2 font-bold text-white transition-all hover:gap-3"
-                      >
+                      <Link href="/work/salasel" className="type-link-strong">
                         Full case study
                         <ArrowUpRight className="h-5 w-5" />
                       </Link>
@@ -1091,7 +1071,7 @@ export default function Home() {
                         href="https://salasel.com.sa/"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 text-base font-semibold text-slate-300 underline decoration-white/25 underline-offset-4 transition-colors hover:text-white hover:decoration-white/50"
+                        className="type-link-soft"
                       >
                         Live site
                         <ArrowUpRight className="h-4 w-4 shrink-0" />
@@ -1103,33 +1083,31 @@ export default function Home() {
                 {extraVentures.map((v) => (
                   <CardPointerGlow
                     key={v.key}
-                    className="relative isolate min-h-[340px] overflow-hidden rounded-[3rem] border border-white/[0.06] bg-white/[0.02] glass-card transition-colors duration-500 hover:border-accent-indigo/35 group md:col-span-4 md:min-h-[400px]"
+                    className="group relative isolate aspect-[9/19.5] w-full max-w-[min(100%,320px)] overflow-hidden rounded-[3rem] border border-white/[0.06] bg-obsidian glass-card transition-colors duration-500 hover:border-accent-indigo/35 sm:mx-auto md:mx-0 md:max-w-none md:col-span-4"
                   >
-                    <div className="absolute inset-0">
+                    <div className="absolute inset-0 bg-obsidian">
                       <Image
                         src={v.imageSrc}
                         alt={v.imageAlt}
                         fill
-                        sizes="(max-width: 768px) 100vw, 33vw"
+                        sizes="(max-width: 768px) 320px, 33vw"
                         className={v.imgClass}
                       />
                     </div>
-                    <div className="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/45 to-obsidian/10" />
-                    <div className="relative z-[1] flex h-full flex-col justify-end p-8 md:p-10">
+                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/45 to-obsidian/10" />
+                    <div className="relative z-[1] flex min-h-full flex-col justify-end p-8 md:p-10">
                       <div className="mb-4 flex flex-wrap gap-2">
                         {v.badges.map((b) => (
                           <Badge key={b}>{b}</Badge>
                         ))}
                       </div>
-                      <h3 className="mb-3 text-3xl font-bold tracking-tight text-white md:text-4xl">
-                        {v.title}
-                      </h3>
-                      <p className="mb-6 line-clamp-4 text-sm font-medium leading-relaxed text-slate-300 md:text-[15px]">
+                      <h3 className="type-portfolio-card-title">{v.title}</h3>
+                      <p className="type-portfolio-card-body">
                         {v.description}
                       </p>
                       <Link
                         href={v.href}
-                        className="relative z-[1] inline-flex items-center gap-2 text-sm font-bold text-white transition-all hover:gap-3 md:text-base"
+                        className="type-link-strong relative z-[1] text-sm md:text-base"
                       >
                         Project preview
                         <ArrowUpRight className="h-4 w-4 shrink-0 md:h-5 md:w-5" />
@@ -1138,39 +1116,6 @@ export default function Home() {
                   </CardPointerGlow>
                 ))}
 
-                <CardPointerGlow className="md:col-span-4 glass-card rounded-[3rem] p-12 flex flex-col justify-between group hover:border-white/25 transition-colors duration-500 relative isolate">
-                  <div className="relative z-[1] w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center text-accent-indigo group-hover:border border-white/10 transition-all">
-                    <ShieldCheck className="w-8 h-8" />
-                  </div>
-                  <div className="relative z-[1]">
-                    <h3 className="mb-4 text-3xl font-bold tracking-tight text-white">Trust built in</h3>
-                    <p className="font-medium leading-relaxed text-slate-500">
-                      When regulations matter—like ZATCA in Saudi Arabia—we bake compliance into
-                      invoices and receipts so your customers stay confident.
-                    </p>
-                  </div>
-                </CardPointerGlow>
-
-                <CardPointerGlow className="md:col-span-8 glass-card rounded-[3rem] p-12 flex flex-col md:flex-row items-center justify-between gap-12 group hover:border-accent-indigo/35 transition-colors duration-500 relative isolate">
-                  <div className="relative z-[1] max-w-xl">
-                    <h3 className="mb-5 text-4xl font-bold tracking-tight text-white md:text-5xl">
-                      Space for deep focus
-                    </h3>
-                    <p className="text-xl font-medium leading-relaxed text-slate-400">
-                      We partner with only a handful of teams at once so yours gets the attention
-                      it deserves. Tell us what you&apos;re dreaming up—we&apos;ll find the next
-                      opening together.
-                    </p>
-                  </div>
-                  <MagneticWrap active={magneticOn} className="shrink-0 relative z-[1]">
-                    <Link
-                      href="mailto:build@vantlaunch.com?subject=Reserve%20a%20build%20slot"
-                      className="px-12 py-6 bg-white text-obsidian text-xl font-bold rounded-2xl inline-flex transition-shadow shadow-lg shadow-black/30"
-                    >
-                      Reserve a slot
-                    </Link>
-                  </MagneticWrap>
-                </CardPointerGlow>
               </motion.div>
             </motion.div>
           </section>
@@ -1210,11 +1155,11 @@ export default function Home() {
               transition={{ duration: 0.55, ease: EASE_CURSOR }}
               className="relative z-10 max-w-4xl mx-auto"
             >
-              <h2 className="mb-6 text-balance text-5xl font-bold leading-[1.02] tracking-tight text-white md:text-7xl xl:text-8xl">
+              <h2 className="type-cta-heading">
                 Ready for people to{' '}
                 <span className="text-accent-indigo">experience your vision?</span>
               </h2>
-              <p className="mx-auto mb-12 max-w-lg text-lg font-medium leading-relaxed text-slate-500 md:text-xl">
+              <p className="type-cta-intro">
                 Send a note to{' '}
                 <a
                   className="text-slate-200 underline underline-offset-4 decoration-white/25 transition-colors hover:text-white hover:decoration-white/60"
@@ -1227,7 +1172,7 @@ export default function Home() {
               <MagneticWrap active={magneticOn} className="inline-block">
                 <Link
                   href="mailto:build@vantlaunch.com"
-                  className="px-14 py-7 bg-white text-obsidian text-xl md:text-2xl font-bold rounded-2xl inline-flex items-center gap-4 shadow-[0_0_50px_rgba(255,255,255,0.14)] hover:shadow-[0_0_60px_rgba(99,102,241,0.2)] transition-shadow group"
+                  className="type-cta-btn group"
                 >
                   Start your project
                   <Rocket className="w-7 h-7 group-hover:-rotate-6 transition-transform duration-300" />
@@ -1242,26 +1187,22 @@ export default function Home() {
             <div className="max-w-sm">
               <div className="flex items-center gap-2 mb-8">
                 <Rocket className="text-white w-7 h-7" />
-                <span className="text-2xl font-bold tracking-tighter text-white">VantLaunch</span>
+                <span className="type-brand-2xl">VantLaunch</span>
               </div>
-              <p className="text-lg font-medium leading-relaxed text-slate-500">
+              <p className="type-footer-about">
                 We design and ship standout apps for founders, brands, and teams who care how their
                 product feels in someone&apos;s hands.
               </p>
             </div>
             <div className="flex gap-24">
               <div className="flex flex-col gap-6">
-                <span className="text-xs font-bold uppercase tracking-[0.12em] text-accent-indigo">
-                  Explore
-                </span>
+                <span className="type-meta-uppercase">Explore</span>
                 <FooterLink href="#ventures">Our work</FooterLink>
                 <FooterLink href="#comparison">Why us</FooterLink>
                 <FooterLink href="#process">How it works</FooterLink>
               </div>
               <div className="flex flex-col gap-6">
-                <span className="text-xs font-bold uppercase tracking-[0.12em] text-accent-indigo">
-                  Connect
-                </span>
+                <span className="type-meta-uppercase">Connect</span>
                 <FooterLink href="https://x.com">Twitter / X</FooterLink>
                 <FooterLink href="https://github.com">GitHub</FooterLink>
                 <FooterLink href="mailto:build@vantlaunch.com">Email</FooterLink>
@@ -1269,8 +1210,8 @@ export default function Home() {
             </div>
           </div>
           <div className="mx-auto mt-24 flex max-w-7xl flex-col items-center justify-between gap-4 border-t border-white/[0.05] pt-10 md:flex-row">
-            <p className="text-sm font-medium text-slate-600">© 2026 VantLaunch. All rights reserved.</p>
-            <p className="text-sm text-slate-600">Made with care for teams who ship with heart.</p>
+            <p className="type-legal-muted">© 2026 VantLaunch. All rights reserved.</p>
+            <p className="type-legal-muted font-normal">Made with care for teams who ship with heart.</p>
           </div>
         </footer>
       </div>
@@ -1280,26 +1221,19 @@ export default function Home() {
 
 function NavLink({ href, children }: { href: string; children: React.ReactNode }) {
   return (
-    <Link
-      href={href}
-      className="text-slate-400 hover:text-white transition-colors duration-200 font-semibold"
-    >
+    <Link href={href} className="type-nav-link">
       {children}
     </Link>
   );
 }
 
 function Badge({ children }: { children: React.ReactNode }) {
-  return (
-    <span className="rounded-xl border border-white/10 bg-white/5 px-4 py-1.5 text-[10px] font-bold uppercase tracking-[0.14em] text-slate-300">
-      {children}
-    </span>
-  );
+  return <span className="type-badge-pill">{children}</span>;
 }
 
 function ComparisonItem({ icon, text }: { icon: React.ReactNode; text: string }) {
   return (
-    <li className="flex items-start gap-4 text-slate-300 font-medium text-lg leading-snug">
+    <li className="type-body-list-relaxed">
       <div className="shrink-0 mt-0.5">{icon}</div>
       {text}
     </li>
@@ -1308,13 +1242,11 @@ function ComparisonItem({ icon, text }: { icon: React.ReactNode; text: string })
 
 function ProcessStep({ num, title, desc }: { num: string; title: string; desc: string }) {
   return (
-    <motion.div variants={fadeSlide} className="flex flex-col gap-8 group">
-      <div className="text-5xl font-bold tabular-nums text-white/[0.08] transition-colors duration-500 group-hover:text-accent-indigo/25 sm:text-6xl">
-        {num}
-      </div>
+    <motion.div variants={fadeSlide} className="group flex flex-col gap-8">
+      <div className="type-process-num">{num}</div>
       <div>
-        <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 tracking-tight">{title}</h3>
-        <p className="text-slate-500 text-lg md:text-xl font-medium leading-relaxed">{desc}</p>
+        <h3 className="type-process-title">{title}</h3>
+        <p className="type-process-desc">{desc}</p>
       </div>
     </motion.div>
   );
@@ -1322,7 +1254,7 @@ function ProcessStep({ num, title, desc }: { num: string; title: string; desc: s
 
 function FooterLink({ href, children }: { href: string; children: React.ReactNode }) {
   return (
-    <Link href={href} className="text-lg font-bold text-slate-500 hover:text-white transition-colors">
+    <Link href={href} className="type-footer-link">
       {children}
     </Link>
   );

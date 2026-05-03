@@ -160,14 +160,11 @@ export default function SalaselProjectPage() {
 
       <header className="sticky top-0 z-40 border-b border-white/[0.06] bg-obsidian/70 backdrop-blur-xl">
         <div className="mx-auto flex h-16 max-w-5xl items-center justify-between px-6">
-          <Link
-            href="/#ventures"
-            className="inline-flex items-center gap-2 text-sm font-semibold text-slate-400 transition-colors hover:text-white"
-          >
+          <Link href="/#ventures" className="type-work-back-link">
             <ArrowLeft className="h-4 w-4" />
             Our work
           </Link>
-          <Link href="/" className="font-bold tracking-tighter text-white">
+          <Link href="/" className="type-brand-xl">
             VantLaunch
           </Link>
           <div className="flex items-center gap-4">
@@ -175,14 +172,11 @@ export default function SalaselProjectPage() {
               href="https://salasel.com.sa/"
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden text-sm font-semibold text-accent-indigo hover:text-indigo-300 sm:inline"
+              className="type-nav-accent hidden sm:inline"
             >
               Live site
             </Link>
-            <Link
-              href="mailto:build@vantlaunch.com?subject=Salasel%20follow-up"
-              className="hidden text-sm font-semibold text-slate-400 hover:text-white md:inline"
-            >
+            <Link href="mailto:build@vantlaunch.com?subject=Salasel%20follow-up" className="type-nav-link hidden md:inline">
               Talk to us
             </Link>
           </div>
@@ -191,18 +185,16 @@ export default function SalaselProjectPage() {
 
       <article className="relative z-10 mx-auto max-w-5xl px-6 pb-24 pt-14 md:pt-20">
         <div className="mb-8 flex flex-wrap items-center gap-2">
-          <span className="rounded-full border border-white/10 bg-white/[0.05] px-3 py-1 text-xs font-semibold text-slate-300">
-            Case study · shipped product
-          </span>
-          <span className="rounded-full border border-white/10 bg-white/[0.05] px-3 py-1 text-xs font-semibold text-slate-300">
+          <span className="type-chip">Case study · shipped product</span>
+          <span className="type-chip">
             Saudi Arabia · B2B marketplace
           </span>
         </div>
 
-        <h1 className="text-balance text-4xl font-bold leading-[1.05] tracking-tight text-white md:text-6xl lg:text-[3.75rem]">
+        <h1 className="type-case-h1">
           Salasel
         </h1>
-        <p className="mt-5 max-w-3xl text-xl font-medium leading-relaxed text-slate-400 md:text-2xl">
+        <p className="type-case-lede">
           An enterprise-grade HORECA marketplace that closes the loop between buyers, supplier
           networks, logistics, and financed purchasing — one cohesive operating system instead of a
           patchwork of forms and spreadsheets.
@@ -219,15 +211,15 @@ export default function SalaselProjectPage() {
               className="object-cover object-top"
             />
           </div>
-          <figcaption className="border-t border-white/[0.06] bg-obsidian-surface/95 px-5 py-4 text-center text-sm leading-relaxed text-slate-500">
+          <figcaption className="type-figure-caption border-t border-white/[0.06] bg-obsidian-surface/95 px-5 py-4">
             The live marketing experience — crafted for HORECA buyers and suppliers with clear next
             steps, WhatsApp support, and Arabic / English entry points.
           </figcaption>
         </figure>
 
         <section className="mt-16 space-y-5">
-          <h2 className="text-2xl font-bold tracking-tight text-white md:text-3xl">Overview</h2>
-          <p className="text-lg leading-relaxed text-slate-400">
+          <h2 className="type-case-section-heading">Overview</h2>
+          <p className="type-case-overview-text">
             Salasel connects Hotels, Restaurants, Cafés, and Catering businesses with suppliers,
             logistics partners, and BNPL financiers inside the Kingdom. The roadmap focuses on{' '}
             <strong className="font-semibold text-slate-300">digitized procurement journeys</strong>,{' '}
@@ -251,7 +243,7 @@ export default function SalaselProjectPage() {
         </section>
 
         <section className="mt-16">
-          <h2 className="text-2xl font-bold tracking-tight text-white md:text-3xl">
+          <h2 className="type-case-section-heading">
             Who relies on Salasel?
           </h2>
           <div className="mt-8 grid gap-5 sm:grid-cols-2">
@@ -261,18 +253,18 @@ export default function SalaselProjectPage() {
                 className="glass-card rounded-[1.75rem] border border-white/[0.06] bg-white/[0.02] p-7 transition-colors hover:border-accent-indigo/25"
               >
                 <Icon className="h-10 w-10 text-accent-indigo" aria-hidden />
-                <p className="mt-5 text-lg font-bold text-white">{title}</p>
-                <p className="mt-2 text-[15px] leading-relaxed text-slate-400">{body}</p>
+                <p className="type-case-card-title">{title}</p>
+                <p className="type-case-card-body">{body}</p>
               </div>
             ))}
           </div>
         </section>
 
         <section className="mt-16">
-          <h2 className="text-2xl font-bold tracking-tight text-white md:text-3xl">
+          <h2 className="type-case-section-heading">
             Modular panels · one platform
           </h2>
-          <p className="mt-3 max-w-2xl text-lg text-slate-500">
+          <p className="type-prose-intro mt-3 max-w-2xl">
             Each stakeholder group accesses a guarded panel with schemas and policies aligned to how
             they actually work day to day.
           </p>
@@ -280,7 +272,7 @@ export default function SalaselProjectPage() {
           <div className="mt-8 overflow-x-auto rounded-[1.5rem] border border-white/[0.08]">
             <table className="w-full min-w-[640px] text-left text-sm">
               <thead>
-                <tr className="border-b border-white/[0.08] bg-white/[0.03] text-xs uppercase tracking-wide text-slate-500">
+                <tr className="type-table-heading-row">
                   <th className="px-5 py-4 font-semibold">Panel</th>
                   <th className="px-5 py-4 font-semibold">Route prefix</th>
                   <th className="px-5 py-4 font-semibold">Guard</th>
@@ -292,7 +284,7 @@ export default function SalaselProjectPage() {
                   <tr key={row.route} className="text-slate-300 hover:bg-white/[0.02]">
                     <td className="px-5 py-4">
                       <p className="font-bold text-white">{row.panel}</p>
-                      <p className="mt-1 text-[13px] text-slate-500">{row.description}</p>
+                      <p className="type-table-meta mt-1">{row.description}</p>
                     </td>
                     <td className="px-5 py-4 font-medium text-accent-indigo/90">{row.route}</td>
                     <td className="px-5 py-4 font-medium text-slate-400">{row.guard}</td>
@@ -305,7 +297,7 @@ export default function SalaselProjectPage() {
         </section>
 
         <section className="mt-16">
-          <h2 className="flex items-center gap-2 text-2xl font-bold tracking-tight text-white md:text-3xl">
+          <h2 className="type-case-section-heading-inline-gap2">
             <Layers className="h-8 w-8 text-accent-indigo" />
             Core technology stack
           </h2>
@@ -315,10 +307,8 @@ export default function SalaselProjectPage() {
                 key={label}
                 className="rounded-2xl border border-white/[0.06] bg-white/[0.02] px-5 py-4"
               >
-                <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
-                  {label}
-                </p>
-                <p className="mt-2 font-semibold text-white">{value}</p>
+                <p className="type-meta-muted-caps">{label}</p>
+                <p className="type-stack-value">{value}</p>
               </div>
             ))}
           </div>
@@ -339,11 +329,11 @@ export default function SalaselProjectPage() {
         />
 
         <section className="mt-16">
-          <h2 className="flex items-center gap-3 text-2xl font-bold tracking-tight text-white md:text-3xl">
+          <h2 className="type-case-section-heading-inline">
             <Database className="h-8 w-8 text-accent-indigo" aria-hidden />
             Data architecture at a glance
           </h2>
-          <p className="mt-3 max-w-2xl text-lg text-slate-500">
+          <p className="type-prose-intro mt-3 max-w-2xl">
             Normalized PostgreSQL anchors every transaction with explicit tables for onboarding,
             cataloging, carts, invoicing, and tracking so reporting stays truthful.
           </p>
@@ -387,7 +377,7 @@ export default function SalaselProjectPage() {
         </section>
 
         <section className="mt-16">
-          <h2 className="flex items-center gap-3 text-2xl font-bold tracking-tight text-white md:text-3xl">
+          <h2 className="type-case-section-heading-inline">
             <Shield className="h-8 w-8 text-accent-indigo" />
             Authentication & governance
           </h2>
@@ -404,7 +394,7 @@ export default function SalaselProjectPage() {
         </section>
 
         <section className="mt-16">
-          <h2 className="flex items-center gap-3 text-2xl font-bold tracking-tight text-white md:text-3xl">
+          <h2 className="type-case-section-heading-inline">
             <BookOpen className="h-8 w-8 text-accent-indigo" aria-hidden />
             Documentation footprint
           </h2>
@@ -424,7 +414,7 @@ export default function SalaselProjectPage() {
         </section>
 
         <section className="mt-16">
-          <h2 className="flex items-center gap-3 text-2xl font-bold tracking-tight text-white md:text-3xl">
+          <h2 className="type-case-section-heading-inline">
             <FileCode2 className="h-8 w-8 text-accent-indigo" />
             Application folders
           </h2>
@@ -449,12 +439,12 @@ docs/{complete,srs,files,...}`}
         <DeveloperPlaybook />
 
         <section className="mt-16">
-          <h2 className="flex items-center gap-3 text-2xl font-bold tracking-tight text-white md:text-3xl">
+          <h2 className="type-case-section-heading-inline">
             <TestTube className="h-8 w-8 text-accent-indigo" aria-hidden />
             Validation & tooling
           </h2>
           <div className="mt-8 glass-card rounded-3xl border border-white/[0.07] p-8">
-            <ul className="space-y-4 text-[17px] text-slate-400">
+            <ul className="space-y-4 type-prose-list">
               <li>
                 <strong className="font-semibold text-slate-200">Testing:</strong>{' '}
                 <span className="font-mono text-sm text-accent-indigo/90">php artisan test</span>, suites
@@ -474,10 +464,10 @@ docs/{complete,srs,files,...}`}
         </section>
 
         <section className="mt-20 rounded-[2rem] border border-accent-indigo/25 bg-accent-indigo/[0.08] px-8 py-12 text-center">
-          <p className="text-sm font-semibold uppercase tracking-wide text-accent-indigo">
+          <p className="type-accent-label-sm mx-auto max-w-lg px-2">
             Interested in mapping this playbook to your own marketplace motion?
           </p>
-          <p className="mx-auto mt-4 max-w-lg text-lg text-slate-300">
+          <p className="type-cta-banner-sub px-2">
             Reach out — we specialize in translating complex procurement stories into humane product
             experiences.
           </p>
@@ -486,15 +476,12 @@ docs/{complete,srs,files,...}`}
               href="https://salasel.com.sa/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-2xl border border-white/20 bg-white/10 px-8 py-4 text-lg font-bold text-white backdrop-blur transition-transform hover:-translate-y-0.5"
+              className="type-email-cta-ghost-outline"
             >
               Visit salasel.com.sa
               <ArrowUpRight className="h-5 w-5" />
             </Link>
-            <Link
-              href="mailto:build@vantlaunch.com?subject=Salasel-like%20build"
-              className="inline-flex items-center gap-2 rounded-2xl bg-white px-8 py-4 text-lg font-bold text-obsidian shadow-lg transition-transform hover:-translate-y-0.5"
-            >
+            <Link href="mailto:build@vantlaunch.com?subject=Salasel-like%20build" className="type-email-cta-solid">
               Email VantLaunch
               <ArrowUpRight className="h-5 w-5" />
             </Link>
@@ -516,16 +503,16 @@ function FeaturePriorityBlock({
 }) {
   return (
     <section className="mt-16">
-      <p className="text-xs font-semibold uppercase tracking-wide text-accent-indigo">{eyebrow}</p>
-      <h2 className="mt-2 text-2xl font-bold tracking-tight text-white md:text-3xl">{label}</h2>
+      <p className="type-meta-accent-caps">{eyebrow}</p>
+      <h2 className="mt-2 type-case-section-heading">{label}</h2>
       <div className="mt-8 grid gap-5 md:grid-cols-2">
         {features.map((feature) => (
           <article
             key={feature.title}
             className="rounded-[1.5rem] border border-white/[0.06] bg-white/[0.02] px-6 py-5"
           >
-            <h3 className="font-bold text-white">{feature.title}</h3>
-            <p className="mt-3 text-[15px] leading-relaxed text-slate-400">{feature.body}</p>
+            <h3 className="type-priority-feature-title">{feature.title}</h3>
+            <p className="mt-3 type-prose-muted">{feature.body}</p>
           </article>
         ))}
       </div>
@@ -545,7 +532,7 @@ function DomainCluster({
   return (
     <div className="rounded-[1.5rem] border border-white/[0.06] bg-white/[0.02] px-6 py-5">
       <Icon className="h-7 w-7 text-accent-indigo" aria-hidden />
-      <p className="mt-4 text-lg font-bold text-white">{title}</p>
+      <p className="type-domain-cluster-title">{title}</p>
       <ul className="mt-3 space-y-2 text-sm leading-relaxed text-slate-400">
         {items.map((item) => (
           <li key={item} className="flex gap-2">
@@ -571,7 +558,7 @@ function DeveloperPlaybook() {
   return (
     <section className="mt-16">
       <details className="group rounded-[1.75rem] border border-white/[0.09] bg-white/[0.02] open:bg-white/[0.03]">
-        <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-8 py-6 text-lg font-bold text-white">
+        <summary className="type-summary-toggle">
           <span>Developer setup playbook</span>
           <span className="rounded-full bg-white/10 px-4 py-1 text-xs font-semibold text-slate-300 group-open:hidden">
             Expand
@@ -581,16 +568,16 @@ function DeveloperPlaybook() {
           </span>
         </summary>
         <div className="border-t border-white/[0.06] px-8 pb-8 pt-2">
-          <p className="text-sm leading-relaxed text-slate-500">
+          <p className="type-playbook-intro">
             Mirrors the onboarding flow described in-repo: PHP&nbsp;8.2+, Composer 2.x, Node
             18+, PostgreSQL&nbsp;13+, Redis&nbsp;6+.
           </p>
-          <h3 className="mt-8 text-base font-semibold text-white">Install &amp; boot</h3>
+          <h3 className="type-playbook-h3">Install &amp; boot</h3>
           <pre className="mt-3 overflow-x-auto rounded-xl border border-white/[0.08] bg-black/55 p-4 text-[13px] text-slate-300">{`git clone <repository-url>
 cd salasel
 composer install && npm install`}</pre>
 
-          <h3 className="mt-8 text-base font-semibold text-white">Environment</h3>
+          <h3 className="type-playbook-h3">Environment</h3>
           <pre className="mt-3 overflow-x-auto rounded-xl border border-white/[0.08] bg-black/55 p-4 text-[13px] text-slate-300">{`cp .env.example .env
 php artisan key:generate
 
@@ -605,18 +592,18 @@ SESSION_DRIVER=redis
 
 # MAIL_* — configure transactional provider`}</pre>
 
-          <h3 className="mt-8 text-base font-semibold text-white">Database &amp; permissions</h3>
+          <h3 className="type-playbook-h3">Database &amp; permissions</h3>
           <pre className="mt-3 overflow-x-auto rounded-xl border border-white/[0.08] bg-black/55 p-4 text-[13px] text-slate-300">{`php artisan migrate
 php artisan db:seed
 php artisan shield:generate --all`}</pre>
 
-          <h3 className="mt-8 text-base font-semibold text-white">Run locally</h3>
+          <h3 className="type-playbook-h3">Run locally</h3>
           <pre className="mt-3 overflow-x-auto rounded-xl border border-white/[0.08] bg-black/55 p-4 text-[13px] text-slate-300">{`npm run build       # prod assets once
 npm run dev         # vite dev server
 php artisan serve
 php artisan queue:work`}</pre>
 
-          <h3 className="mt-8 text-base font-semibold text-white">Handy Laravel / Filament tooling</h3>
+          <h3 className="type-playbook-h3">Handy Laravel / Filament tooling</h3>
           <pre className="mt-3 overflow-x-auto rounded-xl border border-white/[0.08] bg-black/55 p-4 text-[13px] text-slate-300">{`php artisan make:migration create_table_name
 php artisan migrate:rollback
 

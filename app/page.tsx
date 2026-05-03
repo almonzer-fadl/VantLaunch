@@ -1,14 +1,18 @@
 "use client";
 
+import type { MotionValue } from "framer-motion";
 import {
+  animate,
   MotionConfig,
   motion,
+  useAnimationFrame,
   useMotionTemplate,
+  useMotionValue,
   useScroll,
   useSpring,
   useTransform,
 } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import type { CSSProperties, ReactNode } from "react";
 import {
   ArrowRight,
@@ -25,6 +29,47 @@ import Image from "next/image";
 import Link from "next/link";
 
 const EASE_CURSOR: [number, number, number, number] = [0.16, 1, 0.3, 1];
+
+const extraVentures = [
+  {
+    key: "araba",
+    href: "/work/araba",
+    imageSrc: "/portfolio/araba.png",
+    imageAlt:
+      "Araba — Hajj and Umrah wheelchair assistance app with map tracking and request cart",
+    badges: ["Mobility", "Hajj · KSA"],
+    title: "Araba",
+    description:
+      "Pilgrim mobility — book pushers, watch the map, and pay with confidence during Hajj & Umrah.",
+    imgClass: "object-cover object-center opacity-50 sm:opacity-[0.48]",
+  },
+  {
+    key: "teramotors-mobile",
+    href: "/work/teramotors-mobile",
+    imageSrc: "/portfolio/teramotors-mobile.jpg",
+    imageAlt:
+      "TeraMotors consumer app home with service categories, My Garage, and search",
+    badges: ["Automotive", "Consumer app"],
+    title: "TeraMotors mobile",
+    description:
+      "Driver-side garage and services hub — browse maintenance, accessories, and your vehicles in one glow-up UI.",
+    imgClass:
+      "object-cover object-[center_8%] opacity-42 transition-transform duration-700 group-hover:scale-[1.03]",
+  },
+  {
+    key: "water-delivery",
+    href: "/work/water-delivery",
+    imageSrc: "/portfolio/water-delivery-app.jpeg",
+    imageAlt:
+      "Water delivery storefront with seasonal promo, shortcuts, and featured bottles",
+    badges: ["E-commerce", "KSA"],
+    title: "Water delivery",
+    description:
+      "Bottled water commerce with promos, featured SKUs, and delivery setup built for Saudi households.",
+    imgClass:
+      "object-cover object-top opacity-45 transition-transform duration-700 group-hover:scale-[1.03]",
+  },
+] as const;
 
 const fadeSlide = {
   hidden: { opacity: 0, y: 18 },
@@ -176,118 +221,450 @@ function CardPointerGlow({
   );
 }
 
-function HeroShowcase({ reduced }: { reduced: boolean }) {
-  const floatA = reduced
-    ? {}
-    : {
-        animate: { y: [0, -14, 0] },
-        transition: { duration: 6.2, repeat: Infinity, ease: 'easeInOut' as const },
-      };
-  const floatB = reduced
-    ? {}
-    : {
-        animate: { y: [0, 16, 0] },
-        transition: { duration: 7.4, repeat: Infinity, ease: 'easeInOut' as const, delay: 0.9 },
-      };
+type HeroOrbitShot = {
+  src: string;
+  alt: string;
+  sizes: string;
+};
+
+const heroOrbitImages: HeroOrbitShot[] = [
+  {
+    src: "/teramotors.png",
+    alt: "TeraMotors workshop dashboard",
+    sizes: "(max-width: 640px) 90vw, 420px",
+  },
+  {
+    src: "/salasel-hero.png",
+    alt: "Salasel HORECA marketplace experience",
+    sizes: "(max-width: 640px) 90vw, 420px",
+  },
+  {
+    src: "/portfolio/araba.png",
+    alt: "Araba Hajj and Umrah mobility app",
+    sizes: "(max-width: 640px) 90vw, 420px",
+  },
+  {
+    src: "/portfolio/teramotors-mobile.jpg",
+    alt: "TeraMotors consumer mobile app",
+    sizes: "(max-width: 640px) 90vw, 420px",
+  },
+  {
+    src: "/portfolio/water-delivery-app.jpeg",
+    alt: "Water delivery storefront app",
+    sizes: "(max-width: 640px) 90vw, 420px",
+  },
+];
+
+const HERO_ORBIT_TWO_PI = Math.PI * 2;
+
+function nearestAngleEquivalence(current: number, goalEquivalent: number) {
+  const T = HERO_ORBIT_TWO_PI;
+  return goalEquivalent + T * Math.round((current - goalEquivalent) / T);
+}
+
+type HeroOrbitLayout = {
+  BW: number;
+  BH: number;
+  x: number;
+  y: number;
+  scale: number;
+  opacity: number;
+  rotateDeg: number;
+  zIndex: number;
+  filter: string;
+};
+
+/** Pure layout helper — SSR static layer & motion transforms must derive from this for parity */
+function orbitLayoutAtTheta(
+  idx: number,
+  thetaRad: number,
+  narrowLayout: boolean,
+  reducedMotion: boolean,
+  shotCount: number,
+): HeroOrbitLayout {
+  const BW = narrowLayout ? 300 : 364;
+  const BH = narrowLayout ? 400 : 478;
+  const RX = narrowLayout ? 92 : 150;
+  const RY = narrowLayout ? 72 : 112;
+  const yLift = narrowLayout ? -6 : -10;
+  const a = thetaRad + (idx * HERO_ORBIT_TWO_PI) / shotCount;
+
+  let scale: number;
+  let opacity: number;
+  let rotateDeg: number;
+  let zIndex: number;
+  let filter: string;
+
+  if (reducedMotion) {
+    if (idx === 0) {
+      scale = 1;
+      opacity = 1;
+      rotateDeg = 0;
+      zIndex = 22;
+      filter = "brightness(1)";
+    } else {
+      scale = 0.001;
+      opacity = 0;
+      rotateDeg = 0;
+      zIndex = 0;
+      filter = "brightness(1)";
+    }
+  } else {
+    const prom = Math.cos(a);
+    const t = (prom + 1) / 2;
+    scale = 0.34 + t * 0.66;
+    opacity = 0.3 + t * 0.7;
+    rotateDeg = -6.2 + prom * 12.8;
+    zIndex = Math.round(7 + prom * 15);
+    const b =
+      prom > 0.72 ? 1.06 + (prom - 0.72) * 0.15 : 0.93 + Math.max(prom, 0) * 0.11;
+    filter = `brightness(${b})`;
+  }
+
+  const x = Math.sin(a) * RX;
+  const y = -Math.cos(a) * RY + yLift;
+
+  return { BW, BH, x, y, scale, opacity, rotateDeg, zIndex, filter };
+}
+
+function roundOrbitCssNumber(n: number, fractionDigits: number) {
+  return Number.parseFloat(n.toFixed(fractionDigits));
+}
+
+/** Stable inline shapes so SSR and first client pass serialize the same way (avoid static orbit hydration noise). */
+function orbitStaticInlineStyle(L: HeroOrbitLayout): CSSProperties {
+  const brightnessMatch = /^brightness\(((?:\d*\.)?\d+(?:e[+-]?\d+)?)\)$/i.exec(L.filter.trim());
+  const filterRounded =
+    brightnessMatch === null
+      ? L.filter
+      : `brightness(${roundOrbitCssNumber(Number.parseFloat(brightnessMatch[1]), 6)})`;
+
+  const xPx = `${roundOrbitCssNumber(L.x, 5)}px`;
+  const yPx = `${roundOrbitCssNumber(L.y, 5)}px`;
+  const scl = `${roundOrbitCssNumber(L.scale, 7)}`;
+  const rot = `${roundOrbitCssNumber(L.rotateDeg, 5)}deg`;
+
+  return {
+    width: `${L.BW}px`,
+    height: `${L.BH}px`,
+    left: `calc(50% - ${L.BW / 2}px)`,
+    top: `calc(42% - ${L.BH / 2}px)`,
+    transformOrigin: "50% 50%",
+    transform: `translateX(${xPx}) translateY(${yPx}) scale(${scl}) rotate(${rot})`,
+    opacity: roundOrbitCssNumber(L.opacity, 7),
+    zIndex: L.zIndex,
+    filter: filterRounded,
+  };
+}
+
+function HeroOrbitStaticLayer({
+  idx,
+  narrow: narrowLayout,
+  reduced,
+  shot,
+  shotCount,
+}: {
+  idx: number;
+  narrow: boolean;
+  reduced: boolean;
+  shot: HeroOrbitShot;
+  shotCount: number;
+}) {
+  const L = orbitLayoutAtTheta(idx, 0, narrowLayout, reduced, shotCount);
 
   return (
-    <div className="relative mx-auto w-full max-w-xl lg:max-w-none lg:mx-0 min-h-[min(72vw,440px)] sm:min-h-[380px] lg:min-h-[480px]">
-      <motion.div
-        aria-hidden
-        animate={
-          reduced
-            ? undefined
-            : { scale: [1, 1.08, 1], opacity: [0.28, 0.45, 0.28] }
-        }
-        transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
-        className="pointer-events-none absolute left-[-5%] top-[24%] h-52 w-52 rounded-full bg-indigo-500/30 blur-[80px]"
-      />
-      <motion.div
-        aria-hidden
-        animate={
-          reduced
-            ? undefined
-            : { scale: [1.05, 1, 1.05], opacity: [0.18, 0.32, 0.18] }
-        }
-        transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
-        className="pointer-events-none absolute right-[-10%] top-[12%] h-64 w-64 rounded-full bg-violet-400/25 blur-[90px]"
-      />
-
-      <motion.div
-        initial={{ opacity: 0, y: 28, rotate: reduced ? 0 : -2.25 }}
-        animate={{ opacity: 1, y: 0, rotate: reduced ? 0 : -2.25 }}
-        transition={{ duration: 0.85, ease: EASE_CURSOR, delay: 0.06 }}
-        className="relative z-[2] overflow-hidden rounded-[2rem] border border-white/10 bg-obsidian-surface shadow-[0_40px_100px_-32px_rgba(0,0,0,0.9)] md:rounded-[2.25rem]"
-      >
-        <div className="relative aspect-[16/11] w-full md:aspect-[16/10] lg:aspect-[16/10]">
-          <Image
-            src="/teramotors.png"
-            alt="Interface from TeraMotors, a finance and automotive platform we shipped"
-            fill
-            priority
-            sizes="(max-width: 1024px) 92vw, 52vw"
-            className="object-cover object-[center_18%]"
-          />
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-obsidian via-transparent to-transparent opacity-90 md:opacity-80" />
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-obsidian/70 via-transparent to-transparent md:opacity-90" />
-        </div>
-
-        <div className="absolute bottom-0 left-0 right-0 flex flex-wrap gap-3 p-7 md:p-8">
-          <span className="rounded-full bg-white/10 px-4 py-1.5 text-sm font-semibold text-white ring-1 ring-white/15 backdrop-blur-md">
-            Real customers, daily
-          </span>
-          <span className="rounded-full bg-accent-indigo/35 px-4 py-1.5 text-sm font-semibold text-white ring-1 ring-white/25 backdrop-blur-md">
-            From idea to launched app
-          </span>
-        </div>
-      </motion.div>
-
-      <div className="absolute -right-1 top-[8%] z-[3] hidden min-[520px]:block sm:right-[-4%] lg:-right-[2%]">
-        <motion.div
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.65, ease: EASE_CURSOR, delay: 0.35 }}
-        >
-          <motion.div
-            className="max-w-[200px] rounded-2xl border border-white/15 bg-white/10 p-4 shadow-lg shadow-black/30 backdrop-blur-xl"
-            {...floatA}
-          >
-            <div className="mb-2 flex gap-3">
-              <div className="h-14 w-[3px] rounded-full bg-accent-indigo" aria-hidden />
-              <div className="min-w-0">
-                <p className="text-xs font-semibold tracking-wide text-slate-300">In motion</p>
-                <p className="mt-1 text-lg font-bold leading-snug tracking-tight text-white">
-                  Live in weeks, not quarters
-                </p>
-              </div>
-            </div>
-          </motion.div>
-        </motion.div>
+    <div
+      suppressHydrationWarning
+      className="pointer-events-none absolute will-change-transform"
+      style={orbitStaticInlineStyle(L)}
+    >
+      <div className="relative h-full w-full overflow-visible">
+        <Image
+          src={shot.src}
+          alt={shot.alt}
+          fill
+          sizes={shot.sizes}
+          draggable={false}
+          className="object-contain object-center drop-shadow-[0_18px_50px_rgba(0,0,0,0.55)] saturate-[1.04]"
+          priority={idx <= 2}
+        />
       </div>
+    </div>
+  );
+}
 
-      <div className="absolute -left-1 bottom-[12%] z-[3] hidden min-[520px]:block sm:left-[-3%]">
-        <motion.div
-          initial={{ opacity: 0, x: -16 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.65, ease: EASE_CURSOR, delay: 0.42 }}
-        >
-          <motion.div
-            className="max-w-[218px] rounded-2xl border border-white/12 bg-gradient-to-br from-white/12 to-white/[0.04] p-4 shadow-lg shadow-black/40 backdrop-blur-xl"
-            {...floatB}
-          >
-            <div className="flex items-center gap-3">
-              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-accent-indigo/35 text-xl">
-                <Sparkles className="h-6 w-6 text-white" aria-hidden />
-              </div>
-              <div className="min-w-0">
-                <p className="text-sm font-semibold text-white leading-snug">Built to feel premium</p>
-                <p className="mt-1 text-xs leading-snug text-slate-400">
-                  Details your customers feel the first time they open the app
-                </p>
-              </div>
-            </div>
-          </motion.div>
-        </motion.div>
+function HeroOrbitLayer({
+  idx,
+  theta,
+  reduced,
+  narrow,
+  shot,
+  shotCount,
+}: {
+  idx: number;
+  theta: MotionValue<number>;
+  reduced: boolean;
+  narrow: boolean;
+  shot: HeroOrbitShot;
+  shotCount: number;
+}) {
+  const BW = narrow ? 300 : 364;
+  const BH = narrow ? 400 : 478;
+
+  const x = useTransform(theta, (th) =>
+    orbitLayoutAtTheta(idx, th, narrow, reduced, shotCount).x,
+  );
+  const y = useTransform(theta, (th) =>
+    orbitLayoutAtTheta(idx, th, narrow, reduced, shotCount).y,
+  );
+  const scale = useTransform(theta, (th) =>
+    orbitLayoutAtTheta(idx, th, narrow, reduced, shotCount).scale,
+  );
+  const opacity = useTransform(theta, (th) =>
+    orbitLayoutAtTheta(idx, th, narrow, reduced, shotCount).opacity,
+  );
+  const rotate = useTransform(theta, (th) =>
+    orbitLayoutAtTheta(idx, th, narrow, reduced, shotCount).rotateDeg,
+  );
+  const zIndex = useTransform(theta, (th) =>
+    orbitLayoutAtTheta(idx, th, narrow, reduced, shotCount).zIndex,
+  );
+  const brightness = useTransform(theta, (th) =>
+    orbitLayoutAtTheta(idx, th, narrow, reduced, shotCount).filter,
+  );
+
+  return (
+    <motion.div
+      className="pointer-events-none absolute will-change-transform"
+      style={{
+        width: `${BW}px`,
+        height: `${BH}px`,
+        left: `calc(50% - ${BW / 2}px)`,
+        top: `calc(42% - ${BH / 2}px)`,
+        transformOrigin: "50% 50%",
+        x,
+        y,
+        scale,
+        opacity,
+        rotate,
+        zIndex,
+        filter: brightness,
+      }}
+    >
+      <div className="relative h-full w-full overflow-visible">
+        <Image
+          src={shot.src}
+          alt={shot.alt}
+          fill
+          sizes={shot.sizes}
+          draggable={false}
+          className="object-contain object-center drop-shadow-[0_18px_50px_rgba(0,0,0,0.55)] saturate-[1.04]"
+          priority={idx <= 2}
+        />
+      </div>
+    </motion.div>
+  );
+}
+
+/** True only after hydrate so motion subtree matches SSR-only static markup (avoid FM hydration mismatch). */
+function useHydratedMotionOrbitToggle() {
+  return useSyncExternalStore(
+    () => () => {},
+    () => true,
+    () => false,
+  );
+}
+
+function useNarrowHeroOrbit() {
+  const [narrow, setNarrow] = useState(true);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 639px)");
+    function sync() {
+      setNarrow(mq.matches);
+    }
+    sync();
+    mq.addEventListener("change", sync);
+    return () => mq.removeEventListener("change", sync);
+  }, []);
+
+  return narrow;
+}
+
+const ORBIT_SCROLL_BOOST_DECAY_PER_S = 5.2;
+const ORBIT_SCROLL_BOOST_SENSITIVITY = 0.0055;
+const ORBIT_SCROLL_BOOST_CAP = 1.2;
+const ORBIT_SCROLL_MAX_SPEED_MULT = 4.75;
+
+function wheelDeltaToPixels(ev: WheelEvent): { dx: number; dy: number } {
+  let dx = ev.deltaX;
+  let dy = ev.deltaY;
+  // 1 = line, 2 = page — normalize roughly to px-like magnitude so boost feels consistent cross-browser.
+  const mode = typeof ev.deltaMode === "number" ? ev.deltaMode : 0;
+  if (mode === 1) {
+    dx *= 16;
+    dy *= 16;
+  }
+  if (mode === 2) {
+    dx *= 800;
+    dy *= 800;
+  }
+  return { dx, dy };
+}
+
+function wheelHappensInsideElement(ev: WheelEvent, root: HTMLElement): boolean {
+  if (root.contains(ev.target as Node)) return true;
+  const hit = typeof document.elementFromPoint === "function" ? document.elementFromPoint(ev.clientX, ev.clientY) : null;
+  return !!hit && root.contains(hit);
+}
+
+function HeroOrbitCollage({ reduced }: { reduced: boolean }) {
+  const narrow = useNarrowHeroOrbit();
+  const n = heroOrbitImages.length;
+  const theta = useMotionValue(0);
+  const autoDriveRef = useRef(true);
+  const dotActiveRef = useRef(0);
+  const scrollBoostRef = useRef(0);
+  const orbitScrollSurfaceRef = useRef<HTMLDivElement>(null);
+  const [activeDotIndex, setActiveDotIndex] = useState(0);
+  const orbitMotionReady = useHydratedMotionOrbitToggle();
+
+  useEffect(() => {
+    if (!orbitMotionReady || reduced) return;
+
+    /** Capture phase on `window`: orbit layers use `pointer-events-none`, which can reroute hits so `bubble` misses the ref node. Hit-test viewport position instead. */
+    function onWheelCapture(e: WheelEvent) {
+      const root = orbitScrollSurfaceRef.current;
+      if (!root || !wheelHappensInsideElement(e, root)) return;
+
+      const { dx, dy } = wheelDeltaToPixels(e);
+      const mag = Math.min(220, Math.hypot(dx, dy));
+      if (mag < 0.08) return;
+      scrollBoostRef.current = Math.min(
+        ORBIT_SCROLL_BOOST_CAP,
+        scrollBoostRef.current + mag * ORBIT_SCROLL_BOOST_SENSITIVITY,
+      );
+    }
+
+    window.addEventListener("wheel", onWheelCapture, { passive: true, capture: true });
+    return () => window.removeEventListener("wheel", onWheelCapture, true);
+  }, [orbitMotionReady, reduced]);
+
+  useAnimationFrame((timestamp, dtMs) => {
+    if (!orbitMotionReady || reduced) return;
+    const dt = Math.min(dtMs / 1000, 1 / 20);
+    scrollBoostRef.current *= Math.exp(-ORBIT_SCROLL_BOOST_DECAY_PER_S * dt);
+
+    if (!autoDriveRef.current) return;
+
+    const speedPulse = 0.48 + 0.52 * (0.5 + 0.5 * Math.sin(timestamp * 0.00062));
+    const scrollMul =
+      1 +
+      scrollBoostRef.current *
+        Math.max(0, (ORBIT_SCROLL_MAX_SPEED_MULT - 1) / ORBIT_SCROLL_BOOST_CAP);
+    const omega = 0.11 * speedPulse * scrollMul;
+    theta.set(theta.get() + omega * dt);
+
+    let bestIdx = 0;
+    let bestProm = Number.NEGATIVE_INFINITY;
+    for (let i = 0; i < n; i++) {
+      const a = theta.get() + (i * HERO_ORBIT_TWO_PI) / n;
+      const prom = Math.cos(a);
+      if (prom > bestProm) {
+        bestProm = prom;
+        bestIdx = i;
+      }
+    }
+    if (bestIdx !== dotActiveRef.current) {
+      dotActiveRef.current = bestIdx;
+      setActiveDotIndex(bestIdx);
+    }
+  });
+
+  function snapThetaToShot(shotIdx: number) {
+    const goalEquivalent = (-shotIdx * HERO_ORBIT_TWO_PI) / n;
+    const next = nearestAngleEquivalence(theta.get(), goalEquivalent);
+    autoDriveRef.current = false;
+    animate(theta, next, {
+      type: "spring",
+      stiffness: 96,
+      damping: 22,
+      mass: 0.92,
+      onComplete: () => {
+        autoDriveRef.current = true;
+      },
+    });
+  }
+
+  const activeDot = reduced ? 0 : activeDotIndex;
+
+  return (
+    <div className="relative isolate mx-auto w-full max-w-lg select-none lg:max-w-none">
+      <motion.div
+        aria-hidden
+        animate={reduced ? undefined : { scale: [1, 1.05, 1], opacity: [0.22, 0.36, 0.22] }}
+        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+        className="pointer-events-none absolute left-[-8%] top-[12%] h-52 w-52 rounded-full bg-indigo-500/26 blur-[90px]"
+      />
+      <motion.div
+        aria-hidden
+        animate={reduced ? undefined : { scale: [1.05, 1, 1.05], opacity: [0.14, 0.26, 0.14] }}
+        transition={{ duration: 14, repeat: Infinity, ease: "easeInOut", delay: 1.2 }}
+        className="pointer-events-none absolute bottom-[4%] right-[-6%] h-64 w-64 rounded-full bg-violet-400/22 blur-[100px]"
+      />
+
+      <div
+        ref={orbitScrollSurfaceRef}
+        className="relative z-[2] mx-auto h-[min(68vh,520px)] w-full touch-pan-y md:h-[540px]"
+        aria-label="Sample of shipped product interfaces rotating in focus. Scroll inside this showcase to temporarily speed up the rotation."
+      >
+        <div className="absolute inset-x-2 top-[6%] h-[calc(100%-3.5rem)] sm:inset-x-4 md:top-[4%]">
+          <div className="relative mx-auto h-full max-w-xl md:max-w-3xl lg:max-w-[46rem]">
+            {heroOrbitImages.map((shot, idx) =>
+              orbitMotionReady ? (
+                <HeroOrbitLayer
+                  key={shot.src}
+                  idx={idx}
+                  theta={theta}
+                  reduced={reduced}
+                  narrow={narrow}
+                  shot={shot}
+                  shotCount={n}
+                />
+              ) : (
+                <HeroOrbitStaticLayer
+                  key={shot.src}
+                  idx={idx}
+                  narrow={narrow}
+                  reduced={reduced}
+                  shot={shot}
+                  shotCount={n}
+                />
+              ),
+            )}
+          </div>
+        </div>
+
+        {!reduced ? (
+          <div className="pointer-events-auto absolute bottom-0 left-1/2 z-30 flex -translate-x-1/2 gap-1 sm:gap-1.5">
+            {heroOrbitImages.map((_, i) => (
+              <button
+                key={i}
+                type="button"
+                aria-label={`Show project ${i + 1}`}
+                aria-pressed={activeDot === i}
+                className={`h-1.5 rounded-full transition-all duration-300 sm:h-2 ${
+                  activeDot === i ? "w-6 bg-white sm:w-8" : "w-1.5 bg-white/30 hover:bg-white/50 sm:w-2"
+                }`}
+                onClick={() => snapThetaToShot(i)}
+              />
+            ))}
+          </div>
+        ) : (
+          <p className="absolute bottom-0 left-0 right-0 text-center text-[10px] text-slate-600">
+            Single focus — animations reduced
+          </p>
+        )}
       </div>
     </div>
   );
@@ -363,13 +740,6 @@ export default function Home() {
           transition: { duration: 0.62, ease: EASE_CURSOR },
         },
       } as const);
-
-  const heroSubStagger = {
-    hidden: {},
-    visible: {
-      transition: { staggerChildren: 0.065, delayChildren: 0.42 },
-    },
-  };
 
   const heroSubReveal = prefersReducedMotion
     ? ({
@@ -485,108 +855,90 @@ export default function Home() {
               <div className="grid items-center gap-14 lg:grid-cols-12 lg:gap-10 xl:gap-14">
                 <div className="lg:col-span-5">
                   <motion.div
-                    initial={{ opacity: 0, y: 16 }}
+                    initial={{ opacity: 0, y: 12 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.58, ease: EASE_CURSOR }}
-                    className="mb-8 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.06] px-4 py-2 text-xs font-semibold tracking-wide text-slate-300"
+                    transition={{ duration: 0.5, ease: EASE_CURSOR }}
+                    className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/[0.08] bg-white/[0.04] px-3 py-1.5 text-[11px] font-medium tracking-wide text-slate-400"
                   >
-                    <Sparkles className="h-3.5 w-3.5 shrink-0 text-accent-indigo" />
-                    Apps & platforms people love using
+                    <Sparkles className="h-3 w-3 shrink-0 text-accent-indigo opacity-90" />
+                    Venture studio · products live in market
                   </motion.div>
 
                   <motion.h1
                     variants={heroTitleStagger}
                     initial="hidden"
                     animate="visible"
-                    className="max-w-[18rem] text-balance sm:max-w-sm lg:max-w-md"
+                    className="max-w-[20rem] text-balance sm:max-w-sm lg:max-w-md"
                   >
                     <motion.span
                       variants={heroLineReveal}
-                      className="block text-[1.5625rem] font-semibold leading-[1.18] tracking-[-0.025em] text-slate-200 sm:text-[1.8125rem] lg:text-[2.0625rem]"
+                      className="block text-xl font-medium leading-snug tracking-tight text-slate-300 sm:text-[1.35rem] lg:text-[1.5rem]"
                     >
-                      Turn the idea in your head
+                      Turn the idea in your head into something
                     </motion.span>
                     <motion.span
                       variants={heroLineReveal}
-                      className="mt-2.5 block text-[1.5625rem] font-semibold leading-[1.18] tracking-[-0.025em] sm:text-[1.8125rem] lg:text-[2.0625rem]"
+                      className="mt-2 block text-xl font-normal leading-snug tracking-tight sm:text-[1.35rem] lg:text-[1.5rem]"
                     >
-                      into something{' '}
-                      {prefersReducedMotion ? (
-                        <span className="bg-gradient-to-r from-white via-indigo-200 to-white/75 bg-clip-text font-semibold text-transparent">
-                          real customers open every day.
-                        </span>
-                      ) : (
-                        <motion.span
-                          className="inline bg-[linear-gradient(95deg,#94a3b8_0%,#f8fafc_26%,#a5b4fc_48%,#f8fafc_72%,#64748b_100%)] bg-[length:220%_100%] bg-clip-text pb-px font-semibold text-transparent"
-                          initial={{ backgroundPosition: "40% 50%" }}
-                          animate={{
-                            backgroundPosition: ["40% 50%", "-60% 50%", "40% 50%"],
-                          }}
-                          transition={{
-                            duration: 9,
-                            repeat: Infinity,
-                            ease: [0.45, 0, 0.55, 1],
-                          }}
-                        >
-                          real customers open every day.
-                        </motion.span>
-                      )}
+                      <span className="bg-gradient-to-r from-white/95 via-white/85 to-white/55 bg-clip-text text-transparent">
+                        real customers open every day.
+                      </span>
                     </motion.span>
                   </motion.h1>
 
-                  <motion.div
-                    variants={heroSubStagger}
+                  <motion.p
+                    variants={heroSubReveal}
                     initial="hidden"
                     animate="visible"
-                    className="mt-5 max-w-xs space-y-1.5 sm:max-w-sm"
+                    className="mt-5 max-w-sm text-[13px] font-normal leading-[1.6] text-slate-500 sm:text-sm"
                   >
-                    <motion.p
-                      variants={heroSubReveal}
-                      className="text-[13px] font-medium leading-relaxed tracking-wide text-slate-500 sm:text-sm"
-                    >
-                      Strategy, brand-feel, and engineering in one lane—
-                    </motion.p>
-                    <motion.p variants={heroSubReveal} className="text-[13px] leading-relaxed text-slate-500 sm:text-sm">
-                      whether you&apos;re pitching investors or wowing shoppers.
-                    </motion.p>
-                  </motion.div>
+                    Strategy, brand-feel, and engineering together — from investor decks to the
+                    first time someone taps your product.
+                  </motion.p>
 
                   <motion.div
-                    initial={{ opacity: 0, y: 16 }}
+                    initial={{ opacity: 0, y: 14 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.65, delay: 0.16, ease: EASE_CURSOR }}
-                    className="mt-10 flex flex-col gap-8 sm:flex-row sm:items-center"
+                    transition={{ duration: 0.55, delay: 0.12, ease: EASE_CURSOR }}
+                    className="mt-9 flex flex-col gap-7 sm:flex-row sm:items-center"
                   >
                     <MagneticWrap active={magneticOn}>
                       <Link
                         href="#ventures"
-                        className="inline-flex w-full items-center justify-center gap-3 rounded-2xl bg-white px-10 py-5 text-lg font-bold text-obsidian shadow-2xl shadow-white/15 transition-shadow group sm:w-auto hover:shadow-white/25"
+                        className="group/browse relative isolate inline-flex w-full items-center justify-center gap-2 overflow-hidden rounded-full border border-white/[0.13] bg-gradient-to-b from-white/[0.09] to-white/[0.03] px-8 py-3 text-[13px] font-medium tracking-tight text-slate-50 shadow-[0_14px_40px_-18px_rgba(0,0,0,0.85),inset_0_1px_0_rgba(255,255,255,0.1)] backdrop-blur-md transition-[color,box-shadow,transform,border-color] duration-300 sm:w-auto hover:border-accent-indigo/55 hover:bg-gradient-to-b hover:from-accent-indigo/25 hover:to-accent-indigo/[0.06] hover:text-white hover:shadow-[0_18px_50px_-20px_rgba(99,102,241,0.45),inset_0_1px_0_rgba(255,255,255,0.14)] active:scale-[0.98]"
                       >
-                        See recent launches
-                        <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1.5" />
+                        <span
+                          aria-hidden
+                          className="pointer-events-none absolute inset-0 opacity-0 blur-2xl transition-opacity duration-300 group-hover/browse:opacity-100"
+                          style={{
+                            background:
+                              "radial-gradient(120% 80% at 50% 120%, rgba(99,102,241,0.35), transparent 55%)",
+                          }}
+                        />
+                        <span className="relative">Browse work</span>
+                        <ArrowRight className="relative h-[15px] w-[15px] transition-transform duration-300 group-hover/browse:translate-x-0.5" />
                       </Link>
                     </MagneticWrap>
-                    <div className="flex items-center gap-4">
-                      <div className="flex -space-x-3">
+                    <div className="flex items-center gap-3 sm:gap-4">
+                      <div className="flex -space-x-2">
                         {['AE', 'MS', 'JP'].map((initials) => (
                           <div
                             key={initials}
-                            className="flex h-10 w-10 items-center justify-center rounded-full border-2 border-obsidian bg-gradient-to-br from-indigo-500/40 to-slate-700 text-[10px] font-bold text-white shadow-inner"
+                            className="flex h-8 w-8 items-center justify-center rounded-full border-2 border-obsidian bg-gradient-to-br from-indigo-500/35 to-slate-800 text-[9px] font-semibold text-white/95"
                           >
                             {initials}
                           </div>
                         ))}
                       </div>
-                      <p className="text-sm leading-snug text-slate-500">
-                        Loved by founders <span className="font-semibold text-slate-300">and</span>{' '}
-                        the teams behind growing brands
+                      <p className="max-w-[11rem] text-xs leading-snug text-slate-600 sm:max-w-none sm:text-[13px] sm:text-slate-500">
+                        Teams across the GCC ship with us
                       </p>
                     </div>
                   </motion.div>
                 </div>
 
                 <div className="relative lg:col-span-7">
-                  <HeroShowcase reduced={prefersReducedMotion} />
+                  <HeroOrbitCollage reduced={prefersReducedMotion} />
                 </div>
               </div>
             </motion.div>
@@ -748,6 +1100,44 @@ export default function Home() {
                   </div>
                 </CardPointerGlow>
 
+                {extraVentures.map((v) => (
+                  <CardPointerGlow
+                    key={v.key}
+                    className="relative isolate min-h-[340px] overflow-hidden rounded-[3rem] border border-white/[0.06] bg-white/[0.02] glass-card transition-colors duration-500 hover:border-accent-indigo/35 group md:col-span-4 md:min-h-[400px]"
+                  >
+                    <div className="absolute inset-0">
+                      <Image
+                        src={v.imageSrc}
+                        alt={v.imageAlt}
+                        fill
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                        className={v.imgClass}
+                      />
+                    </div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/45 to-obsidian/10" />
+                    <div className="relative z-[1] flex h-full flex-col justify-end p-8 md:p-10">
+                      <div className="mb-4 flex flex-wrap gap-2">
+                        {v.badges.map((b) => (
+                          <Badge key={b}>{b}</Badge>
+                        ))}
+                      </div>
+                      <h3 className="mb-3 text-3xl font-bold tracking-tight text-white md:text-4xl">
+                        {v.title}
+                      </h3>
+                      <p className="mb-6 line-clamp-4 text-sm font-medium leading-relaxed text-slate-300 md:text-[15px]">
+                        {v.description}
+                      </p>
+                      <Link
+                        href={v.href}
+                        className="relative z-[1] inline-flex items-center gap-2 text-sm font-bold text-white transition-all hover:gap-3 md:text-base"
+                      >
+                        Project preview
+                        <ArrowUpRight className="h-4 w-4 shrink-0 md:h-5 md:w-5" />
+                      </Link>
+                    </div>
+                  </CardPointerGlow>
+                ))}
+
                 <CardPointerGlow className="md:col-span-4 glass-card rounded-[3rem] p-12 flex flex-col justify-between group hover:border-white/25 transition-colors duration-500 relative isolate">
                   <div className="relative z-[1] w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center text-accent-indigo group-hover:border border-white/10 transition-all">
                     <ShieldCheck className="w-8 h-8" />
@@ -761,7 +1151,7 @@ export default function Home() {
                   </div>
                 </CardPointerGlow>
 
-                <CardPointerGlow className="md:col-span-12 glass-card rounded-[3rem] p-12 flex flex-col md:flex-row items-center justify-between gap-12 group hover:border-accent-indigo/35 transition-colors duration-500 relative isolate">
+                <CardPointerGlow className="md:col-span-8 glass-card rounded-[3rem] p-12 flex flex-col md:flex-row items-center justify-between gap-12 group hover:border-accent-indigo/35 transition-colors duration-500 relative isolate">
                   <div className="relative z-[1] max-w-xl">
                     <h3 className="mb-5 text-4xl font-bold tracking-tight text-white md:text-5xl">
                       Space for deep focus

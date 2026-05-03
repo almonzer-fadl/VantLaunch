@@ -19,6 +19,7 @@ import {
   ArrowUpRight,
   Check,
   Globe,
+  MonitorPlay,
   Rocket,
   Sparkles,
   X,
@@ -43,6 +44,31 @@ const extraVentures = HOME_PREVIEW_STUB_ORDER.map((slug) => {
     imgClass: s.previewImgClass,
   };
 });
+
+/** SVG path for process flow — shared by stroke and CSS offset-path (viewBox 0 0 900 84) */
+const PROCESS_FLOW_PATH_D =
+  "M 96 44 C 252 6 348 82 450 44 S 648 6 804 44";
+
+const PROCESS_PHASES = [
+  {
+    num: "01",
+    title: "Dream it together",
+    desc: "We shape the story, the screens, and the must-have moments—until you are excited to show it off.",
+    Icon: Sparkles,
+  },
+  {
+    num: "02",
+    title: "Craft it in the open",
+    desc: "Early previews land fast so stakeholders and customers see real progress every week—not slides.",
+    Icon: MonitorPlay,
+  },
+  {
+    num: "03",
+    title: "Launch and lift off",
+    desc: "Payments, onboarding, polish, and analytics—then we celebrate the release and coach your team on what is next.",
+    Icon: Rocket,
+  },
+] as const;
 
 const fadeSlide = {
   hidden: { opacity: 0, y: 18 },
@@ -1094,32 +1120,7 @@ export default function Home() {
             </motion.div>
           </section>
 
-          {/* Process */}
-          <section id="process" className="py-32 px-6 border-t border-white/[0.05]">
-            <motion.div
-              className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-16"
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-60px" }}
-              variants={staggerSection}
-            >
-              <ProcessStep
-                num="01"
-                title="Dream it together"
-                desc="We shape the story, the screens, and the must-have moments—until you are excited to show it off."
-              />
-              <ProcessStep
-                num="02"
-                title="Craft it in the open"
-                desc="Early previews land fast so stakeholders and customers see real progress every week—not slides."
-              />
-              <ProcessStep
-                num="03"
-                title="Launch and lift off"
-                desc="Payments, onboarding, polish, and analytics—then we celebrate the release and coach your team on what is next."
-              />
-            </motion.div>
-          </section>
+          <ProcessPipelineSection />
 
           <section className="py-48 md:py-64 px-6 text-center relative overflow-hidden">
             <motion.div
@@ -1214,15 +1215,235 @@ function ComparisonItem({ icon, text }: { icon: React.ReactNode; text: string })
   );
 }
 
-function ProcessStep({ num, title, desc }: { num: string; title: string; desc: string }) {
+function ProcessOrbIcon({
+  phase,
+  size = "lg",
+  reduced,
+}: {
+  phase: (typeof PROCESS_PHASES)[number];
+  size?: "lg" | "md";
+  reduced: boolean;
+}) {
+  const { Icon } = phase;
+  const shell = size === "lg" ? "h-28 w-28" : "h-16 w-16";
+  const inner = size === "lg" ? "h-[5.35rem] w-[5.35rem]" : "h-12 w-12";
+  const iconSz = size === "lg" ? "h-9 w-9" : "h-6 w-6";
+
   return (
-    <motion.div variants={fadeSlide} className="group flex flex-col gap-8">
-      <div className="type-process-num">{num}</div>
-      <div>
-        <h3 className="type-process-title">{title}</h3>
-        <p className="type-process-desc">{desc}</p>
+    <div className={`relative flex ${shell} shrink-0 items-center justify-center`}>
+      {!reduced ? (
+        <>
+          {[0, 1, 2].map((i) => (
+            <motion.span
+              key={i}
+              className="pointer-events-none absolute inset-[-3px] rounded-full border border-accent-indigo/40"
+              animate={{ scale: [1, 1.5], opacity: [0.5, 0] }}
+              transition={{
+                duration: 2.75,
+                repeat: Infinity,
+                delay: i * 0.88,
+                ease: "easeOut",
+              }}
+            />
+          ))}
+          <motion.div
+            aria-hidden
+            className="absolute inset-0 rounded-full"
+            style={{
+              background:
+                "conic-gradient(from 100deg, transparent 0%, rgba(99,102,241,0.45) 14%, transparent 32%, transparent 68%, rgba(165,180,252,0.35) 86%, transparent 100%)",
+            }}
+            animate={{ rotate: 360 }}
+            transition={{ duration: 14, repeat: Infinity, ease: "linear" }}
+          />
+        </>
+      ) : null}
+      <div
+        className={`relative z-[1] flex ${inner} items-center justify-center rounded-full border border-white/[0.12] bg-obsidian/95 shadow-[0_0_40px_-10px_rgba(99,102,241,0.5)] backdrop-blur-md ${reduced ? "ring-1 ring-white/10" : ""}`}
+      >
+        <Icon className={`${iconSz} text-accent-indigo`} strokeWidth={1.65} />
       </div>
-    </motion.div>
+    </div>
+  );
+}
+
+function ProcessPipelineSection() {
+  const reduced = usePrefersReducedMotion();
+
+  return (
+    <section
+      id="process"
+      className="relative overflow-hidden border-t border-white/[0.05] py-28 px-6 md:py-36"
+    >
+      <div
+        aria-hidden
+        className="pointer-events-none absolute left-1/2 top-[30%] h-[480px] w-[min(100%,880px)] -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent-indigo/[0.07] blur-[100px]"
+      />
+      <motion.div
+        className="relative z-[1] mx-auto max-w-7xl"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-80px" }}
+        variants={staggerSection}
+      >
+        <motion.div variants={fadeSlide} className="mb-16 max-w-2xl md:mb-20">
+          <p className="type-meta-uppercase mb-3 text-accent-indigo/90">How we work</p>
+          <h2 className="type-display-lg text-balance">From first sketch to launch day</h2>
+          <p className="type-intro mt-5 max-w-xl text-slate-400">
+            One continuous pipeline—ideas become interfaces, interfaces become builds, builds become
+            something people can actually use.
+          </p>
+        </motion.div>
+
+        {/* Desktop: curved flow + traveling pulse */}
+        <div className="relative mx-auto hidden max-w-6xl lg:block">
+          <div className="relative mx-auto h-[5.5rem] w-full max-w-[56rem] px-2">
+            <svg
+              className="h-full w-full overflow-visible"
+              viewBox="0 0 900 84"
+              preserveAspectRatio="xMidYMid meet"
+              aria-hidden
+            >
+              <defs>
+                <linearGradient id="processFlowGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stopColor="rgb(99 102 241)" stopOpacity="0.15" />
+                  <stop offset="45%" stopColor="rgb(165 180 252)" stopOpacity="1" />
+                  <stop offset="100%" stopColor="rgb(99 102 241)" stopOpacity="0.15" />
+                </linearGradient>
+                <filter id="processFlowGlow" x="-20%" y="-20%" width="140%" height="140%">
+                  <feGaussianBlur stdDeviation="2.5" result="blur" />
+                  <feMerge>
+                    <feMergeNode in="blur" />
+                    <feMergeNode in="SourceGraphic" />
+                  </feMerge>
+                </filter>
+              </defs>
+              <path
+                d={PROCESS_FLOW_PATH_D}
+                fill="none"
+                stroke="rgba(255,255,255,0.07)"
+                strokeWidth="2"
+                strokeLinecap="round"
+              />
+              <motion.path
+                d={PROCESS_FLOW_PATH_D}
+                fill="none"
+                stroke="url(#processFlowGrad)"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                filter="url(#processFlowGlow)"
+                initial={
+                  reduced
+                    ? { pathLength: 1, opacity: 0.9 }
+                    : { pathLength: 0, opacity: 0.35 }
+                }
+                whileInView={{ pathLength: 1, opacity: 1 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ duration: reduced ? 0.01 : 1.85, ease: EASE_CURSOR }}
+              />
+              {!reduced ? (
+                <g>
+                  <circle r="5.5" fill="rgb(99, 102, 241)" opacity="0.95">
+                    <animateMotion
+                      dur="5.8s"
+                      repeatCount="indefinite"
+                      rotate="auto"
+                      path={PROCESS_FLOW_PATH_D}
+                    />
+                  </circle>
+                  <circle r="11" fill="rgb(99, 102, 241)" opacity="0.2">
+                    <animateMotion
+                      dur="5.8s"
+                      repeatCount="indefinite"
+                      rotate="auto"
+                      path={PROCESS_FLOW_PATH_D}
+                    />
+                  </circle>
+                </g>
+              ) : null}
+            </svg>
+          </div>
+
+          <div className="relative z-10 -mt-2 grid grid-cols-3 gap-10 px-2">
+            {PROCESS_PHASES.map((phase, i) => (
+              <motion.div
+                key={phase.num}
+                variants={fadeSlide}
+                className="flex flex-col items-center text-center"
+              >
+                <motion.div
+                  initial={reduced ? false : { opacity: 0, scale: 0.85, y: 12 }}
+                  whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-30px" }}
+                  transition={{
+                    duration: 0.55,
+                    delay: reduced ? 0 : 0.15 + i * 0.12,
+                    ease: EASE_CURSOR,
+                  }}
+                >
+                  <ProcessOrbIcon phase={phase} reduced={reduced} />
+                </motion.div>
+                <span className="type-meta-uppercase mt-10 text-accent-indigo/80">{phase.num}</span>
+                <h3 className="type-process-title mt-2 max-w-[16rem] text-balance">{phase.title}</h3>
+                <p className="type-process-desc mx-auto mt-3 max-w-[18rem] text-balance">
+                  {phase.desc}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
+        {/* Mobile: spine draws + steps stack */}
+        <div className="relative mx-auto max-w-lg lg:hidden">
+          <div className="relative pl-2">
+            <motion.div
+              aria-hidden
+              className="absolute bottom-6 left-[1.35rem] top-14 w-px origin-top bg-gradient-to-b from-accent-indigo/50 via-white/20 to-transparent"
+              initial={{ scaleY: reduced ? 1 : 0 }}
+              whileInView={{ scaleY: 1 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: reduced ? 0.01 : 1.2, ease: EASE_CURSOR }}
+            />
+            <div className="flex flex-col gap-14">
+              {PROCESS_PHASES.map((phase, i) => (
+                <motion.div
+                  key={phase.num}
+                  variants={fadeSlide}
+                  className="relative flex gap-6"
+                >
+                  <div className="relative z-[1] flex shrink-0 flex-col items-center pt-1">
+                    <ProcessOrbIcon phase={phase} size="md" reduced={reduced} />
+                    <span className="type-meta-uppercase mt-3 text-[10px] text-accent-indigo/75">
+                      {phase.num}
+                    </span>
+                  </div>
+                  <div className="min-w-0 pt-1">
+                    <motion.h3
+                      className="type-process-title text-left !text-xl md:!text-2xl"
+                      initial={reduced ? false : { opacity: 0, x: 10 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: reduced ? 0 : 0.08 + i * 0.06, duration: 0.45 }}
+                    >
+                      {phase.title}
+                    </motion.h3>
+                    <motion.p
+                      className="type-process-desc mt-3 text-left !text-base !leading-relaxed"
+                      initial={reduced ? false : { opacity: 0, x: 10 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: reduced ? 0 : 0.14 + i * 0.06, duration: 0.45 }}
+                    >
+                      {phase.desc}
+                    </motion.p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </motion.div>
+    </section>
   );
 }
 

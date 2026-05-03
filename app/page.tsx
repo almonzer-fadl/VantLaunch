@@ -26,49 +26,23 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { HOME_PREVIEW_STUB_ORDER, WORK_STUBS } from "./work/stub-projects";
 
 const EASE_CURSOR: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
-const extraVentures = [
-  {
-    key: "araba",
-    href: "/work/araba",
-    imageSrc: "/portfolio/araba.png",
-    imageAlt:
-      "Araba — Hajj and Umrah wheelchair assistance app with map tracking and request cart",
-    badges: ["Mobility", "Hajj · KSA"],
-    title: "Araba",
-    description:
-      "Pilgrim mobility — book pushers, watch the map, and pay with confidence during Hajj & Umrah.",
-    imgClass: "object-contain object-center opacity-50 sm:opacity-[0.48]",
-  },
-  {
-    key: "teramotors-mobile",
-    href: "/work/teramotors-mobile",
-    imageSrc: "/portfolio/teramotors-mobile.jpg",
-    imageAlt:
-      "TeraMotors consumer app home with service categories, My Garage, and search",
-    badges: ["Automotive", "Consumer app"],
-    title: "TeraMotors mobile",
-    description:
-      "Driver-side garage and services hub — browse maintenance, accessories, and your vehicles in one glow-up UI.",
-    imgClass:
-      "object-contain object-center opacity-42 transition-transform duration-700 group-hover:scale-[1.03]",
-  },
-  {
-    key: "water-delivery",
-    href: "/work/water-delivery",
-    imageSrc: "/portfolio/water-delivery-app.jpeg",
-    imageAlt:
-      "Water delivery storefront with seasonal promo, shortcuts, and featured bottles",
-    badges: ["E-commerce", "KSA"],
-    title: "Water delivery",
-    description:
-      "Bottled water commerce with promos, featured SKUs, and delivery setup built for Saudi households.",
-    imgClass:
-      "object-contain object-top opacity-45 transition-transform duration-700 group-hover:scale-[1.03]",
-  },
-] as const;
+const extraVentures = HOME_PREVIEW_STUB_ORDER.map((slug) => {
+  const s = WORK_STUBS[slug];
+  return {
+    key: slug,
+    href: `/work/${s.slug}`,
+    imageSrc: s.imageSrc,
+    imageAlt: s.imageAlt,
+    badges: s.badges,
+    title: s.title,
+    description: s.cardSummary,
+    imgClass: s.previewImgClass,
+  };
+});
 
 const fadeSlide = {
   hidden: { opacity: 0, y: 18 },
@@ -239,17 +213,17 @@ const heroOrbitImages: HeroOrbitShot[] = [
   },
   {
     src: "/portfolio/araba.png",
-    alt: "Araba Hajj and Umrah mobility app",
+    alt: "Araba multi-platform mobile experience",
     sizes: "(max-width: 640px) 90vw, 420px",
   },
   {
     src: "/portfolio/teramotors-mobile.jpg",
-    alt: "TeraMotors consumer mobile app",
+    alt: "Gari customer iOS app",
     sizes: "(max-width: 640px) 90vw, 420px",
   },
   {
     src: "/portfolio/water-delivery-app.jpeg",
-    alt: "Water delivery storefront app",
+    alt: "Aqua Marwa water delivery app",
     sizes: "(max-width: 640px) 90vw, 420px",
   },
 ];
@@ -924,7 +898,7 @@ export default function Home() {
                         ))}
                       </div>
                       <p className="type-caption-micro">
-                        Teams across the GCC ship with us
+                        Product teams worldwide ship with us
                       </p>
                     </div>
                   </motion.div>
@@ -1021,12 +995,12 @@ export default function Home() {
                   <div className="relative z-[1] flex h-full flex-col justify-end p-10 md:p-12">
                     <div className="mb-6 flex flex-wrap gap-2">
                       <Badge>Automotive</Badge>
-                      <Badge>Saudi Arabia · ZATCA</Badge>
+                      <Badge>Enterprise · Compliance-ready</Badge>
                     </div>
                     <h3 className="type-portfolio-product-title">TeraMotors</h3>
                     <p className="type-portfolio-product-body">
                       Enterprise auto repair ops — bilingual UX, realtime job boards, Stripe, and
-                      compliant invoicing for workshops scaling across the GCC.
+                      invoicing flows built for regulated markets and growing workshop networks.
                     </p>
                     <div className="relative z-[1] flex flex-wrap items-center gap-x-8 gap-y-4">
                       <Link href="/work/teramotors" className="type-link-strong">
@@ -1055,7 +1029,7 @@ export default function Home() {
                   <div className="relative z-[1] flex h-full flex-col justify-end p-10 md:p-12">
                     <div className="mb-6 flex flex-wrap gap-2">
                       <Badge>B2B marketplace</Badge>
-                      <Badge>HORECA · KSA</Badge>
+                      <Badge>HORECA · Procurement</Badge>
                     </div>
                     <h3 className="type-portfolio-product-title">Salasel</h3>
                     <p className="type-portfolio-product-body">

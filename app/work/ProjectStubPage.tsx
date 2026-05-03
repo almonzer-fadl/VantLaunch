@@ -43,6 +43,21 @@ export function ProjectStubPage({ config }: { config: WorkStubConfig }) {
 
         <h1 className="type-case-h1 text-balance">{config.title}</h1>
         <p className="type-case-lede max-w-3xl">{config.lede}</p>
+        {config.detail ? (
+          <p className="type-prose-muted mt-6 max-w-3xl text-slate-400">{config.detail}</p>
+        ) : null}
+
+        {config.capabilities.length > 0 ? (
+          <ul className="mt-8 flex flex-wrap gap-2">
+            {config.capabilities.map((cap) => (
+              <li key={cap}>
+                <span className="inline-flex rounded-full border border-white/[0.08] bg-white/[0.04] px-3 py-1 text-xs font-medium text-slate-300">
+                  {cap}
+                </span>
+              </li>
+            ))}
+          </ul>
+        ) : null}
 
         <ul className="type-prose-muted mt-8 max-w-2xl space-y-3">
           {config.bullets.map((item) => (
@@ -65,7 +80,7 @@ export function ProjectStubPage({ config }: { config: WorkStubConfig }) {
             />
           </div>
           <figcaption className="type-figure-caption border-t border-white/[0.06] bg-obsidian-surface/95 px-5 py-4">
-            Product imagery — full write-up, stack notes, and outcomes will land here soon.
+            {config.figureCaption} Full write-up, stack notes, and outcomes will land here soon.
           </figcaption>
         </figure>
 
@@ -80,15 +95,6 @@ export function ProjectStubPage({ config }: { config: WorkStubConfig }) {
             <ArrowUpRight className="h-5 w-5 opacity-70" />
           </Link>
         </section>
-
-        {config.slug === "teramotors-mobile" ? (
-          <p className="type-legal-muted mt-10 text-center">
-            Part of the TeraMotors ecosystem —{" "}
-            <Link href="/work/teramotors" className="text-accent-indigo hover:underline">
-              workshop platform case study →
-            </Link>
-          </p>
-        ) : null}
       </article>
     </div>
   );

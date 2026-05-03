@@ -28,7 +28,7 @@ import {
 export const metadata: Metadata = {
   title: "TeraMotors | Enterprise auto repair platform — VantLaunch",
   description:
-    "Production-ready shop management: Next.js 15, TypeScript, MongoDB, ZATCA e-invoicing, JWT & RBAC, real-time job tracking, bilingual EN/AR.",
+    "Production-ready shop management: Next.js 15, TypeScript, MongoDB, ZATCA e-invoicing, JWT & RBAC, real-time job tracking, bilingual English / Arabic.",
   openGraph: {
     title: "TeraMotors | Enterprise auto repair platform — VantLaunch",
     description:
@@ -57,7 +57,7 @@ const highlights = [
   },
   {
     title: "ZATCA compliance",
-    body: "Saudi e-invoicing integrated with the flows technicians and finance already use.",
+    body: "ZATCA e-invoicing integrated with the flows technicians and finance already use.",
     icon: Shield,
   },
   {
@@ -106,7 +106,7 @@ const securityCompliance = [
   "JWT with secure cookies · session boundaries for each role",
   "RBAC across Admin, Mechanic, and Inspector surfaces",
   "Rate limiting · Zod validation · XSS mitigations · CSRF-conscious forms",
-  "ZATCA e-invoicing for Saudi regulatory requirements",
+  "ZATCA e-invoicing aligned with statutory clearance and reporting requirements",
 ];
 
 const businessOpsFeatures = [
@@ -194,7 +194,7 @@ export default function TeramotorsProjectPage() {
         <div className="mb-8 flex flex-wrap items-center gap-2">
           <span className="type-chip">Case study · production system</span>
           <span className="type-chip">
-            Automotive · Saudi Arabia · ZATCA
+            Automotive · ZATCA-ready
           </span>
         </div>
 
@@ -211,7 +211,7 @@ export default function TeramotorsProjectPage() {
         <p className="type-case-lede">
           Operations, finance, inspections, and compliance in one production-ready workspace:
           multilingual experience, realtime job telemetry, Stripe settlements, Cloudinary-backed
-          evidence trails, and ZATCA-aware invoicing tuned for Saudi operators.
+          evidence trails, and ZATCA-aware invoicing tuned for regulated operators.
         </p>
 
         <figure className="relative mt-12 overflow-hidden rounded-[1.75rem] border border-white/[0.1] bg-obsidian-surface shadow-[0_40px_100px_-40px_rgba(0,0,0,0.85)]">
@@ -256,7 +256,7 @@ export default function TeramotorsProjectPage() {
               "Full-stack delivery on Next.js 15 with strict TypeScript throughout the client workspace.",
               "Enterprise authentication, authorization, and abuse resistance suited to regulated operations.",
               "Deep domain modeling: vehicles, bays, inspectors, catalogs, approvals, payouts.",
-              "International compliance showcased through Saudi ZATCA e-invoice flows.",
+              "International compliance showcased through ZATCA e-invoice flows.",
               "Modern UI systems (shadcn) with dark/light ergonomics suitable for pit-floor contrast.",
               "Realtime collaboration through Socket.io and structured notification channels.",
               "Executive-ready exports bridging finance and aftermarket inventory reality.",
@@ -328,7 +328,7 @@ export default function TeramotorsProjectPage() {
             Internationalization
           </h2>
           <p className="mt-4 type-prose-intro">
-            Bilingual UX with cultural defaults that match Saudi business etiquette, mirrored ZATCA
+            Bilingual UX with defaults that fit regional operators, mirrored ZATCA
             documentation, RTL layouts for Arabic, and shared translation assets so marketing and
             product stay aligned.
           </p>

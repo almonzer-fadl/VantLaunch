@@ -299,6 +299,74 @@ function CardPointerGlow({
   );
 }
 
+function TiltSpecular({
+  children,
+  className,
+  disabled,
+}: {
+  children: ReactNode;
+  className?: string;
+  disabled: boolean;
+}) {
+  const [p, setP] = useState({ x: 50, y: 50 });
+  const [hover, setHover] = useState(false);
+
+  const rx = (p.y - 50) / 7.5;
+  const ry = (50 - p.x) / 7.5;
+
+  return (
+    <motion.div
+      className={className}
+      style={
+        disabled
+          ? undefined
+          : {
+              transformStyle: "preserve-3d",
+              perspective: 1000,
+            }
+      }
+      animate={
+        disabled
+          ? undefined
+          : {
+              rotateX: hover ? rx : 0,
+              rotateY: hover ? ry : 0,
+              scale: hover ? 1.012 : 1,
+            }
+      }
+      transition={disabled ? undefined : { type: "spring", stiffness: 220, damping: 26, mass: 0.7 }}
+      onMouseMove={(e) => {
+        if (disabled) return;
+        const el = e.currentTarget;
+        const rect = el.getBoundingClientRect();
+        setP({
+          x: ((e.clientX - rect.left) / rect.width) * 100,
+          y: ((e.clientY - rect.top) / rect.height) * 100,
+        });
+      }}
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => {
+        setHover(false);
+        setP({ x: 50, y: 50 });
+      }}
+    >
+      {!disabled ? (
+        <motion.div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 rounded-[inherit] opacity-0"
+          animate={{ opacity: hover ? 1 : 0 }}
+          transition={{ duration: 0.25 }}
+          style={{
+            background: `radial-gradient(720px circle at ${p.x}% ${p.y}%, rgba(255,255,255,0.12), transparent 55%)`,
+            transform: "translateZ(1px)",
+          }}
+        />
+      ) : null}
+      <motion.div style={disabled ? undefined : { transform: "translateZ(0px)" }}>{children}</motion.div>
+    </motion.div>
+  );
+}
+
 type HeroOrbitShot = {
   src: string;
   alt: string;
@@ -752,8 +820,12 @@ export default function Home() {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [comparisonInView, setComparisonInView] = useState(false);
   const [activeWhyIndex, setActiveWhyIndex] = useState(0);
+  const [activeNav, setActiveNav] = useState<"#ventures" | "#comparison" | "#process">("#ventures");
   const containerRef = useRef<HTMLDivElement>(null);
   const heroRef = useRef<HTMLElement>(null);
+  const venturesRef = useRef<HTMLElement>(null);
+  const navLinksRef = useRef<Record<string, HTMLAnchorElement | null>>({});
+  const [navUnderline, setNavUnderline] = useState<{ x: number; w: number } | null>(null);
   const prefersReducedMotion = usePrefersReducedMotion();
 
   const { scrollYProgress } = useScroll({
@@ -761,9 +833,60 @@ export default function Home() {
     offset: ["start start", "end start"],
   });
 
+  const { scrollYProgress: pageScroll } = useScroll();
+
   const heroParallaxY = useTransform(scrollYProgress, [0, 1], [0, -28]);
   const heroParallaxOpacity = useTransform(scrollYProgress, [0, 1], [1, 0.88]);
   const heroOrbScale = useTransform(scrollYProgress, [0, 1], [1, 1.045]);
+
+  const { scrollYProgress: venturesScroll } = useScroll({
+    target: venturesRef,
+    offset: ["start end", "end start"],
+  });
+
+  const venturesParallaxA = useTransform(venturesScroll, [0, 1], [14, -14]);
+  const venturesParallaxB = useTransform(venturesScroll, [0, 1], [18, -18]);
+  const venturesParallaxScale = useTransform(venturesScroll, [0, 1], [1.04, 1.09]);
+
+  useEffect(() => {
+    const ids: Array<"#ventures" | "#comparison" | "#process"> = ["#ventures", "#comparison", "#process"];
+    const targets = ids
+      .map((id) => ({ id, el: document.querySelector(id) as HTMLElement | null }))
+      .filter((x): x is { id: "#ventures" | "#comparison" | "#process"; el: HTMLElement } => Boolean(x.el));
+
+    if (targets.length === 0) return;
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => (b.intersectionRatio ?? 0) - (a.intersectionRatio ?? 0));
+        if (visible[0]?.target) {
+          const id = `#${(visible[0].target as HTMLElement).id}` as "#ventures" | "#comparison" | "#process";
+          setActiveNav(id);
+        }
+      },
+      { root: null, threshold: [0.2, 0.35, 0.5, 0.65], rootMargin: "-20% 0px -60% 0px" }
+    );
+
+    targets.forEach(({ el }) => io.observe(el));
+    return () => io.disconnect();
+  }, []);
+
+  useEffect(() => {
+    function measure() {
+      const el = navLinksRef.current[activeNav];
+      if (!el) return;
+      const nav = el.closest("nav");
+      const navRect = nav?.getBoundingClientRect();
+      const r = el.getBoundingClientRect();
+      const x = navRect ? r.left - navRect.left : r.left;
+      setNavUnderline({ x, w: r.width });
+    }
+    measure();
+    window.addEventListener("resize", measure);
+    return () => window.removeEventListener("resize", measure);
+  }, [activeNav]);
 
   useEffect(() => {
     function centerSpotlight() {
@@ -886,6 +1009,11 @@ export default function Home() {
         </div>
 
         <nav className="sticky top-0 w-full z-50 border-b border-white/[0.05] bg-obsidian/40 backdrop-blur-xl">
+          <motion.div
+            aria-hidden
+            className="absolute bottom-0 left-0 h-px w-full bg-gradient-to-r from-accent-indigo/0 via-accent-indigo/60 to-accent-indigo/0"
+            style={{ scaleX: pageScroll, transformOrigin: "0% 50%" }}
+          />
           <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
             <motion.div
               initial={{ opacity: 0, x: -16 }}
@@ -899,10 +1027,25 @@ export default function Home() {
               <span className="type-brand-xl">VantLaunch</span>
             </motion.div>
 
-            <div className="hidden items-center gap-10 md:flex">
-              <NavLink href="#ventures">Our work</NavLink>
-              <NavLink href="#comparison">Why us</NavLink>
-              <NavLink href="#process">How it works</NavLink>
+            <div className="relative hidden items-center gap-10 md:flex">
+              {navUnderline ? (
+                <motion.div
+                  aria-hidden
+                  className="absolute -bottom-2 h-[2px] rounded-full bg-accent-indigo shadow-[0_0_20px_rgba(99,102,241,0.6)]"
+                  initial={false}
+                  animate={{ x: navUnderline.x, width: navUnderline.w }}
+                  transition={{ type: "spring", stiffness: 260, damping: 26, mass: 0.7 }}
+                />
+              ) : null}
+              <NavLink href="#ventures" active={activeNav === "#ventures"} navLinksRef={navLinksRef}>
+                Our work
+              </NavLink>
+              <NavLink href="#comparison" active={activeNav === "#comparison"} navLinksRef={navLinksRef}>
+                Why us
+              </NavLink>
+              <NavLink href="#process" active={activeNav === "#process"} navLinksRef={navLinksRef}>
+                How it works
+              </NavLink>
             </div>
 
             <motion.div
@@ -1245,7 +1388,24 @@ export default function Home() {
                               />
                             ) : null}
                             <div className="flex items-center gap-2">
-                              <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-white/[0.06]">
+                              <span className="relative inline-flex h-9 w-9 shrink-0 items-center justify-center overflow-hidden rounded-lg border border-white/10 bg-obsidian/70">
+                                {!prefersReducedMotion ? (
+                                  <motion.span
+                                    aria-hidden
+                                    className="pointer-events-none absolute inset-[-10px] opacity-60"
+                                    style={{
+                                      background:
+                                        "conic-gradient(from 180deg, transparent 0%, rgba(99,102,241,0.45) 14%, transparent 36%, transparent 68%, rgba(165,180,252,0.35) 86%, transparent 100%)",
+                                    }}
+                                    animate={{ rotate: 360 }}
+                                    transition={{
+                                      duration: 10 + (idx % 5) * 2.2,
+                                      repeat: Infinity,
+                                      ease: "linear",
+                                    }}
+                                  />
+                                ) : null}
+                                <span aria-hidden className="absolute inset-0 bg-gradient-to-b from-white/[0.04] to-transparent" />
                                 <svg
                                   role="img"
                                   viewBox="0 0 24 24"
@@ -1271,7 +1431,7 @@ export default function Home() {
           </section>
 
           {/* Portfolio */}
-          <section id="ventures" className="py-32 px-6 border-t border-white/[0.05]">
+          <section ref={venturesRef} id="ventures" className="py-32 px-6 border-t border-white/[0.05]">
             <motion.div
               className="max-w-7xl mx-auto"
               initial="hidden"
@@ -1279,6 +1439,21 @@ export default function Home() {
               viewport={{ once: true, margin: "-60px" }}
               variants={staggerSection}
             >
+              {!prefersReducedMotion ? (
+                <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-[520px]">
+                  <motion.div
+                    className="absolute left-[8%] top-[18%] h-52 w-52 rounded-full bg-accent-indigo/10 blur-[70px]"
+                    animate={{ x: [0, 28, 0], y: [0, -22, 0], opacity: [0.22, 0.5, 0.22] }}
+                    transition={{ duration: 10.5, repeat: Infinity, ease: "easeInOut" }}
+                  />
+                  <motion.div
+                    className="absolute right-[10%] top-[38%] h-64 w-64 rounded-full bg-indigo-200/10 blur-[80px]"
+                    animate={{ x: [0, -26, 0], y: [0, 18, 0], opacity: [0.18, 0.45, 0.18] }}
+                    transition={{ duration: 12.5, repeat: Infinity, ease: "easeInOut" }}
+                  />
+                </div>
+              ) : null}
+
               <motion.div variants={fadeSlide} className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
                 <div className="max-w-2xl">
                   <h2 className="type-display-lg mb-5">Work you can feel</h2>
@@ -1290,116 +1465,139 @@ export default function Home() {
               </motion.div>
 
               <motion.div
-                variants={fadeSlide}
+                variants={staggerSection}
                 className="grid auto-rows-[minmax(380px,auto)] grid-cols-1 items-start gap-6 md:auto-rows-auto md:grid-cols-12"
               >
-                <CardPointerGlow className="relative isolate min-h-[380px] overflow-hidden rounded-[3rem] border border-white/[0.06] bg-white/[0.02] glass-card hover:border-accent-indigo/35 group transition-colors duration-500 md:col-span-6">
-                  <div className="absolute inset-0">
-                    <Image
-                      src="/teramotors.png"
-                      alt="TeraMotors product experience"
-                      fill
-                      sizes="(max-width: 768px) 100vw, 48vw"
-                      className="object-cover opacity-40 transition-transform duration-700 group-hover:scale-[1.03]"
-                    />
-                  </div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/20 to-transparent" />
-                  <div className="relative z-[1] flex h-full flex-col justify-end p-10 md:p-12">
-                    <div className="mb-6 flex flex-wrap gap-2">
-                      <Badge>Automotive</Badge>
-                      <Badge>Enterprise · Compliance-ready</Badge>
-                    </div>
-                    <h3 className="type-portfolio-product-title">TeraMotors</h3>
-                    <p className="type-portfolio-product-body">
-                      Enterprise auto repair ops — bilingual UX, realtime job boards, Stripe, and
-                      invoicing flows built for regulated markets and growing workshop networks.
-                    </p>
-                    <div className="relative z-[1] flex flex-wrap items-center gap-x-8 gap-y-4">
-                      <Link href="/work/teramotors" className="type-link-strong">
-                        Full case study
-                        <ArrowUpRight className="h-5 w-5" />
-                      </Link>
-                      <Link href="https://app.teramotor.cc/" className="type-link-soft">
-                        Live app
-                        <ArrowUpRight className="h-4 w-4 shrink-0" />
-                      </Link>
-                    </div>
-                  </div>
-                </CardPointerGlow>
-
-                <CardPointerGlow className="relative isolate min-h-[380px] overflow-hidden rounded-[3rem] border border-white/[0.06] bg-white/[0.02] glass-card hover:border-accent-indigo/35 group transition-colors duration-500 md:col-span-6">
-                  <div className="absolute inset-0">
-                    <Image
-                      src="/salasel-hero.png"
-                      alt="Salasel HORECA marketplace marketing site with chef imagery, mobile app preview, and order stats"
-                      fill
-                      sizes="(max-width: 768px) 100vw, 48vw"
-                      className="object-cover object-[center_12%] opacity-45 transition-transform duration-700 group-hover:scale-[1.03]"
-                    />
-                  </div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/35 to-obsidian/15" />
-                  <div className="relative z-[1] flex h-full flex-col justify-end p-10 md:p-12">
-                    <div className="mb-6 flex flex-wrap gap-2">
-                      <Badge>B2B marketplace</Badge>
-                      <Badge>HORECA · Procurement</Badge>
-                    </div>
-                    <h3 className="type-portfolio-product-title">Salasel</h3>
-                    <p className="type-portfolio-product-body">
-                      Procurement for hotels, cafés, and catering crews — BNPL-ready buying, logistics
-                      handoffs, supplier orchestration inside one Laravel platform.
-                    </p>
-                    <div className="relative z-[1] flex flex-wrap items-center gap-x-8 gap-y-4">
-                      <Link href="/work/salasel" className="type-link-strong">
-                        Full case study
-                        <ArrowUpRight className="h-5 w-5" />
-                      </Link>
-                      <Link
-                        href="https://salasel.com.sa/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="type-link-soft"
-                      >
-                        Live site
-                        <ArrowUpRight className="h-4 w-4 shrink-0" />
-                      </Link>
-                    </div>
-                  </div>
-                </CardPointerGlow>
-
-                {extraVentures.map((v) => (
-                  <CardPointerGlow
-                    key={v.key}
-                    className="group relative isolate aspect-[9/19.5] w-full max-w-[min(100%,320px)] overflow-hidden rounded-[3rem] border border-white/[0.06] bg-obsidian glass-card transition-colors duration-500 hover:border-accent-indigo/35 sm:mx-auto md:mx-0 md:max-w-none md:col-span-4"
-                  >
-                    <div className="absolute inset-0 bg-obsidian">
+                <motion.div variants={fadeSlide} className="md:col-span-6">
+                  <CardPointerGlow className="relative isolate min-h-[380px] overflow-hidden rounded-[3rem] border border-white/[0.06] bg-white/[0.02] glass-card hover:border-accent-indigo/35 group transition-colors duration-500 h-full">
+                    <motion.div
+                      className="absolute inset-0"
+                      style={prefersReducedMotion ? undefined : { y: venturesParallaxA, scale: venturesParallaxScale }}
+                    >
                       <Image
-                        src={v.imageSrc}
-                        alt={v.imageAlt}
+                        src="/teramotors.png"
+                        alt="TeraMotors product experience"
                         fill
-                        sizes="(max-width: 768px) 320px, 33vw"
-                        className={v.imgClass}
+                        sizes="(max-width: 768px) 100vw, 48vw"
+                        className="object-cover opacity-40 transition-transform duration-700 group-hover:scale-[1.03]"
                       />
-                    </div>
-                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/45 to-obsidian/10" />
-                    <div className="relative z-[1] flex min-h-full flex-col justify-end p-8 md:p-10">
-                      <div className="mb-4 flex flex-wrap gap-2">
-                        {v.badges.map((b) => (
-                          <Badge key={b}>{b}</Badge>
-                        ))}
+                    </motion.div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/20 to-transparent" />
+                    <div className="relative z-[1] flex h-full flex-col justify-end p-10 md:p-12">
+                      <div className="mb-6 flex flex-wrap gap-2">
+                        <Badge>Automotive</Badge>
+                        <Badge>Enterprise · Compliance-ready</Badge>
                       </div>
-                      <h3 className="type-portfolio-card-title">{v.title}</h3>
-                      <p className="type-portfolio-card-body">
-                        {v.description}
+                      <h3 className="type-portfolio-product-title">TeraMotors</h3>
+                      <p className="type-portfolio-product-body">
+                        Enterprise auto repair ops — bilingual UX, realtime job boards, Stripe, and
+                        invoicing flows built for regulated markets and growing workshop networks.
                       </p>
-                      <Link
-                        href={v.href}
-                        className="type-link-strong relative z-[1] text-sm md:text-base"
-                      >
-                        Project preview
-                        <ArrowUpRight className="h-4 w-4 shrink-0 md:h-5 md:w-5" />
-                      </Link>
+                      <div className="relative z-[1] flex flex-wrap items-center gap-x-8 gap-y-4">
+                        <Link href="/work/teramotors" className="type-link-strong">
+                          Full case study
+                          <ArrowUpRight className="h-5 w-5" />
+                        </Link>
+                        <Link href="https://app.teramotor.cc/" className="type-link-soft">
+                          Live app
+                          <ArrowUpRight className="h-4 w-4 shrink-0" />
+                        </Link>
+                      </div>
                     </div>
                   </CardPointerGlow>
+                </motion.div>
+
+                <motion.div variants={fadeSlide} className="md:col-span-6">
+                  <CardPointerGlow className="relative isolate min-h-[380px] overflow-hidden rounded-[3rem] border border-white/[0.06] bg-white/[0.02] glass-card hover:border-accent-indigo/35 group transition-colors duration-500 h-full">
+                    <motion.div
+                      className="absolute inset-0"
+                      style={prefersReducedMotion ? undefined : { y: venturesParallaxB, scale: venturesParallaxScale }}
+                    >
+                      <Image
+                        src="/salasel-hero.png"
+                        alt="Salasel HORECA marketplace marketing site with chef imagery, mobile app preview, and order stats"
+                        fill
+                        sizes="(max-width: 768px) 100vw, 48vw"
+                        className="object-cover object-[center_12%] opacity-45 transition-transform duration-700 group-hover:scale-[1.03]"
+                      />
+                    </motion.div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/35 to-obsidian/15" />
+                    <div className="relative z-[1] flex h-full flex-col justify-end p-10 md:p-12">
+                      <div className="mb-6 flex flex-wrap gap-2">
+                        <Badge>B2B marketplace</Badge>
+                        <Badge>HORECA · Procurement</Badge>
+                      </div>
+                      <h3 className="type-portfolio-product-title">Salasel</h3>
+                      <p className="type-portfolio-product-body">
+                        Procurement for hotels, cafés, and catering crews — BNPL-ready buying, logistics
+                        handoffs, supplier orchestration inside one Laravel platform.
+                      </p>
+                      <div className="relative z-[1] flex flex-wrap items-center gap-x-8 gap-y-4">
+                        <Link href="/work/salasel" className="type-link-strong">
+                          Full case study
+                          <ArrowUpRight className="h-5 w-5" />
+                        </Link>
+                        <Link
+                          href="https://salasel.com.sa/"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="type-link-soft"
+                        >
+                          Live site
+                          <ArrowUpRight className="h-4 w-4 shrink-0" />
+                        </Link>
+                      </div>
+                    </div>
+                  </CardPointerGlow>
+                </motion.div>
+
+                {extraVentures.map((v) => (
+                  <motion.div key={v.key} variants={fadeSlide} className="md:col-span-4">
+                    <TiltSpecular disabled={prefersReducedMotion} className="relative">
+                      <CardPointerGlow className="group relative isolate aspect-[9/19.5] w-full max-w-[min(100%,320px)] overflow-hidden rounded-[3rem] border border-white/[0.06] bg-obsidian glass-card transition-colors duration-500 hover:border-accent-indigo/35 sm:mx-auto md:mx-0 md:max-w-none">
+                        {!prefersReducedMotion ? (
+                          <motion.div
+                            aria-hidden
+                            className="pointer-events-none absolute -inset-10 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                            style={{
+                              background:
+                                "conic-gradient(from 180deg, transparent 0%, rgba(99,102,241,0.22) 18%, transparent 42%, transparent 68%, rgba(165,180,252,0.18) 86%, transparent 100%)",
+                            }}
+                            animate={{ rotate: 360 }}
+                            transition={{ duration: 14, repeat: Infinity, ease: "linear" }}
+                          />
+                        ) : null}
+                        <div className="absolute inset-0 bg-obsidian">
+                          <Image
+                            src={v.imageSrc}
+                            alt={v.imageAlt}
+                            fill
+                            sizes="(max-width: 768px) 320px, 33vw"
+                            className={v.imgClass}
+                          />
+                        </div>
+                        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/45 to-obsidian/10" />
+                        <div className="relative z-[1] flex min-h-full flex-col justify-end p-8 md:p-10">
+                          <div className="mb-4 flex flex-wrap gap-2">
+                            {v.badges.map((b) => (
+                              <Badge key={b}>{b}</Badge>
+                            ))}
+                          </div>
+                          <h3 className="type-portfolio-card-title">{v.title}</h3>
+                          <p className="type-portfolio-card-body">
+                            {v.description}
+                          </p>
+                          <Link
+                            href={v.href}
+                            className="type-link-strong relative z-[1] text-sm md:text-base"
+                          >
+                            Project preview
+                            <ArrowUpRight className="h-4 w-4 shrink-0 md:h-5 md:w-5" />
+                          </Link>
+                        </div>
+                      </CardPointerGlow>
+                    </TiltSpecular>
+                  </motion.div>
                 ))}
 
               </motion.div>
@@ -1408,20 +1606,69 @@ export default function Home() {
 
           <ProcessPipelineSection />
 
-          <section className="py-48 md:py-64 px-6 text-center relative overflow-hidden">
+          <section className="relative overflow-hidden px-6 py-48 text-center md:py-64">
+            <div aria-hidden className="pointer-events-none absolute inset-0">
+              <motion.div
+                className="absolute left-1/2 top-[35%] h-[520px] w-[min(100%,980px)] -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent-indigo/[0.10] blur-[140px]"
+                animate={
+                  prefersReducedMotion
+                    ? undefined
+                    : { scale: [0.92, 1.08, 0.92], opacity: [0.25, 0.55, 0.25] }
+                }
+                transition={
+                  prefersReducedMotion
+                    ? undefined
+                    : { duration: 5.6, repeat: Infinity, ease: "easeInOut" }
+                }
+              />
+              {!prefersReducedMotion ? (
+                <div className="absolute inset-0">
+                  {Array.from({ length: 12 }).map((_, i) => (
+                    <motion.span
+                      key={i}
+                      className="absolute h-1 w-1 rounded-full bg-white/35"
+                      style={{
+                        left: `${8 + (i * 7.2) % 88}%`,
+                        top: `${18 + (i * 11.5) % 70}%`,
+                        filter: "blur(0.2px)",
+                      }}
+                      animate={{
+                        y: [0, -14 - (i % 4) * 6, 0],
+                        opacity: [0.15, 0.7, 0.15],
+                      }}
+                      transition={{
+                        duration: 4.8 + (i % 5) * 0.7,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                        delay: i * 0.12,
+                      }}
+                    />
+                  ))}
+                </div>
+              ) : null}
+            </div>
+
             <motion.div
-              initial={{ opacity: 0, y: 18 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial="hidden"
+              whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.55, ease: EASE_CURSOR }}
-              className="relative z-10 max-w-4xl mx-auto"
+              variants={staggerSection}
+              className="relative z-10 mx-auto max-w-4xl"
             >
-              <h2 className="type-cta-heading">
-                Ready for people to{' '}
-                <span className="text-accent-indigo">experience your vision?</span>
-              </h2>
-              <p className="type-cta-intro">
-                Send a note to{' '}
+              <motion.h2 variants={fadeSlide} className="type-cta-heading">
+                <motion.span variants={fadeSlide} className="block">
+                  Ready for people to
+                </motion.span>
+                <motion.span
+                  variants={fadeSlide}
+                  className="block text-accent-indigo"
+                >
+                  experience your vision?
+                </motion.span>
+              </motion.h2>
+
+              <motion.p variants={fadeSlide} className="type-cta-intro">
+                Send a note to{" "}
                 <a
                   className="text-slate-200 underline underline-offset-4 decoration-white/25 transition-colors hover:text-white hover:decoration-white/60"
                   href="mailto:build@vantlaunch.com"
@@ -1429,16 +1676,31 @@ export default function Home() {
                   build@vantlaunch.com
                 </a>
                 — we&apos;ll reply within a business day with warm, straightforward next steps.
-              </p>
-              <MagneticWrap active={magneticOn} className="inline-block">
-                <Link
-                  href="mailto:build@vantlaunch.com"
-                  className="type-cta-btn group"
-                >
-                  Start your project
-                  <Rocket className="w-7 h-7 group-hover:-rotate-6 transition-transform duration-300" />
-                </Link>
-              </MagneticWrap>
+              </motion.p>
+
+              <motion.div variants={fadeSlide} className="mt-10">
+                <MagneticWrap active={magneticOn} className="inline-block">
+                  <Link href="mailto:build@vantlaunch.com" className="type-cta-btn group relative overflow-hidden">
+                    {!prefersReducedMotion ? (
+                      <motion.span
+                        aria-hidden
+                        className="pointer-events-none absolute inset-0"
+                        style={{
+                          background:
+                            "linear-gradient(110deg, transparent 35%, rgba(255,255,255,0.10), transparent 65%)",
+                          transform: "translateX(-120%)",
+                        }}
+                        whileHover={{ transform: "translateX(120%)" }}
+                        transition={{ duration: 0.75, ease: EASE_CURSOR }}
+                      />
+                    ) : null}
+                    <span className="relative z-[1] flex items-center gap-3">
+                      Start your project
+                      <Rocket className="h-7 w-7 transition-transform duration-300 group-hover:-rotate-6" />
+                    </span>
+                  </Link>
+                </MagneticWrap>
+              </motion.div>
             </motion.div>
           </section>
         </main>
@@ -1480,9 +1742,25 @@ export default function Home() {
   );
 }
 
-function NavLink({ href, children }: { href: string; children: React.ReactNode }) {
+function NavLink({
+  href,
+  active,
+  navLinksRef,
+  children,
+}: {
+  href: "#ventures" | "#comparison" | "#process";
+  active: boolean;
+  navLinksRef: React.MutableRefObject<Record<string, HTMLAnchorElement | null>>;
+  children: React.ReactNode;
+}) {
   return (
-    <Link href={href} className="type-nav-link">
+    <Link
+      href={href}
+      ref={(el) => {
+        navLinksRef.current[href] = el;
+      }}
+      className={`type-nav-link relative ${active ? "text-white" : ""}`}
+    >
       {children}
     </Link>
   );

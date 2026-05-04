@@ -1,9 +1,13 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
+import { X, Mail, ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, ArrowUpRight, Mail } from "lucide-react";
+import { useEffect, useState } from "react";
+import { WORK_STUBS, type WorkStubConfig } from "./stub-projects";
+import { TeraMotorsContent } from "./teramotors/TeraMotorsContent";
+import { SalaselContent } from "./salasel/SalaselContent";
 import {
   siBetterauth,
   siMongodb,
@@ -14,10 +18,32 @@ import {
   siTypescript,
   siVercel,
 } from "simple-icons";
-import type { WorkStubConfig } from "./stub-projects";
 
-export function ProjectStubPage({ config }: { config: WorkStubConfig }) {
-  const mailto = `mailto:build@vantlaunch.com?subject=${config.emailSubject}`;
+type ProjectOverlayProps = {
+  activeSlug: string | null;
+  onClose: () => void;
+};
+
+export function ProjectOverlay({ activeSlug, onClose }: ProjectOverlayProps) {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    if (activeSlug) {
+      setTimeout(() => {
+        setIsVisible(true);
+      }, 100);
+      document.body.style.overflow = "hidden";
+    } else {
+      setTimeout(() => {
+        setIsVisible(false);
+      }, 100);
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [activeSlug]);
+
   const STACK_TECH = [
     { label: "Next.js", icon: siNextdotjs },
     { label: "TypeScript", icon: siTypescript },
@@ -29,42 +55,24 @@ export function ProjectStubPage({ config }: { config: WorkStubConfig }) {
     { label: "Better Auth / NextAuth", icon: siBetterauth },
   ] as const;
 
-  return (
-    <div className="relative min-h-screen overflow-x-hidden bg-zinc text-slate-50 selection:bg-accent-blue/30">
-      <div className="pointer-events-none fixed inset-0 z-0">
-        <div className="absolute inset-0 bg-dot-grid opacity-[0.14]" />
-        <div className="absolute left-1/2 top-[-20%] h-[620px] w-[1100px] -translate-x-1/2 rounded-full bg-accent-blue/[0.04] blur-[140px]" />
-      </div>
+  function renderContent(slug: string) {
+    if (slug === "teramotors") return <TeraMotorsContent />;
+    if (slug === "salasel") return <SalaselContent />;
+    
+    const config = WORK_STUBS[slug as keyof typeof WORK_STUBS];
+    if (!config) return null;
 
-      <header className="sticky top-0 z-40 border-b border-white/[0.06] bg-zinc/70 backdrop-blur-xl">
-        <div className="mx-auto flex h-16 max-w-5xl items-center justify-between px-6">
-          <Link href="/#ventures" className="type-work-back-link">
-            <ArrowLeft className="h-4 w-4" />
-            Our work
-          </Link>
-          <Link href="/" className="type-brand-xl">
-            VantLaunch
-          </Link>
-          <Link href={mailto} className="type-nav-accent">
-            Ask about this build
-          </Link>
-        </div>
-      </header>
+    const mailto = `mailto:build@vantlaunch.com?subject=${config.emailSubject}`;
 
-      <article className="relative z-10 mx-auto max-w-5xl px-6 pb-24 pt-14 md:pt-20">
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
-        >
+    return (
+      <div className="space-y-12">
+        <section>
           <div className="mb-8 flex flex-wrap gap-2">
             {config.badges.map((b) => (
               <span key={b} className="type-chip">
                 {b}
               </span>
             ))}
-            
           </div>
 
           <h1 className="type-case-h1 text-balance">{config.title}</h1>
@@ -84,30 +92,18 @@ export function ProjectStubPage({ config }: { config: WorkStubConfig }) {
               ))}
             </ul>
           ) : null}
-        </motion.div>
+        </section>
 
-        <motion.ul
-          initial={{ opacity: 0, y: 14 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.55, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
-          className="type-prose-muted mt-8 max-w-2xl space-y-3"
-        >
+        <ul className="type-prose-muted max-w-2xl space-y-3">
           {config.bullets.map((item) => (
             <li key={item} className="flex gap-3">
-              <span className="mt-2 inline-block h-1 w-1 shrink-0 rounded-full bg-accent-zinc" />
+              <span className="mt-2 inline-block h-1 w-1 shrink-0 rounded-full bg-accent-blue" />
               {item}
             </li>
           ))}
-        </motion.ul>
+        </ul>
 
-        <motion.figure
-          initial={{ opacity: 0, y: 18 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
-          className="relative mt-12 overflow-hidden rounded-[1.75rem] border border-white/[0.1] bg-zinc-surface shadow-[0_40px_100px_-40px_rgba(0,0,0,0.85)]"
-        >
+        <figure className="relative overflow-hidden rounded-[1.75rem] border border-white/[0.1] bg-zinc-surface shadow-[0_40px_100px_-40px_rgba(0,0,0,0.85)]">
           <div className="relative mx-auto aspect-[10/16] w-full max-w-sm sm:max-w-md md:aspect-[16/10] md:max-h-[min(70vh,640px)] md:max-w-none">
             <Image
               src={config.imageSrc}
@@ -121,15 +117,9 @@ export function ProjectStubPage({ config }: { config: WorkStubConfig }) {
           <figcaption className="type-figure-caption border-t border-white/[0.06] bg-zinc-surface/95 px-5 py-4">
             {config.figureCaption} Full write-up, stack notes, and outcomes will land here soon.
           </figcaption>
-        </motion.figure>
+        </figure>
 
-        <motion.section
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.55, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-16 overflow-hidden rounded-[1.75rem] border border-white/[0.08] bg-white/[0.02] px-8 py-10"
-        >
+        <section className="overflow-hidden rounded-[1.75rem] border border-white/[0.08] bg-white/[0.02] px-8 py-10">
           <div className="grid gap-8 md:grid-cols-[1fr_auto] md:items-center">
             <div>
               <p className="type-intro-wide mx-auto max-w-2xl text-slate-300 md:mx-0">
@@ -159,8 +149,53 @@ export function ProjectStubPage({ config }: { config: WorkStubConfig }) {
               </div>
             </div>
           </div>
-        </motion.section>
-      </article>
-    </div>
+        </section>
+      </div>
+    );
+  }
+
+  return (
+    <AnimatePresence>
+      {activeSlug && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-6">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={onClose}
+            className="absolute inset-0 bg-zinc/80 backdrop-blur-2xl"
+          />
+          
+          <motion.div
+            initial={{ opacity: 0, y: 40, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 40, scale: 0.95 }}
+            transition={{ type: "spring", stiffness: 260, damping: 28 }}
+            className="relative h-full w-full max-w-5xl overflow-hidden rounded-[2.5rem] border border-white/[0.08] bg-zinc shadow-2xl"
+          >
+            <div className="absolute right-6 top-6 z-50">
+              <button
+                onClick={onClose}
+                className="group flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-white/5 text-slate-400 backdrop-blur-md transition-all hover:border-white/20 hover:bg-white/10 hover:text-white"
+                aria-label="Close overlay"
+              >
+                <X className="h-6 w-6 transition-transform group-hover:rotate-90" />
+              </button>
+            </div>
+
+            <div className="h-full overflow-y-auto overflow-x-hidden scroll-smooth px-6 py-12 md:px-12 md:py-16">
+              <div className="pointer-events-none absolute inset-0 z-0">
+                <div className="absolute inset-0 bg-dot-grid opacity-[0.08]" />
+                <div className="absolute left-1/2 top-[-10%] h-[500px] w-[800px] -translate-x-1/2 rounded-full bg-accent-blue/[0.03] blur-[120px]" />
+              </div>
+
+              <div className="relative z-10">
+                {renderContent(activeSlug)}
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      )}
+    </AnimatePresence>
   );
 }

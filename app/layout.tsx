@@ -36,7 +36,7 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
-      <body className="flex min-h-full flex-col bg-obsidian">
+      <body className="flex min-h-full flex-col bg-zinc">
         {children}
         <Analytics />
         <SpeedInsights />

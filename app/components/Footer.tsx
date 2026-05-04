@@ -28,7 +28,7 @@ export function Footer() {
             <span className="type-meta-uppercase">Connect</span>
             <FooterLink href="https://x.com">Twitter / X</FooterLink>
             <FooterLink href="https://github.com">GitHub</FooterLink>
-            <FooterLink href="mailto:build@vantlaunch.com">Email</FooterLink>
+            <FooterLink href="#contact">Inquiry</FooterLink>
           </div>
         </div>
       </div>

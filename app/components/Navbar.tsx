@@ -83,7 +83,7 @@ export function Navbar({ activeNav }: { activeNav: string }) {
           </Link>
           <MagneticWrap active={true}>
             <Link
-              href="mailto:build@vantlaunch.com"
+              href="#contact"
               className="type-btn-solid inline-flex"
             >
               Let&apos;s talk

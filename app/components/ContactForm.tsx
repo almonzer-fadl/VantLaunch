@@ -91,7 +91,7 @@ export function ContactForm() {
             <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500"></span>
           </span>
           <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-zinc-500">
-            Current capacity: 1 project
+            Current capacity: 3 projects
           </span>
         </div>
 

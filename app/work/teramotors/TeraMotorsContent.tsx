@@ -147,7 +147,7 @@ const businessImpact = [
   { metric: "Live", label: "visibility across jobs, parts, and cash" },
 ];
 
-export function TeraMotorsContent() {
+export function TeraMotorsContent({ onClose }: { onClose?: () => void }) {
   return (
     <div className="space-y-16">
       <section>
@@ -476,10 +476,16 @@ docker run -p 3000:3000 teramotors`}</pre>
             Open live app
             <ArrowUpRight className="h-5 w-5" />
           </Link>
-          <Link href="mailto:build@vantlaunch.com?subject=TeraMotors-style%20build" className="type-email-cta-solid">
+          <button 
+            onClick={() => {
+              onClose?.();
+              window.location.hash = "contact";
+            }}
+            className="type-email-cta-solid"
+          >
             Talk with VantLaunch
             <ArrowUpRight className="h-5 w-5" />
-          </Link>
+          </button>
         </div>
       </section>
     </div>

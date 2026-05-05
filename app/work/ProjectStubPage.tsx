@@ -14,7 +14,7 @@ import {
   siTypescript,
   siVercel,
 } from "simple-icons";
-import type { WorkStubConfig } from "./stub-projects";
+import type { WorkStubConfig } from "../components/stub-projects";
 
 export function ProjectStubPage({ config }: { config: WorkStubConfig }) {
   const mailto = `mailto:build@vantlaunch.com?subject=${config.emailSubject}`;

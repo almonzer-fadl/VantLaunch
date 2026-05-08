@@ -16,15 +16,15 @@ export function CTASection() {
         className="relative z-10 mx-auto max-w-4xl"
       >
         <motion.h2 variants={fadeSlide} className="type-cta-heading">
-          Ready for people to <br />
-          <span className="text-white/40">experience your vision?</span>
+          Want early access to <br />
+          <span className="text-white/40">our next SaaS releases?</span>
         </motion.h2>
 
         <motion.div variants={fadeSlide}>
           <ContactForm />
         </motion.div>
         <motion.p variants={fadeSlide} className="mx-auto mt-8 max-w-xl text-sm text-zinc-400">
-          We reply within one business day.
+          Join the list and we&apos;ll send relevant product updates only.
         </motion.p>
       </motion.div>
     </section>

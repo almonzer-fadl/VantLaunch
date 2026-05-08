@@ -23,6 +23,12 @@ export function Navbar({ activeNav }: { activeNav: string }) {
         </motion.div>
 
         <div className="relative hidden items-center gap-10 md:flex">
+          <NavLink href="#products" active={activeNav === "#products"}>
+            Products
+          </NavLink>
+          <NavLink href="#proof" active={activeNav === "#proof"}>
+            Proof
+          </NavLink>
           <NavLink href="#ventures" active={activeNav === "#ventures"}>
             Our work
           </NavLink>
@@ -38,11 +44,11 @@ export function Navbar({ activeNav }: { activeNav: string }) {
           initial={{ opacity: 0, x: 16 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.55, ease: EASE_CURSOR }}
-          className="flex items-center gap-6"
+          className="flex items-center gap-4 sm:gap-6"
         >
           <Link
             href={SOCIAL_LINKS.github}
-            className="type-nav-link"
+            className="type-nav-link hidden sm:inline-flex"
             aria-label="GitHub"
             target="_blank"
             rel="noopener noreferrer"
@@ -52,9 +58,9 @@ export function Navbar({ activeNav }: { activeNav: string }) {
           <MagneticWrap active={true}>
             <Link
               href="#contact"
-              className="type-btn-solid inline-flex"
+              className="type-btn-solid inline-flex px-4 py-2 text-[12px] sm:px-6 sm:py-2.5 sm:text-[13px]"
             >
-              Let&apos;s talk
+              Get updates
             </Link>
           </MagneticWrap>
         </motion.div>

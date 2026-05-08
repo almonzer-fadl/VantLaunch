@@ -36,7 +36,7 @@ export function ContactForm() {
           <Check className="h-8 w-8" />
         </div>
         <h3 className="text-2xl font-bold text-white">Message received.</h3>
-        <p className="mt-2 text-zinc-500">We&apos;ll get back to you within 24 hours.</p>
+        <p className="mt-2 text-zinc-500">You&apos;re on our SaaS updates list. We&apos;ll follow up shortly.</p>
         <button 
           onClick={() => setStatus("idle")}
           className="mt-8 text-sm font-bold text-white underline underline-offset-4"
@@ -77,12 +77,41 @@ export function ContactForm() {
             className="w-full border-b border-white/10 bg-transparent py-4 text-base font-medium text-white placeholder:text-zinc-700 focus:border-white focus:outline-none transition-colors sm:text-lg"
           />
         </div>
+        <div className="grid gap-6 sm:grid-cols-2">
+          <select
+            name="product_interest"
+            defaultValue=""
+            className="w-full border-b border-white/10 bg-transparent py-4 text-base font-medium text-zinc-200 focus:border-white focus:outline-none transition-colors"
+            required
+          >
+            <option value="" disabled className="bg-zinc text-zinc-400">Product interest</option>
+            <option value="teramotors" className="bg-zinc text-zinc-200">TeraMotors</option>
+            <option value="salasel" className="bg-zinc text-zinc-200">Salasel</option>
+            <option value="araba" className="bg-zinc text-zinc-200">Araba</option>
+            <option value="gari" className="bg-zinc text-zinc-200">Gari</option>
+            <option value="general" className="bg-zinc text-zinc-200">General updates</option>
+          </select>
+
+          <select
+            name="timeline"
+            defaultValue=""
+            className="w-full border-b border-white/10 bg-transparent py-4 text-base font-medium text-zinc-200 focus:border-white focus:outline-none transition-colors"
+            required
+          >
+            <option value="" disabled className="bg-zinc text-zinc-400">Expected timeline</option>
+            <option value="asap" className="bg-zinc text-zinc-200">ASAP</option>
+            <option value="1m" className="bg-zinc text-zinc-200">Within 1 month</option>
+            <option value="quarter" className="bg-zinc text-zinc-200">This quarter</option>
+            <option value="exploring" className="bg-zinc text-zinc-200">Exploring only</option>
+          </select>
+        </div>
+
         <div className="relative">
           <textarea
             required
             name="message"
             rows={1}
-            placeholder="What are you building?"
+            placeholder="Tell us your use case in one paragraph"
             className="w-full border-b border-white/10 bg-transparent py-4 text-base font-medium text-white placeholder:text-zinc-700 focus:border-white focus:outline-none transition-colors resize-none sm:text-lg"
             onInput={(e) => {
               const target = e.target as HTMLTextAreaElement;
@@ -90,32 +119,6 @@ export function ContactForm() {
               target.style.height = `${target.scrollHeight}px`;
             }}
           />
-        </div>
-
-        <div className="grid gap-6 sm:grid-cols-2">
-          <select
-            name="budget"
-            defaultValue=""
-            className="w-full border-b border-white/10 bg-transparent py-4 text-base font-medium text-zinc-200 focus:border-white focus:outline-none transition-colors"
-          >
-            <option value="" disabled className="bg-zinc text-zinc-400">Budget range</option>
-            <option value="<5k" className="bg-zinc text-zinc-200">Below $5k</option>
-            <option value="5k-15k" className="bg-zinc text-zinc-200">$5k – $15k</option>
-            <option value="15k-40k" className="bg-zinc text-zinc-200">$15k – $40k</option>
-            <option value="40k+" className="bg-zinc text-zinc-200">$40k+</option>
-          </select>
-
-          <select
-            name="timeline"
-            defaultValue=""
-            className="w-full border-b border-white/10 bg-transparent py-4 text-base font-medium text-zinc-200 focus:border-white focus:outline-none transition-colors"
-          >
-            <option value="" disabled className="bg-zinc text-zinc-400">Expected timeline</option>
-            <option value="asap" className="bg-zinc text-zinc-200">ASAP (within 2 weeks)</option>
-            <option value="1-2m" className="bg-zinc text-zinc-200">1-2 months</option>
-            <option value="3m+" className="bg-zinc text-zinc-200">3+ months</option>
-            <option value="exploring" className="bg-zinc text-zinc-200">Just exploring</option>
-          </select>
         </div>
       </div>
 
@@ -135,6 +138,7 @@ export function ContactForm() {
           {errorMessage}
         </p>
       )}
+      <p className="mt-4 text-center text-xs text-zinc-500 sm:text-right">No spam. Only product updates and relevant replies.</p>
     </form>
   );
 }

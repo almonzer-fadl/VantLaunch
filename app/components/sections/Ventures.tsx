@@ -52,8 +52,8 @@ export function VenturesSection({
           <div className="max-w-2xl">
             <h2 className="type-display-lg">Work you can feel</h2>
             <p className="type-intro mt-6 max-w-xl !text-zinc-300">
-              Real products in market—from enterprise ops to everyday tools—with care for trust,
-              compliance, and joy in the details.
+              SaaS products already shipping in market, with practical workflows, trust-first UX,
+              and measurable operational value.
             </p>
           </div>
         </motion.div>

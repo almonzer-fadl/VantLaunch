@@ -9,7 +9,7 @@ export async function sendContactEmail(formData: FormData) {
   const name = formData.get("name") as string;
   const email = formData.get("email") as string;
   const message = formData.get("message") as string;
-  const budget = (formData.get("budget") as string) || "Not provided";
+  const productInterest = (formData.get("product_interest") as string) || "General updates";
   const timeline = (formData.get("timeline") as string) || "Not provided";
   const website = formData.get("website") as string;
 
@@ -17,7 +17,7 @@ export async function sendContactEmail(formData: FormData) {
     return { success: true };
   }
 
-  if (!name || !email || !message) {
+  if (!name || !email || !message || !productInterest || !timeline) {
     return { success: false, error: "All fields are required." };
   }
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -49,9 +49,9 @@ export async function sendContactEmail(formData: FormData) {
         "",
         "Thanks for reaching out to VantLaunch. We've received your inquiry and we'll review it shortly.",
         "",
-        `Your message: "${message}"`,
+        `Product interest: ${productInterest}`,
+        `Use case: "${message}"`,
         "",
-        `Budget range: ${budget}`,
         `Expected timeline: ${timeline}`,
         "",
         "We usually reply within one business day.",
@@ -84,7 +84,7 @@ export async function sendContactEmail(formData: FormData) {
       from: "VantLaunch System <noreply@vantlaunch.com>",
       to: internalContactEmail,
       subject: `New Project Inquiry: ${name}`,
-      text: `Name: ${name}\nEmail: ${email}\nBudget: ${budget}\nTimeline: ${timeline}\nMessage: ${message}`,
+      text: `Name: ${name}\nEmail: ${email}\nProduct: ${productInterest}\nTimeline: ${timeline}\nUse case: ${message}`,
       replyTo: email,
     });
 
@@ -97,17 +97,17 @@ export async function sendContactEmail(formData: FormData) {
         "Customer-facing confirmation was sent.",
         "",
         `Lead: ${name} <${email}>`,
-        `Budget: ${budget}`,
+        `Product: ${productInterest}`,
         `Timeline: ${timeline}`,
         "",
-        `Message: "${message}"`,
+        `Use case: "${message}"`,
       ].join("\n"),
       html: `
         <div style="background:#080808;padding:28px 16px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;">
           <div style="max-width:560px;margin:0 auto;background:#121212;border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:24px;">
             <h2 style="margin:0 0 14px 0;color:#fff;font-size:20px;">Customer Confirmation Copy</h2>
             <p style="margin:0 0 8px 0;color:#d4d4d8;"><strong>Lead:</strong> ${safeName} (${email})</p>
-            <p style="margin:0 0 8px 0;color:#a1a1aa;"><strong>Budget:</strong> ${budget}</p>
+            <p style="margin:0 0 8px 0;color:#a1a1aa;"><strong>Product:</strong> ${productInterest}</p>
             <p style="margin:0 0 8px 0;color:#a1a1aa;"><strong>Timeline:</strong> ${timeline}</p>
             <div style="margin-top:14px;padding:12px 14px;border-left:3px solid #fff;background:rgba(255,255,255,0.04);border-radius:8px;">
               <p style="margin:0;color:#fff;">${safeMessage}</p>

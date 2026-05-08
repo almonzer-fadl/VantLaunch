@@ -6,20 +6,20 @@ import { STACK_TECH } from "@/app/lib/constants";
 
 const PRINCIPLES = [
   {
-    title: "Fast feedback loops",
-    body: "You see product movement every week, not slide decks every month.",
+    title: "SaaS-first roadmap",
+    body: "Every sprint prioritizes product retention, activation, and compounding usage.",
   },
   {
-    title: "Direct builder access",
-    body: "You work with the people shipping the product, design to production.",
+    title: "Shipping in market",
+    body: "Features are tested against live user behavior, not hypothetical requirements.",
   },
   {
-    title: "Launch with intent",
-    body: "Every decision is tied to adoption, retention, or revenue motion.",
+    title: "Lean execution",
+    body: "Small, focused releases keep velocity high without sacrificing product quality.",
   },
 ] as const;
 
-const STATS = ["2 ventures live", "3 client builds shipped", "~7 day release rhythm"] as const;
+const STATS = ["2 SaaS live", "3 products shipping", "~7 day release rhythm"] as const;
 
 export function ComparisonSection() {
   return (
@@ -36,10 +36,9 @@ export function ComparisonSection() {
       >
         <motion.div variants={fadeSlide} className="mx-auto max-w-3xl text-center">
           <p className="type-meta-uppercase mb-4">Why teams choose us</p>
-          <h2 className="type-display-xl mb-5 text-balance">Built like founders, shipped like operators.</h2>
+          <h2 className="type-display-xl mb-5 text-balance">SaaS products built to survive real usage.</h2>
           <p className="type-intro text-zinc-300">
-            Product strategy, interface systems, and engineering execution in one team so your launch
-            does not stall between discovery and delivery.
+            We operate as product builders: tight feedback loops, real user inputs, and weekly improvements across the stack.
           </p>
         </motion.div>
 

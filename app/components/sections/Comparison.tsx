@@ -25,7 +25,7 @@ export function ComparisonSection() {
   return (
     <section
       id="comparison"
-      className="relative overflow-hidden border-t border-white/5 bg-[radial-gradient(120%_120%_at_50%_0%,rgba(255,255,255,0.06),transparent_45%)] px-6 py-24 md:py-28"
+      className="relative overflow-hidden border-t border-white/5 bg-[radial-gradient(120%_120%_at_50%_0%,rgba(255,255,255,0.06),transparent_45%)] px-6 py-20 md:py-28"
     >
       <motion.div
         className="relative mx-auto max-w-5xl"
@@ -83,20 +83,21 @@ export function ComparisonSection() {
             <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-zinc to-transparent" />
 
             <motion.ul
-              className="flex min-w-max items-center gap-3"
+              className="flex min-w-max items-center gap-2"
               animate={{ x: ["0%", "-50%"] }}
-              transition={{ duration: 24, repeat: Infinity, ease: "linear" }}
+              transition={{ duration: 34, repeat: Infinity, ease: "linear" }}
             >
               {[...STACK_TECH, ...STACK_TECH].map((tech, idx) => (
                 <li
                   key={`${tech.label}-${idx}`}
-                  className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl border border-white/10 bg-white/[0.03]"
+                  className="flex shrink-0 items-center gap-2 rounded-xl border border-white/10 bg-white/[0.03] px-3 py-2"
                   aria-label={tech.label}
                   title={tech.label}
                 >
                   <svg role="img" viewBox="0 0 24 24" className="h-4 w-4 text-white" fill="currentColor">
                     <path d={tech.icon.path} />
                   </svg>
+                  <span className="text-[11px] font-semibold text-zinc-200">{tech.label}</span>
                 </li>
               ))}
             </motion.ul>

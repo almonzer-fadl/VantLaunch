@@ -59,14 +59,6 @@ export function Navbar({ activeNav }: { activeNav: string }) {
           </MagneticWrap>
         </motion.div>
       </div>
-      <div className="fixed bottom-[max(1rem,env(safe-area-inset-bottom))] left-4 right-4 z-[60] md:hidden">
-        <Link
-          href="#contact"
-          className="flex items-center justify-center rounded-full border border-white/15 bg-white px-5 py-3.5 text-sm font-bold text-black shadow-[0_16px_30px_-16px_rgba(255,255,255,0.55)]"
-        >
-          Start your build
-        </Link>
-      </div>
     </nav>
   );
 }

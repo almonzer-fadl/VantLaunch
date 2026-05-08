@@ -29,7 +29,7 @@ export function HeroSection({
   const subReveal = getHeroSubReveal(prefersReducedMotion);
 
   return (
-    <section ref={sectionRef} className="relative overflow-hidden pt-20 pb-20 md:pb-28 lg:pb-36 px-6">
+    <section ref={sectionRef} className="relative overflow-hidden px-6 pb-16 pt-16 md:pb-28 md:pt-20 lg:pb-36">
       <motion.div
         className="max-w-7xl mx-auto"
         style={prefersReducedMotion ? undefined : { y, opacity }}

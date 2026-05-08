@@ -8,7 +8,7 @@ export function ProcessSection() {
   return (
     <section
       id="process"
-      className="relative overflow-hidden border-t border-white/5 bg-zinc-surface/[0.34] py-28 px-6 md:py-36"
+      className="relative overflow-hidden border-t border-white/5 bg-zinc-surface/[0.34] px-6 py-20 md:py-36"
     >
       <motion.div
         className="relative z-[1] mx-auto max-w-7xl"
@@ -17,7 +17,7 @@ export function ProcessSection() {
         viewport={{ once: true, margin: "-80px" }}
         variants={staggerSection}
       >
-        <motion.div variants={fadeSlide} className="mb-24 max-w-2xl">
+        <motion.div variants={fadeSlide} className="mb-16 max-w-2xl md:mb-24">
           <p className="type-meta-uppercase mb-4">How we work</p>
           <h2 className="type-display-lg">From first sketch to launch day</h2>
           <p className="type-intro mt-6 max-w-xl text-zinc-300">

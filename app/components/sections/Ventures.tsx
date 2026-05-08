@@ -33,7 +33,6 @@ export function VenturesSection({
       slug: s.slug,
       imageSrc: s.imageSrc,
       imageAlt: s.imageAlt,
-      badges: s.badges,
       title: s.title,
       description: s.cardSummary,
       imgClass: s.previewImgClass,
@@ -41,7 +40,7 @@ export function VenturesSection({
   });
 
   return (
-    <section ref={sectionRef} id="ventures" className="py-32 px-6 border-t border-white/5">
+    <section ref={sectionRef} id="ventures" className="py-32 px-6 border-t border-white/5 bg-gradient-to-b from-transparent via-white/[0.01] to-transparent">
       <motion.div
         className="max-w-7xl mx-auto"
         initial="hidden"
@@ -52,7 +51,7 @@ export function VenturesSection({
         <motion.div variants={fadeSlide} className="flex flex-col md:flex-row md:items-end justify-between mb-24 gap-8">
           <div className="max-w-2xl">
             <h2 className="type-display-lg">Work you can feel</h2>
-            <p className="type-intro mt-6 max-w-xl !text-zinc-500">
+            <p className="type-intro mt-6 max-w-xl !text-zinc-300">
               Real products in market—from enterprise ops to everyday tools—with care for trust,
               compliance, and joy in the details.
             </p>
@@ -67,8 +66,7 @@ export function VenturesSection({
           <VentureCard 
             slug="teramotors"
             title="TeraMotors"
-            description="Enterprise auto repair ops — bilingual UX, realtime job boards, Stripe, and invoicing flows."
-            badges={["Automotive", "Enterprise"]}
+            description="Enterprise auto repair ops with bilingual workflows, real-time job boards, and invoicing that keeps service teams moving."
             imageSrc="/teramotors.png"
             parallax={parallaxA}
             scale={scale}
@@ -81,8 +79,7 @@ export function VenturesSection({
           <VentureCard 
             slug="salasel"
             title="Salasel"
-            description="Procurement for hotels, cafés, and catering crews — BNPL-ready buying and logistics orchestration."
-            badges={["B2B marketplace", "HORECA"]}
+            description="B2B procurement platform for HORECA teams with multi-supplier ordering, financing-aware checkout, and logistics control."
             imageSrc="/salasel-hero.png"
             parallax={parallaxB}
             scale={scale}
@@ -109,13 +106,8 @@ export function VenturesSection({
                     </div>
                     
                     <div className="relative z-10">
-                      <div className="mb-4 flex flex-wrap gap-2">
-                        {v.badges.map((b) => (
-                          <Badge key={b}>{b}</Badge>
-                        ))}
-                      </div>
                       <h3 className="type-portfolio-card-title">{v.title}</h3>
-                      <p className="type-portfolio-card-body line-clamp-2">{v.description}</p>
+                      <p className="type-portfolio-card-body line-clamp-3 text-zinc-300">{v.description}</p>
                       <span className="type-link-strong text-sm">
                         View project
                         <ArrowUpRight className="h-4 w-4" />
@@ -133,12 +125,11 @@ export function VenturesSection({
 }
 
 function VentureCard({ 
-  slug, title, description, badges, imageSrc, parallax, scale, reduced, onOpen, colSpan, liveHref 
+  slug, title, description, imageSrc, parallax, scale, reduced, onOpen, colSpan, liveHref 
 }: {
   slug: string;
   title: string;
   description: string;
-  badges: string[];
   imageSrc: string;
   parallax: import("framer-motion").MotionValue<number>;
   scale: import("framer-motion").MotionValue<number>;
@@ -165,13 +156,8 @@ function VentureCard({
           <div className="absolute inset-0 bg-gradient-to-t from-zinc via-zinc/20 to-transparent" />
           
           <div className="relative z-10 p-10 md:p-12">
-            <div className="mb-6 flex flex-wrap gap-2">
-              {badges.map((b: string) => (
-                <Badge key={b}>{b}</Badge>
-              ))}
-            </div>
             <h3 className="type-portfolio-product-title">{title}</h3>
-            <p className="type-portfolio-product-body">{description}</p>
+            <p className="type-portfolio-product-body text-zinc-200">{description}</p>
             <div className="flex flex-wrap items-center gap-x-8 gap-y-4">
               <span className="type-link-strong">
                 Full case study
@@ -194,8 +180,4 @@ function VentureCard({
       </div>
     </motion.div>
   );
-}
-
-function Badge({ children }: { children: React.ReactNode }) {
-  return <span className="type-badge-pill">{children}</span>;
 }

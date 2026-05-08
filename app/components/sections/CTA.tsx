@@ -7,7 +7,7 @@ import { ContactForm } from "../ContactForm";
 
 export function CTASection() {
   return (
-    <section id="contact" className="relative overflow-hidden px-6 py-48 text-center md:py-64">
+    <section id="contact" className="relative overflow-hidden border-t border-white/5 bg-gradient-to-b from-zinc-surface/50 to-transparent px-6 py-24 pb-36 text-center md:py-40">
       <motion.div
         initial="hidden"
         whileInView="visible"
@@ -23,6 +23,9 @@ export function CTASection() {
         <motion.div variants={fadeSlide}>
           <ContactForm />
         </motion.div>
+        <motion.p variants={fadeSlide} className="mx-auto mt-8 max-w-xl text-sm text-zinc-400">
+          We reply within one business day.
+        </motion.p>
       </motion.div>
     </section>
   );

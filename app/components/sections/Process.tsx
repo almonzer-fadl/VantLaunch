@@ -8,7 +8,7 @@ export function ProcessSection() {
   return (
     <section
       id="process"
-      className="relative overflow-hidden border-t border-white/5 py-28 px-6 md:py-36"
+      className="relative overflow-hidden border-t border-white/5 bg-zinc-surface/[0.34] py-28 px-6 md:py-36"
     >
       <motion.div
         className="relative z-[1] mx-auto max-w-7xl"
@@ -20,7 +20,7 @@ export function ProcessSection() {
         <motion.div variants={fadeSlide} className="mb-24 max-w-2xl">
           <p className="type-meta-uppercase mb-4">How we work</p>
           <h2 className="type-display-lg">From first sketch to launch day</h2>
-          <p className="type-intro mt-6 max-w-xl text-zinc-500">
+          <p className="type-intro mt-6 max-w-xl text-zinc-300">
             One continuous pipeline—ideas become interfaces, interfaces become builds, builds become
             something people can actually use.
           </p>
@@ -90,7 +90,7 @@ export function ProcessSection() {
               <div>
                 <span className="type-meta-uppercase opacity-50">{phase.num}</span>
                 <h3 className="text-xl font-bold text-white mt-1">{phase.title}</h3>
-                <p className="mt-2 text-zinc-500 leading-relaxed">{phase.desc}</p>
+                <p className="mt-2 text-zinc-300 leading-relaxed">{phase.desc}</p>
               </div>
             </motion.div>
           ))}

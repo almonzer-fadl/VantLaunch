@@ -19,11 +19,11 @@ export const metadata: Metadata = {
 
 export default function TeramotorsProjectPage() {
   return (
-    <div className="relative min-h-screen overflow-x-hidden bg-zinc text-slate-50 selection:bg-accent-blue/30">
+    <div className="relative min-h-screen overflow-x-hidden bg-zinc text-slate-50 selection:bg-white/10">
       <div className="pointer-events-none fixed inset-0 z-0">
         <div className="absolute inset-0 " />
         <div className="absolute inset-0 bg-dot-grid opacity-[0.14]" />
-        <div className="absolute left-1/2 top-[-20%] h-[620px] w-[1100px] -translate-x-1/2 rounded-full bg-accent-blue/[0.07] blur-[140px]" />
+        <div className="absolute left-1/2 top-[-20%] h-[620px] w-[1100px] -translate-x-1/2 rounded-full bg-white/[0.04] blur-[140px]" />
       </div>
 
       <header className="sticky top-0 z-40 border-b border-white/[0.06] bg-zinc/70 backdrop-blur-xl">

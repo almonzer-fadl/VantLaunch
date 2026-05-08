@@ -30,10 +30,10 @@ export function ProjectStubPage({ config }: { config: WorkStubConfig }) {
   ] as const;
 
   return (
-    <div className="relative min-h-screen overflow-x-hidden bg-zinc text-slate-50 selection:bg-accent-blue/30">
+    <div className="relative min-h-screen overflow-x-hidden bg-zinc text-slate-50 selection:bg-white/10">
       <div className="pointer-events-none fixed inset-0 z-0">
         <div className="absolute inset-0 bg-dot-grid opacity-[0.14]" />
-        <div className="absolute left-1/2 top-[-20%] h-[620px] w-[1100px] -translate-x-1/2 rounded-full bg-accent-blue/[0.04] blur-[140px]" />
+        <div className="absolute left-1/2 top-[-20%] h-[620px] w-[1100px] -translate-x-1/2 rounded-full bg-white/[0.04] blur-[140px]" />
       </div>
 
       <header className="sticky top-0 z-40 border-b border-white/[0.06] bg-zinc/70 backdrop-blur-xl">
@@ -70,14 +70,14 @@ export function ProjectStubPage({ config }: { config: WorkStubConfig }) {
           <h1 className="type-case-h1 text-balance">{config.title}</h1>
           <p className="type-case-lede max-w-3xl">{config.lede}</p>
           {config.detail ? (
-            <p className="type-prose-muted mt-6 max-w-3xl text-slate-400">{config.detail}</p>
+            <p className="type-prose-muted mt-6 max-w-3xl text-zinc-300">{config.detail}</p>
           ) : null}
 
           {config.capabilities.length > 0 ? (
             <ul className="mt-8 flex flex-wrap gap-2">
               {config.capabilities.map((cap) => (
                 <li key={cap}>
-                  <span className="inline-flex rounded-full border border-white/[0.08] bg-white/[0.04] px-3 py-1 text-xs font-medium text-slate-300">
+                  <span className="inline-flex rounded-full border border-white/[0.08] bg-white/[0.04] px-3 py-1 text-xs font-medium text-zinc-200">
                     {cap}
                   </span>
                 </li>
@@ -95,7 +95,7 @@ export function ProjectStubPage({ config }: { config: WorkStubConfig }) {
         >
           {config.bullets.map((item) => (
             <li key={item} className="flex gap-3">
-              <span className="mt-2 inline-block h-1 w-1 shrink-0 rounded-full bg-accent-zinc" />
+              <span className="mt-2 inline-block h-1 w-1 shrink-0 rounded-full bg-white/40" />
               {item}
             </li>
           ))}
@@ -132,7 +132,7 @@ export function ProjectStubPage({ config }: { config: WorkStubConfig }) {
         >
           <div className="grid gap-8 md:grid-cols-[1fr_auto] md:items-center">
             <div>
-              <p className="type-intro-wide mx-auto max-w-2xl text-slate-300 md:mx-0">
+              <p className="type-intro-wide mx-auto max-w-2xl text-zinc-200 md:mx-0">
                 Want a deeper technical walkthrough, delivery timeline, or product strategy breakdown
                 for this build?
               </p>
@@ -153,7 +153,7 @@ export function ProjectStubPage({ config }: { config: WorkStubConfig }) {
                         <path d={tech.icon.path} />
                       </svg>
                     </span>
-                    <span className="text-[11px] font-semibold leading-tight text-slate-200">{tech.label}</span>
+                    <span className="text-[11px] font-semibold leading-tight text-zinc-200">{tech.label}</span>
                   </div>
                 ))}
               </div>

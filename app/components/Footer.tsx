@@ -2,6 +2,7 @@
 
 import { Rocket } from "lucide-react";
 import Link from "next/link";
+import { SOCIAL_LINKS } from "../lib/constants";
 
 export function Footer() {
   return (
@@ -26,8 +27,11 @@ export function Footer() {
           </div>
           <div className="flex flex-col gap-6">
             <span className="type-meta-uppercase">Connect</span>
-            <FooterLink href="https://x.com">Twitter / X</FooterLink>
-            <FooterLink href="https://github.com">GitHub</FooterLink>
+            <FooterLink href={SOCIAL_LINKS.x}>Twitter / X</FooterLink>
+            <FooterLink href={SOCIAL_LINKS.github}>GitHub</FooterLink>
+            <FooterLink href={SOCIAL_LINKS.instagram}>Instagram</FooterLink>
+            <FooterLink href={SOCIAL_LINKS.facebook}>Facebook</FooterLink>
+            <FooterLink href={SOCIAL_LINKS.linkedin}>LinkedIn</FooterLink>
             <FooterLink href="#contact">Inquiry</FooterLink>
           </div>
         </div>
@@ -41,8 +45,14 @@ export function Footer() {
 }
 
 function FooterLink({ href, children }: { href: string; children: React.ReactNode }) {
+  const isExternal = href.startsWith("http");
   return (
-    <Link href={href} className="text-sm font-bold text-zinc-500 transition-colors hover:text-white">
+    <Link
+      href={href}
+      target={isExternal ? "_blank" : undefined}
+      rel={isExternal ? "noopener noreferrer" : undefined}
+      className="text-sm font-bold text-zinc-500 transition-colors hover:text-white"
+    >
       {children}
     </Link>
   );

@@ -48,15 +48,24 @@ export function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="mx-auto mt-16 max-w-xl text-left">
-      <div className="grid gap-8">
+    <form onSubmit={handleSubmit} className="mx-auto mt-12 w-full max-w-xl text-left sm:mt-16">
+      <div className="grid gap-6 sm:gap-8">
+        <input
+          name="website"
+          type="text"
+          tabIndex={-1}
+          autoComplete="off"
+          className="hidden"
+          aria-hidden="true"
+        />
+
         <div className="relative">
           <input
             required
             name="name"
             type="text"
             placeholder="Name"
-            className="w-full border-b border-white/10 bg-transparent py-4 text-lg font-medium text-white placeholder:text-zinc-700 focus:border-white focus:outline-none transition-colors"
+            className="w-full border-b border-white/10 bg-transparent py-4 text-base font-medium text-white placeholder:text-zinc-700 focus:border-white focus:outline-none transition-colors sm:text-lg"
           />
         </div>
         <div className="relative">
@@ -65,7 +74,7 @@ export function ContactForm() {
             name="email"
             type="email"
             placeholder="Email address"
-            className="w-full border-b border-white/10 bg-transparent py-4 text-lg font-medium text-white placeholder:text-zinc-700 focus:border-white focus:outline-none transition-colors"
+            className="w-full border-b border-white/10 bg-transparent py-4 text-base font-medium text-white placeholder:text-zinc-700 focus:border-white focus:outline-none transition-colors sm:text-lg"
           />
         </div>
         <div className="relative">
@@ -74,7 +83,7 @@ export function ContactForm() {
             name="message"
             rows={1}
             placeholder="What are you building?"
-            className="w-full border-b border-white/10 bg-transparent py-4 text-lg font-medium text-white placeholder:text-zinc-700 focus:border-white focus:outline-none transition-colors resize-none"
+            className="w-full border-b border-white/10 bg-transparent py-4 text-base font-medium text-white placeholder:text-zinc-700 focus:border-white focus:outline-none transition-colors resize-none sm:text-lg"
             onInput={(e) => {
               const target = e.target as HTMLTextAreaElement;
               target.style.height = "auto";
@@ -82,23 +91,39 @@ export function ContactForm() {
             }}
           />
         </div>
+
+        <div className="grid gap-6 sm:grid-cols-2">
+          <select
+            name="budget"
+            defaultValue=""
+            className="w-full border-b border-white/10 bg-transparent py-4 text-base font-medium text-zinc-200 focus:border-white focus:outline-none transition-colors"
+          >
+            <option value="" disabled className="bg-zinc text-zinc-400">Budget range</option>
+            <option value="<5k" className="bg-zinc text-zinc-200">Below $5k</option>
+            <option value="5k-15k" className="bg-zinc text-zinc-200">$5k – $15k</option>
+            <option value="15k-40k" className="bg-zinc text-zinc-200">$15k – $40k</option>
+            <option value="40k+" className="bg-zinc text-zinc-200">$40k+</option>
+          </select>
+
+          <select
+            name="timeline"
+            defaultValue=""
+            className="w-full border-b border-white/10 bg-transparent py-4 text-base font-medium text-zinc-200 focus:border-white focus:outline-none transition-colors"
+          >
+            <option value="" disabled className="bg-zinc text-zinc-400">Expected timeline</option>
+            <option value="asap" className="bg-zinc text-zinc-200">ASAP (within 2 weeks)</option>
+            <option value="1-2m" className="bg-zinc text-zinc-200">1-2 months</option>
+            <option value="3m+" className="bg-zinc text-zinc-200">3+ months</option>
+            <option value="exploring" className="bg-zinc text-zinc-200">Just exploring</option>
+          </select>
+        </div>
       </div>
 
-      <div className="mt-12 flex flex-col items-center justify-between gap-8 sm:flex-row">
-        <div className="flex items-center gap-3">
-          <span className="relative flex h-2 w-2">
-            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-500 opacity-75"></span>
-            <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500"></span>
-          </span>
-          <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-zinc-500">
-            Current capacity: 3 projects
-          </span>
-        </div>
-
+      <div className="mt-10 flex justify-center sm:justify-end">
         <button
           type="submit"
           disabled={status === "submitting"}
-          className="group flex items-center gap-3 rounded-full bg-white px-8 py-4 text-[13px] font-bold text-black transition-all hover:gap-5 disabled:opacity-50"
+          className="group flex w-full items-center justify-center gap-3 rounded-full bg-white px-8 py-4 text-[13px] font-bold text-black transition-all hover:gap-5 disabled:opacity-50 sm:w-auto"
         >
           {status === "submitting" ? "Sending..." : "Send Message"}
           <ArrowRight className="h-4 w-4" />

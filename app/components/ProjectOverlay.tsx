@@ -3,7 +3,6 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { X, Mail, ArrowUpRight } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
 import { useEffect } from "react";
 import { WORK_STUBS } from "./stub-projects";
 import { TeraMotorsContent } from "../work/teramotors/TeraMotorsContent";
@@ -53,8 +52,6 @@ export function ProjectOverlay({ activeSlug, onClose }: ProjectOverlayProps) {
     
     const config = WORK_STUBS[slug as keyof typeof WORK_STUBS];
     if (!config) return null;
-
-    const mailto = `mailto:build@vantlaunch.com?subject=${config.emailSubject}`;
 
     return (
       <div className="space-y-16">
@@ -190,4 +187,3 @@ export function ProjectOverlay({ activeSlug, onClose }: ProjectOverlayProps) {
     </AnimatePresence>
   );
 }
-

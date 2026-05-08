@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { fadeSlide, staggerSection } from "@/app/lib/motion-variants";
 import { PROCESS_PHASES, PROCESS_FLOW_PATH_D, EASE_CURSOR } from "@/app/lib/constants";
 
-export function ProcessSection({ prefersReducedMotion }: { prefersReducedMotion: boolean }) {
+export function ProcessSection() {
   return (
     <section
       id="process"
@@ -57,7 +57,7 @@ export function ProcessSection({ prefersReducedMotion }: { prefersReducedMotion:
           </div>
 
           <div className="grid grid-cols-3 gap-12">
-            {PROCESS_PHASES.map((phase, i) => (
+            {PROCESS_PHASES.map((phase) => (
               <motion.div
                 key={phase.num}
                 variants={fadeSlide}

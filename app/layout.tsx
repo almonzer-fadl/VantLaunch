@@ -22,9 +22,9 @@ const siteUrl =
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "VantLaunch | Automotive Micro-SaaS Studio",
+  title: "VantLaunch | TeraMotors Workshop Software",
   description:
-    "VantLaunch builds focused SaaS products for operational businesses, starting with automotive software.",
+    "VantLaunch builds TeraMotors, workshop management software for repair shops, with Gari previewed as the next automotive product.",
 };
 
 export default function RootLayout({

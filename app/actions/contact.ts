@@ -3,7 +3,7 @@
 import { Resend } from "resend";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
-const internalContactEmail = process.env.INTERNAL_CONTACT_EMAIL ?? "build@vantlaunch.com";
+const internalContactEmail = process.env.INTERNAL_CONTACT_EMAIL ?? "ops@vantlaunch.com";
 
 function escapeHtml(value: string) {
   return value.replace(/[<>&"]/g, (char) => {

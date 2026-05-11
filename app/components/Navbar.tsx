@@ -24,16 +24,16 @@ export function Navbar({ activeNav }: { activeNav: string }) {
 
         <div className="relative hidden items-center gap-10 md:flex">
           <NavLink href="#products" active={activeNav === "#products"}>
-            Products
+            TeraMotors
+          </NavLink>
+          <NavLink href="#pricing" active={activeNav === "#pricing"}>
+            Pricing
           </NavLink>
           <NavLink href="#demo" active={activeNav === "#demo"}>
             Demo
           </NavLink>
           <NavLink href="#ventures" active={activeNav === "#ventures"}>
-            Product notes
-          </NavLink>
-          <NavLink href="#comparison" active={activeNav === "#comparison"}>
-            Why us
+            Gari
           </NavLink>
           <NavLink href="#process" active={activeNav === "#process"}>
             How it works

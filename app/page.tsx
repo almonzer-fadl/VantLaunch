@@ -5,9 +5,9 @@ import { useEffect, useRef, useState } from "react";
 import { SpotlightLayer } from "./components/UI";
 import { Navbar } from "./components/Navbar";
 import { HeroSection } from "./components/sections/Hero";
-import { ComparisonSection } from "./components/sections/Comparison";
 import { ProductsSection } from "./components/sections/Products";
 import { ProductEvidenceSection } from "./components/sections/ProductEvidence";
+import { TeraMotorsPricingSection } from "./components/sections/TeraMotorsPricing";
 import { VenturesSection } from "./components/sections/Ventures";
 import { ProcessSection } from "./components/sections/Process";
 import { CTASection } from "./components/sections/CTA";
@@ -50,7 +50,7 @@ export default function Home() {
   };
 
   useEffect(() => {
-    const ids = ["#products", "#demo", "#ventures", "#comparison", "#process"];
+    const ids = ["#products", "#pricing", "#demo", "#ventures", "#process"];
     const targets = ids
       .map((id) => ({ id, el: document.querySelector(id) as HTMLElement | null }))
       .filter((x): x is { id: string; el: HTMLElement } => Boolean(x.el));
@@ -104,11 +104,10 @@ export default function Home() {
         <main className="relative z-10 flex-1">
           <HeroSection 
             prefersReducedMotion={prefersReducedMotion} 
-            onOpenProject={openProject} 
           />
           <ProductsSection />
+          <TeraMotorsPricingSection />
           <ProductEvidenceSection />
-          <ComparisonSection />
           <VenturesSection 
             prefersReducedMotion={prefersReducedMotion} 
             onOpenProject={openProject} 

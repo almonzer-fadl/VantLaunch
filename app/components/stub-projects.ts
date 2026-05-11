@@ -13,7 +13,7 @@ export type WorkStubConfig = {
   /** Extra context below the lede */
   detail: string;
   bullets: string[];
-  /** Product-facing capability chips (no speculative stack claims) */
+  /** Product-facing capability chips */
   capabilities: string[];
   emailSubject: string;
   figureCaption: string;
@@ -27,28 +27,28 @@ export const WORK_STUBS = {
     title: "Gari",
     metaTitle: "Gari | Auto Service Product — VantLaunch",
     metaDescription:
-      "Coming soon from VantLaunch: a trust-first auto service product for approvals, vehicle handover, and service visibility.",
+      "Gari previews a mobile app for booking auto service, managing vehicles, tracking jobs, and handling payments.",
     imageSrc: "/media/gari-home.webp",
     imageAlt: "Gari customer app — garage, service categories, and search",
-    badges: ["Automotive", "SwiftUI · Hono"],
+    badges: ["Automotive", "Coming soon"],
     cardSummary:
-      "Coming soon: a trust-first auto-service product with booking, payment, handover, and customer visibility flows.",
-    lede: "A product in development for clearer, more trustworthy auto-service journeys in Saudi Arabia.",
+      "A mobile app preview for booking service, managing vehicles, tracking jobs, and paying with confidence.",
+    lede: "Auto service, built around trust.",
     detail:
-      "Gari is being shaped around service discovery, vehicle profiles, active job tracking, payments, secure drop-off and collection controls, transparent quote approval, and customer-facing repair visibility. It sits next to TeraMotors in VantLaunch's automotive software focus.",
+      "Gari brings service discovery, vehicle profiles, active job tracking, payments, and handover controls into a clean mobile experience for drivers.",
     bullets: [
-      "Two-code authorization system for secure vehicle access and release",
-      "Full digital inspection (DVI) with photo and video evidence trails",
-      "Transparent quote approval and integrated Mada/Apple Pay payments via Moyasar",
-      "Role-aware native apps for both customers and workshops built with SwiftUI",
-      "Backend architecture planned around fast APIs, typed data access, and auditable service events",
+      "Find workshops and compare service options",
+      "Manage vehicles and service history",
+      "Track active jobs and parts orders",
+      "Pay with saved cards or digital wallets",
+      "Use handover controls for safer drop-off and collection",
     ],
     capabilities: [
-      "Hono · Bun · Prisma",
-      "SwiftUI Native",
-      "Moyasar Payments",
-      "Real-time Socket.io",
-      "Two-Code Authorization",
+      "Workshop discovery",
+      "Vehicle garage",
+      "Active job tracking",
+      "Digital payments",
+      "Drop-off and collection controls",
     ],
     emailSubject: "Gari%20project",
     figureCaption:

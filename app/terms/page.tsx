@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { CONTACT_EMAILS } from "@/app/lib/constants";
 
 export const metadata: Metadata = {
   title: "Terms — VantLaunch",
@@ -26,12 +27,29 @@ export default function TermsPage() {
           currently presented as an upcoming product, not as an immediately available paid service.
         </p>
         <p>
-          Any paid SaaS offering will show product-specific pricing, billing cadence, cancellation
-          terms, refund terms, and access details before checkout.
+          TeraMotors trial access starts after you create an account and add your workshop details.
+          The trial lasts 14 days unless a different period is agreed in writing. No credit card is
+          required during the trial.
+        </p>
+        <p>
+          After the trial, you can continue on an available paid plan such as Basic, Pro, or
+          Enterprise. Paid plans are billed monthly unless another billing period is agreed in
+          writing.
+        </p>
+        <p>
+          You can cancel before the trial ends to avoid moving to a paid plan. For paid plans, you
+          can request cancellation by emailing support before the next billing period.
+        </p>
+        <p>
+          Refund requests are accepted within 10 days of the first paid charge, or within 30 days
+          of a subscription renewal. Refunds are reviewed through support and may depend on access,
+          usage, duplicate charges, billing errors, or service availability.
         </p>
         <p>
           For support, billing, or legal inquiries, contact{" "}
-          <a className="text-white underline" href="mailto:build@vantlaunch.com">build@vantlaunch.com</a>.
+          <a className="text-white underline" href={`mailto:${CONTACT_EMAILS.product}`}>{CONTACT_EMAILS.product}</a>.
+          For company inquiries, contact{" "}
+          <a className="text-white underline" href={`mailto:${CONTACT_EMAILS.company}`}>{CONTACT_EMAILS.company}</a>.
         </p>
       </article>
     </main>

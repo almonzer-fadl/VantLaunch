@@ -6,7 +6,6 @@ import Image from "next/image";
 import { useEffect } from "react";
 import { WORK_STUBS } from "./stub-projects";
 import { TeraMotorsContent } from "../work/teramotors/TeraMotorsContent";
-import { SalaselContent } from "../work/salasel/SalaselContent";
 import {
   siBetterauth,
   siMongodb,
@@ -48,7 +47,6 @@ export function ProjectOverlay({ activeSlug, onClose }: ProjectOverlayProps) {
 
   function renderContent(slug: string) {
     if (slug === "teramotors") return <TeraMotorsContent onClose={onClose} />;
-    if (slug === "salasel") return <SalaselContent onClose={onClose} />;
     
     const config = WORK_STUBS[slug as keyof typeof WORK_STUBS];
     if (!config) return null;

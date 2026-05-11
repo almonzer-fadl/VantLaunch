@@ -1,13 +1,13 @@
-# VantLaunch Portfolio
+# VantLaunch
 
-A production-style portfolio site for VantLaunch built with Next.js App Router, TypeScript, Tailwind CSS v4, and Framer Motion.
+A production-style company site for VantLaunch, a micro-SaaS studio focused on operational businesses, starting with automotive software.
 
 ## What This Includes
 
-- High-conversion landing page sections (hero, comparison, ventures, process, CTA)
-- Dedicated case-study routes under `/work/*`
+- Landing page sections for owned products, positioning, process, and contact
+- Product routes for TeraMotors and Gari under `/work/*`
 - Interactive project overlay from the homepage
-- Contact form wired to a server action and Resend email delivery
+- Lead qualification form wired to a server action and Resend email delivery
 - SEO metadata and Open Graph setup on project pages
 
 ## Tech Stack

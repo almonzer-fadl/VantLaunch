@@ -36,7 +36,7 @@ export const ContactEmail = ({
               Hey {name},
             </Text>
             <Text style={text}>
-              Thanks for reaching out to VantLaunch. We&apos;ve received your message and our team is already reviewing what you&apos;re building.
+              Thanks for reaching out to VantLaunch. We&apos;ve received your message and our team is reviewing it.
             </Text>
             <Section style={quoteSection}>
               <Text style={quoteText}>
@@ -44,11 +44,11 @@ export const ContactEmail = ({
               </Text>
             </Section>
             <Text style={text}>
-              We usually reply within a business day. In the meantime, feel free to check out our latest deployments or follow our shipping rhythm on X.
+              We usually reply within one business day.
             </Text>
             <Hr style={hr} />
             <Text style={footer}>
-              Industrial-grade products for high-performance teams.
+              Focused SaaS products for operational businesses.
               <br />
               <Link href="https://vantlaunch.com" style={link}>vantlaunch.com</Link>
             </Text>

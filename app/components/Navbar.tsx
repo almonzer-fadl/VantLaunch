@@ -26,11 +26,11 @@ export function Navbar({ activeNav }: { activeNav: string }) {
           <NavLink href="#products" active={activeNav === "#products"}>
             Products
           </NavLink>
-          <NavLink href="#proof" active={activeNav === "#proof"}>
-            Proof
+          <NavLink href="#demo" active={activeNav === "#demo"}>
+            Demo
           </NavLink>
           <NavLink href="#ventures" active={activeNav === "#ventures"}>
-            Our work
+            Product notes
           </NavLink>
           <NavLink href="#comparison" active={activeNav === "#comparison"}>
             Why us
@@ -60,7 +60,7 @@ export function Navbar({ activeNav }: { activeNav: string }) {
               href="#contact"
               className="type-btn-solid inline-flex px-4 py-2 text-[12px] sm:px-6 sm:py-2.5 sm:text-[13px]"
             >
-              Get updates
+              Contact
             </Link>
           </MagneticWrap>
         </motion.div>

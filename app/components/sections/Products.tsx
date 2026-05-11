@@ -9,26 +9,18 @@ const PRODUCTS = [
   {
     name: "TeraMotors",
     stage: "Live",
-    oneLiner: "Workshop operations SaaS for job flow, invoicing, and compliance.",
+    oneLiner: "Workshop management for Saudi auto repair shops: customers, vehicles, job cards, ZATCA invoices, SAR reporting, and WhatsApp-ready workflows.",
     cta: "https://app.teramotor.cc/",
-  },
-  {
-    name: "Salasel",
-    stage: "Live",
-    oneLiner: "B2B procurement SaaS for hospitality teams and supplier orchestration.",
-    cta: "https://salasel.com.sa/",
-  },
-  {
-    name: "Araba",
-    stage: "Early access",
-    oneLiner: "Mobility-assistance SaaS with real-time routing and secure booking flows.",
-    cta: "mailto:build@vantlaunch.com?subject=Araba%20early%20access",
+    ctaLabel: "Open live app",
+    details: ["14-day trial", "Free, SAR 199, SAR 499 plans", "Built for Saudi workshops"],
   },
   {
     name: "Gari",
-    stage: "Early access",
-    oneLiner: "Trust-first auto-service SaaS with secure approval and handover controls.",
-    cta: "mailto:build@vantlaunch.com?subject=Gari%20early%20access",
+    stage: "Coming soon",
+    oneLiner: "Auto-service customer app focused on transparent booking, workshop discovery, vehicle profiles, active jobs, payments, and secure handover.",
+    cta: "/work/gari",
+    ctaLabel: "View product direction",
+    details: ["Customer app UI ready", "Two-code handover concept", "Payments and job tracking planned"],
   },
 ] as const;
 
@@ -44,9 +36,9 @@ export function ProductsSection() {
       >
         <motion.div variants={fadeSlide} className="mb-14 text-center md:mb-16">
           <p className="type-meta-uppercase mb-4">Our SaaS</p>
-          <h2 className="type-display-xl mb-5 text-balance">Micro SaaS products solving operational pain.</h2>
+          <h2 className="type-display-xl mb-5 text-balance">Owned products for automotive operations.</h2>
           <p className="type-intro mx-auto max-w-3xl text-center">
-            We build and operate our own SaaS products. Join early access, share your workflow, and help shape upcoming releases.
+            VantLaunch is focused on software we own and operate. TeraMotors is live; Gari is the next product in development.
           </p>
         </motion.div>
 
@@ -66,13 +58,20 @@ export function ProductsSection() {
                   </span>
                 </div>
                 <p className="text-sm leading-relaxed text-zinc-300">{product.oneLiner}</p>
+                <ul className="mt-5 grid gap-2">
+                  {product.details.map((detail) => (
+                    <li key={detail} className="rounded-xl border border-white/10 bg-white/[0.03] px-3 py-2 text-xs font-semibold text-zinc-300">
+                      {detail}
+                    </li>
+                  ))}
+                </ul>
                 <Link
                   href={product.cta}
                   target={external ? "_blank" : undefined}
                   rel={external ? "noopener noreferrer" : undefined}
                   className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-white/90 hover:text-white"
                 >
-                  {product.stage === "Live" ? "Open product" : "Join early access"}
+                  {product.ctaLabel}
                   <ArrowUpRight className="h-4 w-4" />
                 </Link>
               </motion.article>

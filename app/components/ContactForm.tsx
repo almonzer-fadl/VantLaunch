@@ -36,7 +36,7 @@ export function ContactForm() {
           <Check className="h-8 w-8" />
         </div>
         <h3 className="text-2xl font-bold text-white">Message received.</h3>
-        <p className="mt-2 text-zinc-500">You&apos;re on our SaaS updates list. We&apos;ll follow up shortly.</p>
+        <p className="mt-2 text-zinc-500">Thanks for contacting VantLaunch. We&apos;ll follow up shortly.</p>
         <button 
           onClick={() => setStatus("idle")}
           className="mt-8 text-sm font-bold text-white underline underline-offset-4"
@@ -78,6 +78,28 @@ export function ContactForm() {
           />
         </div>
         <div className="grid gap-6 sm:grid-cols-2">
+          <input
+            required
+            name="company"
+            type="text"
+            placeholder="Company / shop name"
+            className="w-full border-b border-white/10 bg-transparent py-4 text-base font-medium text-white placeholder:text-zinc-700 focus:border-white focus:outline-none transition-colors"
+          />
+          <select
+            name="role"
+            defaultValue=""
+            className="w-full border-b border-white/10 bg-transparent py-4 text-base font-medium text-zinc-200 focus:border-white focus:outline-none transition-colors"
+            required
+          >
+            <option value="" disabled className="bg-zinc text-zinc-400">I am a...</option>
+            <option value="owner-founder" className="bg-zinc text-zinc-200">Owner / founder</option>
+            <option value="operations" className="bg-zinc text-zinc-200">Operations lead</option>
+            <option value="technical" className="bg-zinc text-zinc-200">Technical lead</option>
+            <option value="investor-partner" className="bg-zinc text-zinc-200">Investor / partner</option>
+            <option value="other" className="bg-zinc text-zinc-200">Other</option>
+          </select>
+        </div>
+        <div className="grid gap-6 sm:grid-cols-2">
           <select
             name="product_interest"
             defaultValue=""
@@ -86,10 +108,8 @@ export function ContactForm() {
           >
             <option value="" disabled className="bg-zinc text-zinc-400">Product interest</option>
             <option value="teramotors" className="bg-zinc text-zinc-200">TeraMotors</option>
-            <option value="salasel" className="bg-zinc text-zinc-200">Salasel</option>
-            <option value="araba" className="bg-zinc text-zinc-200">Araba</option>
             <option value="gari" className="bg-zinc text-zinc-200">Gari</option>
-            <option value="general" className="bg-zinc text-zinc-200">General updates</option>
+            <option value="general" className="bg-zinc text-zinc-200">General VantLaunch inquiry</option>
           </select>
 
           <select
@@ -111,7 +131,7 @@ export function ContactForm() {
             required
             name="message"
             rows={1}
-            placeholder="Tell us your use case in one paragraph"
+            placeholder="Tell us what you want to solve"
             className="w-full border-b border-white/10 bg-transparent py-4 text-base font-medium text-white placeholder:text-zinc-700 focus:border-white focus:outline-none transition-colors resize-none sm:text-lg"
             onInput={(e) => {
               const target = e.target as HTMLTextAreaElement;
@@ -128,7 +148,7 @@ export function ContactForm() {
           disabled={status === "submitting"}
           className="group flex w-full items-center justify-center gap-3 rounded-full bg-white px-8 py-4 text-[13px] font-bold text-black transition-all hover:gap-5 disabled:opacity-50 sm:w-auto"
         >
-          {status === "submitting" ? "Sending..." : "Send Message"}
+          {status === "submitting" ? "Sending..." : "Contact VantLaunch"}
           <ArrowRight className="h-4 w-4" />
         </button>
       </div>
@@ -138,7 +158,7 @@ export function ContactForm() {
           {errorMessage}
         </p>
       )}
-      <p className="mt-4 text-center text-xs text-zinc-500 sm:text-right">No spam. Only product updates and relevant replies.</p>
+      <p className="mt-4 text-center text-xs text-zinc-500 sm:text-right">No spam. Product inquiries and relevant replies only.</p>
     </form>
   );
 }

@@ -25,6 +25,30 @@ export const metadata: Metadata = {
   title: "VantLaunch | TeraMotors Workshop Software",
   description:
     "VantLaunch builds TeraMotors, workshop management software for repair shops, with Gari previewed as the next automotive product.",
+  icons: {
+    icon: "/vantlaunch-logo.png",
+    apple: "/vantlaunch-logo.png",
+  },
+  openGraph: {
+    title: "VantLaunch | TeraMotors Workshop Software",
+    description:
+      "VantLaunch builds focused automotive SaaS products, starting with TeraMotors workshop management software.",
+    images: [
+      {
+        url: "/vantlaunch-logo.jpeg",
+        width: 500,
+        height: 500,
+        alt: "VantLaunch logo",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary",
+    title: "VantLaunch | TeraMotors Workshop Software",
+    description:
+      "Focused automotive SaaS products, starting with TeraMotors workshop management software.",
+    images: ["/vantlaunch-logo.jpeg"],
+  },
 };
 
 export default function RootLayout({

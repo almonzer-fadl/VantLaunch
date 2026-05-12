@@ -1,7 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Rocket, Globe } from "lucide-react";
+import { Globe } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { EASE_CURSOR, SOCIAL_LINKS } from "@/app/lib/constants";
 import { MagneticWrap } from "./UI";
@@ -16,9 +17,14 @@ export function Navbar({ activeNav }: { activeNav: string }) {
           transition={{ duration: 0.55, ease: EASE_CURSOR }}
           className="flex items-center gap-3"
         >
-          <div className="w-9 h-9 bg-white text-black rounded-xl flex items-center justify-center shadow-lg hover:rotate-12 transition-transform cursor-pointer">
-            <Rocket className="w-5 h-5 fill-black" />
-          </div>
+          <Image
+            src="/vantlaunch-logo.png"
+            alt="VantLaunch logo"
+            width={40}
+            height={40}
+            priority
+            className="h-10 w-10 rounded-xl object-contain shadow-lg transition-transform hover:rotate-6"
+          />
           <span className="type-brand-xl">VantLaunch</span>
         </motion.div>
 

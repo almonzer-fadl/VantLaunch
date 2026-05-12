@@ -1,45 +1,61 @@
 # VantLaunch
 
-A production-style company site for VantLaunch, a micro-SaaS studio focused on operational businesses, starting with automotive software.
+VantLaunch is a micro-SaaS studio building focused software for operational businesses. The current portfolio is centered on automotive SaaS products, led by TeraMotors, a live workshop management platform for repair shops.
 
-## What This Includes
+## Products
 
-- Landing page sections for owned products, positioning, process, and contact
-- Product routes for TeraMotors and Gari under `/work/*`
-- Interactive project overlay from the homepage
-- Lead qualification form wired to a server action and Resend email delivery
-- SEO metadata and Open Graph setup on project pages
+### TeraMotors
+
+TeraMotors is a live SaaS product for auto repair workshops. It helps shops manage customers, vehicles, job cards, inspections, invoices, reports, bookings, and daily workshop operations from one workspace.
+
+### Gari
+
+Gari is a coming-soon automotive service platform focused on transparent customer-to-workshop workflows, including booking, inspection, quote approval, payment, and vehicle handover flows.
+
+## What This Website Does
+
+- Presents VantLaunch as the product studio behind TeraMotors and Gari
+- Shows real product screens, pricing, demo media, and product evidence
+- Routes visitors to TeraMotors registration and checkout
+- Provides privacy, terms, refund, cancellation, and contact information
+- Captures qualified leads through a contact form
+- Hosts product pages under `/work/teramotors` and `/work/gari`
 
 ## Tech Stack
 
-- Next.js 16 (App Router)
-- React 19 + TypeScript 5
-- Tailwind CSS v4
+- Next.js App Router
+- React
+- TypeScript
+- Tailwind CSS
 - Framer Motion
-- Resend (contact email)
-- Vercel Analytics + Speed Insights
+- Resend for contact email delivery
+- Vercel Analytics and Speed Insights
 
 ## Local Development
 
-1. Install dependencies:
+Install dependencies:
 
 ```bash
 npm install
 ```
 
-2. Create `.env.local`:
+Create `.env.local`:
 
 ```bash
 RESEND_API_KEY=your_resend_api_key
 ```
 
-3. Run dev server:
+Run the development server:
 
 ```bash
 npm run dev
 ```
 
-4. Open `http://localhost:3000`
+Open:
+
+```text
+http://localhost:3000
+```
 
 ## Quality Checks
 
@@ -48,31 +64,40 @@ npm run lint
 npm run build
 ```
 
-## Contact Email Flow
+## Contact Flow
 
-`app/actions/contact.ts` sends:
+The contact form in `app/actions/contact.ts` sends:
 
-- Confirmation email to the visitor
-- Notification email to `build@vantlaunch.com`
+- A confirmation email to the visitor
+- A lead notification email to `build@vantlaunch.com`
 
-Before production deployment, ensure:
-
-- `RESEND_API_KEY` is set in Vercel environment variables
-- Sending domain for `noreply@vantlaunch.com` is verified in Resend
+For production, make sure `RESEND_API_KEY` is configured in the deployment environment and the sending domain is verified in Resend.
 
 ## Project Structure
 
-- `app/page.tsx` homepage composition
-- `app/components/sections/*` landing sections
-- `app/components/ProjectOverlay.tsx` in-page case-study overlay
-- `app/work/*` standalone project pages
-- `app/actions/contact.ts` contact server action
+```text
+app/
+  page.tsx                    # Homepage composition
+  components/sections/        # Homepage sections
+  components/ProjectOverlay.tsx
+  actions/contact.ts          # Lead/contact server action
+  work/teramotors/            # TeraMotors product page
+  work/gari/                  # Gari product page
+  privacy/                    # Privacy policy
+  terms/                      # Terms and policy pages
+public/
+  media/                      # Product screenshots and demo assets
+```
 
 ## Deployment
 
-Optimized for Vercel:
+This project is optimized for Vercel.
 
-1. Push repo to GitHub
-2. Import project in Vercel
-3. Add environment variables (`RESEND_API_KEY`)
-4. Deploy
+1. Push the repository to GitHub.
+2. Import the project in Vercel.
+3. Add `RESEND_API_KEY` to environment variables.
+4. Deploy.
+
+## Status
+
+TeraMotors is live and usable. Gari is in development and presented as a coming-soon product.

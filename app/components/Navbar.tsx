@@ -30,19 +30,19 @@ export function Navbar({ activeNav }: { activeNav: string }) {
 
         <div className="relative hidden items-center gap-10 md:flex">
           <NavLink href="#products" active={activeNav === "#products"}>
-            TeraMotors
+            Products
           </NavLink>
           <NavLink href="#pricing" active={activeNav === "#pricing"}>
-            Pricing
+            Studio
           </NavLink>
           <NavLink href="#demo" active={activeNav === "#demo"}>
             Demo
           </NavLink>
           <NavLink href="#ventures" active={activeNav === "#ventures"}>
-            Gari
+            Ventures
           </NavLink>
           <NavLink href="#process" active={activeNav === "#process"}>
-            How it works
+            Process
           </NavLink>
         </div>
 

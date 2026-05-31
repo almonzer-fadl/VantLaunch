@@ -31,6 +31,9 @@ export function ProjectOverlay({ activeSlug, onClose }: ProjectOverlayProps) {
     const config = WORK_STUBS[slug as keyof typeof WORK_STUBS];
     if (!config) return null;
 
+    const isGari = slug === "gari";
+    const isSpeakBill = slug === "speakbill";
+
     return (
       <div className="space-y-16">
         <section>
@@ -62,10 +65,31 @@ export function ProjectOverlay({ activeSlug, onClose }: ProjectOverlayProps) {
           )}
         </section>
 
-        {config.slug === "gari" ? (
+        {isGari ? (
           <div className="space-y-12">
             <GariPhonePreview />
             <GariScreenGallery />
+          </div>
+        ) : isSpeakBill ? (
+          <div className="grid gap-4 sm:grid-cols-2">
+            {[
+              { src: "/media/speakbill-dashboard.png", alt: "SpeakBill dashboard" },
+              { src: "/media/speakbill-mic.png", alt: "SpeakBill voice input" },
+              { src: "/media/speakbill-invoice-preview.png", alt: "SpeakBill invoice preview" },
+              { src: "/media/speakbill-invoice-review.png", alt: "SpeakBill invoice review" },
+            ].map((img) => (
+              <figure key={img.src} className="overflow-hidden rounded-2xl border border-white/10 bg-zinc-surface">
+                <div className="relative aspect-[16/10] w-full bg-[#0a0f1a]">
+                  <Image
+                    src={img.src}
+                    alt={img.alt}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 480px"
+                    className="object-contain object-center"
+                  />
+                </div>
+              </figure>
+            ))}
           </div>
         ) : (
           <figure className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-zinc-surface shadow-2xl">
@@ -92,24 +116,42 @@ export function ProjectOverlay({ activeSlug, onClose }: ProjectOverlayProps) {
         </ul>
 
         <section className="rounded-[2.5rem] border border-white/5 bg-white/[0.02] p-10 md:p-14">
-          <div>
-            <h3 className="text-2xl font-bold text-white">Want updates on Gari?</h3>
-            <p className="mt-4 max-w-2xl text-lg text-zinc-400">
-              Send a note if you want to follow the product, discuss pilot interest, or talk about
-              automotive workflows.
-            </p>
-            <button
-              onClick={() => {
-                onClose();
-                window.location.hash = "contact";
-              }}
-              className="type-email-cta-solid mt-10"
-            >
-              <Mail className="h-5 w-5" />
-              Contact VantLaunch
-              <ArrowUpRight className="h-5 w-5 opacity-50" />
-            </button>
-          </div>
+          {isSpeakBill ? (
+            <div>
+              <h3 className="text-2xl font-bold text-white">Ready to try SpeakBill?</h3>
+              <p className="mt-4 max-w-2xl text-lg text-zinc-400">
+                Live now. Start creating invoices by voice in seconds.
+              </p>
+              <a
+                href="https://speakbill.vantlaunch.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="type-email-cta-solid mt-10 inline-flex"
+              >
+                Visit SpeakBill
+                <ArrowUpRight className="h-5 w-5 opacity-70" />
+              </a>
+            </div>
+          ) : (
+            <div>
+              <h3 className="text-2xl font-bold text-white">Want updates on Gari?</h3>
+              <p className="mt-4 max-w-2xl text-lg text-zinc-400">
+                Send a note if you want to follow the product, discuss pilot interest, or talk about
+                automotive workflows.
+              </p>
+              <button
+                onClick={() => {
+                  onClose();
+                  window.location.hash = "contact";
+                }}
+                className="type-email-cta-solid mt-10"
+              >
+                <Mail className="h-5 w-5" />
+                Contact VantLaunch
+                <ArrowUpRight className="h-5 w-5 opacity-50" />
+              </button>
+            </div>
+          )}
         </section>
       </div>
     );

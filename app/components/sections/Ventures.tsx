@@ -34,10 +34,10 @@ export function VenturesSection({
       >
         <motion.div variants={fadeSlide} className="mb-16 flex flex-col gap-8 md:mb-24 md:flex-row md:items-end md:justify-between">
           <div className="max-w-2xl">
-            <p className="type-meta-uppercase mb-4">Gari preview</p>
-            <h2 className="type-display-lg">Auto service, built around trust.</h2>
+            <p className="type-meta-uppercase mb-4">Coming up</p>
+            <h2 className="type-display-lg">What we're building next.</h2>
             <p className="type-intro mt-6 max-w-xl !text-zinc-300">
-              Gari previews a smoother way for drivers to find workshops, manage vehicles, track jobs, and pay with confidence.
+              Products in development and early access — built with the same speed and standards.
             </p>
           </div>
         </motion.div>
@@ -52,6 +52,7 @@ export function VenturesSection({
             reduced={prefersReducedMotion}
             onOpen={() => onOpenProject("gari")}
           />
+          <SpeakBillPreviewCard onOpen={() => onOpenProject("speakbill")} />
         </motion.div>
       </motion.div>
     </section>
@@ -70,7 +71,7 @@ function GariVentureCard({
   onOpen: () => void;
 }) {
   return (
-    <motion.div variants={fadeSlide} className="md:col-span-12">
+    <motion.div variants={fadeSlide} className="md:col-span-8">
       <div onClick={onOpen} className="h-full cursor-pointer group">
         <CardPointerGlow className="relative flex h-full min-h-[520px] flex-col justify-end overflow-hidden rounded-[3rem] border border-white/5 bg-zinc-surface transition-colors hover:border-white/20 lg:min-h-[560px]">
           <motion.div
@@ -105,11 +106,59 @@ function GariVentureCard({
 
           <div className="relative z-10 max-w-2xl p-10 md:p-12">
             <h3 className="type-portfolio-product-title">Gari</h3>
-            <p className="type-portfolio-product-body text-zinc-200">
+            <p className="text-zinc-200 mt-3 text-lg leading-relaxed">
               Find workshops, track service, manage vehicles, and pay from one mobile app.
             </p>
-            <span className="type-link-strong">
+            <span className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-white/90">
               View Gari screens
+              <ArrowUpRight className="h-5 w-5" />
+            </span>
+          </div>
+        </CardPointerGlow>
+      </div>
+    </motion.div>
+  );
+}
+
+function SpeakBillPreviewCard({ onOpen }: { onOpen: () => void }) {
+  return (
+    <motion.div variants={fadeSlide} className="md:col-span-4">
+      <div onClick={onOpen} className="h-full cursor-pointer group">
+        <CardPointerGlow className="relative flex h-full min-h-[520px] flex-col justify-end overflow-hidden rounded-[3rem] border border-white/5 bg-zinc-surface transition-colors hover:border-white/20 lg:min-h-[560px]">
+          <div className="absolute inset-0 z-0 bg-[#070b14]">
+            <div className="absolute inset-0 flex items-start justify-center pt-10">
+              <div className="w-[42%] min-w-[140px] max-w-[200px] overflow-hidden rounded-[1.6rem] border border-white/12 bg-white shadow-[0_26px_90px_-42px_rgba(0,0,0,0.9)] transition-transform duration-700 group-hover:scale-[1.025]">
+                <div className="relative aspect-[9/19] w-full">
+                  <Image
+                    src="/media/speakbill-phone-mic.png"
+                    alt="SpeakBill voice input on phone"
+                    fill
+                    sizes="200px"
+                    className="object-cover object-top"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="absolute inset-0 bg-gradient-to-t from-zinc via-zinc/35 to-transparent" />
+          
+          <div className="absolute top-10 left-10 flex h-12 w-12 items-center justify-center rounded-xl border border-white/10 bg-white/5 overflow-hidden">
+            <Image
+              src="/media/speakbill-logo.png"
+              alt="SpeakBill logo"
+              width={32}
+              height={32}
+              className="object-contain"
+            />
+          </div>
+          
+          <div className="relative z-10 max-w-2xl p-10 md:p-12">
+            <h3 className="type-portfolio-product-title">SpeakBill</h3>
+            <p className="text-zinc-200 mt-3 text-lg leading-relaxed">
+              Voice-to-invoice. Speak and get a clean invoice in seconds.
+            </p>
+            <span className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-white/90 group-hover:text-white transition-colors">
+              View details
               <ArrowUpRight className="h-5 w-5" />
             </span>
           </div>

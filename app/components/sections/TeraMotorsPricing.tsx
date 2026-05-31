@@ -2,71 +2,30 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ArrowUpRight, Check } from "lucide-react";
-import { CONTACT_EMAILS, TERAMOTORS_REGISTER_URL } from "@/app/lib/constants";
+import { ArrowRight, Code, Rocket, Repeat, Users } from "lucide-react";
+import { CONTACT_EMAILS } from "@/app/lib/constants";
 import { fadeSlide, staggerSection } from "@/app/lib/motion-variants";
 
-const plans = [
+const PILLARS = [
   {
-    name: "Free",
-    price: "Free",
-    description: "Explore the basics before choosing a paid plan.",
-    cta: "Start free trial",
-    href: TERAMOTORS_REGISTER_URL,
-    highlighted: false,
+    title: "We build fast",
+    body: "Zero to live in weeks, not months. Tight scope, clean execution, real users from day one.",
+    Icon: Code,
   },
   {
-    name: "Basic",
-    price: "$49",
-    suffix: "/mo",
-    description: "Core tools for small and growing workshops.",
-    cta: "Start free trial",
-    href: TERAMOTORS_REGISTER_URL,
-    highlighted: false,
+    title: "We ship for scale",
+    body: "Every product is engineered to handle growth — from the first user to the hundred thousandth.",
+    Icon: Rocket,
   },
   {
-    name: "Pro",
-    price: "$129",
-    suffix: "/mo",
-    description: "More control for busy teams and higher job volume.",
-    cta: "Start free trial",
-    href: TERAMOTORS_REGISTER_URL,
-    highlighted: true,
+    title: "We iterate on traction",
+    body: "No vanity metrics. We measure adoption, retention, and revenue — then double down on what works.",
+    Icon: Repeat,
   },
   {
-    name: "Enterprise",
-    price: "Custom",
-    description: "Custom setup for multi-location or larger operations.",
-    cta: "Request setup",
-    href: TERAMOTORS_REGISTER_URL,
-    highlighted: false,
-  },
-] as const;
-
-const features = [
-  "Customer management",
-  "Vehicle tracking",
-  "Job cards",
-  "Basic invoicing",
-  "Tax-ready invoice records",
-] as const;
-
-const accessSteps = [
-  {
-    title: "Create account",
-    body: "Add your shop details and start setting up the workspace.",
-  },
-  {
-    title: "Start the trial",
-    body: "Use TeraMotors for 14 days with no credit card required.",
-  },
-  {
-    title: "Add your workflow",
-    body: "Set up customers, vehicles, job cards, invoices, and reports.",
-  },
-  {
-    title: "Choose a plan",
-    body: "Continue with the plan that fits your workshop.",
+    title: "We work directly",
+    body: "You talk to the builders — no account managers, no handoffs, no fluff.",
+    Icon: Users,
   },
 ] as const;
 
@@ -80,91 +39,52 @@ export function TeraMotorsPricingSection() {
         viewport={{ once: true, margin: "-80px" }}
         variants={staggerSection}
       >
-        <motion.div variants={fadeSlide} className="mx-auto mb-12 max-w-3xl text-center">
-          <p className="type-meta-uppercase mb-4">TeraMotors pricing</p>
-          <h2 className="type-display-xl mb-5 text-balance">Start free. Upgrade when ready.</h2>
+        <motion.div variants={fadeSlide} className="mx-auto mb-16 max-w-3xl text-center md:mb-20">
+          <p className="type-meta-uppercase mb-4">How we work</p>
+          <h2 className="type-display-xl mb-5 text-balance">Build. Ship. Scale.</h2>
           <p className="type-intro text-zinc-300">
-            Create an account, try TeraMotors for 14 days, then choose the plan that fits your shop.
+            We turn ideas into products — fast. Whether it's a workshop management system, voice-to-invoice tool,
+            or a mobile service platform, the process stays the same.
           </p>
         </motion.div>
 
-        <motion.div variants={staggerSection} className="grid gap-4 lg:grid-cols-4">
-          {plans.map((plan) => (
+        <motion.div variants={staggerSection} className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {PILLARS.map((pillar) => (
             <motion.article
-              key={plan.name}
+              key={pillar.title}
               variants={fadeSlide}
-              className={`relative rounded-2xl border p-6 ${
-                plan.highlighted
-                  ? "border-orange-500/70 bg-orange-500/[0.08]"
-                  : "border-white/10 bg-zinc-surface/70"
-              }`}
+              className="rounded-2xl border border-white/10 bg-zinc-surface/70 p-6 transition-colors hover:border-white/20"
             >
-              {plan.highlighted && (
-                <span className="absolute right-4 top-4 rounded-full bg-orange-500 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.14em] text-white">
-                  Popular
-                </span>
-              )}
-              <h3 className="text-xl font-bold text-white">{plan.name}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-zinc-400">{plan.description}</p>
-              <div className="mt-6 flex items-end gap-1">
-                <span className="text-3xl font-bold tracking-tight text-white">{plan.price}</span>
-                {"suffix" in plan ? <span className="pb-1 text-sm font-semibold text-zinc-500">{plan.suffix}</span> : null}
+              <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white">
+                <pillar.Icon className="h-5 w-5" />
               </div>
-              <ul className="mt-6 grid gap-2">
-                {features.map((feature) => (
-                  <li key={feature} className="flex items-center gap-2 text-sm text-zinc-300">
-                    <Check className="h-4 w-4 shrink-0 text-orange-400" />
-                    {feature}
-                  </li>
-                ))}
-              </ul>
-              <Link
-                href={plan.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`mt-7 inline-flex w-full items-center justify-center gap-2 rounded-full px-5 py-3 text-sm font-bold transition-transform hover:-translate-y-0.5 ${
-                  plan.highlighted ? "bg-orange-500 text-white" : "bg-white text-black"
-                }`}
-              >
-                {plan.cta}
-                <ArrowUpRight className="h-4 w-4" />
-              </Link>
+              <h3 className="text-lg font-bold text-white mb-3">{pillar.title}</h3>
+              <p className="text-sm leading-relaxed text-zinc-400">{pillar.body}</p>
             </motion.article>
           ))}
         </motion.div>
 
-        <motion.div variants={fadeSlide} className="mt-12 grid gap-4 lg:grid-cols-[1fr_0.85fr]">
-          <section className="rounded-2xl border border-white/10 bg-zinc-surface/70 p-6 md:p-8">
-            <h3 className="text-2xl font-bold text-white">Start using TeraMotors</h3>
-            <div className="mt-6 grid gap-3 sm:grid-cols-2">
-              {accessSteps.map((step, index) => (
-                <div key={step.title} className="rounded-xl border border-white/10 bg-white/[0.03] p-4">
-                  <span className="text-xs font-bold uppercase tracking-[0.16em] text-orange-400">
-                    Step {index + 1}
-                  </span>
-                  <p className="mt-2 font-bold text-white">{step.title}</p>
-                  <p className="mt-2 text-sm leading-relaxed text-zinc-400">{step.body}</p>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          <section className="rounded-2xl border border-white/10 bg-white/[0.03] p-6 md:p-8">
-            <h3 className="text-2xl font-bold text-white">Simple cancellation</h3>
-            <div className="mt-5 space-y-4 text-sm leading-relaxed text-zinc-300">
-              <p>You can cancel before the 14-day trial ends and avoid moving to a paid plan.</p>
-              <p>Paid plans are billed monthly unless another billing period is agreed in writing.</p>
-              <p>
-                Refund requests are accepted within 10 days of the first paid charge, or within 30
-                days of a subscription renewal. Each request is reviewed against access, usage,
-                duplicate charges, billing errors, and service availability.
-              </p>
-              <p>
-                For billing, cancellation, or refund requests, email{" "}
-                <a className="text-white underline" href={`mailto:${CONTACT_EMAILS.product}`}>
-                  {CONTACT_EMAILS.product}
-                </a>.
-              </p>
+        <motion.div variants={fadeSlide} className="mt-12">
+          <section className="rounded-[2rem] border border-white/10 bg-white/[0.02] p-8 md:p-12 text-center">
+            <h3 className="text-2xl font-bold text-white md:text-3xl">Have a product idea?</h3>
+            <p className="mt-4 mx-auto max-w-xl text-base text-zinc-400 leading-relaxed">
+              We take on select projects — from MVPs to full product builds. If you have a real business problem
+              that needs a focused SaaS solution, let's talk.
+            </p>
+            <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Link
+                href="#contact"
+                className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-3.5 text-sm font-bold text-black transition-all hover:-translate-y-0.5 hover:shadow-[0_12px_24px_-10px_rgba(255,255,255,0.5)]"
+              >
+                Start a project
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+              <a
+                href={`mailto:${CONTACT_EMAILS.product}`}
+                className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-8 py-3.5 text-sm font-bold text-white transition-colors hover:bg-white/10"
+              >
+                {CONTACT_EMAILS.product}
+              </a>
             </div>
           </section>
         </motion.div>

@@ -19,18 +19,19 @@ export function Footer() {
             />
             <span className="type-brand-xl !text-2xl">VantLaunch</span>
           </div>
-          <p className="text-zinc-500 leading-relaxed">
-            Practical software for automotive teams, starting with TeraMotors.
+          <p className="text-zinc-500 leading-relaxed mb-3">
+            Build. Ship. Scale.
+          </p>
+          <p className="text-sm text-zinc-600">
+            A product studio shipping focused SaaS for real businesses.
           </p>
         </div>
         <div className="grid w-full grid-cols-1 gap-10 sm:grid-cols-3 md:w-auto md:gap-16 lg:gap-20">
           <div className="flex flex-col gap-6">
-            <span className="type-meta-uppercase">Explore</span>
-            <FooterLink href="#products">TeraMotors</FooterLink>
-            <FooterLink href="#pricing">Pricing</FooterLink>
-            <FooterLink href="#demo">Demo</FooterLink>
+            <span className="type-meta-uppercase">Products</span>
+            <FooterLink href="https://app.teramotor.cc/register">TeraMotors</FooterLink>
+            <FooterLink href="https://speakbill.vantlaunch.com">SpeakBill</FooterLink>
             <FooterLink href="#ventures">Gari</FooterLink>
-            <FooterLink href="#process">How it works</FooterLink>
           </div>
           <div className="flex flex-col gap-6">
             <span className="type-meta-uppercase">Social</span>
@@ -49,7 +50,7 @@ export function Footer() {
       </div>
       <div className="mx-auto mt-16 flex max-w-7xl flex-col items-center justify-between gap-4 border-t border-white/5 pt-10 md:mt-24 md:flex-row">
         <p className="text-xs text-zinc-600">© 2026 VantLaunch. All rights reserved.</p>
-        <p className="text-xs text-zinc-600 font-normal">Built for real automotive workflows.</p>
+        <p className="text-xs text-zinc-500 font-medium">Build. Ship. Scale.</p>
       </div>
     </footer>
   );

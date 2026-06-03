@@ -39,7 +39,7 @@ export function ContactForm() {
         <p className="mt-2 text-[#74695b]">We&apos;ll review the details and follow up shortly.</p>
         <button 
           onClick={() => setStatus("idle")}
-          className="mt-8 text-sm font-bold text-blue-700 underline underline-offset-4"
+          className="mt-8 text-sm font-bold text-[#004225] underline underline-offset-4"
         >
           Send another
         </button>
@@ -65,7 +65,7 @@ export function ContactForm() {
             name="name"
             type="text"
             placeholder="Name"
-            className="w-full border-b border-black/10 bg-transparent py-4 text-base font-medium text-[#11100e] placeholder:text-[#9b9182] transition-colors focus:border-blue-700 focus:outline-none sm:text-lg"
+            className="w-full border-b border-black/10 bg-transparent py-4 text-base font-medium text-[#11100e] placeholder:text-[#9b9182] transition-colors focus:border-[#004225] focus:outline-none sm:text-lg"
           />
         </div>
         <div className="relative">
@@ -74,7 +74,7 @@ export function ContactForm() {
             name="email"
             type="email"
             placeholder="Email address"
-            className="w-full border-b border-black/10 bg-transparent py-4 text-base font-medium text-[#11100e] placeholder:text-[#9b9182] transition-colors focus:border-blue-700 focus:outline-none sm:text-lg"
+            className="w-full border-b border-black/10 bg-transparent py-4 text-base font-medium text-[#11100e] placeholder:text-[#9b9182] transition-colors focus:border-[#004225] focus:outline-none sm:text-lg"
           />
         </div>
         <div className="grid gap-6 sm:grid-cols-2">
@@ -83,12 +83,12 @@ export function ContactForm() {
             name="company"
             type="text"
             placeholder="Company / shop name"
-            className="w-full border-b border-black/10 bg-transparent py-4 text-base font-medium text-[#11100e] placeholder:text-[#9b9182] transition-colors focus:border-blue-700 focus:outline-none"
+            className="w-full border-b border-black/10 bg-transparent py-4 text-base font-medium text-[#11100e] placeholder:text-[#9b9182] transition-colors focus:border-[#004225] focus:outline-none"
           />
           <select
             name="role"
             defaultValue=""
-            className="w-full border-b border-black/10 bg-transparent py-4 text-base font-medium text-[#11100e] transition-colors focus:border-blue-700 focus:outline-none"
+            className="w-full border-b border-black/10 bg-transparent py-4 text-base font-medium text-[#11100e] transition-colors focus:border-[#004225] focus:outline-none"
             required
           >
             <option value="" disabled className="bg-white text-[#74695b]">I am a...</option>
@@ -103,7 +103,7 @@ export function ContactForm() {
           <select
             name="product_interest"
             defaultValue=""
-            className="w-full border-b border-black/10 bg-transparent py-4 text-base font-medium text-[#11100e] transition-colors focus:border-blue-700 focus:outline-none"
+            className="w-full border-b border-black/10 bg-transparent py-4 text-base font-medium text-[#11100e] transition-colors focus:border-[#004225] focus:outline-none"
             required
           >
             <option value="" disabled className="bg-white text-[#74695b]">Product interest</option>
@@ -115,7 +115,7 @@ export function ContactForm() {
           <select
             name="timeline"
             defaultValue=""
-            className="w-full border-b border-black/10 bg-transparent py-4 text-base font-medium text-[#11100e] transition-colors focus:border-blue-700 focus:outline-none"
+            className="w-full border-b border-black/10 bg-transparent py-4 text-base font-medium text-[#11100e] transition-colors focus:border-[#004225] focus:outline-none"
             required
           >
             <option value="" disabled className="bg-white text-[#74695b]">Expected timeline</option>
@@ -132,7 +132,7 @@ export function ContactForm() {
             name="message"
             rows={1}
             placeholder="Tell us about your shop and what you want to organize"
-            className="w-full resize-none border-b border-black/10 bg-transparent py-4 text-base font-medium text-[#11100e] placeholder:text-[#9b9182] transition-colors focus:border-blue-700 focus:outline-none sm:text-lg"
+            className="w-full resize-none border-b border-black/10 bg-transparent py-4 text-base font-medium text-[#11100e] placeholder:text-[#9b9182] transition-colors focus:border-[#004225] focus:outline-none sm:text-lg"
             onInput={(e) => {
               const target = e.target as HTMLTextAreaElement;
               target.style.height = "auto";
@@ -146,7 +146,7 @@ export function ContactForm() {
         <button
           type="submit"
           disabled={status === "submitting"}
-          className="group flex w-full items-center justify-center gap-3 rounded-xl bg-blue-700 px-8 py-4 text-[13px] font-bold text-white transition-all hover:bg-[#11100e] disabled:opacity-50 sm:w-auto"
+          className="group flex w-full items-center justify-center gap-3 rounded-xl bg-[#004225] px-8 py-4 text-[13px] font-bold text-white transition-all hover:bg-[#11100e] disabled:opacity-50 sm:w-auto"
         >
           {status === "submitting" ? "Sending..." : "Send inquiry"}
           <ArrowRight className="h-4 w-4" />

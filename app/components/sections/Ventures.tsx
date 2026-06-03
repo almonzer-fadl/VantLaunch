@@ -157,7 +157,7 @@ function SpeakBillPreviewCard({ onOpen }: { onOpen: () => void }) {
             <p className="mt-3 text-lg leading-relaxed text-[#5f5548]">
               Voice-to-invoice. Speak and get a clean invoice in seconds.
             </p>
-            <span className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-[#11100e] transition-colors hover:text-blue-700">
+            <span className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-[#11100e] transition-colors hover:text-[#004225]">
               View details
               <ArrowUpRight className="h-5 w-5" />
             </span>

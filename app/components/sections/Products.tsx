@@ -89,7 +89,7 @@ export function ProductsSection() {
                     href={app.href}
                     target={external ? "_blank" : undefined}
                     rel={external ? "noopener noreferrer" : undefined}
-                    className="mt-auto inline-flex items-center gap-2 text-sm font-bold text-[#11100e] transition-colors hover:text-blue-700"
+                    className="mt-auto inline-flex items-center gap-2 text-sm font-bold text-[#11100e] transition-colors hover:text-[#004225]"
                   >
                     {app.label}
                     <ArrowUpRight className="h-4 w-4" />

@@ -23,7 +23,7 @@ const STEPS = [
     title: "03. Launch & Scale",
     description:
       "We handle the infrastructure setup (AWS/Vercel) and automated CI/CD pipelines. On final payment, we hand over full code ownership and provide 30 days of post-launch technical support.",
-    color: "amber",
+    color: "green",
   },
 ];
 
@@ -40,7 +40,7 @@ const STEP_STYLES = {
     iconText: "text-[#11100e]",
     bar: "bg-[#11100e]",
   },
-  amber: {
+  green: {
     glow: "bg-black/[0.02]",
     iconBg: "bg-black/[0.03]",
     iconText: "text-[#11100e]",
@@ -60,7 +60,7 @@ export function ProcessSection() {
           className="mb-16 text-center"
         >
           <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-3 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-[#74695b]">
-            <CheckCircle2 className="h-3 w-3 text-blue-700" />
+            <CheckCircle2 className="h-3 w-3 text-[#004225]" />
             Our Workflow
           </span>
           <h2 className="text-3xl font-bold tracking-tight text-[#11100e] sm:text-4xl md:text-5xl">Built for speed, engineered for scale.</h2>

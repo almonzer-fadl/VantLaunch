@@ -61,8 +61,8 @@ function ContactForm() {
         animate={{ opacity: 1, scale: 1 }}
         className="flex flex-col items-center py-8 text-center"
       >
-        <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-blue-700/10">
-          <Check className="h-8 w-8 text-blue-700" />
+        <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-[#004225]/10">
+          <Check className="h-8 w-8 text-[#004225]" />
         </div>
         <h3 className="text-2xl font-bold text-[#11100e]">Request received.</h3>
         <p className="mt-2 text-[#5f5548]">
@@ -70,7 +70,7 @@ function ContactForm() {
         </p>
         <button
           onClick={() => setStatus("idle")}
-          className="mt-8 text-sm font-semibold text-blue-700 transition-colors hover:text-[#11100e]"
+          className="mt-8 text-sm font-semibold text-[#004225] transition-colors hover:text-[#11100e]"
         >
           Send another request
         </button>
@@ -99,7 +99,7 @@ function ContactForm() {
           name="name"
           type="text"
           placeholder="John Smith"
-          className="w-full rounded-xl border border-black/10 bg-[#f8f6ef] px-4 py-3 text-sm font-medium text-[#11100e] placeholder:text-[#9b9182] transition-all focus:border-blue-700/40 focus:outline-none focus:ring-1 focus:ring-blue-700/20"
+          className="w-full rounded-xl border border-black/10 bg-[#f8f6ef] px-4 py-3 text-sm font-medium text-[#11100e] placeholder:text-[#9b9182] transition-all focus:border-[#004225]/40 focus:outline-none focus:ring-1 focus:ring-[#004225]/20"
         />
       </div>
 
@@ -112,7 +112,7 @@ function ContactForm() {
           name="email"
           type="email"
           placeholder="john@company.com"
-          className="w-full rounded-xl border border-black/10 bg-[#f8f6ef] px-4 py-3 text-sm font-medium text-[#11100e] placeholder:text-[#9b9182] transition-all focus:border-blue-700/40 focus:outline-none focus:ring-1 focus:ring-blue-700/20"
+          className="w-full rounded-xl border border-black/10 bg-[#f8f6ef] px-4 py-3 text-sm font-medium text-[#11100e] placeholder:text-[#9b9182] transition-all focus:border-[#004225]/40 focus:outline-none focus:ring-1 focus:ring-[#004225]/20"
         />
       </div>
 
@@ -125,7 +125,7 @@ function ContactForm() {
             name="company"
             type="text"
             placeholder="Acme Inc."
-            className="w-full rounded-xl border border-black/10 bg-[#f8f6ef] px-4 py-3 text-sm font-medium text-[#11100e] placeholder:text-[#9b9182] transition-all focus:border-blue-700/40 focus:outline-none focus:ring-1 focus:ring-blue-700/20"
+            className="w-full rounded-xl border border-black/10 bg-[#f8f6ef] px-4 py-3 text-sm font-medium text-[#11100e] placeholder:text-[#9b9182] transition-all focus:border-[#004225]/40 focus:outline-none focus:ring-1 focus:ring-[#004225]/20"
           />
         </div>
         <div>
@@ -135,7 +135,7 @@ function ContactForm() {
           <select
             name="tier"
             defaultValue=""
-            className="w-full rounded-xl border border-black/10 bg-[#f8f6ef] px-4 py-3 text-sm font-medium text-[#11100e] transition-all focus:border-blue-700/40 focus:outline-none focus:ring-1 focus:ring-blue-700/20"
+            className="w-full rounded-xl border border-black/10 bg-[#f8f6ef] px-4 py-3 text-sm font-medium text-[#11100e] transition-all focus:border-[#004225]/40 focus:outline-none focus:ring-1 focus:ring-[#004225]/20"
           >
             <option value="" disabled className="bg-white text-[#74695b]">
               Select tier
@@ -155,7 +155,7 @@ function ContactForm() {
         <select
           name="timeline"
           defaultValue=""
-          className="w-full rounded-xl border border-black/10 bg-[#f8f6ef] px-4 py-3 text-sm font-medium text-[#11100e] transition-all focus:border-blue-700/40 focus:outline-none focus:ring-1 focus:ring-blue-700/20"
+          className="w-full rounded-xl border border-black/10 bg-[#f8f6ef] px-4 py-3 text-sm font-medium text-[#11100e] transition-all focus:border-[#004225]/40 focus:outline-none focus:ring-1 focus:ring-[#004225]/20"
         >
           <option value="" disabled className="bg-white text-[#74695b]">
             Expected timeline
@@ -176,14 +176,14 @@ function ContactForm() {
           name="message"
           rows={4}
           placeholder="What do you need built? Who will use it? Any specific features or integrations required?"
-          className="w-full resize-none rounded-xl border border-black/10 bg-[#f8f6ef] px-4 py-3 text-sm font-medium text-[#11100e] placeholder:text-[#9b9182] transition-all focus:border-blue-700/40 focus:outline-none focus:ring-1 focus:ring-blue-700/20"
+          className="w-full resize-none rounded-xl border border-black/10 bg-[#f8f6ef] px-4 py-3 text-sm font-medium text-[#11100e] placeholder:text-[#9b9182] transition-all focus:border-[#004225]/40 focus:outline-none focus:ring-1 focus:ring-[#004225]/20"
         />
       </div>
 
       <button
         type="submit"
         disabled={status === "submitting"}
-        className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-blue-700 px-6 py-3 text-sm font-bold text-white transition-all hover:bg-[#11100e] disabled:cursor-not-allowed disabled:opacity-60"
+        className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#004225] px-6 py-3 text-sm font-bold text-white transition-all hover:bg-[#11100e] disabled:cursor-not-allowed disabled:opacity-60"
       >
         {status === "submitting" ? "Sending..." : "Send inquiry"}
         <ArrowRight className="h-4 w-4" />

@@ -38,7 +38,7 @@ export function Navbar() {
             <Link
               key={link.href}
               href={link.href}
-              className="text-sm font-bold text-[#74695b] transition-colors hover:text-blue-700"
+              className="text-sm font-bold text-[#74695b] transition-colors hover:text-[#004225]"
             >
               {link.label}
             </Link>
@@ -50,7 +50,7 @@ export function Navbar() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <Link href="#contact" className="inline-flex items-center justify-center rounded-xl bg-blue-700 px-4 py-2 text-xs font-bold text-white transition-colors hover:bg-[#11100e]">
+          <Link href="#contact" className="inline-flex items-center justify-center rounded-xl bg-[#004225] px-4 py-2 text-xs font-bold text-white transition-colors hover:bg-[#11100e]">
             Start a project
           </Link>
         </motion.div>

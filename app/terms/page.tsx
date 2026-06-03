@@ -47,9 +47,9 @@ export default function TermsPage() {
         </p>
         <p>
           For support, billing, or legal inquiries, contact{" "}
-          <a className="font-semibold text-blue-700 underline" href={`mailto:${CONTACT_EMAILS.product}`}>{CONTACT_EMAILS.product}</a>.
+          <a className="font-semibold text-[#004225] underline" href={`mailto:${CONTACT_EMAILS.product}`}>{CONTACT_EMAILS.product}</a>.
           For company inquiries, contact{" "}
-          <a className="font-semibold text-blue-700 underline" href={`mailto:${CONTACT_EMAILS.company}`}>{CONTACT_EMAILS.company}</a>.
+          <a className="font-semibold text-[#004225] underline" href={`mailto:${CONTACT_EMAILS.company}`}>{CONTACT_EMAILS.company}</a>.
         </p>
       </article>
     </main>

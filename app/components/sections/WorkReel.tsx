@@ -1,0 +1,114 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { ArrowUpRight, PlayCircle } from "lucide-react";
+import Image from "next/image";
+
+const REEL_ITEMS = [
+  {
+    title: "Workshop command center",
+    label: "TeraMotors",
+    src: "/media/teramotors-dashboard.webp",
+    alt: "TeraMotors dashboard",
+    wide: true,
+  },
+  {
+    title: "Voice invoicing",
+    label: "SpeakBill",
+    src: "/media/speakbill-mic.png",
+    alt: "SpeakBill voice input screen",
+  },
+  {
+    title: "Customer garage",
+    label: "Gari",
+    src: "/media/gari-garage.webp",
+    alt: "Gari garage screen",
+  },
+  {
+    title: "Job cards",
+    label: "TeraMotors",
+    src: "/media/teramotors-job-cards.webp",
+    alt: "TeraMotors job card screen",
+  },
+  {
+    title: "Payment flows",
+    label: "Gari",
+    src: "/media/gari-payments.webp",
+    alt: "Gari payments screen",
+  },
+  {
+    title: "Invoice preview",
+    label: "SpeakBill",
+    src: "/media/speakbill-invoice-preview.png",
+    alt: "SpeakBill invoice preview",
+    wide: true,
+  },
+];
+
+export function WorkReelSection() {
+  return (
+    <section className="overflow-hidden bg-[#fffaf0] px-6 py-24 text-[#11100e] md:py-32">
+      <div className="mx-auto max-w-7xl">
+        <div className="mb-12 flex flex-col justify-between gap-6 md:flex-row md:items-end">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.5 }}
+          >
+            <span className="mb-4 inline-flex rounded-full border border-black/10 bg-white px-3 py-1 text-xs font-bold uppercase tracking-[0.16em] text-[#74695b]">
+              Product reel
+            </span>
+            <h2 className="max-w-3xl text-3xl font-bold tracking-tight text-[#11100e] sm:text-4xl md:text-5xl">
+              More screens. More movement. More proof that the work is real.
+            </h2>
+          </motion.div>
+          <a
+            href="#portfolio"
+            className="inline-flex w-fit items-center justify-center gap-2 rounded-xl border border-black/10 bg-white px-6 py-3 text-sm font-bold text-[#11100e] transition-all hover:bg-black/[0.03]"
+          >
+            Open case studies
+            <ArrowUpRight className="h-4 w-4" />
+          </a>
+        </div>
+      </div>
+
+      <div className="relative">
+        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-[#fffaf0] to-transparent" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-[#fffaf0] to-transparent" />
+        <div className="flex animate-work-reel gap-5 pr-5">
+          {[...REEL_ITEMS, ...REEL_ITEMS].map((item, index) => (
+            <figure
+              key={`${item.title}-${index}`}
+              className={`group relative shrink-0 overflow-hidden rounded-2xl border border-black/10 bg-white shadow-[0_20px_60px_-44px_rgba(17,16,14,0.42)] ${
+                item.wide ? "w-[520px] max-w-[82vw]" : "w-[260px]"
+              }`}
+            >
+              <div className={item.wide ? "relative aspect-[16/10]" : "relative aspect-[9/13]"}>
+                <Image
+                  src={item.src}
+                  alt={item.alt}
+                  fill
+                  sizes={item.wide ? "520px" : "260px"}
+                  className="object-contain p-4 transition-transform duration-700 group-hover:scale-[1.04]"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+              </div>
+              <figcaption className="absolute bottom-0 left-0 right-0 flex items-end justify-between gap-5 p-5">
+                <div>
+                  <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-white/75">
+                    {item.label}
+                  </p>
+                  <p className="mt-1 text-base font-bold tracking-tight text-white">{item.title}</p>
+                </div>
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white backdrop-blur">
+                  <PlayCircle className="h-5 w-5" />
+                </div>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}

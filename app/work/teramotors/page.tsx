@@ -21,14 +21,14 @@ export const metadata: Metadata = {
 
 export default function TeramotorsProjectPage() {
   return (
-    <div className="relative min-h-screen overflow-x-hidden bg-zinc text-slate-50 selection:bg-white/10">
+    <div className="relative min-h-screen overflow-x-hidden bg-[#f8f6ef] text-[#11100e] selection:bg-blue-700/15">
       <div className="pointer-events-none fixed inset-0 z-0">
         <div className="absolute inset-0 " />
-        <div className="absolute inset-0 bg-dot-grid opacity-[0.14]" />
-        <div className="absolute left-1/2 top-[-20%] h-[620px] w-[1100px] -translate-x-1/2 rounded-full bg-white/[0.04] blur-[140px]" />
+        <div className="absolute inset-0 bg-dot-grid opacity-[0.08]" />
+        <div className="absolute left-1/2 top-[-20%] h-[620px] w-[1100px] -translate-x-1/2 rounded-full bg-[#f59e0b]/[0.05] blur-[140px]" />
       </div>
 
-      <header className="sticky top-0 z-40 border-b border-white/[0.06] bg-zinc/70 backdrop-blur-xl">
+      <header className="sticky top-0 z-40 border-b border-black/10 bg-[#f8f6ef]/85 backdrop-blur-xl">
         <div className="mx-auto flex h-16 max-w-5xl items-center justify-between px-6">
           <Link href="/#ventures" className="type-work-back-link">
             <ArrowLeft className="h-4 w-4" />

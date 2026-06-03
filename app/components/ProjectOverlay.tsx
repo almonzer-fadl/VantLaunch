@@ -49,14 +49,14 @@ export function ProjectOverlay({ activeSlug, onClose }: ProjectOverlayProps) {
           <p className="type-case-lede max-w-3xl">{config.lede}</p>
           
           {config.detail && (
-            <p className="mt-8 max-w-3xl text-lg leading-relaxed text-zinc-400">{config.detail}</p>
+            <p className="mt-8 max-w-3xl text-lg leading-relaxed text-[#5f5548]">{config.detail}</p>
           )}
 
           {config.capabilities.length > 0 && (
             <ul className="mt-10 flex flex-wrap gap-2">
               {config.capabilities.map((cap) => (
                 <li key={cap}>
-                  <span className="inline-flex rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-xs font-medium text-zinc-300">
+                  <span className="inline-flex rounded-full border border-black/10 bg-white px-4 py-1.5 text-xs font-bold text-[#5f5548]">
                     {cap}
                   </span>
                 </li>
@@ -78,8 +78,8 @@ export function ProjectOverlay({ activeSlug, onClose }: ProjectOverlayProps) {
               { src: "/media/speakbill-invoice-preview.png", alt: "SpeakBill invoice preview" },
               { src: "/media/speakbill-invoice-review.png", alt: "SpeakBill invoice review" },
             ].map((img) => (
-              <figure key={img.src} className="overflow-hidden rounded-2xl border border-white/10 bg-zinc-surface">
-                <div className="relative aspect-[16/10] w-full bg-[#0a0f1a]">
+              <figure key={img.src} className="overflow-hidden rounded-2xl border border-black/10 bg-white shadow-[0_20px_70px_-45px_rgba(0,0,0,0.7)]">
+                <div className="relative aspect-[16/10] w-full bg-[#eef2f8]">
                   <Image
                     src={img.src}
                     alt={img.alt}
@@ -92,7 +92,7 @@ export function ProjectOverlay({ activeSlug, onClose }: ProjectOverlayProps) {
             ))}
           </div>
         ) : (
-          <figure className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-zinc-surface shadow-2xl">
+          <figure className="relative overflow-hidden rounded-2xl border border-black/10 bg-white shadow-[0_18px_55px_-42px_rgba(17,16,14,0.35)]">
             <div className="relative mx-auto aspect-[780/2232] w-full max-w-sm bg-white sm:max-w-md">
               <Image
                 src={config.imageSrc}
@@ -108,18 +108,18 @@ export function ProjectOverlay({ activeSlug, onClose }: ProjectOverlayProps) {
 
         <ul className="max-w-3xl space-y-4">
           {config.bullets.map((item) => (
-            <li key={item} className="flex gap-4 text-lg text-zinc-400">
-              <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-white/20" />
+            <li key={item} className="flex gap-4 text-lg text-[#5f5548]">
+              <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#11100e]/30" />
               {item}
             </li>
           ))}
         </ul>
 
-        <section className="rounded-[2.5rem] border border-white/5 bg-white/[0.02] p-10 md:p-14">
+        <section className="rounded-2xl border border-black/10 bg-white p-10 shadow-[0_14px_45px_-36px_rgba(17,16,14,0.3)] md:p-14">
           {isSpeakBill ? (
             <div>
-              <h3 className="text-2xl font-bold text-white">Ready to try SpeakBill?</h3>
-              <p className="mt-4 max-w-2xl text-lg text-zinc-400">
+              <h3 className="text-2xl font-bold text-[#11100e]">Ready to try SpeakBill?</h3>
+              <p className="mt-4 max-w-2xl text-lg text-[#5f5548]">
                 Live now. Start creating invoices by voice in seconds.
               </p>
               <a
@@ -134,8 +134,8 @@ export function ProjectOverlay({ activeSlug, onClose }: ProjectOverlayProps) {
             </div>
           ) : (
             <div>
-              <h3 className="text-2xl font-bold text-white">Want updates on Gari?</h3>
-              <p className="mt-4 max-w-2xl text-lg text-zinc-400">
+              <h3 className="text-2xl font-bold text-[#11100e]">Want updates on Gari?</h3>
+              <p className="mt-4 max-w-2xl text-lg text-[#5f5548]">
                 Send a note if you want to follow the product, discuss pilot interest, or talk about
                 automotive workflows.
               </p>
@@ -166,7 +166,7 @@ export function ProjectOverlay({ activeSlug, onClose }: ProjectOverlayProps) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="absolute inset-0 bg-black/80 backdrop-blur-2xl"
+            className="absolute inset-0 bg-[#11100e]/35 backdrop-blur-lg"
           />
           
           <motion.div
@@ -174,12 +174,12 @@ export function ProjectOverlay({ activeSlug, onClose }: ProjectOverlayProps) {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 40, scale: 0.98 }}
             transition={{ type: "spring", stiffness: 200, damping: 25 }}
-            className="relative h-full w-full max-w-6xl overflow-hidden rounded-[3rem] border border-white/10 bg-zinc shadow-2xl"
+            className="relative h-full w-full max-w-6xl overflow-hidden rounded-2xl border border-black/10 bg-[#f8f6ef] text-[#11100e] shadow-[0_28px_90px_-60px_rgba(17,16,14,0.42)]"
           >
             <div className="absolute right-8 top-8 z-50">
               <button
                 onClick={onClose}
-                className="group flex h-14 w-14 items-center justify-center rounded-full border border-white/10 bg-white/5 text-zinc-400 backdrop-blur-md transition-all hover:bg-white/10 hover:text-white"
+                className="group flex h-14 w-14 items-center justify-center rounded-full border border-black/10 bg-white text-[#74695b] shadow-[0_10px_30px_-22px_rgba(17,16,14,0.45)] backdrop-blur-md transition-all hover:bg-black/[0.03] hover:text-[#11100e]"
                 aria-label="Close overlay"
               >
                 <X className="h-6 w-6 transition-transform group-hover:rotate-90" />

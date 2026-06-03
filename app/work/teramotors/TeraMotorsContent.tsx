@@ -128,8 +128,8 @@ export function TeraMotorsContent({ onClose }: { onClose?: () => void }) {
           workspace built around real repair operations.
         </p>
 
-        <figure className="relative mt-12 overflow-hidden rounded-[1.75rem] border border-white/[0.1] bg-zinc-surface shadow-[0_40px_100px_-40px_rgba(0,0,0,0.85)]">
-          <div className="relative aspect-[1800/944] w-full bg-[#070b14]">
+        <figure className="relative mt-12 overflow-hidden rounded-2xl border border-black/10 bg-white shadow-[0_18px_55px_-42px_rgba(17,16,14,0.35)]">
+          <div className="relative aspect-[1800/944] w-full bg-[#eef2f8]">
             <Image
               src="/media/teramotors-dashboard.webp"
               alt="TeraMotors dashboard showing workshop revenue, job cards, and activity"
@@ -139,7 +139,7 @@ export function TeraMotorsContent({ onClose }: { onClose?: () => void }) {
               className="object-contain object-center"
             />
           </div>
-          <figcaption className="type-figure-caption border-t border-white/[0.06] bg-zinc-surface/95 px-5 py-4">
+          <figcaption className="type-figure-caption border-t border-black/10 bg-white px-5 py-4">
             Live product screens for workshop operations, invoices, reports, and job tracking.
           </figcaption>
         </figure>
@@ -151,9 +151,9 @@ export function TeraMotorsContent({ onClose }: { onClose?: () => void }) {
           {highlights.map(({ title, body, icon: Icon }) => (
             <div
               key={title}
-              className="glass-card rounded-[1.75rem] border border-white/[0.06] bg-white/[0.02] p-7 transition-colors hover:border-white/20"
+              className="rounded-2xl border border-black/10 bg-white p-7 shadow-[0_14px_45px_-36px_rgba(17,16,14,0.28)] transition-colors hover:bg-black/[0.03]"
             >
-              <Icon className="h-10 w-10 text-white/90" aria-hidden />
+              <Icon className="h-10 w-10 text-[#11100e]" aria-hidden />
               <p className="type-case-card-title">{title}</p>
               <p className="type-case-card-body">{body}</p>
             </div>
@@ -161,9 +161,9 @@ export function TeraMotorsContent({ onClose }: { onClose?: () => void }) {
         </div>
       </section>
 
-      <section className="rounded-[1.75rem] border border-white/[0.08] bg-white/[0.03] p-8 md:p-10">
+      <section className="rounded-2xl border border-black/10 bg-white p-8 shadow-[0_14px_45px_-36px_rgba(17,16,14,0.28)] md:p-10">
         <h2 className="type-case-section-heading-inline">
-          <Wrench className="h-8 w-8 text-white/90" />
+          <Wrench className="h-8 w-8 text-[#11100e]" />
           Built for daily workshop work.
         </h2>
         <p className="mt-4 type-prose-intro">
@@ -210,7 +210,7 @@ export function TeraMotorsContent({ onClose }: { onClose?: () => void }) {
         <h2 className="type-case-section-heading">Access, pricing, and cancellation.</h2>
         <div className="mt-8 grid gap-4 md:grid-cols-4">
           {accessSteps.map((step, index) => (
-            <div key={step.title} className="rounded-2xl border border-white/[0.07] bg-white/[0.03] p-5">
+            <div key={step.title} className="rounded-2xl border border-black/10 bg-white p-5">
               <p className="type-meta-muted-caps">Step {index + 1}</p>
               <p className="type-feature-card-title-sm">{step.title}</p>
               <p className="type-feature-card-body">{step.body}</p>
@@ -220,9 +220,9 @@ export function TeraMotorsContent({ onClose }: { onClose?: () => void }) {
 
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {plans.map((plan) => (
-            <div key={plan.name} className="rounded-2xl border border-white/[0.07] bg-white/[0.025] p-5">
+            <div key={plan.name} className="rounded-2xl border border-black/10 bg-white p-5">
               <p className="type-feature-card-title-sm">{plan.name}</p>
-              <p className="mt-2 text-2xl font-semibold text-white">{plan.price}</p>
+              <p className="mt-2 text-2xl font-semibold text-[#11100e]">{plan.price}</p>
               <p className="type-feature-card-body">{plan.body}</p>
             </div>
           ))}
@@ -235,7 +235,7 @@ export function TeraMotorsContent({ onClose }: { onClose?: () => void }) {
         </p>
       </section>
 
-      <section className="rounded-[2rem] border border-white/20 bg-white/[0.08] px-8 py-12 text-center">
+      <section className="rounded-2xl border border-black/10 bg-white px-8 py-12 text-center shadow-[0_14px_45px_-36px_rgba(17,16,14,0.28)]">
         <p className="type-accent-label-sm mx-auto max-w-lg">
           Ready to try TeraMotors in your workshop?
         </p>
@@ -275,13 +275,13 @@ function FeatureBlock({
     <section>
       <p className="type-meta-accent-caps">{eyebrow}</p>
       <h2 className="mt-2 type-case-section-heading-inline">
-        <Icon className="h-8 w-8 text-white/90" />
+        <Icon className="h-8 w-8 text-[#11100e]" />
         {title}
       </h2>
       <ul className="mt-6 space-y-4 type-prose-muted">
         {items.map((item) => (
           <li key={item} className="flex gap-3">
-            <span className="mt-2 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-white/60" />
+            <span className="mt-2 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-[#11100e]/30" />
             {item}
           </li>
         ))}
@@ -312,8 +312,8 @@ function FeatureTwoCol({
           <p className="type-stack-heading">{leftTitle}</p>
           <ul className="mt-4 space-y-3 type-prose-muted">
             {leftItems.map((item) => (
-              <li key={item} className="flex gap-3 border-b border-white/[0.04] pb-3 last:border-0">
-                <span className="text-white/90">·</span>
+              <li key={item} className="flex gap-3 border-b border-black/10 pb-3 last:border-0">
+                <span className="text-[#11100e]">·</span>
                 {item}
               </li>
             ))}
@@ -325,9 +325,9 @@ function FeatureTwoCol({
             return (
               <div
                 key={b.title}
-                className="rounded-[1.25rem] border border-white/[0.06] bg-white/[0.02] px-6 py-5"
+                className="rounded-2xl border border-black/10 bg-white px-6 py-5"
               >
-                <Ico className="h-7 w-7 text-white/90" />
+                <Ico className="h-7 w-7 text-[#11100e]" />
                 <p className="type-feature-card-title-sm">{b.title}</p>
                 <p className="type-feature-card-body">{b.body}</p>
               </div>

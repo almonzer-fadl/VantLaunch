@@ -14,9 +14,9 @@ export function HeroProductShowcase() {
       transition={{ duration: 0.6, delay: 0.08, ease: EASE_CURSOR }}
       className="relative mx-auto min-h-[430px] w-full max-w-[46rem] lg:min-h-[540px]"
     >
-      <div className="absolute inset-x-0 top-8 overflow-hidden rounded-[2rem] border border-white/10 bg-zinc-surface shadow-[0_32px_120px_-52px_rgba(0,0,0,0.95)] lg:top-12">
+      <div className="absolute inset-x-0 top-8 overflow-hidden rounded-2xl border border-black/10 bg-white shadow-[0_18px_55px_-42px_rgba(17,16,14,0.35)] lg:top-12">
         <Link href="/work/teramotors" className="group block w-full text-left">
-          <div className="relative aspect-[1800/944] w-full bg-[#070b14]">
+          <div className="relative aspect-[1800/944] w-full bg-[#eef2f8]">
             <Image
               src="/media/teramotors-dashboard.webp"
               alt="TeraMotors dashboard with job cards, workshop KPIs, and app shortcuts"
@@ -26,27 +26,27 @@ export function HeroProductShowcase() {
               className="object-contain object-center transition-transform duration-700 group-hover:scale-[1.01]"
             />
           </div>
-          <div className="flex items-center justify-between gap-4 border-t border-white/10 bg-zinc/90 px-5 py-4">
+          <div className="flex items-center justify-between gap-4 border-t border-black/10 bg-white px-5 py-4">
             <div>
-              <p className="text-sm font-bold text-white">TeraMotors</p>
-              <p className="text-xs text-zinc-500">Workshop management software</p>
+              <p className="text-sm font-bold text-[#11100e]">TeraMotors</p>
+              <p className="text-xs text-[#74695b]">Workshop management software</p>
             </div>
-            <ArrowUpRight className="h-5 w-5 text-white/70" />
+            <ArrowUpRight className="h-5 w-5 text-[#74695b]" />
           </div>
         </Link>
       </div>
 
       <a
         href="#demo"
-        className="absolute left-3 top-0 inline-flex items-center gap-2 rounded-full border border-white/10 bg-zinc/85 px-4 py-2 text-xs font-bold text-white shadow-2xl backdrop-blur-md transition-colors hover:bg-zinc-surface sm:left-8"
+        className="absolute left-3 top-0 inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-4 py-2 text-xs font-bold text-[#11100e] shadow-[0_12px_35px_-28px_rgba(17,16,14,0.4)] backdrop-blur-md transition-colors hover:bg-black/[0.03] sm:left-8"
       >
-        <PlayCircle className="h-4 w-4 text-orange-400" />
+        <PlayCircle className="h-4 w-4 text-[#11100e]" />
         Watch TeraMotors demo
       </a>
 
-      <div className="absolute bottom-8 right-2 grid gap-2 rounded-2xl border border-white/10 bg-zinc/85 p-3 shadow-2xl backdrop-blur-md sm:right-6 lg:bottom-16">
+      <div className="absolute bottom-8 right-2 grid gap-2 rounded-2xl border border-black/10 bg-white/90 p-3 shadow-[0_12px_35px_-28px_rgba(17,16,14,0.4)] backdrop-blur-md sm:right-6 lg:bottom-16">
         {["Invoices", "Reports", "Job cards", "Customer updates"].map((item) => (
-          <span key={item} className="rounded-xl bg-white/[0.06] px-3 py-2 text-[11px] font-bold text-zinc-200">
+          <span key={item} className="rounded-xl bg-black/[0.03] px-3 py-2 text-[11px] font-bold text-[#74695b]">
             {item}
           </span>
         ))}

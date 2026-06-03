@@ -12,13 +12,13 @@ export function ProjectStubPage({ config }: { config: WorkStubConfig }) {
   const mailto = `mailto:${CONTACT_EMAILS.company}?subject=${config.emailSubject}`;
 
   return (
-    <div className="relative min-h-screen overflow-x-hidden bg-zinc text-slate-50 selection:bg-white/10">
+    <div className="relative min-h-screen overflow-x-hidden bg-[#f8f6ef] text-[#11100e] selection:bg-blue-700/15">
       <div className="pointer-events-none fixed inset-0 z-0">
-        <div className="absolute inset-0 bg-dot-grid opacity-[0.14]" />
-        <div className="absolute left-1/2 top-[-20%] h-[620px] w-[1100px] -translate-x-1/2 rounded-full bg-white/[0.04] blur-[140px]" />
+        <div className="absolute inset-0 bg-dot-grid opacity-[0.08]" />
+        <div className="absolute left-1/2 top-[-20%] h-[620px] w-[1100px] -translate-x-1/2 rounded-full bg-[#f59e0b]/[0.05] blur-[140px]" />
       </div>
 
-      <header className="sticky top-0 z-40 border-b border-white/[0.06] bg-zinc/70 backdrop-blur-xl">
+      <header className="sticky top-0 z-40 border-b border-black/10 bg-[#f8f6ef]/85 backdrop-blur-xl">
         <div className="mx-auto flex h-16 max-w-5xl items-center justify-between px-6">
           <Link href="/#ventures" className="type-work-back-link">
             <ArrowLeft className="h-4 w-4" />
@@ -59,14 +59,14 @@ export function ProjectStubPage({ config }: { config: WorkStubConfig }) {
           <h1 className="type-case-h1 text-balance">{config.title}</h1>
           <p className="type-case-lede max-w-3xl">{config.lede}</p>
           {config.detail ? (
-            <p className="type-prose-muted mt-6 max-w-3xl text-zinc-300">{config.detail}</p>
+            <p className="type-prose-muted mt-6 max-w-3xl">{config.detail}</p>
           ) : null}
 
           {config.capabilities.length > 0 ? (
             <ul className="mt-8 flex flex-wrap gap-2">
               {config.capabilities.map((cap) => (
                 <li key={cap}>
-                  <span className="inline-flex rounded-full border border-white/[0.08] bg-white/[0.04] px-3 py-1 text-xs font-medium text-zinc-200">
+                  <span className="inline-flex rounded-full border border-black/10 bg-white px-3 py-1 text-xs font-bold text-[#5f5548]">
                     {cap}
                   </span>
                 </li>
@@ -84,7 +84,7 @@ export function ProjectStubPage({ config }: { config: WorkStubConfig }) {
         >
           {config.bullets.map((item) => (
             <li key={item} className="flex gap-3">
-              <span className="mt-2 inline-block h-1 w-1 shrink-0 rounded-full bg-white/40" />
+              <span className="mt-2 inline-block h-1 w-1 shrink-0 rounded-full bg-[#11100e]/35" />
               {item}
             </li>
           ))}
@@ -112,8 +112,8 @@ export function ProjectStubPage({ config }: { config: WorkStubConfig }) {
                 { src: "/media/speakbill-invoice-preview.png", alt: "SpeakBill invoice preview" },
                 { src: "/media/speakbill-invoice-review.png", alt: "SpeakBill invoice review" },
               ].map((img) => (
-                <figure key={img.src} className="overflow-hidden rounded-2xl border border-white/[0.08] bg-zinc-surface shadow-lg">
-                  <div className="relative aspect-[16/10] w-full bg-[#0a0f1a]">
+                <figure key={img.src} className="overflow-hidden rounded-2xl border border-black/10 bg-white shadow-lg">
+                  <div className="relative aspect-[16/10] w-full bg-[#eef2f8]">
                     <Image
                       src={img.src}
                       alt={img.alt}
@@ -126,7 +126,7 @@ export function ProjectStubPage({ config }: { config: WorkStubConfig }) {
               ))}
             </div>
           ) : (
-            <figure className="relative overflow-hidden rounded-[1.75rem] border border-white/[0.1] bg-zinc-surface shadow-[0_40px_100px_-40px_rgba(0,0,0,0.85)]">
+            <figure className="relative overflow-hidden rounded-2xl border border-black/10 bg-white shadow-[0_18px_55px_-42px_rgba(17,16,14,0.35)]">
               <div className="relative mx-auto aspect-[780/2232] w-full max-w-sm bg-white sm:max-w-md">
                 <Image
                   src={config.imageSrc}
@@ -137,7 +137,7 @@ export function ProjectStubPage({ config }: { config: WorkStubConfig }) {
                   className="object-contain object-top"
                 />
               </div>
-              <figcaption className="type-figure-caption border-t border-white/[0.06] bg-zinc-surface/95 px-5 py-4">
+              <figcaption className="type-figure-caption border-t border-black/10 bg-white px-5 py-4">
                 {config.figureCaption}
               </figcaption>
             </figure>
@@ -149,11 +149,11 @@ export function ProjectStubPage({ config }: { config: WorkStubConfig }) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.55, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-16 overflow-hidden rounded-[1.75rem] border border-white/[0.08] bg-white/[0.02] px-8 py-10"
+          className="mt-16 overflow-hidden rounded-2xl border border-black/10 bg-white px-8 py-10 shadow-[0_14px_45px_-36px_rgba(17,16,14,0.28)]"
         >
           {config.slug === "speakbill" ? (
             <div>
-              <p className="type-intro-wide mx-auto max-w-2xl text-zinc-200 md:mx-0">
+              <p className="type-intro-wide mx-auto max-w-2xl text-[#11100e] md:mx-0">
                 Ready to try SpeakBill? Live now — start creating invoices by voice.
               </p>
               <a
@@ -168,7 +168,7 @@ export function ProjectStubPage({ config }: { config: WorkStubConfig }) {
             </div>
           ) : (
             <div>
-              <p className="type-intro-wide mx-auto max-w-2xl text-zinc-200 md:mx-0">
+              <p className="type-intro-wide mx-auto max-w-2xl text-[#11100e] md:mx-0">
                 Want updates on Gari or have an automotive workflow to discuss?
               </p>
               <Link href={mailto} className="type-email-cta-solid mt-8 inline-flex">

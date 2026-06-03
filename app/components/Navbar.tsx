@@ -12,7 +12,7 @@ const NAV_LINKS = [
 
 export function Navbar() {
   return (
-    <nav className="sticky top-0 z-50 border-b border-white/[0.04] bg-canvas/70 backdrop-blur-xl">
+    <nav className="sticky top-0 z-50 border-b border-black/10 bg-[#f8f6ef]/85 backdrop-blur-xl">
       <div className="mx-auto flex h-18 max-w-7xl items-center justify-between px-6">
         <motion.div
           initial={{ opacity: 0, x: -12 }}
@@ -28,7 +28,7 @@ export function Navbar() {
             priority
             className="h-9 w-9 rounded-lg object-contain"
           />
-          <span className="text-lg font-bold tracking-tight text-white">
+          <span className="text-lg font-bold tracking-tight text-[#11100e]">
             VantLaunch
           </span>
         </motion.div>
@@ -38,7 +38,7 @@ export function Navbar() {
             <Link
               key={link.href}
               href={link.href}
-              className="text-sm font-medium text-stone-400 transition-colors hover:text-white"
+              className="text-sm font-bold text-[#74695b] transition-colors hover:text-blue-700"
             >
               {link.label}
             </Link>
@@ -50,7 +50,7 @@ export function Navbar() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <Link href="#contact" className="btn-primary !py-2 !px-4 text-xs">
+          <Link href="#contact" className="inline-flex items-center justify-center rounded-xl bg-blue-700 px-4 py-2 text-xs font-bold text-white transition-colors hover:bg-[#11100e]">
             Start a project
           </Link>
         </motion.div>

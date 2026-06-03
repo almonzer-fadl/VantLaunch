@@ -9,11 +9,11 @@ export const metadata: Metadata = {
 
 export default function TermsPage() {
   return (
-    <main className="min-h-screen bg-zinc px-6 py-16 text-zinc-200">
+    <main className="min-h-screen bg-[#f8f6ef] px-6 py-16 text-[#5f5548]">
       <article className="mx-auto max-w-3xl space-y-6">
-        <Link href="/" className="text-sm font-semibold text-white/80 hover:text-white">← Back to site</Link>
-        <h1 className="text-4xl font-bold text-white">Terms</h1>
-        <p className="text-sm text-zinc-400">Last updated: May 12, 2026</p>
+        <Link href="/" className="text-sm font-bold text-[#74695b] hover:text-[#11100e]">← Back to site</Link>
+        <h1 className="text-4xl font-bold text-[#11100e]">Terms</h1>
+        <p className="text-sm text-[#74695b]">Last updated: May 12, 2026</p>
         <p>
           VantLaunch builds focused SaaS products for operational businesses, starting with automotive
           software. This website is provided for product information, inquiries, and company updates.
@@ -47,9 +47,9 @@ export default function TermsPage() {
         </p>
         <p>
           For support, billing, or legal inquiries, contact{" "}
-          <a className="text-white underline" href={`mailto:${CONTACT_EMAILS.product}`}>{CONTACT_EMAILS.product}</a>.
+          <a className="font-semibold text-blue-700 underline" href={`mailto:${CONTACT_EMAILS.product}`}>{CONTACT_EMAILS.product}</a>.
           For company inquiries, contact{" "}
-          <a className="text-white underline" href={`mailto:${CONTACT_EMAILS.company}`}>{CONTACT_EMAILS.company}</a>.
+          <a className="font-semibold text-blue-700 underline" href={`mailto:${CONTACT_EMAILS.company}`}>{CONTACT_EMAILS.company}</a>.
         </p>
       </article>
     </main>

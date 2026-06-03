@@ -99,7 +99,7 @@ const PROJECTS = [
 
 export function PortfolioSection({ onOpenProject }: { onOpenProject: (slug: string) => void }) {
   return (
-    <section id="portfolio" className="border-t border-black/10 bg-[#fffaf0] px-6 py-24 text-[#11100e] md:py-32">
+    <section id="portfolio" className="border-t border-black/10 bg-[#fffaf0] px-6 py-16 text-[#11100e] sm:py-24 md:py-32">
       <div className="mx-auto max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
@@ -151,7 +151,7 @@ export function PortfolioSection({ onOpenProject }: { onOpenProject: (slug: stri
                   </div>
                 </div>
                 
-                <div className="flex flex-1 flex-col p-8">
+                <div className="flex flex-1 flex-col p-5 sm:p-8">
                   <div className="mb-5 flex flex-wrap gap-2">
                     <span className="rounded-full border border-black/10 bg-[#f8f6ef] px-3 py-1 text-[10px] font-bold uppercase tracking-[0.18em] text-[#74695b]">
                       {project.metric}
@@ -187,7 +187,7 @@ export function PortfolioSection({ onOpenProject }: { onOpenProject: (slug: stri
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: i * 0.06 }}
-                className="group flex flex-col rounded-2xl border border-black/10 bg-white p-8 transition-all hover:bg-black/[0.03]"
+                className="group flex flex-col rounded-2xl border border-black/10 bg-white p-5 transition-all hover:bg-black/[0.03] sm:p-8"
               >
                 <div className="mb-4 flex items-center justify-between">
                    <h3 className="text-lg font-bold tracking-tight text-[#11100e]">{project.name}</h3>

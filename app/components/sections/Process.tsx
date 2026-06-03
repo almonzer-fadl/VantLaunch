@@ -50,7 +50,7 @@ const STEP_STYLES = {
 
 export function ProcessSection() {
   return (
-    <section id="process" className="border-t border-black/10 bg-[#f8f6ef] px-6 py-24 text-[#11100e] md:py-32">
+    <section id="process" className="border-t border-black/10 bg-[#f8f6ef] px-6 py-16 text-[#11100e] sm:py-24 md:py-32">
       <div className="mx-auto max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
@@ -80,7 +80,7 @@ export function ProcessSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.5, delay: i * 0.12 }}
-                className="relative overflow-hidden rounded-2xl border border-black/10 bg-white p-10 shadow-[0_18px_55px_-42px_rgba(17,16,14,0.35)] transition-all hover:bg-black/[0.03]"
+                className="relative overflow-hidden rounded-2xl border border-black/10 bg-white p-6 shadow-[0_18px_55px_-42px_rgba(17,16,14,0.35)] sm:p-10 transition-all hover:bg-black/[0.03]"
               >
                 <div className={`absolute -right-8 -top-8 h-32 w-32 rounded-full ${styles.glow} blur-3xl`} />
                 <div className={`mb-8 flex h-16 w-16 items-center justify-center rounded-2xl ${styles.iconBg}`}>

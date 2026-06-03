@@ -7,7 +7,7 @@ import { sendContactEmail } from "../../actions/contact";
 
 export function CTASection() {
   return (
-    <section id="contact" className="border-t border-black/10 bg-[#f8f6ef] px-6 py-24 text-[#11100e] md:py-32">
+    <section id="contact" className="border-t border-black/10 bg-[#f8f6ef] px-6 py-16 text-[#11100e] sm:py-24 md:py-32">
       <div className="mx-auto max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
@@ -25,7 +25,7 @@ export function CTASection() {
         </motion.div>
 
         <div className="mx-auto max-w-2xl">
-          <div className="rounded-2xl border border-black/10 bg-white p-8 shadow-[0_18px_55px_-42px_rgba(17,16,14,0.35)] md:p-10">
+          <div className="rounded-2xl border border-black/10 bg-white p-5 shadow-[0_18px_55px_-42px_rgba(17,16,14,0.35)] sm:p-8 md:p-10">
             <ContactForm />
           </div>
         </div>

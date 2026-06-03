@@ -6,7 +6,7 @@ import { SOCIAL_LINKS } from "../lib/constants";
 
 export function Footer() {
   return (
-    <footer className="border-t border-black/10 bg-[#fffaf0] px-6 py-16 text-[#11100e] md:py-20">
+    <footer className="border-t border-black/10 bg-[#fffaf0] px-6 py-12 text-[#11100e] sm:py-16 md:py-20">
       <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-12 md:flex-row">
         <div className="max-w-sm">
           <div className="mb-6 flex items-center gap-3">

@@ -1,15 +1,11 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from "@vercel/speed-insights/next"
+
 const inter = Inter({
   variable: "--font-inter",
-  subsets: ["latin"],
-});
-
-const jetbrainsMono = JetBrains_Mono({
-  variable: "--font-jetbrains-mono",
   subsets: ["latin"],
 });
 
@@ -22,17 +18,17 @@ const siteUrl =
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "VantLaunch — Build. Ship. Scale.",
+  title: "VantLaunch — Custom Dashboards, Portals & Mobile Apps",
   description:
-    "VantLaunch is a product studio that builds, ships, and scales focused SaaS products — starting with TeraMotors for automotive workshops and expanding into booking, invoicing, and operations tools.",
+    "We build custom dashboards, client portals, and mobile apps for businesses. Fixed-price projects starting at $1,500. Portfolio of 8 shipped products.",
   icons: {
     icon: "/vantlaunch-logo.png",
     apple: "/vantlaunch-logo.png",
   },
   openGraph: {
-    title: "VantLaunch — Build. Ship. Scale.",
+    title: "VantLaunch — Custom Dashboards, Portals & Mobile Apps",
     description:
-      "A product studio that builds, ships, and scales focused SaaS products — TeraMotors for workshops, SpeakBill for invoicing, Gari for drivers.",
+      "Custom dashboards, client portals, and mobile apps — built for your business. Fixed prices, clear process, real portfolio.",
     images: [
       {
         url: "/vantlaunch-logo.jpeg",
@@ -44,9 +40,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary",
-    title: "VantLaunch — Build. Ship. Scale.",
+    title: "VantLaunch — Custom Dashboards, Portals & Mobile Apps",
     description:
-      "A product studio that builds, ships, and scales focused SaaS products for real businesses.",
+      "We build custom software for businesses — dashboards, portals, and mobile apps. Starting at $1,500.",
     images: ["/vantlaunch-logo.jpeg"],
   },
 };
@@ -59,9 +55,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${jetbrainsMono.variable} h-full antialiased`}
+      className={`${inter.variable} h-full antialiased`}
     >
-      <body className="flex min-h-full flex-col bg-zinc">
+      <body className="flex min-h-full flex-col bg-canvas">
         {children}
         <Analytics />
         <SpeedInsights />

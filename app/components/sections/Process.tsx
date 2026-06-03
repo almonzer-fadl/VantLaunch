@@ -1,124 +1,68 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { fadeSlide, staggerSection } from "@/app/lib/motion-variants";
-import { Sparkles, MonitorPlay, Rocket } from "lucide-react";
-import { EASE_CURSOR } from "@/app/lib/constants";
+import { FileText, Code, Rocket } from "lucide-react";
 
-const PROCESS_PHASES = [
+const STEPS = [
   {
-    num: "01",
-    title: "We scope it tight",
-    desc: "Define the core problem and ship a focused MVP — no feature creep, no endless planning.",
-    Icon: Sparkles,
+    icon: FileText,
+    title: "We plan it.",
+    description:
+      "You tell us what you need. We write a detailed Business Requirements Document — every page, every feature, every workflow. You approve it. No coding until we agree on exactly what gets built.",
   },
   {
-    num: "02",
-    title: "Ship to real users",
-    desc: "Get the product in front of actual customers fast. Collect feedback, measure retention.",
-    Icon: MonitorPlay,
+    icon: Code,
+    title: "We build it.",
+    description:
+      "3 weeks for dashboards. 2 months for full portals. You get regular updates and a preview environment. 2 design revisions and 2 feature revisions included — because good work needs feedback.",
   },
   {
-    num: "03",
-    title: "Scale what works",
-    desc: "Double down on the features and channels that drive adoption and revenue.",
-    Icon: Rocket,
+    icon: Rocket,
+    title: "We ship it.",
+    description:
+      "Deployed to your infrastructure or ours. Code ownership transfers to you on final payment. We stick around for support — optional retainer for ongoing maintenance and updates.",
   },
-] as const;
-
-const PROCESS_FLOW_PATH_D = "M 96 44 C 252 6 348 82 450 44 S 648 6 804 44";
+];
 
 export function ProcessSection() {
   return (
-    <section
-      id="process"
-      className="relative overflow-hidden border-t border-white/5 bg-zinc-surface/[0.34] px-6 py-20 md:py-36"
-    >
-      <motion.div
-        className="relative z-[1] mx-auto max-w-7xl"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-80px" }}
-        variants={staggerSection}
-      >
-        <motion.div variants={fadeSlide} className="mb-16 max-w-2xl md:mb-24">
-          <p className="type-meta-uppercase mb-4">How we work</p>
-          <h2 className="type-display-lg">Build. Ship. Scale.</h2>
-          <p className="type-intro mt-6 max-w-xl text-zinc-300">
-            Every product follows the same tight loop — scope, ship, iterate — until it earns its place.
+    <section id="process" className="divider px-6 py-24 md:py-32">
+      <div className="mx-auto max-w-7xl">
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.5 }}
+          className="mb-16 text-center"
+        >
+          <span className="badge mb-4 inline-block">Process</span>
+          <h2 className="type-section-heading">How we work.</h2>
+          <p className="type-section-sub mx-auto">
+            No ambiguity. No scope creep. Three steps from idea to launch.
           </p>
         </motion.div>
 
-        {/* Desktop Process Flow */}
-        <div className="relative mx-auto hidden max-w-6xl lg:block">
-          <div className="relative mx-auto h-[5.5rem] w-full max-w-[56rem] px-2 mb-12">
-            <svg
-              className="h-full w-full overflow-visible"
-              viewBox="0 0 900 84"
-              preserveAspectRatio="xMidYMid meet"
-              aria-hidden
-            >
-              <path
-                d={PROCESS_FLOW_PATH_D}
-                fill="none"
-                stroke="rgba(255,255,255,0.05)"
-                strokeWidth="2"
-                strokeLinecap="round"
-              />
-              <motion.path
-                d={PROCESS_FLOW_PATH_D}
-                fill="none"
-                stroke="white"
-                strokeWidth="2"
-                strokeLinecap="round"
-                initial={{ pathLength: 0, opacity: 0 }}
-                whileInView={{ pathLength: 1, opacity: 0.1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 1.5, ease: EASE_CURSOR }}
-              />
-            </svg>
-          </div>
-
-          <div className="grid grid-cols-3 gap-12">
-            {PROCESS_PHASES.map((phase) => (
-              <motion.div
-                key={phase.num}
-                variants={fadeSlide}
-                className="flex flex-col items-center text-center"
-              >
-                <div className="relative mb-10 h-24 w-24 flex items-center justify-center rounded-full border border-white/10 bg-white/5 text-white">
-                  <phase.Icon className="h-8 w-8" />
-                  <span className="absolute -top-3 -right-3 h-8 w-8 rounded-full border border-white/10 bg-zinc flex items-center justify-center text-[10px] font-bold">
-                    {phase.num}
-                  </span>
-                </div>
-                <h3 className="text-xl font-bold text-white">{phase.title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-zinc-400 max-w-[18rem]">{phase.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-
-        {/* Mobile Process Flow */}
-        <div className="flex flex-col gap-12 lg:hidden">
-          {PROCESS_PHASES.map((phase) => (
+        <div className="grid gap-8 md:grid-cols-3">
+          {STEPS.map((step, i) => (
             <motion.div
-              key={phase.num}
-              variants={fadeSlide}
-              className="flex gap-6"
+              key={step.title}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.5, delay: i * 0.12 }}
+              className="card-premium text-center"
             >
-              <div className="h-16 w-16 shrink-0 flex items-center justify-center rounded-2xl border border-white/10 bg-white/5 text-white">
-                <phase.Icon className="h-6 w-6" />
+              <div className="mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-amber-500/10">
+                <step.icon className="h-6 w-6 text-amber-400" />
               </div>
-              <div>
-                <span className="type-meta-uppercase opacity-50">{phase.num}</span>
-                <h3 className="text-xl font-bold text-white mt-1">{phase.title}</h3>
-                <p className="mt-2 text-zinc-300 leading-relaxed">{phase.desc}</p>
-              </div>
+              <h3 className="type-card-title">{step.title}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-stone-400">
+                {step.description}
+              </p>
             </motion.div>
           ))}
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 }

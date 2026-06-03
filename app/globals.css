@@ -4,125 +4,104 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-inter), ui-sans-serif, system-ui;
-  --font-mono: var(--font-jetbrains-mono), monospace;
-  
-  --color-zinc: #080808; 
-  --color-zinc-surface: #121212;
-  --color-zinc-border: rgba(255, 255, 255, 0.06);
-  --color-accent-blue: #3b82f6;
+
+  --color-canvas: #0b0a08;
+  --color-surface: #151310;
+  --color-surface-raised: #1c1915;
+  --color-border-subtle: rgba(255, 255, 255, 0.06);
+  --color-border: rgba(255, 255, 255, 0.1);
+  --color-accent: #f59e0b;
+  --color-accent-glow: rgba(245, 158, 11, 0.15);
 }
 
 :root {
-  --background: #080808;
+  --background: #0b0a08;
   --foreground: #fafafa;
 }
 
 body {
   background: var(--background);
   font-family: var(--font-sans), sans-serif;
-  @apply text-[14px] leading-relaxed tracking-normal text-zinc-400 antialiased;
+  @apply text-[15px] leading-relaxed tracking-normal text-stone-400 antialiased;
 }
 
 @layer base {
   * {
-    @apply border-zinc-border;
+    @apply border-border-subtle;
   }
 }
 
 @layer utilities {
-  @keyframes marquee {
-    from {
-      transform: translateX(0);
-    }
-    to {
-      transform: translateX(-50%);
-    }
+  .text-gradient {
+    @apply bg-gradient-to-b from-white via-white to-stone-400 bg-clip-text text-transparent;
   }
 
-  @keyframes marquee-rev {
-    from {
-      transform: translateX(-50%);
-    }
-    to {
-      transform: translateX(0);
-    }
+  .text-accent-gradient {
+    @apply bg-gradient-to-r from-amber-400 to-amber-500 bg-clip-text text-transparent;
   }
 
-  .bg-dot-grid {
-    background-image: radial-gradient(circle, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-    background-size: 24px 24px;
-  }
-  
   /* Typography */
-  .type-brand-xl {
-    @apply text-xl font-bold tracking-tighter text-white;
+  .type-label {
+    @apply text-[11px] font-semibold uppercase tracking-[0.18em] text-stone-500;
   }
 
-  .type-nav-link {
-    @apply text-[13px] font-semibold text-zinc-400 transition-colors duration-200 hover:text-white;
+  .type-hero-heading {
+    @apply text-4xl font-bold leading-[1.08] tracking-tight text-white sm:text-5xl md:text-6xl lg:text-[4rem];
   }
 
-  .type-hero-line {
-    @apply block text-balance text-4xl font-medium leading-[1.1] tracking-tight text-zinc-500 sm:text-5xl md:text-6xl lg:text-[3.5rem];
-  }
-  .type-hero-line-accent {
-    @apply block text-balance text-5xl font-bold leading-[1.05] tracking-tight text-white sm:text-6xl md:text-7xl lg:text-[4.5rem];
+  .type-hero-sub {
+    @apply text-lg leading-relaxed text-stone-400 sm:text-xl;
   }
 
-  .type-display-xl {
-    @apply text-4xl font-bold tracking-tight text-white md:text-6xl md:tracking-tighter;
+  .type-section-heading {
+    @apply text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl;
   }
 
-  .type-display-lg {
-    @apply text-5xl font-bold tracking-tight text-white md:text-7xl md:tracking-tighter;
+  .type-section-sub {
+    @apply mt-4 max-w-2xl text-base leading-relaxed text-stone-400 sm:text-lg;
   }
 
-  .type-intro {
-    @apply text-[16px] font-medium leading-[1.72] text-zinc-300 md:text-[18px];
+  .type-card-title {
+    @apply text-xl font-bold tracking-tight text-white;
   }
 
-  .type-meta-uppercase {
-    @apply text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-600;
+  .type-card-body {
+    @apply text-sm leading-relaxed text-stone-400;
   }
 
-  /* Components */
-  .type-btn-solid {
-    @apply inline-flex items-center justify-center rounded-full bg-white px-6 py-2.5 text-[13px] font-bold text-black transition-transform active:scale-95 hover:-translate-y-0.5;
+  /* Buttons */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-amber-500 px-6 py-3 text-sm font-semibold text-black transition-all hover:bg-amber-400 hover:shadow-[0_8px_30px_-8px_rgba(245,158,11,0.3)] active:scale-[0.98];
   }
 
-  .type-btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-full bg-white px-8 py-3.5 text-[13px] font-bold text-black transition-all hover:-translate-y-0.5 hover:shadow-[0_12px_24px_-10px_rgba(255,255,255,0.5)];
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/[0.03] px-6 py-3 text-sm font-semibold text-white transition-all hover:border-white/20 hover:bg-white/[0.06];
   }
 
-  .type-btn-ghost-prominent {
-    @apply inline-flex items-center justify-center gap-2 rounded-full border border-white/15 bg-white/5 px-8 py-3 text-[13px] font-bold text-white transition-colors hover:bg-white/10;
+  .btn-contact {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-white px-6 py-3 text-sm font-semibold text-black transition-all hover:bg-stone-100 hover:shadow-lg active:scale-[0.98];
   }
 
-  .type-chip {
-    @apply rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] font-bold text-zinc-300;
+  /* Cards */
+  .card-premium {
+    @apply rounded-2xl border border-white/[0.06] bg-surface p-8 transition-all hover:border-white/[0.12] hover:bg-surface-raised;
   }
 
-  .type-portfolio-product-title {
-    @apply text-4xl font-bold tracking-tighter text-white md:text-5xl;
+  .card-glass {
+    @apply rounded-2xl border border-white/[0.05] bg-white/[0.02] backdrop-blur-sm;
   }
 
-  .type-portfolio-card-title {
-    @apply text-2xl font-bold tracking-tight text-white;
+  /* Badge */
+  .badge {
+    @apply inline-flex items-center rounded-full border border-amber-500/20 bg-amber-500/10 px-3 py-1 text-xs font-semibold text-amber-400;
   }
 
-  .type-cta-heading {
-    @apply text-balance text-6xl font-bold leading-[0.95] tracking-tighter text-white sm:text-xl md:text-8xl lg:text-[5rem];
+  .badge-neutral {
+    @apply inline-flex items-center rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-xs font-semibold text-stone-400;
   }
 
-  .type-email-cta-solid {
-    @apply inline-flex items-center gap-2 rounded-2xl bg-white px-8 py-4 text-lg font-bold text-black transition-transform hover:-translate-y-0.5;
-  }
-
-  .stack-card {
-    @apply flex items-center gap-2.5 rounded-lg border border-white/[0.04] bg-white/[0.02] p-2 transition-colors hover:border-white/10 hover:bg-white/[0.04];
-  }
-
-  .type-status-kicker {
-    @apply text-[11px] font-semibold uppercase tracking-[0.14em] text-zinc-500;
+  /* Divider */
+  .divider {
+    @apply border-t border-white/[0.05];
   }
 }

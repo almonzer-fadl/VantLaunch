@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { CheckCircle2, Code2, FileCheck, Rocket, ShieldCheck } from "lucide-react";
+import { useMobileMotion } from "@/app/hooks/use-mobile-motion";
 
 const DELIVERABLES = [
   "Business requirements document",
@@ -36,15 +37,17 @@ const PRINCIPLES = [
 ];
 
 export function StudioProofSection() {
+  const { shouldReduceMotion } = useMobileMotion();
+
   return (
     <section className="bg-[#f6f3ea] px-6 py-16 text-[#11100e] sm:py-24 md:py-32">
       <div className="mx-auto max-w-7xl">
         <div className="grid gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
           <motion.div
-            initial={{ opacity: 0, y: 18 }}
+            initial={{ opacity: 0, y: shouldReduceMotion ? 8 : 18 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.55 }}
+            transition={{ duration: shouldReduceMotion ? 0.3 : 0.55 }}
           >
             <span className="inline-flex rounded-full border border-black/10 bg-white px-3 py-1 text-xs font-bold uppercase tracking-[0.16em] text-[#5f5548]">
               Studio operating system
@@ -60,10 +63,10 @@ export function StudioProofSection() {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, y: 18 }}
+            initial={{ opacity: 0, y: shouldReduceMotion ? 8 : 18 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.55, delay: 0.05 }}
+            transition={{ duration: shouldReduceMotion ? 0.3 : 0.55, delay: shouldReduceMotion ? 0 : 0.05 }}
             className="rounded-2xl border border-black/10 bg-white p-6 shadow-[0_18px_55px_-42px_rgba(17,16,14,0.3)] md:p-8"
           >
             <div className="grid gap-3 sm:grid-cols-2">
@@ -81,10 +84,10 @@ export function StudioProofSection() {
           {PRINCIPLES.map((item, index) => (
             <motion.div
               key={item.title}
-              initial={{ opacity: 0, y: 18 }}
+              initial={{ opacity: 0, y: shouldReduceMotion ? 8 : 18 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.45, delay: index * 0.06 }}
+              transition={{ duration: shouldReduceMotion ? 0.28 : 0.45, delay: shouldReduceMotion ? 0 : index * 0.06 }}
               className="rounded-2xl border border-black/10 bg-white p-6"
             >
               <item.icon className="h-8 w-8 text-[#11100e]" />

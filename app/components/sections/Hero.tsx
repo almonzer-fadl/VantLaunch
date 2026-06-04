@@ -4,22 +4,28 @@ import { motion } from "framer-motion";
 import { ArrowRight, PlayCircle } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import { useMobileMotion } from "@/app/hooks/use-mobile-motion";
 
 export function HeroSection({ onOpenProject }: { onOpenProject: (slug: string) => void }) {
+  const { shouldReduceMotion } = useMobileMotion();
+  const enterX = shouldReduceMotion ? 0 : -30;
+  const mediaScale = shouldReduceMotion ? 1 : 0.95;
+  const mediaY = shouldReduceMotion ? 8 : 20;
+
   return (
     <section className="relative overflow-hidden bg-[#f8f6ef] px-4 pb-16 pt-20 text-[#11100e] sm:px-6 sm:pb-20 sm:pt-24 md:pb-32 md:pt-32 lg:pb-40 lg:pt-40">
       {/* Dynamic Background */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-x-0 top-0 h-px bg-black/[0.06]" />
-        <div className="absolute bottom-[-18rem] left-1/2 h-[34rem] w-[72rem] -translate-x-1/2 rounded-full bg-[#004225]/[0.06] blur-[120px]" />
+        <div className="absolute bottom-[-18rem] left-1/2 hidden h-[34rem] w-[72rem] -translate-x-1/2 rounded-full bg-[#004225]/[0.06] blur-[120px] sm:block" />
       </div>
 
       <div className="relative z-10 mx-auto max-w-7xl">
         <div className="grid gap-16 lg:grid-cols-2 lg:items-center">
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
+            initial={{ opacity: 0, x: enterX }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: shouldReduceMotion ? 0.35 : 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="text-left"
           >
             <h1 className="text-balance text-3xl font-bold leading-[1.04] tracking-tight text-[#11100e] sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl">
@@ -49,9 +55,9 @@ export function HeroSection({ onOpenProject }: { onOpenProject: (slug: string) =
             </div>
 
             <motion.div
-              initial={{ opacity: 0, y: 15 }}
+              initial={{ opacity: 0, y: shouldReduceMotion ? 6 : 15 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4, duration: 0.6 }}
+              transition={{ delay: shouldReduceMotion ? 0.05 : 0.4, duration: shouldReduceMotion ? 0.3 : 0.6 }}
               className="mt-10 flex flex-col gap-4 sm:mt-12 sm:flex-row sm:items-center sm:gap-5"
             >
               <Link href="#contact" className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#11100e] px-6 py-3.5 text-sm font-bold text-white transition-colors hover:bg-[#004225] sm:w-auto sm:px-8">
@@ -65,9 +71,9 @@ export function HeroSection({ onOpenProject }: { onOpenProject: (slug: string) =
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+            initial={{ opacity: 0, scale: mediaScale, y: mediaY }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ delay: shouldReduceMotion ? 0.08 : 0.3, duration: shouldReduceMotion ? 0.4 : 1, ease: [0.16, 1, 0.3, 1] }}
             className="relative lg:block"
           >
             <div 
@@ -86,7 +92,7 @@ export function HeroSection({ onOpenProject }: { onOpenProject: (slug: string) =
                </div>
               
               <div className="absolute bottom-4 left-4 right-4 sm:bottom-8 sm:left-8 sm:right-8 lg:bottom-10 lg:left-10 lg:right-10">
-                <div className="flex items-center gap-3 rounded-2xl border border-black/10 bg-white/90 p-3 shadow-[0_18px_50px_-35px_rgba(17,16,14,0.45)] backdrop-blur-xl transition-all sm:gap-5 sm:p-5">
+                <div className="flex items-center gap-3 rounded-2xl border border-black/10 bg-white/95 p-3 shadow-[0_18px_50px_-35px_rgba(17,16,14,0.45)] transition-all sm:gap-5 sm:bg-white/90 sm:p-5 sm:backdrop-blur-xl">
                   <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#11100e] sm:h-12 sm:w-12">
                     <PlayCircle className="h-6 w-6 text-white sm:h-8 sm:w-8" />
                   </div>
@@ -104,7 +110,7 @@ export function HeroSection({ onOpenProject }: { onOpenProject: (slug: string) =
             </div>
             
             {/* Ambient Background Accents */}
-            <div className="absolute -right-10 -top-10 h-48 w-48 rounded-full bg-black/[0.03] blur-[80px]" />
+            <div className="absolute -right-10 -top-10 hidden h-48 w-48 rounded-full bg-black/[0.03] blur-[80px] sm:block" />
           </motion.div>
         </div>
       </div>

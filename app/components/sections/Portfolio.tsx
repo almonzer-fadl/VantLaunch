@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight, Layout, MessageSquare, ShieldCheck } from "lucide-react";
 import Image from "next/image";
+import { useMobileMotion } from "@/app/hooks/use-mobile-motion";
 
 const PROJECTS = [
   {
@@ -98,14 +99,16 @@ const PROJECTS = [
 ];
 
 export function PortfolioSection({ onOpenProject }: { onOpenProject: (slug: string) => void }) {
+  const { shouldReduceMotion } = useMobileMotion();
+
   return (
     <section id="portfolio" className="border-t border-black/10 bg-[#fffaf0] px-6 py-16 text-[#11100e] sm:py-24 md:py-32">
       <div className="mx-auto max-w-7xl">
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: shouldReduceMotion ? 8 : 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: shouldReduceMotion ? 0.3 : 0.5 }}
           className="mb-16 text-center"
         >
           <span className="mb-4 inline-flex rounded-full border border-black/10 bg-white px-3 py-1 text-xs font-bold uppercase tracking-[0.16em] text-[#74695b]">Case studies</span>
@@ -122,10 +125,10 @@ export function PortfolioSection({ onOpenProject }: { onOpenProject: (slug: stri
             {PROJECTS.filter(p => p.featured).map((project, i) => (
               <motion.div
                 key={project.name}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: shouldReduceMotion ? 10 : 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: i * 0.1 }}
+                transition={{ duration: shouldReduceMotion ? 0.32 : 0.6, delay: shouldReduceMotion ? 0 : i * 0.1 }}
                 onClick={() => onOpenProject(project.slug)}
                 className="group relative cursor-pointer flex flex-col overflow-hidden rounded-2xl border border-black/10 bg-white shadow-[0_18px_55px_-42px_rgba(17,16,14,0.35)] transition-all hover:bg-black/[0.03]"
               >
@@ -145,7 +148,7 @@ export function PortfolioSection({ onOpenProject }: { onOpenProject: (slug: stri
                   
                   {/* Floating Icon */}
                   <div className="absolute top-6 left-6">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-black/10 bg-white/85 text-[#11100e] shadow-xl backdrop-blur-md">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-black/10 bg-white/95 text-[#11100e] shadow-xl sm:bg-white/85 sm:backdrop-blur-md">
                       {project.icon && <project.icon className="h-6 w-6" />}
                     </div>
                   </div>
@@ -183,10 +186,10 @@ export function PortfolioSection({ onOpenProject }: { onOpenProject: (slug: stri
             {PROJECTS.filter(p => !p.featured).map((project, i) => (
               <motion.div
                 key={project.name}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: shouldReduceMotion ? 8 : 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: i * 0.06 }}
+                transition={{ duration: shouldReduceMotion ? 0.28 : 0.4, delay: shouldReduceMotion ? 0 : i * 0.06 }}
                 className="group flex flex-col rounded-2xl border border-black/10 bg-white p-5 transition-all hover:bg-black/[0.03] sm:p-8"
               >
                 <div className="mb-4 flex items-center justify-between">

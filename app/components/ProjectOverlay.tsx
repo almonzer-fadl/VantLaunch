@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import { WORK_STUBS } from "./stub-projects";
 import { TeraMotorsContent } from "../work/teramotors/TeraMotorsContent";
 import { GariPhonePreview, GariScreenGallery } from "./GariPhonePreview";
+import { useMobileMotion } from "../hooks/use-mobile-motion";
 
 type ProjectOverlayProps = {
   activeSlug: string | null;
@@ -14,6 +15,8 @@ type ProjectOverlayProps = {
 };
 
 export function ProjectOverlay({ activeSlug, onClose }: ProjectOverlayProps) {
+  const { shouldReduceMotion } = useMobileMotion();
+
   useEffect(() => {
     if (activeSlug) {
       document.body.style.overflow = "hidden";
@@ -166,20 +169,25 @@ export function ProjectOverlay({ activeSlug, onClose }: ProjectOverlayProps) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="absolute inset-0 bg-[#11100e]/35 backdrop-blur-lg"
+            transition={{ duration: shouldReduceMotion ? 0.15 : 0.25 }}
+            className="absolute inset-0 bg-[#11100e]/35 sm:backdrop-blur-lg"
           />
           
           <motion.div
-            initial={{ opacity: 0, y: 40, scale: 0.98 }}
+            initial={{ opacity: 0, y: shouldReduceMotion ? 16 : 40, scale: shouldReduceMotion ? 1 : 0.98 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 40, scale: 0.98 }}
-            transition={{ type: "spring", stiffness: 200, damping: 25 }}
+            exit={{ opacity: 0, y: shouldReduceMotion ? 16 : 40, scale: shouldReduceMotion ? 1 : 0.98 }}
+            transition={
+              shouldReduceMotion
+                ? { duration: 0.2, ease: [0.22, 1, 0.36, 1] }
+                : { type: "spring", stiffness: 200, damping: 25 }
+            }
             className="relative h-full w-full max-w-6xl overflow-hidden rounded-2xl border border-black/10 bg-[#f8f6ef] text-[#11100e] shadow-[0_28px_90px_-60px_rgba(17,16,14,0.42)]"
           >
             <div className="absolute right-8 top-8 z-50">
               <button
                 onClick={onClose}
-                className="group flex h-14 w-14 items-center justify-center rounded-full border border-black/10 bg-white text-[#74695b] shadow-[0_10px_30px_-22px_rgba(17,16,14,0.45)] backdrop-blur-md transition-all hover:bg-black/[0.03] hover:text-[#11100e]"
+                className="group flex h-14 w-14 items-center justify-center rounded-full border border-black/10 bg-white text-[#74695b] shadow-[0_10px_30px_-22px_rgba(17,16,14,0.45)] transition-all hover:bg-black/[0.03] hover:text-[#11100e] sm:backdrop-blur-md"
                 aria-label="Close overlay"
               >
                 <X className="h-6 w-6 transition-transform group-hover:rotate-90" />

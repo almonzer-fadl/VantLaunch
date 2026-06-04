@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { useMobileMotion } from "../hooks/use-mobile-motion";
 
 const NAV_LINKS = [
   { href: "#services", label: "Services" },
@@ -14,6 +15,7 @@ const NAV_LINKS = [
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
+  const { shouldReduceMotion } = useMobileMotion();
 
   useEffect(() => {
     if (open) {
@@ -97,9 +99,9 @@ export function Navbar() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.2 }}
+              transition={{ duration: shouldReduceMotion ? 0.12 : 0.2 }}
               onClick={() => setOpen(false)}
-              className="fixed inset-0 z-40 bg-black/40 backdrop-blur-sm md:hidden"
+              className="fixed inset-0 z-40 bg-black/40 md:hidden sm:backdrop-blur-sm"
             />
 
             {/* Drawer panel */}
@@ -107,7 +109,7 @@ export function Navbar() {
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
-              transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: shouldReduceMotion ? 0.2 : 0.3, ease: [0.22, 1, 0.36, 1] }}
               className="fixed bottom-0 right-0 top-0 z-50 w-[280px] max-w-[85vw] bg-[#f8f6ef] shadow-2xl md:hidden"
             >
               <div className="flex flex-col p-6 pt-20">
@@ -117,7 +119,7 @@ export function Navbar() {
                       key={link.href}
                       initial={{ opacity: 0, x: 20 }}
                       animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.1 + i * 0.06 }}
+                      transition={{ delay: shouldReduceMotion ? 0 : 0.1 + i * 0.06 }}
                     >
                       <Link
                         href={link.href}
@@ -133,7 +135,7 @@ export function Navbar() {
                 <motion.div
                   initial={{ opacity: 0, y: 12 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.35 }}
+                  transition={{ delay: shouldReduceMotion ? 0.04 : 0.35 }}
                   className="mt-8"
                 >
                   <Link
@@ -148,7 +150,7 @@ export function Navbar() {
                 <motion.p
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  transition={{ delay: 0.45 }}
+                  transition={{ delay: shouldReduceMotion ? 0.08 : 0.45 }}
                   className="mt-8 text-center text-xs font-medium text-[#74695b]"
                 >
                   Custom dashboards, portals &amp; mobile apps

@@ -4,16 +4,19 @@ import { motion } from "framer-motion";
 import { ArrowRight, Check } from "lucide-react";
 import { useState } from "react";
 import { sendContactEmail } from "../../actions/contact";
+import { useMobileMotion } from "@/app/hooks/use-mobile-motion";
 
 export function CTASection() {
+  const { shouldReduceMotion } = useMobileMotion();
+
   return (
     <section id="contact" className="border-t border-black/10 bg-[#f8f6ef] px-6 py-16 text-[#11100e] sm:py-24 md:py-32">
       <div className="mx-auto max-w-7xl">
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: shouldReduceMotion ? 8 : 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: shouldReduceMotion ? 0.3 : 0.5 }}
           className="mb-16 text-center"
         >
           <span className="mb-4 inline-flex rounded-full border border-black/10 bg-white px-3 py-1 text-xs font-bold uppercase tracking-[0.16em] text-[#74695b]">Contact</span>

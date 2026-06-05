@@ -28,6 +28,9 @@
 /teramotors/
 /Gari/
 
+# brand assets
+/app/components/vantlaunch brand/
+
 # debug
 npm-debug.log*
 yarn-debug.log*

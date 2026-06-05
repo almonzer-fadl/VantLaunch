@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { PlayCircle } from "lucide-react";
+import { Play } from "lucide-react";
 import { fadeSlide, staggerSection } from "@/app/lib/motion-variants";
 
 const teramotorsShots = [
@@ -25,7 +25,7 @@ const teramotorsShots = [
 
 export function ProductEvidenceSection() {
   return (
-    <section id="demo" className="border-t border-black/[0.06] bg-[#fff9ed] px-6 py-20 text-[#17140d] md:py-28">
+    <section id="demo" className="border-t border-black/[0.06] bg-[#F8F6EF] px-6 py-20 text-[#11100E] md:py-28">
       <motion.div
         className="mx-auto max-w-7xl"
         initial="hidden"
@@ -41,14 +41,14 @@ export function ProductEvidenceSection() {
           </p>
         </motion.div>
 
-        <motion.div variants={fadeSlide} className="overflow-hidden rounded-2xl border border-black/10 bg-white shadow-[0_18px_55px_-42px_rgba(23,20,13,0.35)]">
+        <motion.div variants={fadeSlide} className="overflow-hidden rounded-2xl border border-black/10 bg-white shadow-mid">
           <div className="flex flex-wrap items-center justify-between gap-4 border-b border-black/10 px-5 py-4">
             <div>
-              <p className="text-sm font-bold text-[#17140d]">TeraMotors demo</p>
-              <p className="text-xs text-[#8a7657]">4:51 product walkthrough</p>
+              <p className="text-sm font-bold text-[#11100E]">TeraMotors demo</p>
+              <p className="text-xs text-[#74695B]">4:51 product walkthrough</p>
             </div>
-            <span className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-3 py-1.5 text-xs font-bold text-[#8a7657]">
-              <PlayCircle className="h-4 w-4 text-[#17140d]" />
+            <span className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-3 py-1.5 text-xs font-bold text-[#74695B]">
+              <Play className="h-4 w-4 text-[#11100E]" />
               Watch on page
             </span>
           </div>
@@ -79,8 +79,8 @@ export function ProductEvidenceSection() {
                 />
               </div>
               <div className="border-t border-black/10 p-5">
-                <h3 className="text-base font-bold text-[#17140d]">{shot.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-[#695b45]">{shot.body}</p>
+                <h3 className="text-base font-bold text-[#11100E]">{shot.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-[#74695B]">{shot.body}</p>
               </div>
             </motion.article>
           ))}

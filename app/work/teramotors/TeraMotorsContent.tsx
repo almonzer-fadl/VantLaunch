@@ -128,7 +128,7 @@ export function TeraMotorsContent({ onClose }: { onClose?: () => void }) {
           workspace built around real repair operations.
         </p>
 
-        <figure className="relative mt-12 overflow-hidden rounded-2xl border border-black/10 bg-white shadow-[0_18px_55px_-42px_rgba(23,20,13,0.35)]">
+        <figure className="relative mt-12 overflow-hidden rounded-2xl border border-black/10 bg-white shadow-mid">
           <div className="relative aspect-[1800/944] w-full bg-[#efe2c7]">
             <Image
               src="/media/teramotors-dashboard.webp"
@@ -151,9 +151,9 @@ export function TeraMotorsContent({ onClose }: { onClose?: () => void }) {
           {highlights.map(({ title, body, icon: Icon }) => (
             <div
               key={title}
-              className="rounded-2xl border border-black/10 bg-white p-7 shadow-[0_14px_45px_-36px_rgba(23,20,13,0.28)] transition-colors hover:bg-black/[0.03]"
+              className="rounded-2xl border border-black/10 bg-white p-7 shadow-mid transition-colors hover:bg-black/[0.03]"
             >
-              <Icon className="h-10 w-10 text-[#17140d]" aria-hidden />
+              <Icon className="h-10 w-10 text-[#11100E]" aria-hidden />
               <p className="type-case-card-title">{title}</p>
               <p className="type-case-card-body">{body}</p>
             </div>
@@ -161,9 +161,9 @@ export function TeraMotorsContent({ onClose }: { onClose?: () => void }) {
         </div>
       </section>
 
-      <section className="rounded-2xl border border-black/10 bg-white p-8 shadow-[0_14px_45px_-36px_rgba(23,20,13,0.28)] md:p-10">
+      <section className="rounded-2xl border border-black/10 bg-white p-8 shadow-mid md:p-10">
         <h2 className="type-case-section-heading-inline">
-          <Wrench className="h-8 w-8 text-[#17140d]" />
+          <Wrench className="h-8 w-8 text-[#11100E]" />
           Built for daily workshop work.
         </h2>
         <p className="mt-4 type-prose-intro">
@@ -222,7 +222,7 @@ export function TeraMotorsContent({ onClose }: { onClose?: () => void }) {
           {plans.map((plan) => (
             <div key={plan.name} className="rounded-2xl border border-black/10 bg-white p-5">
               <p className="type-feature-card-title-sm">{plan.name}</p>
-              <p className="mt-2 text-2xl font-semibold text-[#17140d]">{plan.price}</p>
+              <p className="mt-2 text-2xl font-semibold text-[#11100E]">{plan.price}</p>
               <p className="type-feature-card-body">{plan.body}</p>
             </div>
           ))}
@@ -235,7 +235,7 @@ export function TeraMotorsContent({ onClose }: { onClose?: () => void }) {
         </p>
       </section>
 
-      <section className="rounded-2xl border border-black/10 bg-white px-8 py-12 text-center shadow-[0_14px_45px_-36px_rgba(23,20,13,0.28)]">
+      <section className="rounded-2xl border border-black/10 bg-white px-8 py-12 text-center shadow-mid">
         <p className="type-accent-label-sm mx-auto max-w-lg">
           Ready to try TeraMotors in your workshop?
         </p>
@@ -275,13 +275,13 @@ function FeatureBlock({
     <section>
       <p className="type-meta-accent-caps">{eyebrow}</p>
       <h2 className="mt-2 type-case-section-heading-inline">
-        <Icon className="h-8 w-8 text-[#17140d]" />
+        <Icon className="h-8 w-8 text-[#11100E]" />
         {title}
       </h2>
       <ul className="mt-6 space-y-4 type-prose-muted">
         {items.map((item) => (
           <li key={item} className="flex gap-3">
-            <span className="mt-2 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-[#17140d]/30" />
+            <span className="mt-2 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-[#11100E]/30" />
             {item}
           </li>
         ))}
@@ -313,7 +313,7 @@ function FeatureTwoCol({
           <ul className="mt-4 space-y-3 type-prose-muted">
             {leftItems.map((item) => (
               <li key={item} className="flex gap-3 border-b border-black/10 pb-3 last:border-0">
-                <span className="text-[#17140d]">·</span>
+                <span className="text-[#11100E]">·</span>
                 {item}
               </li>
             ))}
@@ -327,7 +327,7 @@ function FeatureTwoCol({
                 key={b.title}
                 className="rounded-2xl border border-black/10 bg-white px-6 py-5"
               >
-                <Ico className="h-7 w-7 text-[#17140d]" />
+                <Ico className="h-7 w-7 text-[#11100E]" />
                 <p className="type-feature-card-title-sm">{b.title}</p>
                 <p className="type-feature-card-body">{b.body}</p>
               </div>

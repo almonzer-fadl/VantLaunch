@@ -10,7 +10,7 @@ export function CTASection() {
   const { shouldReduceMotion } = useMobileMotion();
 
   return (
-    <section id="contact" className="border-t border-black/10 bg-[#fbf4e2] px-6 py-16 text-[#17140d] sm:py-24 md:py-32">
+    <section id="contact" className="border-t border-black/10 bg-[#F8F6EF] px-6 py-16 text-[#11100E] sm:py-24 md:py-32">
       <div className="mx-auto max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: shouldReduceMotion ? 8 : 16 }}
@@ -19,16 +19,16 @@ export function CTASection() {
           transition={{ duration: shouldReduceMotion ? 0.3 : 0.5 }}
           className="mb-16 text-center"
         >
-          <span className="mb-4 inline-flex rounded-full border border-black/10 bg-white px-3 py-1 text-xs font-bold uppercase tracking-[0.16em] text-[#8a7657]">Contact</span>
-          <h2 className="text-3xl font-bold tracking-tight text-[#17140d] sm:text-4xl md:text-5xl">Tell us what tools you&apos;re using now.</h2>
-          <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-[#695b45] sm:text-lg">
+          <span className="mb-4 inline-flex rounded-full border border-black/10 bg-[#F3F2ED] px-3 py-1.5 text-xs font-bold uppercase tracking-[0.16em] text-[#74695B]">Contact</span>
+          <h2 className="text-3xl font-bold tracking-tight text-[#11100E] sm:text-4xl md:text-5xl">Tell us what tools you&apos;re using now.</h2>
+          <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-[#74695B] sm:text-lg">
             We&apos;ll show you what can be replaced by one owned operating system.
             Response within 24 hours — usually with a few questions and a rough timeline.
           </p>
         </motion.div>
 
         <div className="mx-auto max-w-2xl">
-          <div className="rounded-2xl border border-black/10 bg-white p-5 shadow-[0_18px_55px_-42px_rgba(23,20,13,0.35)] sm:p-8 md:p-10">
+          <div className="rounded-2xl border border-black/10 bg-white p-5 shadow-mid sm:p-8 md:p-10">
             <ContactForm />
           </div>
         </div>
@@ -64,16 +64,16 @@ function ContactForm() {
         animate={{ opacity: 1, scale: 1 }}
         className="flex flex-col items-center py-8 text-center"
       >
-        <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-[#00401f]/10">
-          <Check className="h-8 w-8 text-[#00401f]" />
+        <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-[#004225]/10">
+          <Check className="h-8 w-8 text-[#004225]" />
         </div>
-        <h3 className="text-2xl font-bold text-[#17140d]">Request received.</h3>
-        <p className="mt-2 text-[#695b45]">
+        <h3 className="text-2xl font-bold text-[#11100E]">Request received.</h3>
+        <p className="mt-2 text-[#74695B]">
           We will review the details and follow up within 24 hours.
         </p>
         <button
           onClick={() => setStatus("idle")}
-          className="mt-8 text-sm font-semibold text-[#00401f] transition-colors hover:text-[#17140d]"
+          className="mt-8 text-sm font-semibold text-[#004225] transition-colors hover:text-[#11100E]"
         >
           Send another request
         </button>
@@ -95,7 +95,7 @@ function ContactForm() {
       <input type="hidden" name="role" value="Lead" />
 
       <div>
-        <label className="mb-2 block text-xs font-bold uppercase tracking-wider text-[#8a7657]">
+        <label className="mb-2 block text-xs font-bold uppercase tracking-wider text-[#74695B]">
           Your name
         </label>
         <input
@@ -103,12 +103,12 @@ function ContactForm() {
           name="name"
           type="text"
           placeholder="John Smith"
-          className="w-full rounded-xl border border-black/10 bg-[#fbf4e2] px-4 py-3 text-sm font-medium text-[#17140d] placeholder:text-[#a89472] transition-all focus:border-[#00401f]/40 focus:outline-none focus:ring-1 focus:ring-[#00401f]/20"
+          className="w-full rounded-xl border border-black/10 bg-[#F8F6EF] px-4 py-3 text-sm font-medium text-[#11100E] placeholder:text-[#a89472] transition-all focus:border-[#004225]/40 focus:outline-none focus:ring-1 focus:ring-[#004225]/20"
         />
       </div>
 
       <div>
-        <label className="mb-2 block text-xs font-bold uppercase tracking-wider text-[#8a7657]">
+        <label className="mb-2 block text-xs font-bold uppercase tracking-wider text-[#74695B]">
           Email address
         </label>
         <input
@@ -116,64 +116,64 @@ function ContactForm() {
           name="email"
           type="email"
           placeholder="john@company.com"
-          className="w-full rounded-xl border border-black/10 bg-[#fbf4e2] px-4 py-3 text-sm font-medium text-[#17140d] placeholder:text-[#a89472] transition-all focus:border-[#00401f]/40 focus:outline-none focus:ring-1 focus:ring-[#00401f]/20"
+          className="w-full rounded-xl border border-black/10 bg-[#F8F6EF] px-4 py-3 text-sm font-medium text-[#11100E] placeholder:text-[#a89472] transition-all focus:border-[#004225]/40 focus:outline-none focus:ring-1 focus:ring-[#004225]/20"
         />
       </div>
 
       <div className="grid gap-6 sm:grid-cols-2">
         <div>
-          <label className="mb-2 block text-xs font-bold uppercase tracking-wider text-[#8a7657]">
+          <label className="mb-2 block text-xs font-bold uppercase tracking-wider text-[#74695B]">
             Company
           </label>
           <input
             name="company"
             type="text"
             placeholder="Acme Inc."
-            className="w-full rounded-xl border border-black/10 bg-[#fbf4e2] px-4 py-3 text-sm font-medium text-[#17140d] placeholder:text-[#a89472] transition-all focus:border-[#00401f]/40 focus:outline-none focus:ring-1 focus:ring-[#00401f]/20"
+            className="w-full rounded-xl border border-black/10 bg-[#F8F6EF] px-4 py-3 text-sm font-medium text-[#11100E] placeholder:text-[#a89472] transition-all focus:border-[#004225]/40 focus:outline-none focus:ring-1 focus:ring-[#004225]/20"
           />
         </div>
         <div>
-          <label className="mb-2 block text-xs font-bold uppercase tracking-wider text-[#8a7657]">
+          <label className="mb-2 block text-xs font-bold uppercase tracking-wider text-[#74695B]">
             Project tier
           </label>
           <select
             name="product_interest"
             defaultValue=""
-            className="w-full rounded-xl border border-black/10 bg-[#fbf4e2] px-4 py-3 text-sm font-medium text-[#17140d] transition-all focus:border-[#00401f]/40 focus:outline-none focus:ring-1 focus:ring-[#00401f]/20"
+            className="w-full rounded-xl border border-black/10 bg-[#F8F6EF] px-4 py-3 text-sm font-medium text-[#11100E] transition-all focus:border-[#004225]/40 focus:outline-none focus:ring-1 focus:ring-[#004225]/20"
           >
-            <option value="" disabled className="bg-white text-[#8a7657]">
+            <option value="" disabled className="bg-white text-[#74695B]">
               Select tier
             </option>
-            <option value="foundation" className="bg-white text-[#17140d]">Foundation — Website &amp; Leads</option>
-            <option value="portal" className="bg-white text-[#17140d]">Portal — Client Operations</option>
-            <option value="command" className="bg-white text-[#17140d]">Command — Internal Workflows</option>
-            <option value="os" className="bg-white text-[#17140d]">OS — Complete System</option>
-            <option value="not-sure" className="bg-white text-[#17140d]">Not sure yet</option>
+            <option value="foundation" className="bg-white text-[#11100E]">Foundation — Website &amp; Leads</option>
+            <option value="portal" className="bg-white text-[#11100E]">Portal — Client Operations</option>
+            <option value="command" className="bg-white text-[#11100E]">Command — Internal Workflows</option>
+            <option value="os" className="bg-white text-[#11100E]">OS — Complete System</option>
+            <option value="not-sure" className="bg-white text-[#11100E]">Not sure yet</option>
           </select>
         </div>
       </div>
 
       <div>
-        <label className="mb-2 block text-xs font-bold uppercase tracking-wider text-[#8a7657]">
+        <label className="mb-2 block text-xs font-bold uppercase tracking-wider text-[#74695B]">
           Timeline
         </label>
         <select
           name="timeline"
           defaultValue=""
-          className="w-full rounded-xl border border-black/10 bg-[#fbf4e2] px-4 py-3 text-sm font-medium text-[#17140d] transition-all focus:border-[#00401f]/40 focus:outline-none focus:ring-1 focus:ring-[#00401f]/20"
+          className="w-full rounded-xl border border-black/10 bg-[#F8F6EF] px-4 py-3 text-sm font-medium text-[#11100E] transition-all focus:border-[#004225]/40 focus:outline-none focus:ring-1 focus:ring-[#004225]/20"
         >
-          <option value="" disabled className="bg-white text-[#8a7657]">
+          <option value="" disabled className="bg-white text-[#74695B]">
             Expected timeline
           </option>
-          <option value="asap" className="bg-white text-[#17140d]">ASAP</option>
-          <option value="1m" className="bg-white text-[#17140d]">Within 1 month</option>
-          <option value="quarter" className="bg-white text-[#17140d]">This quarter</option>
-          <option value="exploring" className="bg-white text-[#17140d]">Just exploring</option>
+          <option value="asap" className="bg-white text-[#11100E]">ASAP</option>
+          <option value="1m" className="bg-white text-[#11100E]">Within 1 month</option>
+          <option value="quarter" className="bg-white text-[#11100E]">This quarter</option>
+          <option value="exploring" className="bg-white text-[#11100E]">Just exploring</option>
         </select>
       </div>
 
       <div>
-        <label className="mb-2 block text-xs font-bold uppercase tracking-wider text-[#8a7657]">
+        <label className="mb-2 block text-xs font-bold uppercase tracking-wider text-[#74695B]">
           Tell us about your project
         </label>
         <textarea
@@ -181,14 +181,14 @@ function ContactForm() {
           name="message"
           rows={4}
           placeholder="What do you need built? Who will use it? Any specific features or integrations required?"
-          className="w-full resize-none rounded-xl border border-black/10 bg-[#fbf4e2] px-4 py-3 text-sm font-medium text-[#17140d] placeholder:text-[#a89472] transition-all focus:border-[#00401f]/40 focus:outline-none focus:ring-1 focus:ring-[#00401f]/20"
+          className="w-full resize-none rounded-xl border border-black/10 bg-[#F8F6EF] px-4 py-3 text-sm font-medium text-[#11100E] placeholder:text-[#a89472] transition-all focus:border-[#004225]/40 focus:outline-none focus:ring-1 focus:ring-[#004225]/20"
         />
       </div>
 
       <button
         type="submit"
         disabled={status === "submitting"}
-        className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#00401f] px-6 py-3 text-sm font-bold text-white transition-all hover:bg-[#17140d] disabled:cursor-not-allowed disabled:opacity-60"
+        className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#004225] px-6 py-3 text-sm font-bold text-white transition-all hover:bg-[#11100E] disabled:cursor-not-allowed disabled:opacity-60"
       >
         {status === "submitting" ? "Sending..." : "Send inquiry"}
         <ArrowRight className="h-4 w-4" />
@@ -200,7 +200,7 @@ function ContactForm() {
         </p>
       )}
 
-      <p className="text-center text-xs text-[#8a7657]">
+      <p className="text-center text-xs text-[#74695B]">
         No spam. We respond to genuine project inquiries only.
       </p>
     </form>

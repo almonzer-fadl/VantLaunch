@@ -15,7 +15,7 @@ const APPS = [
     label: "Start free trial",
     image: "/media/teramotors-dashboard.webp",
     color: "bg-[#efe2c7]",
-    accent: "border-black/10 bg-white text-[#8a7657]",
+    accent: "border-black/10 bg-white text-[#74695B]",
   },
   {
     name: "SpeakBill",
@@ -25,7 +25,7 @@ const APPS = [
     label: "Visit SpeakBill",
     image: "/media/speakbill-dashboard.png",
     color: "bg-[#efe2c7]",
-    accent: "border-black/10 bg-white text-[#8a7657]",
+    accent: "border-black/10 bg-white text-[#74695B]",
   },
   {
     name: "Gari",
@@ -35,13 +35,13 @@ const APPS = [
     label: "Preview Gari",
     image: "/media/gari-home.webp",
     color: "bg-[#efe2c7]",
-    accent: "border-black/10 bg-white text-[#8a7657]",
+    accent: "border-black/10 bg-white text-[#74695B]",
   },
 ] as const;
 
 export function ProductsSection() {
   return (
-    <section id="products" className="border-t border-black/[0.06] bg-[#fbf4e2] px-6 py-20 text-[#17140d] md:py-28">
+    <section id="products" className="border-t border-black/[0.06] bg-[#F8F6EF] px-6 py-20 text-[#11100E] md:py-28">
       <motion.div
         className="mx-auto max-w-7xl"
         initial="hidden"
@@ -79,17 +79,17 @@ export function ProductsSection() {
 
                 <div className="flex flex-col gap-4 p-6 pt-5">
                   <div className="flex items-center justify-between gap-3">
-                    <h3 className="text-2xl font-bold tracking-tight text-[#17140d]">{app.name}</h3>
+                    <h3 className="text-2xl font-bold tracking-tight text-[#11100E]">{app.name}</h3>
                     <span className={`rounded-full border px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] ${app.accent}`}>
                       {app.stage}
                     </span>
                   </div>
-                  <p className="text-sm leading-relaxed text-[#695b45]">{app.description}</p>
+                  <p className="text-sm leading-relaxed text-[#74695B]">{app.description}</p>
                   <Link
                     href={app.href}
                     target={external ? "_blank" : undefined}
                     rel={external ? "noopener noreferrer" : undefined}
-                    className="mt-auto inline-flex items-center gap-2 text-sm font-bold text-[#17140d] transition-colors hover:text-[#00401f]"
+                    className="mt-auto inline-flex items-center gap-2 text-sm font-bold text-[#11100E] transition-colors hover:text-[#004225]"
                   >
                     {app.label}
                     <ArrowUpRight className="h-4 w-4" />

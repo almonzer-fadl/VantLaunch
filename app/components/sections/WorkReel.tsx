@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowUpRight, PlayCircle } from "lucide-react";
+import { ArrowUpRight, Play } from "lucide-react";
 import Image from "next/image";
 import { useMobileMotion } from "@/app/hooks/use-mobile-motion";
 
@@ -51,7 +51,7 @@ export function WorkReelSection() {
   const reelItems = shouldReduceMotion ? REEL_ITEMS : [...REEL_ITEMS, ...REEL_ITEMS];
 
   return (
-    <section className="overflow-hidden bg-[#fff9ed] px-6 py-16 text-[#17140d] sm:py-24 md:py-32">
+    <section className="overflow-hidden bg-[#F8F6EF] px-6 py-16 text-[#11100E] sm:py-24 md:py-32">
       <div className="mx-auto max-w-7xl">
         <div className="mb-12 flex flex-col justify-between gap-6 md:flex-row md:items-end">
           <motion.div
@@ -60,16 +60,16 @@ export function WorkReelSection() {
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: shouldReduceMotion ? 0.3 : 0.5 }}
           >
-            <span className="mb-4 inline-flex rounded-full border border-black/10 bg-white px-3 py-1 text-xs font-bold uppercase tracking-[0.16em] text-[#8a7657]">
+            <span className="mb-4 inline-flex rounded-full border border-black/10 bg-[#F3F2ED] px-3 py-1.5 text-xs font-bold uppercase tracking-[0.16em] text-[#74695B]">
               Product reel
             </span>
-            <h2 className="max-w-3xl text-3xl font-bold tracking-tight text-[#17140d] sm:text-4xl md:text-5xl">
+            <h2 className="max-w-3xl text-3xl font-bold tracking-tight text-[#11100E] sm:text-4xl md:text-5xl">
               Real screens from real systems — dashboards, portals, invoicing, and mobile flows.
             </h2>
           </motion.div>
           <a
             href="#portfolio"
-            className="inline-flex w-fit items-center justify-center gap-2 rounded-xl border border-black/10 bg-white px-6 py-3 text-sm font-bold text-[#17140d] transition-all hover:bg-black/[0.03]"
+            className="inline-flex w-fit items-center justify-center gap-2 rounded-xl border border-black/10 bg-transparent px-6 py-3 text-sm font-bold text-[#11100E] transition-all hover:bg-black/[0.03]"
           >
             Open case studies
             <ArrowUpRight className="h-4 w-4" />
@@ -78,13 +78,13 @@ export function WorkReelSection() {
       </div>
 
       <div className="relative">
-        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 hidden w-24 bg-gradient-to-r from-[#fff9ed] to-transparent sm:block" />
-        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 hidden w-24 bg-gradient-to-l from-[#fff9ed] to-transparent sm:block" />
+        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 hidden w-24 bg-gradient-to-r from-[#F8F6EF] to-transparent sm:block" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 hidden w-24 bg-gradient-to-l from-[#F8F6EF] to-transparent sm:block" />
         <div className="mobile-scroll-reel flex animate-work-reel gap-5 px-6 pr-5 sm:px-0">
           {reelItems.map((item, index) => (
             <figure
               key={`${item.title}-${index}`}
-              className={`group relative shrink-0 overflow-hidden rounded-2xl border border-black/10 bg-white shadow-[0_20px_60px_-44px_rgba(23,20,13,0.42)] ${
+              className={`group relative shrink-0 overflow-hidden rounded-2xl border border-black/10 bg-white shadow-mid ${
                 item.wide ? "w-[520px] max-w-[82vw]" : "w-[260px]"
               }`}
             >
@@ -106,7 +106,7 @@ export function WorkReelSection() {
                   <p className="mt-1 text-base font-bold tracking-tight text-white">{item.title}</p>
                 </div>
                 <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-white/15 bg-white/10 text-white backdrop-blur">
-                  <PlayCircle className="h-5 w-5" />
+                  <Play className="h-5 w-5" />
                 </div>
               </figcaption>
             </figure>

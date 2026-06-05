@@ -68,22 +68,22 @@ export async function sendContactEmail(formData: FormData) {
         "https://vantlaunch.com",
       ].join("\n"),
       html: `
-        <div style="background:#fbf4e2;padding:32px 16px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;">
-          <div style="max-width:560px;margin:0 auto;background:#fff9ed;border:1px solid rgba(23,20,13,0.1);border-radius:16px;padding:28px;">
-            <h1 style="margin:0 0 20px 0;color:#17140d;font-size:24px;letter-spacing:-0.02em;">VantLaunch</h1>
-            <p style="color:#17140d;font-size:15px;line-height:1.7;margin:0 0 14px 0;">Hey ${safeName},</p>
-            <p style="color:#695b45;font-size:15px;line-height:1.7;margin:0 0 14px 0;">
+        <div style="background:#F8F6EF;padding:32px 16px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;">
+          <div style="max-width:560px;margin:0 auto;background:#F8F6EF;border:1px solid rgba(17,16,14,0.1);border-radius:16px;padding:28px;">
+            <h1 style="margin:0 0 20px 0;color:#11100E;font-size:24px;letter-spacing:-0.02em;">VantLaunch</h1>
+            <p style="color:#11100E;font-size:15px;line-height:1.7;margin:0 0 14px 0;">Hey ${safeName},</p>
+            <p style="color:#74695B;font-size:15px;line-height:1.7;margin:0 0 14px 0;">
               Thanks for reaching out to VantLaunch. We've received your inquiry and our team is reviewing it.
             </p>
-            <p style="color:#695b45;font-size:14px;line-height:1.7;margin:0 0 6px 0;"><strong style="color:#17140d;">Company:</strong> ${safeCompany}</p>
-            <p style="color:#695b45;font-size:14px;line-height:1.7;margin:0 0 6px 0;"><strong style="color:#17140d;">Role:</strong> ${safeRole}</p>
-            <p style="color:#695b45;font-size:14px;line-height:1.7;margin:0 0 14px 0;"><strong style="color:#17140d;">Product:</strong> ${safeProductInterest}</p>
-            <div style="margin:18px 0;padding:14px 16px;border-radius:10px;background:#f3ead3;border-left:3px solid #00401f;">
-              <p style="margin:0;color:#17140d;font-size:14px;line-height:1.7;">${safeMessage}</p>
+            <p style="color:#74695B;font-size:14px;line-height:1.7;margin:0 0 6px 0;"><strong style="color:#11100E;">Company:</strong> ${safeCompany}</p>
+            <p style="color:#74695B;font-size:14px;line-height:1.7;margin:0 0 6px 0;"><strong style="color:#11100E;">Role:</strong> ${safeRole}</p>
+            <p style="color:#74695B;font-size:14px;line-height:1.7;margin:0 0 14px 0;"><strong style="color:#11100E;">Product:</strong> ${safeProductInterest}</p>
+            <div style="margin:18px 0;padding:14px 16px;border-radius:10px;background:#f3ead3;border-left:3px solid #004225;">
+              <p style="margin:0;color:#11100E;font-size:14px;line-height:1.7;">${safeMessage}</p>
             </div>
-            <p style="color:#695b45;font-size:15px;line-height:1.7;margin:0 0 20px 0;">We usually reply within one business day.</p>
-            <p style="margin:0;color:#8a7657;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;">
-              VantLaunch · <a href="https://vantlaunch.com" style="color:#00401f;">vantlaunch.com</a>
+            <p style="color:#74695B;font-size:15px;line-height:1.7;margin:0 0 20px 0;">We usually reply within one business day.</p>
+            <p style="margin:0;color:#74695B;font-size:12px;letter-spacing:0.08em;text-transform:uppercase;">
+              VantLaunch · <a href="https://vantlaunch.com" style="color:#004225;">vantlaunch.com</a>
             </p>
           </div>
         </div>
@@ -116,16 +116,16 @@ export async function sendContactEmail(formData: FormData) {
         `Use case: "${message}"`,
       ].join("\n"),
       html: `
-        <div style="background:#fbf4e2;padding:28px 16px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;">
-          <div style="max-width:560px;margin:0 auto;background:#fff9ed;border:1px solid rgba(23,20,13,0.1);border-radius:14px;padding:24px;">
-            <h2 style="margin:0 0 14px 0;color:#17140d;font-size:20px;">Customer Confirmation Copy</h2>
-            <p style="margin:0 0 8px 0;color:#17140d;"><strong>Lead:</strong> ${safeName} (${safeEmail})</p>
-            <p style="margin:0 0 8px 0;color:#695b45;"><strong style="color:#17140d;">Company:</strong> ${safeCompany}</p>
-            <p style="margin:0 0 8px 0;color:#695b45;"><strong style="color:#17140d;">Role:</strong> ${safeRole}</p>
-            <p style="margin:0 0 8px 0;color:#695b45;"><strong style="color:#17140d;">Product:</strong> ${safeProductInterest}</p>
-            <p style="margin:0 0 8px 0;color:#695b45;"><strong style="color:#17140d;">Timeline:</strong> ${safeTimeline}</p>
-            <div style="margin-top:14px;padding:12px 14px;border-left:3px solid #00401f;background:#f3ead3;border-radius:8px;">
-              <p style="margin:0;color:#17140d;">${safeMessage}</p>
+        <div style="background:#F8F6EF;padding:28px 16px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;">
+          <div style="max-width:560px;margin:0 auto;background:#F8F6EF;border:1px solid rgba(17,16,14,0.1);border-radius:14px;padding:24px;">
+            <h2 style="margin:0 0 14px 0;color:#11100E;font-size:20px;">Customer Confirmation Copy</h2>
+            <p style="margin:0 0 8px 0;color:#11100E;"><strong>Lead:</strong> ${safeName} (${safeEmail})</p>
+            <p style="margin:0 0 8px 0;color:#74695B;"><strong style="color:#11100E;">Company:</strong> ${safeCompany}</p>
+            <p style="margin:0 0 8px 0;color:#74695B;"><strong style="color:#11100E;">Role:</strong> ${safeRole}</p>
+            <p style="margin:0 0 8px 0;color:#74695B;"><strong style="color:#11100E;">Product:</strong> ${safeProductInterest}</p>
+            <p style="margin:0 0 8px 0;color:#74695B;"><strong style="color:#11100E;">Timeline:</strong> ${safeTimeline}</p>
+            <div style="margin-top:14px;padding:12px 14px;border-left:3px solid #004225;background:#f3ead3;border-radius:8px;">
+              <p style="margin:0;color:#11100E;">${safeMessage}</p>
             </div>
           </div>
         </div>

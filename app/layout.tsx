@@ -49,7 +49,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#00401f",
+  themeColor: "#004225",
 };
 
 export default function RootLayout({
@@ -62,6 +62,9 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} h-full antialiased`}
     >
+      <head>
+        <link href="https://api.fontshare.com/v2/css?f[]=clash-display@600,700&display=swap" rel="stylesheet" />
+      </head>
       <body className="flex min-h-full flex-col bg-canvas">
         {children}
         <Analytics />

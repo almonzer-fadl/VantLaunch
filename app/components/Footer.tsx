@@ -22,16 +22,17 @@ export function Footer() {
             </span>
           </div>
           <p className="text-sm leading-relaxed text-[#5f5548]">
-            Custom dashboards, portals, and mobile apps — built for your business.
+            One owned operating system — built around how your company actually works.
           </p>
         </div>
 
         <div className="grid w-full grid-cols-2 gap-10 sm:grid-cols-3 md:w-auto md:gap-16">
           <div className="flex flex-col gap-4">
             <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#74695b]">Services</span>
-            <FooterLink href="#services">Dashboards</FooterLink>
-            <FooterLink href="#services">Portals</FooterLink>
-            <FooterLink href="#services">Mobile apps</FooterLink>
+            <FooterLink href="#services">Foundation</FooterLink>
+            <FooterLink href="#services">Portal</FooterLink>
+            <FooterLink href="#services">Command</FooterLink>
+            <FooterLink href="#services">OS</FooterLink>
           </div>
           <div className="flex flex-col gap-4">
             <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#74695b]">Work</span>

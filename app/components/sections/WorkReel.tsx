@@ -64,7 +64,7 @@ export function WorkReelSection() {
               Product reel
             </span>
             <h2 className="max-w-3xl text-3xl font-bold tracking-tight text-[#11100e] sm:text-4xl md:text-5xl">
-              More screens. More movement. More proof that the work is real.
+              Real screens from real systems — dashboards, portals, invoicing, and mobile flows.
             </h2>
           </motion.div>
           <a

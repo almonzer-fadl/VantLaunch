@@ -1,53 +1,35 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Search, Layers, Send, CheckCircle2 } from "lucide-react";
+import { Search, PenTool, Wrench, RefreshCw, CheckCircle2 } from "lucide-react";
 import { useMobileMotion } from "@/app/hooks/use-mobile-motion";
 
 const STEPS = [
   {
     icon: Search,
-    title: "01. Roadmapping",
+    title: "01. Map your process",
     description:
-      "We start with a deep dive into your operations. We deliver a comprehensive Business Requirements Document (BRD) and UI wireframes. We define the edge cases before we write a single line of code.",
-    color: "blue",
+      "We dig into how your business actually runs — the tools you use, the manual steps, the spreadsheets, the WhatsApp threads. We document the workflows before we touch a line of code.",
   },
   {
-    icon: Layers,
-    title: "02. Sprint-Based Dev",
+    icon: PenTool,
+    title: "02. Design the operating system",
     description:
-      "Your product is built in 1-week sprints with a live staging environment you can access 24/7. We include design and feature revisions in every tier because we know software evolves as it&apos;s built.",
-    color: "indigo",
+      "We define the screens, data models, user roles, and integrations that turn your process into a coherent product. You get wireframes, a BRD, and a clear scope before the build starts.",
   },
   {
-    icon: Send,
-    title: "03. Launch & Scale",
+    icon: Wrench,
+    title: "03. Build and connect the workflows",
     description:
-      "We handle the infrastructure setup (AWS/Vercel) and automated CI/CD pipelines. On final payment, we hand over full code ownership and provide 30 days of post-launch technical support.",
-    color: "green",
+      "Your system is built in short sprints with a live staging environment you can access daily. We connect the pieces — website, portal, CRM, invoicing, analytics — into one platform.",
+  },
+  {
+    icon: RefreshCw,
+    title: "04. Launch, maintain, and improve",
+    description:
+      "We handle deployment, hand over source access, and begin the monthly retainer — hosting, bug fixes, security updates, content changes, analytics reviews, and ongoing improvements.",
   },
 ];
-
-const STEP_STYLES = {
-  blue: {
-    glow: "bg-black/[0.02]",
-    iconBg: "bg-black/[0.03]",
-    iconText: "text-[#11100e]",
-    bar: "bg-[#11100e]",
-  },
-  indigo: {
-    glow: "bg-black/[0.02]",
-    iconBg: "bg-black/[0.03]",
-    iconText: "text-[#11100e]",
-    bar: "bg-[#11100e]",
-  },
-  green: {
-    glow: "bg-black/[0.02]",
-    iconBg: "bg-black/[0.03]",
-    iconText: "text-[#11100e]",
-    bar: "bg-[#11100e]",
-  },
-} as const;
 
 export function ProcessSection() {
   const { shouldReduceMotion } = useMobileMotion();
@@ -64,48 +46,46 @@ export function ProcessSection() {
         >
           <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-3 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-[#74695b]">
             <CheckCircle2 className="h-3 w-3 text-[#004225]" />
-            Our Workflow
+            How we work
           </span>
-          <h2 className="text-3xl font-bold tracking-tight text-[#11100e] sm:text-4xl md:text-5xl">Built for speed, engineered for scale.</h2>
+          <h2 className="text-3xl font-bold tracking-tight text-[#11100e] sm:text-4xl md:text-5xl">
+            From scattered tools to one operating system.
+          </h2>
           <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-[#5f5548] sm:text-lg">
-            Our process is designed to eliminate the &apos;agency black box.&apos; 
-            You always know exactly what is being built and when it will ship.
+            Four steps from your current mess to a system you own. No black box.
+            You see the work at every stage.
           </p>
         </motion.div>
 
-        <div className="grid gap-8 md:grid-cols-3">
-          {STEPS.map((step, i) => {
-            const styles = STEP_STYLES[step.color as keyof typeof STEP_STYLES];
-            return (
-              <motion.div
-                key={step.title}
-                initial={{ opacity: 0, y: shouldReduceMotion ? 8 : 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: shouldReduceMotion ? 0.3 : 0.5, delay: shouldReduceMotion ? 0 : i * 0.12 }}
-                className="relative overflow-hidden rounded-2xl border border-black/10 bg-white p-6 shadow-[0_18px_55px_-42px_rgba(17,16,14,0.35)] sm:p-10 transition-all hover:bg-black/[0.03]"
-              >
-                <div className={`absolute -right-8 -top-8 h-32 w-32 rounded-full ${styles.glow} blur-3xl`} />
-                <div className={`mb-8 flex h-16 w-16 items-center justify-center rounded-2xl ${styles.iconBg}`}>
-                  <step.icon className={`h-8 w-8 ${styles.iconText}`} />
-                </div>
-                <h3 className="text-2xl font-bold tracking-tight text-[#11100e]">{step.title}</h3>
-                <p className="mt-4 text-sm font-medium leading-relaxed text-[#5f5548]">
-                  {step.description}
-                </p>
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {STEPS.map((step, i) => (
+            <motion.div
+              key={step.title}
+              initial={{ opacity: 0, y: shouldReduceMotion ? 8 : 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: shouldReduceMotion ? 0.3 : 0.5, delay: shouldReduceMotion ? 0 : i * 0.1 }}
+              className="relative overflow-hidden rounded-2xl border border-black/10 bg-white p-5 shadow-[0_18px_55px_-42px_rgba(17,16,14,0.35)] transition-all hover:bg-black/[0.03] sm:p-6"
+            >
+              <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-black/[0.03]">
+                <step.icon className="h-6 w-6 text-[#11100e]" />
+              </div>
+              <h3 className="text-base font-bold tracking-tight text-[#11100e]">{step.title}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-[#5f5548]">
+                {step.description}
+              </p>
 
-                <div className="mt-8 h-1 w-full overflow-hidden rounded-full bg-black/10">
-                  <motion.div
-                    initial={{ width: 0 }}
-                    whileInView={{ width: "100%" }}
-                    viewport={{ once: true }}
-                    transition={{ duration: shouldReduceMotion ? 0.45 : 1, delay: shouldReduceMotion ? 0.1 : i * 0.2 + 0.5 }}
-                    className={`h-full ${styles.bar}`}
-                  />
-                </div>
-              </motion.div>
-            );
-          })}
+              <div className="mt-6 h-1 w-full overflow-hidden rounded-full bg-black/10">
+                <motion.div
+                  initial={{ width: 0 }}
+                  whileInView={{ width: "100%" }}
+                  viewport={{ once: true }}
+                  transition={{ duration: shouldReduceMotion ? 0.45 : 1, delay: shouldReduceMotion ? 0.1 : i * 0.2 + 0.3 }}
+                  className="h-full bg-[#11100e]"
+                />
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

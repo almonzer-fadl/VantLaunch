@@ -8,8 +8,8 @@ import Link from "next/link";
 import { useMobileMotion } from "../hooks/use-mobile-motion";
 
 const NAV_LINKS = [
-  { href: "#services", label: "Services" },
-  { href: "#portfolio", label: "Portfolio" },
+  { href: "#services", label: "Tiers" },
+  { href: "#portfolio", label: "Proof" },
   { href: "#process", label: "Process" },
 ];
 
@@ -153,7 +153,7 @@ export function Navbar() {
                   transition={{ delay: shouldReduceMotion ? 0.08 : 0.45 }}
                   className="mt-8 text-center text-xs font-medium text-[#74695b]"
                 >
-                  Custom dashboards, portals &amp; mobile apps
+                  One system. Built for you. Owned by you.
                 </motion.p>
               </div>
             </motion.div>

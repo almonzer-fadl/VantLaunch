@@ -9,6 +9,7 @@ import { ServicesSection } from "./components/sections/Services";
 import { PortfolioSection } from "./components/sections/Portfolio";
 import { StudioProofSection } from "./components/sections/StudioProof";
 import { ProcessSection } from "./components/sections/Process";
+import { FounderSection } from "./components/sections/Founder";
 import { FAQSection } from "./components/sections/FAQ";
 import { CTASection } from "./components/sections/CTA";
 import { Footer } from "./components/Footer";
@@ -28,6 +29,7 @@ export default function Home() {
         <PortfolioSection onOpenProject={setActiveProject} />
         <StudioProofSection />
         <ProcessSection />
+        <FounderSection />
         <FAQSection />
         <CTASection />
       </main>

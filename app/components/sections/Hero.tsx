@@ -81,25 +81,25 @@ export function HeroSection({ onOpenProject }: { onOpenProject: (slug: string) =
               <span className="sm:mt-2 sm:block">We build you one. That you own.</span>
             </h1>
 
-            <p className="mt-6 max-w-xl text-base leading-relaxed text-[#74695B] sm:mt-8 sm:text-lg md:text-xl">
+            <p className="mt-5 max-w-xl text-sm leading-relaxed text-[#74695B] sm:text-base">
+              Trusted by workshops, service businesses, and operational teams to replace scattered
+              tools with one system they own.
+            </p>
+
+            <p className="mt-5 max-w-xl text-base leading-relaxed text-[#74695B] sm:mt-6 sm:text-lg">
               We built TeraMotors for a 3-location workshop — job cards, invoicing, customer records,
               and reports in one dashboard. We built SpeakBill so freelancers invoice by voice.
               We build one system around how you actually work. You own it. We maintain it.
             </p>
 
-            <div className="mt-6 flex flex-wrap gap-x-4 gap-y-3 text-[11px] font-bold uppercase tracking-widest text-[#74695B] sm:mt-8 sm:gap-x-8 sm:gap-y-4 sm:text-[13px]">
-              <span className="flex items-center gap-2.5">
-                <div className="h-1.5 w-1.5 rounded-full bg-[#11100E]" />
-                Build + Retainer
-              </span>
-              <span className="flex items-center gap-2.5">
-                <div className="h-1.5 w-1.5 rounded-full bg-[#11100E]" />
-                You Own the Code
-              </span>
-              <span className="flex items-center gap-2.5">
-                <div className="h-1.5 w-1.5 rounded-full bg-[#11100E]" />
-                Monthly Maintenance
-              </span>
+            <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 text-[10px] font-bold uppercase tracking-[0.14em] text-[#74695B] sm:mt-8 sm:gap-x-6 sm:text-[11px]">
+              <span>8+ Systems Shipped</span>
+              <span className="text-black/15 hidden sm:inline">|</span>
+              <span>18 Hours Saved Weekly</span>
+              <span className="text-black/15 hidden sm:inline">|</span>
+              <span>100% Source Ownership</span>
+              <span className="text-black/15 hidden sm:inline">|</span>
+              <span>Monthly Maintenance Included</span>
             </div>
 
             <motion.div

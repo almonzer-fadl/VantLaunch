@@ -26,6 +26,12 @@ export function CTASection() {
             We&apos;ll show you what one owned system looks like for your business.
             Response within 24 hours — with a rough timeline.
           </p>
+          <p className="mx-auto mt-3 max-w-2xl text-sm text-[#74695B]">
+            Or email us directly:{' '}
+            <a href="mailto:build@vantlaunch.com" className="font-bold text-[#004225] hover:text-[#11100E] transition-colors">
+              build@vantlaunch.com
+            </a>
+          </p>
         </motion.div>
 
         <div className="mx-auto max-w-2xl">

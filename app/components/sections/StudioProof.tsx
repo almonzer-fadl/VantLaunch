@@ -53,12 +53,12 @@ export function StudioProofSection() {
               How we deliver
             </span>
             <h2 className="mt-5 max-w-2xl text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl">
-              We don&apos;t just write code. We replace the mess with a system you own.
+              A lease on nothing. Full ownership of everything.
             </h2>
             <p className="mt-6 max-w-xl text-base font-medium leading-relaxed text-[#74695B] sm:text-lg">
-              Every engagement produces a business requirements document, wireframes, a working
-              product, source access, and a deployment you control — plus monthly maintenance
-              to keep everything running and improving.
+              TeraMotors went from a paper-based workshop to a live operating system in 5 weeks.
+              SpeakBill shipped in 3. Every project follows the same pattern — requirements doc,
+              wireframes, working product, source handover, monthly maintenance.
             </p>
           </motion.div>
 

@@ -9,7 +9,7 @@ export function Footer() {
     <footer className="border-t border-black/10 bg-[#F8F6EF] px-6 py-12 text-[#11100E] sm:py-16 md:py-20">
       <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-12 md:flex-row">
         <div className="max-w-sm">
-          <div className="mb-6 flex items-center gap-0">
+          <Link href="/" className="mb-6 flex items-center gap-0">
             <Image
               src="/brand/icon.PNG"
               alt="VantLaunch logo"
@@ -20,7 +20,7 @@ export function Footer() {
             <span className="text-lg font-bold tracking-tight text-[#11100E]">
               VantLaunch
             </span>
-          </div>
+          </Link>
           <p className="text-sm leading-relaxed text-[#74695B]">
             One owned operating system — built around how your company actually works.
           </p>

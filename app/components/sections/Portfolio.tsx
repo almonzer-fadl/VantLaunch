@@ -104,11 +104,12 @@ export function PortfolioSection({ onOpenProject }: { onOpenProject: (slug: stri
           transition={{ duration: shouldReduceMotion ? 0.3 : 0.5 }}
           className="mb-16 text-center"
         >
-          <span className="mb-4 inline-flex rounded-full border border-black/10 bg-[#F3F2ED] px-3 py-1.5 text-xs font-bold uppercase tracking-[0.16em] text-[#74695B]">Proof</span>
-          <h2 className="text-3xl font-bold tracking-tight text-[#11100E] sm:text-4xl md:text-5xl">We&apos;ve done this before. Here&apos;s the proof.</h2>
+          <span className="mb-4 inline-flex rounded-full border border-black/10 bg-[#F3F2ED] px-3 py-1.5 text-xs font-bold uppercase tracking-[0.16em] text-[#74695B]">Case studies</span>
+          <h2 className="text-3xl font-bold tracking-tight text-[#11100E] sm:text-4xl md:text-5xl">18 hrs saved. Invoicing in 60 seconds. Source code yours.</h2>
           <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-[#74695B] sm:text-lg">
-            Each project shows the messy process it replaced, the system we built,
-            and the business value it unlocked — so you know exactly what you&apos;re buying.
+            TeraMotors replaced paper job cards and Excel at a 3-location repair shop.
+            SpeakBill turned invoicing from a chore into a voice command.
+            Gari gave drivers a digital garage. Every system replaced scattered tools with one owned platform.
           </p>
         </motion.div>
 

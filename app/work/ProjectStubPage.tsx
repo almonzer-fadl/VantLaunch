@@ -24,13 +24,13 @@ export function ProjectStubPage({ config }: { config: WorkStubConfig }) {
             <ArrowLeft className="h-4 w-4" />
             Products
           </Link>
-          <Link href="/" className="flex items-center gap-2">
+          <Link href="/" className="flex items-center gap-0">
             <Image
               src="/brand/icon.PNG"
               alt="VantLaunch logo"
-              width={32}
-              height={32}
-              className="h-8 w-8 rounded-lg object-contain"
+              width={49}
+              height={49}
+              className="h-10 w-10 rounded-lg object-contain sm:h-14 sm:w-14"
             />
             <span className="type-brand-xl">VantLaunch</span>
           </Link>

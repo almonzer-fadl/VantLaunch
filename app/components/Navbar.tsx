@@ -34,15 +34,15 @@ export function Navbar() {
             initial={{ opacity: 0, x: -12 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
-            className="flex items-center gap-2.5 sm:gap-3"
+            className="flex items-center gap-0"
           >
             <Image
               src="/brand/icon.PNG"
               alt="VantLaunch logo"
-              width={36}
-              height={36}
+              width={49}
+              height={49}
               priority
-              className="h-8 w-8 rounded-lg object-contain sm:h-9 sm:w-9"
+              className="h-10 w-10 rounded-lg object-contain sm:h-14 sm:w-14"
             />
             <span className="text-base font-bold tracking-tight text-[#17140d] sm:text-lg">
               VantLaunch

@@ -73,7 +73,7 @@ export function Navbar() {
               className="hidden sm:block"
             >
               <Link
-                href="#contact"
+                href="/#contact"
                 className="inline-flex items-center justify-center rounded-xl bg-[#004225] px-4 py-2 text-xs font-bold text-white transition-colors hover:bg-[#11100E]"
               >
                 Start a project
@@ -141,7 +141,7 @@ export function Navbar() {
                   className="mt-8"
                 >
                   <Link
-                    href="#contact"
+                    href="/#contact"
                     onClick={() => setOpen(false)}
                     className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#004225] px-6 py-3.5 text-sm font-bold text-white transition-colors hover:bg-[#11100E]"
                   >

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/next"
@@ -22,8 +22,9 @@ export const metadata: Metadata = {
   description:
     "We build custom dashboards, client portals, and mobile apps for businesses. Fixed-price projects starting at $1,500. Portfolio of 8 shipped products.",
   icons: {
-    icon: "/vantlaunch-logo.png",
-    apple: "/vantlaunch-logo.png",
+    icon: "/brand/favicon.PNG",
+    shortcut: "/brand/favicon.PNG",
+    apple: "/brand/icon.PNG",
   },
   openGraph: {
     title: "VantLaunch — Custom Dashboards, Portals & Mobile Apps",
@@ -31,9 +32,9 @@ export const metadata: Metadata = {
       "Custom dashboards, client portals, and mobile apps — built for your business. Fixed prices, clear process, real portfolio.",
     images: [
       {
-        url: "/vantlaunch-logo.jpeg",
-        width: 500,
-        height: 500,
+        url: "/brand/vantlaunch-og.png",
+        width: 1200,
+        height: 630,
         alt: "VantLaunch logo",
       },
     ],
@@ -43,8 +44,12 @@ export const metadata: Metadata = {
     title: "VantLaunch — Custom Dashboards, Portals & Mobile Apps",
     description:
       "We build custom software for businesses — dashboards, portals, and mobile apps. Starting at $1,500.",
-    images: ["/vantlaunch-logo.jpeg"],
+    images: ["/brand/vantlaunch-og.png"],
   },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#00401f",
 };
 
 export default function RootLayout({

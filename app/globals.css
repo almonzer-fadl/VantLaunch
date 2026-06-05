@@ -5,26 +5,26 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-inter), ui-sans-serif, system-ui;
 
-  --color-canvas: #f8f6ef;
-  --color-surface: #fffaf0;
+  --color-canvas: #fbf4e2;
+  --color-surface: #fff9ed;
   --color-surface-raised: #ffffff;
-  --color-zinc: #f8f6ef;
+  --color-zinc: #fbf4e2;
   --color-zinc-surface: #ffffff;
-  --color-border-subtle: rgba(17, 16, 14, 0.08);
-  --color-border: rgba(17, 16, 14, 0.1);
-  --color-accent: #004225;
-  --color-accent-glow: rgba(0, 66, 37, 0.08);
+  --color-border-subtle: rgba(23, 20, 13, 0.08);
+  --color-border: rgba(23, 20, 13, 0.1);
+  --color-accent: #00401f;
+  --color-accent-glow: rgba(0, 64, 31, 0.08);
 }
 
 :root {
-  --background: #f8f6ef;
-  --foreground: #11100e;
+  --background: #fbf4e2;
+  --foreground: #17140d;
 }
 
 body {
   background: var(--background);
   font-family: var(--font-sans), sans-serif;
-  @apply text-[15px] leading-relaxed tracking-normal text-[#5f5548] antialiased;
+  @apply text-[15px] leading-relaxed tracking-normal text-[#695b45] antialiased;
 }
 
 @layer base {
@@ -35,15 +35,15 @@ body {
 
 @layer utilities {
   .text-gradient {
-    @apply text-[#11100e];
+    @apply text-[#17140d];
   }
 
   .text-accent-gradient {
-    @apply text-[#11100e];
+    @apply text-[#17140d];
   }
 
   .bg-dot-grid {
-    background-image: radial-gradient(circle, rgba(17, 16, 14, 0.12) 1px, transparent 1px);
+    background-image: radial-gradient(circle, rgba(23, 20, 13, 0.12) 1px, transparent 1px);
     background-size: 22px 22px;
   }
 
@@ -64,111 +64,111 @@ body {
 
   /* Typography */
   .type-label {
-    @apply text-[11px] font-bold uppercase tracking-[0.18em] text-[#74695b];
+    @apply text-[11px] font-bold uppercase tracking-[0.18em] text-[#8a7657];
   }
 
   .type-hero-heading {
-    @apply text-4xl font-bold leading-[1.08] tracking-tight text-[#11100e] sm:text-5xl md:text-6xl lg:text-[4rem];
+    @apply text-4xl font-bold leading-[1.08] tracking-tight text-[#17140d] sm:text-5xl md:text-6xl lg:text-[4rem];
   }
 
   .type-hero-sub {
-    @apply text-lg leading-relaxed text-[#5f5548] sm:text-xl;
+    @apply text-lg leading-relaxed text-[#695b45] sm:text-xl;
   }
 
   .type-section-heading {
-    @apply text-3xl font-bold tracking-tight text-[#11100e] sm:text-4xl md:text-5xl;
+    @apply text-3xl font-bold tracking-tight text-[#17140d] sm:text-4xl md:text-5xl;
   }
 
   .type-section-sub {
-    @apply mt-4 max-w-2xl text-base leading-relaxed text-[#5f5548] sm:text-lg;
+    @apply mt-4 max-w-2xl text-base leading-relaxed text-[#695b45] sm:text-lg;
   }
 
   .type-card-title {
-    @apply text-xl font-bold tracking-tight text-[#11100e];
+    @apply text-xl font-bold tracking-tight text-[#17140d];
   }
 
   .type-card-body {
-    @apply text-sm leading-relaxed text-[#5f5548];
+    @apply text-sm leading-relaxed text-[#695b45];
   }
 
   .type-brand-xl {
-    @apply text-base font-bold tracking-tight text-[#11100e];
+    @apply text-base font-bold tracking-tight text-[#17140d];
   }
 
   .type-chip {
-    @apply inline-flex rounded-full border border-black/10 bg-white px-3 py-1 text-xs font-bold text-[#74695b];
+    @apply inline-flex rounded-full border border-black/10 bg-white px-3 py-1 text-xs font-bold text-[#8a7657];
   }
 
   .type-work-back-link {
-    @apply inline-flex items-center gap-2 text-sm font-bold text-[#74695b] transition-colors hover:text-[#004225];
+    @apply inline-flex items-center gap-2 text-sm font-bold text-[#8a7657] transition-colors hover:text-[#00401f];
   }
 
   .type-nav-accent {
-    @apply inline-flex items-center justify-center rounded-full bg-[#004225] px-4 py-2 text-xs font-bold text-white transition-colors hover:bg-[#11100e];
+    @apply inline-flex items-center justify-center rounded-full bg-[#00401f] px-4 py-2 text-xs font-bold text-white transition-colors hover:bg-[#17140d];
   }
 
   .type-nav-link {
-    @apply text-sm font-bold text-[#74695b] transition-colors hover:text-[#004225];
+    @apply text-sm font-bold text-[#8a7657] transition-colors hover:text-[#00401f];
   }
 
   .type-meta-uppercase {
-    @apply text-[11px] font-bold uppercase tracking-[0.22em] text-[#74695b];
+    @apply text-[11px] font-bold uppercase tracking-[0.22em] text-[#8a7657];
   }
 
   .type-display-xl {
-    @apply text-4xl font-bold leading-[1.04] tracking-tight text-[#11100e] sm:text-5xl md:text-6xl;
+    @apply text-4xl font-bold leading-[1.04] tracking-tight text-[#17140d] sm:text-5xl md:text-6xl;
   }
 
   .type-display-lg {
-    @apply text-3xl font-bold leading-tight tracking-tight text-[#11100e] sm:text-4xl md:text-5xl;
+    @apply text-3xl font-bold leading-tight tracking-tight text-[#17140d] sm:text-4xl md:text-5xl;
   }
 
   .type-intro {
-    @apply text-lg font-medium leading-relaxed text-[#5f5548] sm:text-xl;
+    @apply text-lg font-medium leading-relaxed text-[#695b45] sm:text-xl;
   }
 
   .type-portfolio-product-title {
-    @apply text-3xl font-bold tracking-tight text-[#11100e];
+    @apply text-3xl font-bold tracking-tight text-[#17140d];
   }
 
   .type-case-h1 {
-    @apply text-5xl font-bold leading-[0.98] tracking-tight text-[#11100e] sm:text-6xl md:text-7xl;
+    @apply text-5xl font-bold leading-[0.98] tracking-tight text-[#17140d] sm:text-6xl md:text-7xl;
   }
 
   .type-case-tagline {
-    @apply mt-5 max-w-3xl text-2xl font-semibold leading-tight text-[#11100e] sm:text-3xl;
+    @apply mt-5 max-w-3xl text-2xl font-semibold leading-tight text-[#17140d] sm:text-3xl;
   }
 
   .type-case-lede {
-    @apply mt-6 text-xl font-medium leading-relaxed text-[#5f5548] sm:text-2xl;
+    @apply mt-6 text-xl font-medium leading-relaxed text-[#695b45] sm:text-2xl;
   }
 
   .type-case-section-heading {
-    @apply text-3xl font-bold leading-tight tracking-tight text-[#11100e] sm:text-4xl;
+    @apply text-3xl font-bold leading-tight tracking-tight text-[#17140d] sm:text-4xl;
   }
 
   .type-case-section-heading-inline {
-    @apply flex items-center gap-3 text-3xl font-bold leading-tight tracking-tight text-[#11100e] sm:text-4xl;
+    @apply flex items-center gap-3 text-3xl font-bold leading-tight tracking-tight text-[#17140d] sm:text-4xl;
   }
 
   .type-case-card-title {
-    @apply mt-5 text-lg font-bold tracking-tight text-[#11100e];
+    @apply mt-5 text-lg font-bold tracking-tight text-[#17140d];
   }
 
   .type-case-card-body {
-    @apply mt-2 text-sm font-medium leading-relaxed text-[#5f5548];
+    @apply mt-2 text-sm font-medium leading-relaxed text-[#695b45];
   }
 
   .type-prose-muted {
-    @apply text-base font-medium leading-relaxed text-[#5f5548];
+    @apply text-base font-medium leading-relaxed text-[#695b45];
   }
 
   .type-prose-intro {
-    @apply text-lg font-medium leading-relaxed text-[#5f5548];
+    @apply text-lg font-medium leading-relaxed text-[#695b45];
   }
 
   .type-figure-caption {
-    @apply text-xs font-medium leading-relaxed text-[#74695b];
+    @apply text-xs font-medium leading-relaxed text-[#8a7657];
   }
 
   .type-intro-wide {
@@ -176,52 +176,52 @@ body {
   }
 
   .type-meta-muted-caps {
-    @apply text-[10px] font-bold uppercase tracking-[0.2em] text-[#74695b];
+    @apply text-[10px] font-bold uppercase tracking-[0.2em] text-[#8a7657];
   }
 
   .type-meta-accent-caps {
-    @apply text-[11px] font-bold uppercase tracking-[0.22em] text-[#74695b];
+    @apply text-[11px] font-bold uppercase tracking-[0.22em] text-[#8a7657];
   }
 
   .type-stack-heading {
-    @apply text-lg font-bold tracking-tight text-[#11100e];
+    @apply text-lg font-bold tracking-tight text-[#17140d];
   }
 
   .type-feature-card-title-sm {
-    @apply mt-4 text-base font-bold tracking-tight text-[#11100e];
+    @apply mt-4 text-base font-bold tracking-tight text-[#17140d];
   }
 
   .type-feature-card-body {
-    @apply mt-2 text-sm font-medium leading-relaxed text-[#5f5548];
+    @apply mt-2 text-sm font-medium leading-relaxed text-[#695b45];
   }
 
   .type-case-subtle-note {
-    @apply text-sm font-medium leading-relaxed text-[#74695b];
+    @apply text-sm font-medium leading-relaxed text-[#8a7657];
   }
 
   .type-accent-label-sm {
-    @apply text-2xl font-bold leading-tight tracking-tight text-[#11100e];
+    @apply text-2xl font-bold leading-tight tracking-tight text-[#17140d];
   }
 
   /* Buttons */
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-[#004225] px-6 py-3 text-sm font-bold text-white transition-all hover:bg-[#11100e] active:scale-[0.98];
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-[#00401f] px-6 py-3 text-sm font-bold text-white transition-all hover:bg-[#17140d] active:scale-[0.98];
   }
 
   .btn-ghost {
-    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-black/10 bg-white px-6 py-3 text-sm font-bold text-[#11100e] transition-all hover:bg-black/[0.03];
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-black/10 bg-white px-6 py-3 text-sm font-bold text-[#17140d] transition-all hover:bg-black/[0.03];
   }
 
   .btn-contact {
-    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-[#004225] px-6 py-3 text-sm font-bold text-white transition-all hover:bg-[#11100e] active:scale-[0.98];
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-[#00401f] px-6 py-3 text-sm font-bold text-white transition-all hover:bg-[#17140d] active:scale-[0.98];
   }
 
   .type-email-cta-solid {
-    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-[#004225] px-6 py-3 text-sm font-bold text-white transition-all hover:bg-[#11100e] active:scale-[0.98];
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-[#00401f] px-6 py-3 text-sm font-bold text-white transition-all hover:bg-[#17140d] active:scale-[0.98];
   }
 
   .type-email-cta-ghost-outline {
-    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-black/10 bg-white px-6 py-3 text-sm font-bold text-[#11100e] transition-all hover:border-[#004225]/30 hover:text-[#004225] active:scale-[0.98];
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-black/10 bg-white px-6 py-3 text-sm font-bold text-[#17140d] transition-all hover:border-[#00401f]/30 hover:text-[#00401f] active:scale-[0.98];
   }
 
   /* Cards */
@@ -235,11 +235,11 @@ body {
 
   /* Badge */
   .badge {
-    @apply inline-flex items-center rounded-full border border-black/10 bg-white px-3 py-1 text-xs font-bold text-[#74695b];
+    @apply inline-flex items-center rounded-full border border-black/10 bg-white px-3 py-1 text-xs font-bold text-[#8a7657];
   }
 
   .badge-neutral {
-    @apply inline-flex items-center rounded-full border border-black/10 bg-white px-3 py-1 text-xs font-bold text-[#74695b];
+    @apply inline-flex items-center rounded-full border border-black/10 bg-white px-3 py-1 text-xs font-bold text-[#8a7657];
   }
 
   /* Divider */

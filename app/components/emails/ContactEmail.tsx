@@ -62,7 +62,7 @@ export const ContactEmail = ({
 export default ContactEmail;
 
 const main = {
-  backgroundColor: "#080808",
+  backgroundColor: "#fbf4e2",
   fontFamily: '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif',
 };
 
@@ -77,7 +77,7 @@ const headerSection = {
 };
 
 const h1 = {
-  color: "#ffffff",
+  color: "#17140d",
   fontSize: "24px",
   fontWeight: "bold",
   letterSpacing: "-0.05em",
@@ -85,14 +85,14 @@ const h1 = {
 };
 
 const contentSection = {
-  backgroundColor: "#121212",
+  backgroundColor: "#fff9ed",
   padding: "40px",
   borderRadius: "24px",
-  border: "1px solid rgba(255, 255, 255, 0.06)",
+  border: "1px solid rgba(23, 20, 13, 0.1)",
 };
 
 const text = {
-  color: "#a1a1aa",
+  color: "#695b45",
   fontSize: "16px",
   lineHeight: "26px",
 };
@@ -100,25 +100,25 @@ const text = {
 const quoteSection = {
   margin: "24px 0",
   padding: "16px 24px",
-  backgroundColor: "rgba(255, 255, 255, 0.03)",
+  backgroundColor: "#f3ead3",
   borderRadius: "12px",
-  borderLeft: "4px solid #ffffff",
+  borderLeft: "4px solid #00401f",
 };
 
 const quoteText = {
-  color: "#ffffff",
+  color: "#17140d",
   fontSize: "15px",
   fontStyle: "italic",
   margin: "0",
 };
 
 const hr = {
-  borderColor: "rgba(255, 255, 255, 0.06)",
+  borderColor: "rgba(23, 20, 13, 0.1)",
   margin: "32px 0",
 };
 
 const footer = {
-  color: "#52525b",
+  color: "#8a7657",
   fontSize: "12px",
   fontWeight: "bold",
   textTransform: "uppercase" as const,
@@ -126,6 +126,6 @@ const footer = {
 };
 
 const link = {
-  color: "#ffffff",
+  color: "#00401f",
   textDecoration: "underline",
 };

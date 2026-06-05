@@ -96,7 +96,7 @@ export function ServicesSection() {
   const { shouldReduceMotion } = useMobileMotion();
 
   return (
-    <section id="services" className="border-t border-black/10 bg-[#f8f6ef] px-6 py-16 text-[#11100e] sm:py-24 md:py-32">
+    <section id="services" className="border-t border-black/10 bg-[#fbf4e2] px-6 py-16 text-[#17140d] sm:py-24 md:py-32">
       <div className="mx-auto max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: shouldReduceMotion ? 8 : 16 }}
@@ -105,13 +105,13 @@ export function ServicesSection() {
           transition={{ duration: shouldReduceMotion ? 0.3 : 0.5 }}
           className="mb-16 text-center"
         >
-          <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-3 py-1 text-xs font-bold uppercase tracking-[0.16em] text-[#74695b]">
+          <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-3 py-1 text-xs font-bold uppercase tracking-[0.16em] text-[#8a7657]">
             Tiers
           </span>
-          <h2 className="text-3xl font-bold tracking-tight text-[#11100e] sm:text-4xl md:text-5xl">
+          <h2 className="text-3xl font-bold tracking-tight text-[#17140d] sm:text-4xl md:text-5xl">
             One system. Built for you. Maintained monthly.
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-[#5f5548] sm:text-lg">
+          <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-[#695b45] sm:text-lg">
             Every engagement includes a build fee and a monthly retainer for hosting,
             maintenance, fixes, and ongoing improvements. You own the system. We keep it running.
           </p>
@@ -125,13 +125,13 @@ export function ServicesSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: shouldReduceMotion ? 0.3 : 0.5, delay: shouldReduceMotion ? 0 : i * 0.08 }}
-              className={`relative flex flex-col rounded-2xl border border-black/10 bg-white p-5 shadow-[0_18px_55px_-42px_rgba(17,16,14,0.35)] transition-all hover:bg-black/[0.02] sm:p-6 ${
-                tier.popular ? "ring-1 ring-[#004225]/30" : ""
+              className={`relative flex flex-col rounded-2xl border border-black/10 bg-white p-5 shadow-[0_18px_55px_-42px_rgba(23,20,13,0.35)] transition-all hover:bg-black/[0.02] sm:p-6 ${
+                tier.popular ? "ring-1 ring-[#00401f]/30" : ""
               }`}
             >
               {tier.popular && (
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                  <span className="inline-flex rounded-full bg-[#004225] px-4 py-1 text-[10px] font-bold uppercase tracking-widest text-white">
+                  <span className="inline-flex rounded-full bg-[#00401f] px-4 py-1 text-[10px] font-bold uppercase tracking-widest text-white">
                     Most Popular
                   </span>
                 </div>
@@ -139,38 +139,38 @@ export function ServicesSection() {
 
               <div className="mb-5">
                 <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-black/[0.03]">
-                  <tier.icon className="h-5 w-5 text-[#11100e]" />
+                  <tier.icon className="h-5 w-5 text-[#17140d]" />
                 </div>
-                <h3 className="text-lg font-bold tracking-tight text-[#11100e]">{tier.name}</h3>
-                <p className="mt-1 text-[11px] font-bold uppercase tracking-[0.12em] text-[#74695b]">
+                <h3 className="text-lg font-bold tracking-tight text-[#17140d]">{tier.name}</h3>
+                <p className="mt-1 text-[11px] font-bold uppercase tracking-[0.12em] text-[#8a7657]">
                   {tier.subtitle}
                 </p>
               </div>
 
               <div className="mb-5 space-y-2">
                 <div>
-                  <span className="text-2xl font-bold tracking-tighter text-[#11100e]">
+                  <span className="text-2xl font-bold tracking-tighter text-[#17140d]">
                     {tier.buildPrice}
                   </span>
-                  <span className="ml-1 text-xs font-medium text-[#74695b]">build</span>
+                  <span className="ml-1 text-xs font-medium text-[#8a7657]">build</span>
                 </div>
                 <div>
-                  <span className="text-base font-bold tracking-tight text-[#004225]">
+                  <span className="text-base font-bold tracking-tight text-[#00401f]">
                     {tier.retainerPrice}
                   </span>
-                  <span className="ml-1 text-xs font-medium text-[#74695b]">retainer</span>
+                  <span className="ml-1 text-xs font-medium text-[#8a7657]">retainer</span>
                 </div>
               </div>
 
-              <p className="mb-2 text-[11px] font-bold uppercase tracking-[0.1em] text-[#74695b]">
+              <p className="mb-2 text-[11px] font-bold uppercase tracking-[0.1em] text-[#8a7657]">
                 Best for
               </p>
-              <p className="mb-5 text-xs leading-relaxed text-[#5f5548]">{tier.who}</p>
+              <p className="mb-5 text-xs leading-relaxed text-[#695b45]">{tier.who}</p>
 
               <ul className="mb-8 flex-1 space-y-2.5 border-t border-black/[0.06] pt-5">
                 {tier.features.map((f) => (
-                  <li key={f} className="flex items-start gap-2 text-xs font-medium text-[#3d362f]">
-                    <Check className="mt-0.5 h-4 w-4 flex-shrink-0 text-[#004225]" />
+                  <li key={f} className="flex items-start gap-2 text-xs font-medium text-[#443825]">
+                    <Check className="mt-0.5 h-4 w-4 flex-shrink-0 text-[#00401f]" />
                     {f}
                   </li>
                 ))}
@@ -180,8 +180,8 @@ export function ServicesSection() {
                 href="#contact"
                 className={
                   tier.popular
-                    ? "inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#004225] px-5 py-3 text-sm font-bold text-white transition-colors hover:bg-[#11100e]"
-                    : "inline-flex w-full items-center justify-center gap-2 rounded-xl border border-black/10 bg-white px-5 py-3 text-sm font-bold text-[#11100e] transition-colors hover:bg-black/[0.03]"
+                    ? "inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#00401f] px-5 py-3 text-sm font-bold text-white transition-colors hover:bg-[#17140d]"
+                    : "inline-flex w-full items-center justify-center gap-2 rounded-xl border border-black/10 bg-white px-5 py-3 text-sm font-bold text-[#17140d] transition-colors hover:bg-black/[0.03]"
                 }
               >
                 Build my system
@@ -196,10 +196,10 @@ export function ServicesSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.4, delay: 0.2 }}
-          className="mt-14 rounded-2xl border border-black/10 bg-white p-6 text-center shadow-[0_14px_45px_-36px_rgba(17,16,14,0.28)] sm:p-8"
+          className="mt-14 rounded-2xl border border-black/10 bg-white p-6 text-center shadow-[0_14px_45px_-36px_rgba(23,20,13,0.28)] sm:p-8"
         >
-          <p className="text-sm font-medium leading-relaxed text-[#5f5548]">
-            <strong className="text-[#11100e]">Founding-client pricing shown.</strong>{" "}
+          <p className="text-sm font-medium leading-relaxed text-[#695b45]">
+            <strong className="text-[#17140d]">Founding-client pricing shown.</strong>{" "}
             These rates are for our first 1-3 clients per tier — in exchange for a case study
             and your patience as we refine the delivery process. Standard pricing is roughly
             double what you see above.

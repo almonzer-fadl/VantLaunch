@@ -18,7 +18,7 @@ export default function Home() {
   const [activeProject, setActiveProject] = useState<string | null>(null);
 
   return (
-    <div className="flex min-h-screen flex-col bg-canvas text-[#11100e] antialiased">
+    <div className="flex min-h-screen flex-col bg-canvas text-[#17140d] antialiased">
       <Navbar />
       <main>
         <HeroSection onOpenProject={setActiveProject} />

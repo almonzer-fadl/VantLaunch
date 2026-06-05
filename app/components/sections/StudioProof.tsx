@@ -40,7 +40,7 @@ export function StudioProofSection() {
   const { shouldReduceMotion } = useMobileMotion();
 
   return (
-    <section className="bg-[#f6f3ea] px-6 py-16 text-[#11100e] sm:py-24 md:py-32">
+    <section className="bg-[#f3ead3] px-6 py-16 text-[#17140d] sm:py-24 md:py-32">
       <div className="mx-auto max-w-7xl">
         <div className="grid gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
           <motion.div
@@ -49,13 +49,13 @@ export function StudioProofSection() {
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: shouldReduceMotion ? 0.3 : 0.55 }}
           >
-            <span className="inline-flex rounded-full border border-black/10 bg-white px-3 py-1 text-xs font-bold uppercase tracking-[0.16em] text-[#5f5548]">
+            <span className="inline-flex rounded-full border border-black/10 bg-white px-3 py-1 text-xs font-bold uppercase tracking-[0.16em] text-[#695b45]">
               How we deliver
             </span>
             <h2 className="mt-5 max-w-2xl text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl">
               We don&apos;t just write code. We replace the mess with a system you own.
             </h2>
-            <p className="mt-6 max-w-xl text-base font-medium leading-relaxed text-[#5f5548] sm:text-lg">
+            <p className="mt-6 max-w-xl text-base font-medium leading-relaxed text-[#695b45] sm:text-lg">
               Every engagement produces a business requirements document, wireframes, a working
               product, source access, and a deployment you control — plus monthly maintenance
               to keep everything running and improving.
@@ -67,12 +67,12 @@ export function StudioProofSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: shouldReduceMotion ? 0.3 : 0.55, delay: shouldReduceMotion ? 0 : 0.05 }}
-            className="rounded-2xl border border-black/10 bg-white p-6 shadow-[0_18px_55px_-42px_rgba(17,16,14,0.3)] md:p-8"
+            className="rounded-2xl border border-black/10 bg-white p-6 shadow-[0_18px_55px_-42px_rgba(23,20,13,0.3)] md:p-8"
           >
             <div className="grid gap-3 sm:grid-cols-2">
               {DELIVERABLES.map((item) => (
-                <div key={item} className="flex items-center gap-3 rounded-xl bg-[#f6f3ea] px-4 py-3">
-                  <CheckCircle2 className="h-5 w-5 shrink-0 text-[#11100e]" />
+                <div key={item} className="flex items-center gap-3 rounded-xl bg-[#f3ead3] px-4 py-3">
+                  <CheckCircle2 className="h-5 w-5 shrink-0 text-[#17140d]" />
                   <span className="text-sm font-bold">{item}</span>
                 </div>
               ))}
@@ -90,9 +90,9 @@ export function StudioProofSection() {
               transition={{ duration: shouldReduceMotion ? 0.28 : 0.45, delay: shouldReduceMotion ? 0 : index * 0.06 }}
               className="rounded-2xl border border-black/10 bg-white p-6"
             >
-              <item.icon className="h-8 w-8 text-[#11100e]" />
+              <item.icon className="h-8 w-8 text-[#17140d]" />
               <h3 className="mt-5 text-lg font-bold tracking-tight">{item.title}</h3>
-              <p className="mt-3 text-sm font-medium leading-relaxed text-[#686052]">{item.body}</p>
+              <p className="mt-3 text-sm font-medium leading-relaxed text-[#75664d]">{item.body}</p>
             </motion.div>
           ))}
         </div>

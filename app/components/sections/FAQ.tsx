@@ -45,7 +45,7 @@ export function FAQSection() {
   const { shouldReduceMotion } = useMobileMotion();
 
   return (
-    <section className="border-t border-black/10 bg-[#fffaf0] px-6 py-16 text-[#11100e] sm:py-24 md:py-32">
+    <section className="border-t border-black/10 bg-[#fff9ed] px-6 py-16 text-[#17140d] sm:py-24 md:py-32">
       <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.8fr_1.2fr]">
         <motion.div
           initial={{ opacity: 0, y: shouldReduceMotion ? 8 : 16 }}
@@ -53,9 +53,9 @@ export function FAQSection() {
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: shouldReduceMotion ? 0.3 : 0.5 }}
         >
-          <span className="mb-4 inline-flex rounded-full border border-black/10 bg-white px-3 py-1 text-xs font-bold uppercase tracking-[0.16em] text-[#74695b]">FAQ</span>
-          <h2 className="text-3xl font-bold tracking-tight text-[#11100e] sm:text-4xl md:text-5xl">Questions smart buyers ask before committing.</h2>
-          <p className="mt-4 max-w-2xl text-base leading-relaxed text-[#5f5548] sm:text-lg">
+          <span className="mb-4 inline-flex rounded-full border border-black/10 bg-white px-3 py-1 text-xs font-bold uppercase tracking-[0.16em] text-[#8a7657]">FAQ</span>
+          <h2 className="text-3xl font-bold tracking-tight text-[#17140d] sm:text-4xl md:text-5xl">Questions smart buyers ask before committing.</h2>
+          <p className="mt-4 max-w-2xl text-base leading-relaxed text-[#695b45] sm:text-lg">
             Clear answers so there are no surprises — before you even reach the contact form.
           </p>
         </motion.div>
@@ -68,18 +68,18 @@ export function FAQSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
               transition={{ duration: shouldReduceMotion ? 0.28 : 0.45, delay: shouldReduceMotion ? 0 : index * 0.04 }}
-              className="group rounded-2xl border border-black/10 bg-white p-6 shadow-[0_14px_45px_-36px_rgba(17,16,14,0.28)] open:bg-black/[0.02]"
+              className="group rounded-2xl border border-black/10 bg-white p-6 shadow-[0_14px_45px_-36px_rgba(23,20,13,0.28)] open:bg-black/[0.02]"
               open={index === 0}
             >
-              <summary className="cursor-pointer list-none text-base font-bold tracking-tight text-[#11100e] marker:hidden sm:text-lg">
+              <summary className="cursor-pointer list-none text-base font-bold tracking-tight text-[#17140d] marker:hidden sm:text-lg">
                 <span className="flex items-center justify-between gap-5">
                   {item.question}
-                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-black/10 text-[#74695b] transition-colors group-open:text-[#11100e]">
+                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-black/10 text-[#8a7657] transition-colors group-open:text-[#17140d]">
                     +
                   </span>
                 </span>
               </summary>
-              <p className="mt-4 max-w-3xl text-sm font-medium leading-relaxed text-[#5f5548]">
+              <p className="mt-4 max-w-3xl text-sm font-medium leading-relaxed text-[#695b45]">
                 {item.answer}
               </p>
             </motion.details>

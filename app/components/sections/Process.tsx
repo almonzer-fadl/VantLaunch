@@ -35,7 +35,7 @@ export function ProcessSection() {
   const { shouldReduceMotion } = useMobileMotion();
 
   return (
-    <section id="process" className="border-t border-black/10 bg-[#f8f6ef] px-6 py-16 text-[#11100e] sm:py-24 md:py-32">
+    <section id="process" className="border-t border-black/10 bg-[#fbf4e2] px-6 py-16 text-[#17140d] sm:py-24 md:py-32">
       <div className="mx-auto max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: shouldReduceMotion ? 8 : 16 }}
@@ -44,14 +44,14 @@ export function ProcessSection() {
           transition={{ duration: shouldReduceMotion ? 0.3 : 0.5 }}
           className="mb-16 text-center"
         >
-          <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-3 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-[#74695b]">
-            <CheckCircle2 className="h-3 w-3 text-[#004225]" />
+          <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-3 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-[#8a7657]">
+            <CheckCircle2 className="h-3 w-3 text-[#00401f]" />
             How we work
           </span>
-          <h2 className="text-3xl font-bold tracking-tight text-[#11100e] sm:text-4xl md:text-5xl">
+          <h2 className="text-3xl font-bold tracking-tight text-[#17140d] sm:text-4xl md:text-5xl">
             From scattered tools to one operating system.
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-[#5f5548] sm:text-lg">
+          <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-[#695b45] sm:text-lg">
             Four steps from your current mess to a system you own. No black box.
             You see the work at every stage.
           </p>
@@ -65,13 +65,13 @@ export function ProcessSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: shouldReduceMotion ? 0.3 : 0.5, delay: shouldReduceMotion ? 0 : i * 0.1 }}
-              className="relative overflow-hidden rounded-2xl border border-black/10 bg-white p-5 shadow-[0_18px_55px_-42px_rgba(17,16,14,0.35)] transition-all hover:bg-black/[0.03] sm:p-6"
+              className="relative overflow-hidden rounded-2xl border border-black/10 bg-white p-5 shadow-[0_18px_55px_-42px_rgba(23,20,13,0.35)] transition-all hover:bg-black/[0.03] sm:p-6"
             >
               <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-black/[0.03]">
-                <step.icon className="h-6 w-6 text-[#11100e]" />
+                <step.icon className="h-6 w-6 text-[#17140d]" />
               </div>
-              <h3 className="text-base font-bold tracking-tight text-[#11100e]">{step.title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-[#5f5548]">
+              <h3 className="text-base font-bold tracking-tight text-[#17140d]">{step.title}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-[#695b45]">
                 {step.description}
               </p>
 
@@ -81,7 +81,7 @@ export function ProcessSection() {
                   whileInView={{ width: "100%" }}
                   viewport={{ once: true }}
                   transition={{ duration: shouldReduceMotion ? 0.45 : 1, delay: shouldReduceMotion ? 0.1 : i * 0.2 + 0.3 }}
-                  className="h-full bg-[#11100e]"
+                  className="h-full bg-[#17140d]"
                 />
               </div>
             </motion.div>

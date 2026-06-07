@@ -13,8 +13,8 @@ export const SOCIAL_LINKS = {
 } as const;
 
 export const CONTACT_EMAILS = {
-  product: "build@vantlaunch.com",
-  company: "ops@vantlaunch.com",
+  product: "vantlaunch@gmail.com",
+  company: "vantlaunch@gmail.com",
 } as const;
 
 export const TERAMOTORS_REGISTER_URL = "https://app.teramotor.cc/register";

@@ -82,15 +82,14 @@ export function HeroSection({ onOpenProject }: { onOpenProject: (slug: string) =
             </h1>
 
             <p className="mt-5 max-w-xl text-sm leading-relaxed text-[#74695B] sm:text-base">
-              Ready demos, custom workflows, and owned software systems that replace spreadsheets,
-              WhatsApp workflows, paper processes, and scattered SaaS.
+              Start from a proven system instead of building from zero. We set up, brand,
+              customize, deploy, and support operating systems your team can actually use.
             </p>
 
             <p className="mt-5 max-w-xl text-base leading-relaxed text-[#74695B] sm:mt-6 sm:text-lg">
-              We built TeraMotors for a 3-location workshop — job cards, invoicing, customer records,
-              and reports in one dashboard. We built SpeakBill so freelancers invoice by voice.
-              Some systems start from a ready OS. Others are built around how you actually work.
-              You own it. We maintain it.
+              PropertyOS is our first ready-to-deploy system for property managers. TeraMotors,
+              SpeakBill, and Gari show how we turn scattered workflows into one owned platform.
+              Lower risk. Faster launch. Real proof to build from.
             </p>
 
             <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 text-[10px] font-bold uppercase tracking-[0.14em] text-[#74695B] sm:mt-8 sm:gap-x-6 sm:text-[11px]">
@@ -109,12 +108,12 @@ export function HeroSection({ onOpenProject }: { onOpenProject: (slug: string) =
               transition={{ delay: shouldReduceMotion ? 0.05 : 0.4, duration: shouldReduceMotion ? 0.3 : 0.6 }}
               className="mt-10 flex flex-col gap-4 sm:mt-12 sm:flex-row sm:items-center sm:gap-5"
             >
-              <Link href="#contact" className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#11100E] px-6 py-3.5 text-sm font-bold text-white transition-colors hover:bg-[#004225] sm:w-auto sm:px-8">
-                Build my system
+              <Link href="#portfolio" className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#11100E] px-6 py-3.5 text-sm font-bold text-white transition-colors hover:bg-[#004225] sm:w-auto sm:px-8">
+                See ready systems
                 <ArrowRight className="h-5 w-5" />
               </Link>
-              <Link href="#portfolio" className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-black/10 bg-transparent px-6 py-3.5 text-sm font-bold text-[#11100E] transition-colors hover:bg-black/[0.03] sm:w-auto sm:px-8">
-                See proof
+              <Link href="#services" className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-black/10 bg-transparent px-6 py-3.5 text-sm font-bold text-[#11100E] transition-colors hover:bg-black/[0.03] sm:w-auto sm:px-8">
+                View pricing
               </Link>
             </motion.div>
           </motion.div>

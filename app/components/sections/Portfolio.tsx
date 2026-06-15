@@ -1,11 +1,27 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowUpRight, Layout, MessageSquare, ShieldCheck } from "lucide-react";
+import { ArrowUpRight, Building2, Layout, MessageSquare, ShieldCheck } from "lucide-react";
 import Image from "next/image";
 import { useMobileMotion } from "@/app/hooks/use-mobile-motion";
 
 const PROJECTS = [
+  {
+    slug: "propertyos",
+    name: "PropertyOS",
+    tagline: "A ready operating system for property management teams.",
+    before: "Maintenance requests, tenant updates, owner questions, lease records, contractor work, and documents spread across email, phone calls, spreadsheets, and portals that do not talk to each other.",
+    system: "Tenant portal, owner portal, property manager dashboard, maintenance tickets, work orders, contractor tracking, lease records, reporting, and role-based access in one owned system.",
+    replaced: "Scattered tenant emails, manual maintenance tracking, owner update threads, document chasing, spreadsheet reporting, disconnected property tools.",
+    value: "Property managers can start from a working demo, then customize the remaining workflow around how their team handles tenants, owners, vendors, and maintenance.",
+    image: "/media/propertyos-dashboard.png",
+    accent: "#004225",
+    icon: Building2,
+    featured: false,
+    product: true,
+    externalHref: "https://propertyos.vantlaunch.com",
+    cta: "View PropertyOS",
+  },
   {
     slug: "teramotors",
     name: "TeraMotors",
@@ -105,8 +121,9 @@ export function PortfolioSection({ onOpenProject }: { onOpenProject: (slug: stri
           className="mb-16 text-center"
         >
           <span className="mb-4 inline-flex rounded-full border border-black/10 bg-[#F3F2ED] px-3 py-1.5 text-xs font-bold uppercase tracking-[0.16em] text-[#74695B]">Case studies</span>
-          <h2 className="text-3xl font-bold tracking-tight text-[#11100E] sm:text-4xl md:text-5xl">18 hrs saved. Invoicing in 60 seconds. Source code yours.</h2>
+          <h2 className="text-3xl font-bold tracking-tight text-[#11100E] sm:text-4xl md:text-5xl">Ready systems. Custom workflows. Source code yours.</h2>
           <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-[#74695B] sm:text-lg">
+            PropertyOS starts from a working property management system.
             TeraMotors replaced paper job cards and Excel at a 3-location repair shop.
             SpeakBill turned invoicing from a chore into a voice command.
             Gari gave drivers a digital garage. Every system replaced scattered tools with one owned platform.
@@ -114,6 +131,59 @@ export function PortfolioSection({ onOpenProject }: { onOpenProject: (slug: stri
         </motion.div>
 
         <div className="grid gap-10">
+          {PROJECTS.filter((p) => p.product).map((project, i) => (
+            <motion.div
+              key={project.name}
+              initial={{ opacity: 0, y: shouldReduceMotion ? 10 : 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: shouldReduceMotion ? 0.32 : 0.6, delay: shouldReduceMotion ? 0 : i * 0.08 }}
+              className="overflow-hidden rounded-2xl border border-[#004225]/20 bg-white shadow-mid"
+            >
+              <div className="grid gap-0 lg:grid-cols-[1.05fr_0.95fr]">
+                <div className="relative aspect-[16/10] min-h-[260px] overflow-hidden border-b border-black/10 bg-[#efe2c7] lg:border-b-0 lg:border-r">
+                  <Image
+                    src={project.image!}
+                    alt={project.name}
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 54vw"
+                    className="object-contain p-4 sm:p-6"
+                  />
+                </div>
+
+                <div className="flex flex-col justify-center p-6 sm:p-8 lg:p-10">
+                  <span className="mb-4 inline-flex w-fit rounded-full border border-[#004225]/20 bg-[#004225]/5 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.16em] text-[#004225]">
+                    Ready system
+                  </span>
+                  <h3 className="text-2xl font-bold tracking-tight text-[#11100E] sm:text-3xl">
+                    {project.name}
+                  </h3>
+                  <p className="mt-2 text-sm font-bold uppercase tracking-widest text-[#74695B]">
+                    {project.tagline}
+                  </p>
+                  <p className="mt-5 text-sm leading-relaxed text-[#74695B] sm:text-base">
+                    {project.system}
+                  </p>
+
+                  <div className="mt-6 rounded-xl border border-black/[0.06] bg-[#F8F6EF] p-4">
+                    <span className="text-[10px] font-bold uppercase tracking-[0.14em] text-[#74695B]">Replaces</span>
+                    <p className="mt-1 text-sm font-medium leading-relaxed text-[#11100E]">{project.replaced}</p>
+                  </div>
+
+                  <a
+                    href={project.externalHref}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="mt-7 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#004225] px-5 py-3 text-sm font-bold text-white transition-colors hover:bg-[#11100E] sm:w-fit"
+                  >
+                    {project.cta}
+                    <ArrowUpRight className="h-4 w-4" />
+                  </a>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+
           {/* Featured Projects */}
           <div className="grid gap-10 lg:grid-cols-3">
             {PROJECTS.filter(p => p.featured).map((project, i) => (
@@ -123,7 +193,13 @@ export function PortfolioSection({ onOpenProject }: { onOpenProject: (slug: stri
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: shouldReduceMotion ? 0.32 : 0.6, delay: shouldReduceMotion ? 0 : i * 0.1 }}
-                onClick={() => onOpenProject(project.slug)}
+                onClick={() => {
+                  if (project.externalHref) {
+                    window.open(project.externalHref, "_blank", "noreferrer");
+                    return;
+                  }
+                  onOpenProject(project.slug);
+                }}
                 className="group relative cursor-pointer flex flex-col overflow-hidden rounded-2xl border border-black/10 bg-white shadow-mid transition-all hover:bg-black/[0.03]"
               >
                 <div className="relative aspect-video w-full overflow-hidden border-b border-black/10 bg-[#efe2c7]">
@@ -136,7 +212,25 @@ export function PortfolioSection({ onOpenProject }: { onOpenProject: (slug: stri
                       className="object-contain p-6 transition-transform duration-700 group-hover:scale-105"
                     />
                   ) : (
-                    <div className="h-full w-full bg-gradient-to-br from-black/[0.03] to-black/[0.01]" />
+                    <div className="flex h-full w-full items-center justify-center bg-[#F8F6EF] p-6">
+                      <div className="w-full max-w-[260px] rounded-2xl border border-black/10 bg-white p-4 shadow-mid">
+                        <div className="mb-4 flex items-center justify-between">
+                          <div>
+                            <div className="h-2 w-20 rounded-full bg-[#004225]/80" />
+                            <div className="mt-2 h-2 w-28 rounded-full bg-black/10" />
+                          </div>
+                          <div className="h-9 w-9 rounded-xl bg-[#004225]/10" />
+                        </div>
+                        <div className="grid grid-cols-2 gap-2">
+                          {["Tenants", "Owners", "Tickets", "Reports"].map((label) => (
+                            <div key={label} className="rounded-xl border border-black/[0.06] bg-[#F8F6EF] p-3">
+                              <div className="h-2 w-10 rounded-full bg-black/15" />
+                              <p className="mt-3 text-[10px] font-bold uppercase tracking-[0.1em] text-[#74695B]">{label}</p>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
                   )}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent transition-opacity group-hover:opacity-20" />
                   
@@ -172,7 +266,7 @@ export function PortfolioSection({ onOpenProject }: { onOpenProject: (slug: stri
                   </div>
 
                   <div className="mt-8 flex items-center gap-2 text-xs font-bold text-[#11100E] transition-colors">
-                    View Case Study
+                    {project.cta ?? "View Case Study"}
                     <div className="h-px flex-1 bg-black/10 transition-colors" />
                   </div>
                 </div>
@@ -182,7 +276,7 @@ export function PortfolioSection({ onOpenProject }: { onOpenProject: (slug: stri
 
           {/* Secondary Projects */}
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 mt-12">
-            {PROJECTS.filter(p => !p.featured).map((project, i) => (
+            {PROJECTS.filter(p => !p.featured && !p.product).map((project, i) => (
               <motion.div
                 key={project.name}
                 initial={{ opacity: 0, y: shouldReduceMotion ? 8 : 20 }}

@@ -8,7 +8,7 @@ import { ArrowRight, ArrowUpRight, Play, TrendingUp, Clock, Shield, BarChart3, Z
 import { VideoModal } from "../components/VideoModal";
 
 const METRICS = [
-  { value: "8+", label: "Businesses running our systems", icon: Zap },
+  { value: "9+", label: "Ready and custom systems shipped", icon: Zap },
   { value: "18 hrs", label: "Admin time saved weekly — TeraMotors", icon: Clock },
   { value: "100%", label: "Source ownership — no lock-in", icon: Shield },
   { value: "3–8 wks", label: "From kickoff to live deployment", icon: TrendingUp },
@@ -24,6 +24,21 @@ const CLIENTS = [
 ];
 
 const CASE_STUDIES = [
+  {
+    name: "PropertyOS",
+    subtitle: "A ready operating system for property management teams.",
+    outcome: "Demo-first property management workflows",
+    metrics: [
+      { value: "80%", label: "Start from a working system" },
+      { value: "1 OS", label: "Tenant, owner, manager, and maintenance workflows" },
+      { value: "20%", label: "Customize around the client process" },
+    ],
+    description:
+      "PropertyOS is a ready system for property management companies: tenant portal, owner portal, property manager dashboard, maintenance tickets, work orders, contractor tracking, lease records, reporting, and role-based access. Instead of selling an abstract software project, we show a working system first, then customize it around the business.",
+    image: "/media/propertyos-dashboard.png",
+    href: "https://propertyos.vantlaunch.com",
+    external: true,
+  },
   {
     name: "TeraMotors",
     subtitle: "Saved 18 hours per week. Replaced 4 disconnected tools.",
@@ -94,10 +109,10 @@ export function OurWorkContent() {
             Our work
           </span>
           <h1 className="font-display mt-5 text-3xl font-bold leading-[1.08] tracking-tight sm:text-4xl md:text-5xl">
-            18 hrs saved. 60-second invoicing. Full ownership.
+            Ready systems. Custom workflows. Full ownership.
           </h1>
           <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-[#74695B] sm:text-lg">
-            Three businesses. Three operating systems. Zero subscriptions to juggle.
+            PropertyOS starts from a working demo. TeraMotors, SpeakBill, and Gari were built around real workflows.
             Each one replaced scattered tools with a single platform they own.
           </p>
         </motion.div>
@@ -169,15 +184,39 @@ export function OurWorkContent() {
                 {/* Screenshot */}
                 <Link
                   href={study.href}
+                  target={study.external ? "_blank" : undefined}
+                  rel={study.external ? "noreferrer" : undefined}
                   className="group relative block aspect-[16/10] bg-[#efe2c7] md:aspect-auto"
                 >
-                  <Image
-                    src={study.image}
-                    alt={`${study.name} screenshot`}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 600px"
-                    className="object-contain p-6 transition-transform duration-700 group-hover:scale-[1.03]"
-                  />
+                  {study.image ? (
+                    <Image
+                      src={study.image}
+                      alt={`${study.name} screenshot`}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 600px"
+                      className="object-contain p-6 transition-transform duration-700 group-hover:scale-[1.03]"
+                    />
+                  ) : (
+                    <div className="flex h-full min-h-[280px] w-full items-center justify-center bg-[#F8F6EF] p-6">
+                      <div className="w-full max-w-md rounded-2xl border border-black/10 bg-white p-5 shadow-mid">
+                        <div className="mb-5 flex items-center justify-between">
+                          <div>
+                            <div className="h-2.5 w-24 rounded-full bg-[#004225]/80" />
+                            <div className="mt-2 h-2 w-36 rounded-full bg-black/10" />
+                          </div>
+                          <div className="h-11 w-11 rounded-xl bg-[#004225]/10" />
+                        </div>
+                        <div className="grid grid-cols-2 gap-3">
+                          {["Tenant Portal", "Owner Portal", "Maintenance", "Reporting"].map((label) => (
+                            <div key={label} className="rounded-xl border border-black/[0.06] bg-[#F8F6EF] p-4">
+                              <div className="h-2 w-12 rounded-full bg-black/15" />
+                              <p className="mt-4 text-[10px] font-bold uppercase tracking-[0.1em] text-[#74695B]">{label}</p>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  )}
                   {study.demoVideo && (
                     <button
                       onClick={(e) => {
@@ -224,9 +263,11 @@ export function OurWorkContent() {
 
                   <Link
                     href={study.href}
+                    target={study.external ? "_blank" : undefined}
+                    rel={study.external ? "noreferrer" : undefined}
                     className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-[#004225] transition-colors hover:text-[#11100E]"
                   >
-                    Read full case study
+                    {study.external ? "View product page" : "Read full case study"}
                     <ArrowRight className="h-4 w-4" />
                   </Link>
                 </div>

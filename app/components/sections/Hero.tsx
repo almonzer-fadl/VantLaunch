@@ -87,9 +87,9 @@ export function HeroSection({ onOpenProject }: { onOpenProject: (slug: string) =
             </p>
 
             <p className="mt-5 max-w-xl text-base leading-relaxed text-[#74695B] sm:mt-6 sm:text-lg">
-              PropertyOS is our first ready-to-deploy system for property managers. TeraMotors,
-              SpeakBill, and Gari show how we turn scattered workflows into one owned platform.
-              Lower risk. Faster launch. Real proof to build from.
+              PropertyOS and WorkshopOS are our ready-to-deploy systems for property managers
+              and auto repair shops. TeraMotors, SpeakBill, and Gari show how we turn scattered
+              workflows into one owned platform. Lower risk. Faster launch. Real proof to build from.
             </p>
 
             <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 text-[10px] font-bold uppercase tracking-[0.14em] text-[#74695B] sm:mt-8 sm:gap-x-6 sm:text-[11px]">

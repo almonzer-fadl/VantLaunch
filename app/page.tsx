@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, ChevronRight, Github, Twitter, Layers, Terminal } from "lucide-react";
+import { ArrowRight, ChevronRight, Globe, MessageSquare, Layers, Terminal } from "lucide-react";
 import Link from "next/link";
 
 export default function Home() {
@@ -119,10 +119,10 @@ export default function Home() {
           </div>
           <div className="flex items-center gap-6">
             <Link href="https://github.com" className="text-slate-500 hover:text-white transition-colors">
-              <Github className="w-5 h-5" />
+              <Globe className="w-5 h-5" />
             </Link>
             <Link href="https://twitter.com" className="text-slate-500 hover:text-white transition-colors">
-              <Twitter className="w-5 h-5" />
+              <MessageSquare className="w-5 h-5" />
             </Link>
           </div>
         </div>

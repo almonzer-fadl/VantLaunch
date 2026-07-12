@@ -2,220 +2,234 @@
 
 import { motion } from "framer-motion";
 import { 
-  ArrowUpRight, 
-  Globe, 
-  Layers, 
-  Code2, 
-  Cpu, 
-  Network, 
-  Zap, 
-  Terminal, 
-  Database,
-  Search,
+  ArrowRight, 
+  ChevronRight,
+  Zap,
+  ArrowUpRight,
+  Rocket,
+  Sparkles,
   ExternalLink,
-  ChevronRight
+  Code2,
+  Lock,
+  Smartphone,
+  CreditCard,
+  Cloud,
+  Globe,
+  Share2
 } from "lucide-react";
 import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="flex flex-col min-h-screen bg-vanta text-white selection:bg-vanta-indigo/30">
-      {/* Background Infrastructure */}
-      <div className="fixed inset-0 pointer-events-none">
-        <div className="absolute inset-0 bg-[radial-gradient(#ffffff03_1px,transparent_1px)] [background-size:40px_40px]" />
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-gradient-to-b from-vanta-indigo/10 to-transparent blur-[120px] opacity-50" />
+    <div className="flex flex-col min-h-screen bg-obsidian text-slate-50 selection:bg-accent-indigo/30 antialiased overflow-x-hidden">
+      {/* Texture & Light */}
+      <div className="fixed inset-0 z-0 pointer-events-none">
+        <div className="absolute inset-0 noise" />
+        <div className="absolute inset-0 bg-dot-grid opacity-[0.2]" />
+        <div className="absolute top-[-25%] left-1/2 -translate-x-1/2 w-[1400px] h-[800px] bg-accent-indigo/5 blur-[160px] rounded-full" />
       </div>
 
-      {/* Navigation */}
-      <nav className="fixed top-0 w-full z-50 border-b border-white/5 bg-vanta/60 backdrop-blur-xl">
-        <div className="max-w-7xl mx-auto px-6 h-14 flex items-center justify-between">
+      {/* Proof Ticker */}
+      <div className="relative z-50 w-full border-b border-white/[0.03] bg-obsidian/40 backdrop-blur-md py-2 px-6 overflow-hidden">
+        <div className="max-w-7xl mx-auto flex items-center gap-12 whitespace-nowrap animate-marquee md:animate-none justify-center">
+          <TickerItem label="Latest Ship" value="Mwendo v2.1" />
+          <div className="hidden md:block w-1 h-1 rounded-full bg-white/10" />
+          <TickerItem label="Uptime" value="99.98%" />
+          <div className="hidden md:block w-1 h-1 rounded-full bg-white/10" />
+          <TickerItem label="Avg. Build Time" value="14 Days" />
+        </div>
+      </div>
+
+      {/* Navbar */}
+      <nav className="sticky top-0 w-full z-50 border-b border-white/[0.05] bg-obsidian/60 backdrop-blur-xl">
+        <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-7 h-7 bg-vanta-indigo rounded flex items-center justify-center shadow-[0_0_15px_rgba(99,102,241,0.4)]">
-              <Layers className="text-white w-4 h-4" />
+            <div className="w-8 h-8 bg-white text-obsidian rounded-lg flex items-center justify-center shadow-lg">
+              <Rocket className="w-4 h-4 fill-obsidian" />
             </div>
-            <span className="text-sm font-bold tracking-[0.2em] uppercase font-mono">
-              Vant<span className="text-vanta-indigo">Launch</span>
-            </span>
+            <span className="text-lg font-bold tracking-tighter">VantLaunch</span>
           </div>
           
-          <div className="hidden md:flex items-center gap-10">
-            <NavLink href="#projects">Deployments</NavLink>
-            <NavLink href="#stack">Infrastructure</NavLink>
-            <NavLink href="#about">Systems</NavLink>
+          <div className="hidden md:flex items-center gap-8">
+            <NavLink href="#ventures">Ventures</NavLink>
+            <NavLink href="#stack">Stack</NavLink>
+            <NavLink href="#founder">About</NavLink>
           </div>
 
-          <Link 
-            href="https://github.com" 
-            className="group flex items-center gap-2 px-4 py-1.5 bg-white text-vanta text-[11px] font-bold uppercase tracking-widest rounded hover:bg-slate-200 transition-all active:scale-95"
-          >
-            <Globe className="w-3.5 h-3.5" />
-            Connect
-          </Link>
+          <div className="flex items-center gap-4">
+             <Link href="https://github.com" className="text-slate-400 hover:text-white transition-colors">
+               <Globe className="w-5 h-5" />
+             </Link>
+             <Link 
+              href="#" 
+              className="px-5 py-1.5 bg-white text-obsidian text-sm font-bold rounded-full hover:scale-105 active:scale-95 transition-all"
+            >
+              Start Building
+            </Link>
+          </div>
         </div>
       </nav>
 
-      <main className="relative flex-1">
-        {/* HERO SECTION */}
-        <section className="pt-48 pb-32 px-6">
-          <div className="max-w-7xl mx-auto">
+      <main className="relative z-10 flex-1">
+        {/* HERO */}
+        <section className="pt-24 pb-20 px-6">
+          <div className="max-w-6xl mx-auto text-center">
             <motion.div 
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              className="flex items-center gap-3 mb-8"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[11px] font-bold text-slate-400 mb-8"
             >
-              <div className="h-[1px] w-12 bg-vanta-indigo/50" />
-              <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-vanta-indigo font-mono">
-                System Initialized // Build v1.0.4
-              </span>
+              <Sparkles className="w-3.5 h-3.5 text-accent-indigo" />
+              MICRO-SAAS FOUNDRY
             </motion.div>
 
             <motion.h1 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
-              className="text-6xl md:text-[5.5rem] font-bold tracking-tighter leading-[0.95] mb-10"
+              transition={{ duration: 0.8 }}
+              className="text-6xl md:text-[7rem] font-bold tracking-tighter text-white mb-8 leading-[0.9]"
             >
-              Forging ideas into <br/>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-white to-vanta-indigo/50">production-ready</span> software.
+              I build and ship <br/>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-300 to-white/20 italic">at the speed of light.</span>
             </motion.h1>
 
-            <motion.div 
+            <motion.p 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="max-w-xl mb-14"
+              transition={{ duration: 0.8, delay: 0.1 }}
+              className="max-w-2xl mx-auto text-xl text-slate-400 mb-12 leading-relaxed font-medium"
             >
-              <p className="text-lg text-slate-400 leading-relaxed font-sans mb-6">
-                Computer Science student building high-performance digital infrastructure. 
-                I build in public, focus on systems architecture, and ship with technical elite standards.
-              </p>
-              <div className="flex gap-4">
-                <Link href="#projects" className="px-8 py-4 bg-vanta-indigo text-white text-[12px] font-bold uppercase tracking-[0.2em] rounded hover:bg-indigo-500 transition-all shadow-[0_0_30px_rgba(99,102,241,0.2)]">
-                  Execute Protocol
+              VantLaunch is my personal studio for engineering high-performance digital tools. 
+              No bloat, no delays—just pure, production-ready code.
+            </motion.p>
+
+              <div className="flex flex-col md:flex-row items-center justify-center gap-4">
+                <Link 
+                  href="#ventures" 
+                  className="w-full md:w-auto px-8 py-4 bg-accent-indigo text-white text-base font-bold rounded-xl hover:glow-indigo transition-all flex items-center justify-center gap-2 group"
+                >
+                  Inspect My Ships <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </Link>
+                <Link 
+                  href="https://x.com" 
+                  className="w-full md:w-auto px-8 py-4 bg-white/5 border border-white/10 text-white text-base font-bold rounded-xl hover:bg-white/10 transition-all flex items-center justify-center gap-2"
+                >
+                  Follow the Build <Share2 className="w-5 h-5" />
                 </Link>
               </div>
-            </motion.div>
           </div>
         </section>
 
-        {/* BENTO GRID PROJECTS */}
-        <section id="projects" className="py-32 px-6 relative">
-          <div className="max-w-7xl mx-auto">
-            <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-4">
-              <div className="flex items-center gap-4">
-                <div className="w-2 h-8 bg-vanta-indigo" />
-                <h2 className="text-4xl font-bold tracking-tight uppercase font-mono">Project Grid</h2>
+        {/* VENTURES LOG */}
+        <section id="ventures" className="py-24 px-6 border-t border-white/[0.05]">
+          <div className="max-w-6xl mx-auto">
+            <div className="mb-16 flex flex-col md:flex-row md:items-end justify-between gap-6">
+              <div>
+                <h2 className="text-4xl font-bold tracking-tighter text-white mb-2 uppercase">Venture Log</h2>
+                <p className="text-slate-500 font-medium text-lg">Actual products engineered from zero to launch.</p>
               </div>
-              <span className="text-[10px] font-mono text-slate-500 uppercase tracking-widest bg-white/5 px-3 py-1 border border-white/5">
-                Sort: Recency / Priority
-              </span>
+              <div className="flex gap-2">
+                <div className="px-3 py-1 rounded-lg bg-green-500/10 border border-green-500/20 text-[10px] font-bold text-green-500 uppercase tracking-widest">
+                  Active Systems: 03
+                </div>
+              </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-6 gap-3 auto-rows-[280px]">
-              {/* Main Project: Mwendo */}
-              <div className="md:col-span-4 md:row-span-2 p-10 bg-vanta-surface border border-white/5 rounded-lg flex flex-col justify-between group relative overflow-hidden">
-                <div className="absolute -right-20 -bottom-20 w-80 h-80 bg-vanta-indigo/10 rounded-full blur-[100px] group-hover:bg-vanta-indigo/20 transition-colors" />
-                <div className="relative z-10">
-                  <div className="flex gap-2 mb-8">
-                    <StatusTag>Next.js 15</StatusTag>
-                    <StatusTag>TypeScript</StatusTag>
-                    <StatusTag>PostgreSQL</StatusTag>
-                  </div>
-                  <h3 className="text-5xl font-bold mb-4 tracking-tighter uppercase font-mono">Mwendo</h3>
-                  <p className="text-slate-400 text-lg max-w-md leading-relaxed">
-                    Real-time transportation logistics and fleet optimization infrastructure.
-                  </p>
-                </div>
-                <div className="relative z-10 flex gap-4">
-                  <ProjectLink href="#">Source_Code</ProjectLink>
-                  <ProjectLink href="#" outline>Live_Deployment</ProjectLink>
-                </div>
-              </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <ProjectCard 
+                title="TeraMotors"
+                desc="Enterprise-grade auto repair management system with ZATCA e-invoicing, real-time job tracking, and multi-language support (EN/AR)."
+                tag="ENTERPRISE / FINTECH"
+                href="https://app.teramotor.cc/"
+                image="/teramotors.png"
+              />
+              <ProjectCard 
+                title="Next Project"
+                desc="Waiting for your next high-velocity build details. Ready to ship in record time."
+                tag="UPCOMING"
+                href="#"
+                image="/mockup-2.jpg"
+              />
+            </div>
+          </div>
+        </section>
 
-              {/* Memory Sim */}
-              <div className="md:col-span-2 md:row-span-1 p-8 bg-vanta-surface border border-white/5 rounded-lg flex flex-col justify-between hover:border-vanta-indigo/30 transition-colors group">
-                <div className="flex justify-between items-start">
-                  <Cpu className="text-vanta-indigo w-6 h-6" />
-                  <StatusTag>C++ / Systems</StatusTag>
-                </div>
+        {/* THE STACK */}
+        <section id="stack" className="py-24 px-6 bg-white/[0.02] border-y border-white/[0.05]">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl font-bold tracking-tighter text-white mb-4 uppercase">The Battle-Tested Stack</h2>
+              <p className="text-slate-500 font-medium">I don&apos;t experiment with your time. I use what works.</p>
+            </div>
+            
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              <StackItem icon={<Code2 />} title="Next.js" subtitle="App Router" />
+              <StackItem icon={<Cloud />} title="Supabase" subtitle="Database & Auth" />
+              <StackItem icon={<CreditCard />} title="Polar / Stripe" subtitle="Monetization" />
+              <StackItem icon={<Smartphone />} title="Tailwind" subtitle="Premium Design" />
+            </div>
+          </div>
+        </section>
+
+        {/* THE FOUNDER (YOU) */}
+        <section id="founder" className="py-32 px-6">
+          <div className="max-w-4xl mx-auto glass-card rounded-[3rem] p-12 md:p-20 relative overflow-hidden">
+            <div className="absolute top-0 right-0 p-12 opacity-[0.03]">
+              <Rocket className="w-64 h-64" />
+            </div>
+            <div className="relative z-10">
+              <div className="w-20 h-20 bg-accent-indigo rounded-3xl mb-8 flex items-center justify-center text-3xl">
+                👨‍💻
+              </div>
+              <h2 className="text-4xl font-bold tracking-tighter text-white mb-6">Built by a Founder, <br/> for Founders.</h2>
+              <p className="text-slate-400 text-xl leading-relaxed mb-8">
+                I spent years dealing with slow agencies and bloated codebases. VantLaunch is the answer. 
+                I build apps that are fast, secure, and ready to scale from the first commit. 
+                My goal is simple: **Ship value, ignore the noise.**
+              </p>
+              <div className="flex items-center gap-6">
                 <div>
-                  <h3 className="text-xl font-bold font-mono uppercase tracking-tight mb-2">Memory Sim</h3>
-                  <p className="text-xs text-slate-500 uppercase tracking-widest">OS Allocation Algorithms</p>
+                  <div className="text-white font-bold">Your Name</div>
+                  <div className="text-slate-500 text-sm">Founder, VantLaunch</div>
                 </div>
-              </div>
-
-              {/* Networking */}
-              <div className="md:col-span-2 md:row-span-1 p-8 bg-white/[0.02] border border-white/5 rounded-lg flex flex-col justify-between hover:border-vanta-indigo/30 transition-colors group">
-                <div className="flex justify-between items-start">
-                  <Network className="text-vanta-indigo w-6 h-6" />
-                  <StatusTag>Python</StatusTag>
+                <div className="w-px h-10 bg-white/10" />
+                <div className="flex gap-4">
+                  <Link href="#" className="text-slate-400 hover:text-white"><Share2 className="w-5 h-5" /></Link>
+                  <Link href="#" className="text-slate-400 hover:text-white"><Globe className="w-5 h-5" /></Link>
                 </div>
-                <div>
-                  <h3 className="text-xl font-bold font-mono uppercase tracking-tight mb-2">Network Lab</h3>
-                  <p className="text-xs text-slate-500 uppercase tracking-widest">Distributed Systems</p>
-                </div>
-              </div>
-
-              {/* Technical Docs */}
-              <div className="md:col-span-3 p-8 bg-white/[0.01] border border-white/5 rounded-lg flex items-center justify-between group hover:bg-white/[0.03] transition-all">
-                <div className="flex items-center gap-6">
-                  <Terminal className="w-8 h-8 text-slate-600 group-hover:text-vanta-indigo transition-colors" />
-                  <div>
-                    <h3 className="text-lg font-bold font-mono uppercase">Technical Documentation</h3>
-                    <p className="text-xs text-slate-500 uppercase tracking-widest">System architecture & specs</p>
-                  </div>
-                </div>
-                <ChevronRight className="w-5 h-5 text-slate-700 group-hover:translate-x-1 transition-all" />
-              </div>
-
-              {/* GitHub Feed Placeholder */}
-              <div className="md:col-span-3 p-8 bg-white/[0.01] border border-white/5 rounded-lg flex items-center justify-between group hover:bg-white/[0.03] transition-all">
-                <div className="flex items-center gap-6">
-                  <Globe className="w-8 h-8 text-slate-600 group-hover:text-vanta-indigo transition-colors" />
-                  <div>
-                    <h3 className="text-lg font-bold font-mono uppercase">Global Contributions</h3>
-                    <p className="text-xs text-slate-500 uppercase tracking-widest">Active open source commit feed</p>
-                  </div>
-                </div>
-                <ChevronRight className="w-5 h-5 text-slate-700 group-hover:translate-x-1 transition-all" />
               </div>
             </div>
           </div>
         </section>
 
-        {/* STACK MARQUEE / GRID */}
-        <section id="stack" className="py-32 px-6 border-t border-white/5">
-          <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-20">
-              <span className="text-[10px] font-bold text-vanta-indigo uppercase tracking-[0.5em] font-mono">Infrastructure</span>
-              <h2 className="text-3xl font-bold mt-4 tracking-tighter uppercase font-mono">Current Technology Stack</h2>
-            </div>
-
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-px bg-white/5 border border-white/5">
-              <StackBox icon={<Code2 />} label="TypeScript" />
-              <StackBox icon={<Layers />} label="React 19" />
-              <StackBox icon={<Zap />} label="Next.js 15" />
-              <StackBox icon={<Database />} label="PostgreSQL" />
-              <StackBox icon={<Terminal />} label="Rust / C++" />
-              <StackBox icon={<Search />} label="Algorithms" />
-            </div>
-          </div>
+        {/* FINAL CALL */}
+        <section className="py-48 px-6 text-center">
+          <h2 className="text-5xl md:text-7xl font-bold tracking-tighter text-white mb-10">
+            Ready to stop talking <br/> and start shipping?
+          </h2>
+          <Link 
+            href="mailto:build@vantlaunch.com" 
+            className="px-12 py-5 bg-white text-obsidian text-lg font-bold rounded-2xl hover:scale-105 transition-all shadow-2xl shadow-white/20 inline-flex items-center gap-3"
+          >
+            Deploy Your Vision <ArrowRight className="w-5 h-5" />
+          </Link>
         </section>
       </main>
 
-      <footer className="py-12 px-6 border-t border-white/5 bg-vanta">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
-          <div className="flex items-center gap-3">
-            <div className="w-5 h-5 bg-vanta-indigo rounded-sm" />
-            <span className="text-[10px] font-bold uppercase tracking-[0.3em] font-mono">VantLaunch Protocol © 2026</span>
+      <footer className="py-20 px-6 border-t border-white/[0.05]">
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8 text-slate-600 text-[11px] font-bold uppercase tracking-widest">
+          <div className="flex items-center gap-2">
+            <Rocket className="w-4 h-4" />
+            <span>© 2026 VantLaunch Studio</span>
           </div>
           <div className="flex gap-8">
-            <FooterLink href="#">Twitter</FooterLink>
-            <FooterLink href="#">GitHub</FooterLink>
-            <FooterLink href="#">LinkedIn</FooterLink>
+            <Link href="#" className="hover:text-white transition-colors">Twitter</Link>
+            <Link href="#" className="hover:text-white transition-colors">GitHub</Link>
+            <Link href="#" className="hover:text-white transition-colors">Polar.sh</Link>
           </div>
-          <div className="text-[10px] font-mono text-slate-600 uppercase tracking-widest">
-            Lat: 34.0522 // Lon: -118.2437
+          <div className="flex items-center gap-2">
+            <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
+            SYSTEM_OPERATIONAL
           </div>
         </div>
       </footer>
@@ -227,51 +241,62 @@ function NavLink({ href, children }: { href: string; children: React.ReactNode }
   return (
     <Link 
       href={href} 
-      className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-500 hover:text-white transition-colors font-mono"
+      className="text-sm font-bold text-slate-400 hover:text-white transition-colors tracking-tight uppercase"
     >
       {children}
     </Link>
   );
 }
 
-function StatusTag({ children }: { children: React.ReactNode }) {
+function TickerItem({ label, value }: { label: string; value: string }) {
   return (
-    <span className="px-2 py-1 bg-white/5 border border-white/5 text-[9px] font-bold uppercase tracking-widest text-slate-400 font-mono">
-      {children}
-    </span>
-  );
-}
-
-function ProjectLink({ href, children, outline = false }: { href: string; children: React.ReactNode; outline?: boolean }) {
-  return (
-    <Link 
-      href={href} 
-      className={`px-6 py-3 text-[10px] font-bold uppercase tracking-widest font-mono rounded transition-all flex items-center gap-2 ${
-        outline 
-          ? 'border border-white/10 text-white hover:bg-white/5' 
-          : 'bg-white text-vanta hover:bg-slate-200 shadow-[0_0_20px_rgba(255,255,255,0.1)]'
-      }`}
-    >
-      {children}
-    </Link>
-  );
-}
-
-function StackBox({ icon, label }: { icon: React.ReactNode; label: string }) {
-  return (
-    <div className="bg-vanta p-10 flex flex-col items-center justify-center gap-4 hover:bg-vanta-surface transition-colors cursor-default group">
-      <div className="text-slate-600 group-hover:text-vanta-indigo transition-colors scale-125">
-        {icon}
-      </div>
-      <span className="text-[10px] font-bold uppercase tracking-widest text-slate-500 font-mono">{label}</span>
+    <div className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-widest">
+      <span className="text-slate-600">{label}:</span>
+      <span className="text-accent-indigo font-bold">{value}</span>
     </div>
   );
 }
 
-function FooterLink({ href, children }: { href: string; children: React.ReactNode }) {
+function ProjectCard({ title, desc, tag, href, image }: { title: string; desc: string; tag: string; href: string; image: string }) {
   return (
-    <Link href={href} className="text-[10px] font-bold uppercase tracking-[0.2em] text-slate-600 hover:text-vanta-indigo transition-colors font-mono">
-      {children}
-    </Link>
+    <div className="group relative glass-card rounded-[2.5rem] overflow-hidden hover:border-accent-indigo/30 transition-all duration-500">
+      <div className="aspect-[16/10] bg-white/[0.02] relative overflow-hidden flex items-center justify-center">
+        {image && image.startsWith("/") ? (
+          <img 
+            src={image} 
+            alt={title} 
+            className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700" 
+          />
+        ) : (
+          <div className="text-slate-800 font-bold text-8xl tracking-tighter select-none opacity-20 group-hover:scale-110 transition-transform duration-700">
+            {title}
+          </div>
+        )}
+        <div className="absolute inset-0 bg-gradient-to-t from-obsidian via-transparent to-transparent opacity-60" />
+        <div className="absolute top-6 right-6 p-3 bg-obsidian/60 backdrop-blur-md rounded-xl border border-white/10 opacity-0 group-hover:opacity-100 transition-all transform translate-y-2 group-hover:translate-y-0">
+          <ExternalLink className="w-5 h-5 text-white" />
+        </div>
+      </div>
+      <div className="p-8 relative z-10">
+        <div className="text-[10px] font-bold text-accent-indigo mb-2 tracking-[0.2em] uppercase">{tag}</div>
+        <h3 className="text-3xl font-bold text-white mb-3 tracking-tighter">{title}</h3>
+        <p className="text-slate-500 font-medium leading-relaxed mb-6">{desc}</p>
+        <Link href={href} className="flex items-center gap-2 text-sm font-bold text-white group-hover:gap-3 transition-all">
+          View Project <ChevronRight className="w-4 h-4" />
+        </Link>
+      </div>
+    </div>
+  );
+}
+
+function StackItem({ icon, title, subtitle }: { icon: React.ReactNode; title: string; subtitle: string }) {
+  return (
+    <div className="glass-card rounded-2xl p-6 flex flex-col items-center text-center gap-3 hover:border-white/10 transition-all">
+      <div className="text-accent-indigo">{icon}</div>
+      <div>
+        <div className="text-white font-bold text-sm">{title}</div>
+        <div className="text-slate-600 text-[10px] uppercase font-bold tracking-widest">{subtitle}</div>
+      </div>
+    </div>
   );
 }

@@ -21,11 +21,11 @@ import {
 export const metadata: Metadata = {
   title: "Salasel | B2B HORECA marketplace — VantLaunch",
   description:
-    "Enterprise B2B marketplace for HORECA in Saudi Arabia: procurement digitization, BNPL financing, multi-supplier cart, fulfillment tracking, Filament panels for every stakeholder.",
+    "Enterprise B2B marketplace for HORECA: procurement digitization, BNPL financing, multi-supplier cart, fulfillment tracking, Filament panels for every stakeholder.",
   openGraph: {
     title: "Salasel | B2B HORECA marketplace — VantLaunch",
     description:
-      "Enterprise B2B marketplace for HORECA in Saudi Arabia — procurement, BNPL, logistics, and supplier orchestration.",
+      "Enterprise B2B marketplace for HORECA — procurement, BNPL, logistics, and supplier orchestration.",
     images: [{ url: "/salasel-hero.png", width: 1200, height: 750, alt: "Salasel marketplace marketing site" }],
   },
 };
@@ -187,7 +187,7 @@ export default function SalaselProjectPage() {
         <div className="mb-8 flex flex-wrap items-center gap-2">
           <span className="type-chip">Case study · shipped product</span>
           <span className="type-chip">
-            Saudi Arabia · B2B marketplace
+            B2B marketplace · HORECA
           </span>
         </div>
 

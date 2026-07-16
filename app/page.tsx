@@ -23,12 +23,12 @@ export default function Home() {
     <div className="flex min-h-screen flex-col bg-canvas text-[#11100E] antialiased">
       <Navbar />
       <main>
-        <HeroSection onOpenProject={setActiveProject} />
+        <HeroSection />
         <ProofStripSection />
+        <ServicesSection />
         <PortfolioSection onOpenProject={setActiveProject} />
         <WorkReelSection />
         <FounderSection />
-        <ServicesSection />
         <OwnershipSection />
         <StudioProofSection />
         <ProcessSection />

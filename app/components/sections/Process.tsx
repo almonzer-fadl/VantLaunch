@@ -1,33 +1,33 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Search, PenTool, Wrench, RefreshCw, CheckCircle2 } from "lucide-react";
+import { ClipboardCheck, PackageCheck, Settings2, Rocket, CheckCircle2 } from "lucide-react";
 import { useMobileMotion } from "@/app/hooks/use-mobile-motion";
 
 const STEPS = [
   {
-    icon: Search,
-    title: "01. Map your process",
+    icon: PackageCheck,
+    title: "01. Pick the product",
     description:
-      "We dig into how your business actually runs — the tools you use, the manual steps, the spreadsheets, the WhatsApp threads. We document the workflows before we touch a line of code.",
+      "Choose the exact build from the catalog: tracking, dashboard, landing page, nurture system, CRM, portal, staff workflow, or operating system.",
   },
   {
-    icon: PenTool,
-    title: "02. Design the operating system",
+    icon: ClipboardCheck,
+    title: "02. Confirm the inputs",
     description:
-      "We define the screens, data models, user roles, and integrations that turn your process into a coherent product. You get wireframes, a BRD, and a clear scope before the build starts.",
+      "We collect only what that product needs: brand assets, tool access, examples, fields, workflow notes, and the target outcome.",
   },
   {
-    icon: Wrench,
-    title: "03. Build and connect the workflows",
+    icon: Settings2,
+    title: "03. Configure and build",
     description:
-      "Your system is built in short sprints with a live staging environment you can access daily. We connect the pieces — website, portal, CRM, invoicing, analytics — into one platform.",
+      "We build the selected product, connect the required tools, and send review links or screenshots as the system comes together.",
   },
   {
-    icon: RefreshCw,
-    title: "04. Launch, maintain, and improve",
+    icon: Rocket,
+    title: "04. Launch and hand over",
     description:
-      "We handle deployment, hand over source access, and begin the monthly retainer — hosting, bug fixes, security updates, content changes, analytics reviews, and ongoing improvements.",
+      "You get the launched build, access details, handover notes, and optional maintenance if you want us to keep improving it.",
   },
 ];
 
@@ -49,11 +49,11 @@ export function ProcessSection() {
             How we work
           </span>
           <h2 className="text-3xl font-bold tracking-tight text-[#11100E] sm:text-4xl md:text-5xl">
-            From scattered tools to one operating system.
+            A clear path from product to launch.
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-[#74695B] sm:text-lg">
-            Four steps from your current mess to a system you own. No black box.
-            You see the work at every stage.
+            You do not need to invent the scope from scratch. Pick the product, send the inputs,
+            review the build, and launch with a system you own.
           </p>
         </motion.div>
 

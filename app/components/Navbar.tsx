@@ -9,7 +9,7 @@ import { useMobileMotion } from "../hooks/use-mobile-motion";
 
 const NAV_LINKS = [
   { href: "/work", label: "Work" },
-  { href: "/#services", label: "Systems" },
+  { href: "/#products", label: "Products" },
   { href: "/#process", label: "Process" },
   { href: "/#faq", label: "FAQ" },
 ];
@@ -77,7 +77,7 @@ export function Navbar() {
                 href="/#contact"
                 className="inline-flex items-center justify-center rounded-xl bg-[#004225] px-4 py-2 text-xs font-bold text-white transition-colors hover:bg-[#11100E]"
               >
-                Start a project
+                Request a build
               </Link>
             </motion.div>
 
@@ -146,7 +146,7 @@ export function Navbar() {
                     onClick={() => setOpen(false)}
                     className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#004225] px-6 py-3.5 text-sm font-bold text-white transition-colors hover:bg-[#11100E]"
                   >
-                    Start a project
+                    Request a build
                   </Link>
                 </motion.div>
 

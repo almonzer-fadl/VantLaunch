@@ -44,6 +44,8 @@ import {
 } from "simple-icons";
 import { HOME_PREVIEW_STUB_ORDER, WORK_STUBS } from "./work/stub-projects";
 
+import { ProjectOverlay } from "./work/ProjectOverlay";
+
 const EASE_CURSOR: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
 const extraVentures = HOME_PREVIEW_STUB_ORDER.map((slug) => {
@@ -51,6 +53,7 @@ const extraVentures = HOME_PREVIEW_STUB_ORDER.map((slug) => {
   return {
     key: slug,
     href: `/work/${s.slug}`,
+    slug: s.slug,
     imageSrc: s.imageSrc,
     imageAlt: s.imageAlt,
     badges: s.badges,
@@ -368,6 +371,7 @@ function TiltSpecular({
 }
 
 type HeroOrbitShot = {
+  slug: string;
   src: string;
   alt: string;
   sizes: string;
@@ -375,26 +379,31 @@ type HeroOrbitShot = {
 
 const heroOrbitImages: HeroOrbitShot[] = [
   {
+    slug: "teramotors",
     src: "/teramotors.png",
     alt: "TeraMotors workshop dashboard",
     sizes: "(max-width: 640px) 90vw, 420px",
   },
   {
+    slug: "salasel",
     src: "/salasel-hero.png",
     alt: "Salasel HORECA marketplace experience",
     sizes: "(max-width: 640px) 90vw, 420px",
   },
   {
+    slug: "araba",
     src: "/portfolio/araba.png",
     alt: "Araba multi-platform mobile experience",
     sizes: "(max-width: 640px) 90vw, 420px",
   },
   {
+    slug: "gari",
     src: "/portfolio/teramotors-mobile.jpg",
     alt: "Gari customer iOS app",
     sizes: "(max-width: 640px) 90vw, 420px",
   },
   {
+    slug: "aqua-marwa",
     src: "/portfolio/water-delivery-app.jpeg",
     alt: "Aqua Marwa water delivery app",
     sizes: "(max-width: 640px) 90vw, 420px",
@@ -509,20 +518,23 @@ function HeroOrbitStaticLayer({
   reduced,
   shot,
   shotCount,
+  onClick,
 }: {
   idx: number;
   narrow: boolean;
   reduced: boolean;
   shot: HeroOrbitShot;
   shotCount: number;
+  onClick?: () => void;
 }) {
   const L = orbitLayoutAtTheta(idx, 0, narrowLayout, reduced, shotCount);
 
   return (
     <div
       suppressHydrationWarning
-      className="pointer-events-none absolute will-change-transform"
+      className={`absolute will-change-transform ${onClick ? "pointer-events-auto cursor-pointer" : "pointer-events-none"}`}
       style={orbitStaticInlineStyle(L)}
+      onClick={onClick}
     >
       <div className="relative h-full w-full overflow-visible">
         <Image
@@ -546,6 +558,7 @@ function HeroOrbitLayer({
   narrow,
   shot,
   shotCount,
+  onClick,
 }: {
   idx: number;
   theta: MotionValue<number>;
@@ -553,6 +566,7 @@ function HeroOrbitLayer({
   narrow: boolean;
   shot: HeroOrbitShot;
   shotCount: number;
+  onClick?: () => void;
 }) {
   const BW = narrow ? 300 : 364;
   const BH = narrow ? 400 : 478;
@@ -581,7 +595,7 @@ function HeroOrbitLayer({
 
   return (
     <motion.div
-      className="pointer-events-none absolute will-change-transform"
+      className={`absolute will-change-transform ${onClick ? "pointer-events-auto cursor-pointer" : "pointer-events-none"}`}
       style={{
         width: `${BW}px`,
         height: `${BH}px`,
@@ -596,6 +610,7 @@ function HeroOrbitLayer({
         zIndex,
         filter: brightness,
       }}
+      onClick={onClick}
     >
       <div className="relative h-full w-full overflow-visible">
         <Image
@@ -664,7 +679,13 @@ function wheelHappensInsideElement(ev: WheelEvent, root: HTMLElement): boolean {
   return !!hit && root.contains(hit);
 }
 
-function HeroOrbitCollage({ reduced }: { reduced: boolean }) {
+function HeroOrbitCollage({ 
+  reduced,
+  onOpenProject,
+}: { 
+  reduced: boolean;
+  onOpenProject?: (slug: string) => void;
+}) {
   const narrow = useNarrowHeroOrbit();
   const n = heroOrbitImages.length;
   const theta = useMotionValue(0);
@@ -750,7 +771,7 @@ function HeroOrbitCollage({ reduced }: { reduced: boolean }) {
         aria-hidden
         animate={reduced ? undefined : { scale: [1, 1.05, 1], opacity: [0.22, 0.36, 0.22] }}
         transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-        className="pointer-events-none absolute left-[-8%] top-[12%] h-52 w-52 rounded-full bg-indigo-500/26 blur-[90px]"
+        className="pointer-events-none absolute left-[-8%] top-[12%] h-52 w-52 rounded-full bg-zinc-500/26 blur-[90px]"
       />
       <motion.div
         aria-hidden
@@ -776,6 +797,7 @@ function HeroOrbitCollage({ reduced }: { reduced: boolean }) {
                   narrow={narrow}
                   shot={shot}
                   shotCount={n}
+                  onClick={onOpenProject ? () => onOpenProject(shot.slug) : undefined}
                 />
               ) : (
                 <HeroOrbitStaticLayer
@@ -785,6 +807,7 @@ function HeroOrbitCollage({ reduced }: { reduced: boolean }) {
                   reduced={reduced}
                   shot={shot}
                   shotCount={n}
+                  onClick={onOpenProject ? () => onOpenProject(shot.slug) : undefined}
                 />
               ),
             )}
@@ -821,12 +844,40 @@ export default function Home() {
   const [comparisonInView, setComparisonInView] = useState(false);
   const [activeWhyIndex, setActiveWhyIndex] = useState(0);
   const [activeNav, setActiveNav] = useState<"#ventures" | "#comparison" | "#process">("#ventures");
+  const [activeProject, setActiveProject] = useState<string | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const heroRef = useRef<HTMLElement>(null);
   const venturesRef = useRef<HTMLElement>(null);
   const navLinksRef = useRef<Record<string, HTMLAnchorElement | null>>({});
   const [navUnderline, setNavUnderline] = useState<{ x: number; w: number } | null>(null);
   const prefersReducedMotion = usePrefersReducedMotion();
+
+  // Handle initial deep link and popstate
+  useEffect(() => {
+    const handleUrlChange = () => {
+      const path = window.location.pathname;
+      if (path.startsWith("/work/")) {
+        const slug = path.split("/").pop();
+        if (slug) setActiveProject(slug);
+      } else {
+        setActiveProject(null);
+      }
+    };
+
+    handleUrlChange();
+    window.addEventListener("popstate", handleUrlChange);
+    return () => window.removeEventListener("popstate", handleUrlChange);
+  }, []);
+
+  const openProject = (slug: string) => {
+    setActiveProject(slug);
+    window.history.pushState({ project: slug }, "", `/work/${slug}`);
+  };
+
+  const closeProject = () => {
+    setActiveProject(null);
+    window.history.pushState(null, "", "/");
+  };
 
   const { scrollYProgress } = useScroll({
     target: heroRef,
@@ -978,7 +1029,7 @@ export default function Home() {
     <MotionConfig reducedMotion={prefersReducedMotion ? "always" : "never"}>
       <div
         ref={containerRef}
-        className="flex flex-col min-h-screen bg-obsidian text-slate-50 selection:bg-accent-indigo/30 antialiased overflow-x-hidden relative"
+        className="flex flex-col min-h-screen bg-zinc text-slate-50 selection:bg-accent-zinc/30 antialiased overflow-x-hidden relative"
         style={
           prefersReducedMotion
             ? ({
@@ -992,10 +1043,9 @@ export default function Home() {
 
         {/* Background */}
         <div className="fixed inset-0 z-0 pointer-events-none">
-          <div className="absolute inset-0 noise" />
-          <div className="absolute inset-0 bg-dot-grid opacity-[0.15]" />
+          <div className="absolute inset-0 bg-dot-grid opacity-[0.12]" />
           <motion.div
-            className="absolute top-[-25%] left-1/2 -translate-x-1/2 w-[1400px] h-[800px] bg-accent-indigo/5 blur-[160px] rounded-full"
+            className="absolute top-[-25%] left-1/2 -translate-x-1/2 w-[1400px] h-[800px] bg-accent-blue/[0.03] blur-[160px] rounded-full"
             style={
               prefersReducedMotion
                 ? undefined
@@ -1008,10 +1058,10 @@ export default function Home() {
           />
         </div>
 
-        <nav className="sticky top-0 w-full z-50 border-b border-white/[0.05] bg-obsidian/40 backdrop-blur-xl">
+        <nav className="sticky top-0 w-full z-50 border-b border-white/[0.05] bg-zinc/40 backdrop-blur-xl">
           <motion.div
             aria-hidden
-            className="absolute bottom-0 left-0 h-px w-full bg-gradient-to-r from-accent-indigo/0 via-accent-indigo/60 to-accent-indigo/0"
+            className="absolute bottom-0 left-0 h-px w-full bg-gradient-to-r from-accent-zinc/0 via-accent-zinc/60 to-accent-zinc/0"
             style={{ scaleX: pageScroll, transformOrigin: "0% 50%" }}
           />
           <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
@@ -1021,8 +1071,8 @@ export default function Home() {
               transition={{ duration: 0.55, ease: EASE_CURSOR }}
               className="flex items-center gap-3"
             >
-              <div className="w-9 h-9 bg-white text-obsidian rounded-xl flex items-center justify-center shadow-lg hover:rotate-12 transition-transform cursor-pointer">
-                <Rocket className="w-5 h-5 fill-obsidian" />
+              <div className="w-9 h-9 bg-white text-zinc rounded-xl flex items-center justify-center shadow-lg hover:rotate-12 transition-transform cursor-pointer">
+                <Rocket className="w-5 h-5 fill-zinc" />
               </div>
               <span className="type-brand-xl">VantLaunch</span>
             </motion.div>
@@ -1031,7 +1081,7 @@ export default function Home() {
               {navUnderline ? (
                 <motion.div
                   aria-hidden
-                  className="absolute -bottom-2 h-[2px] rounded-full bg-accent-indigo shadow-[0_0_20px_rgba(99,102,241,0.6)]"
+                  className="absolute -bottom-2 h-[2px] rounded-full bg-accent-zinc shadow-[0_0_20px_rgba(99,102,241,0.6)]"
                   initial={false}
                   animate={{ x: navUnderline.x, width: navUnderline.w }}
                   transition={{ type: "spring", stiffness: 260, damping: 26, mass: 0.7 }}
@@ -1094,7 +1144,7 @@ export default function Home() {
                     transition={{ duration: 0.5, ease: EASE_CURSOR }}
                     className="mb-6 type-kicker-inline"
                   >
-                    <Sparkles className="h-3 w-3 shrink-0 text-accent-indigo opacity-90" />
+                    <Sparkles className="h-3 w-3 shrink-0 text-accent-blue opacity-90" />
                     Venture studio · products live in market
                   </motion.div>
 
@@ -1152,7 +1202,7 @@ export default function Home() {
                         {['AE', 'MS', 'JP'].map((initials) => (
                           <div
                             key={initials}
-                            className="flex h-8 w-8 items-center justify-center rounded-full border-2 border-obsidian bg-gradient-to-br from-indigo-500/35 to-slate-800 text-[9px] font-semibold text-white/95"
+                            className="flex h-8 w-8 items-center justify-center rounded-full border-2 border-zinc bg-gradient-to-br from-zinc-500/35 to-slate-800 text-[9px] font-semibold text-white/95"
                           >
                             {initials}
                           </div>
@@ -1166,7 +1216,10 @@ export default function Home() {
                 </div>
 
                 <div className="relative lg:col-span-7">
-                  <HeroOrbitCollage reduced={prefersReducedMotion} />
+                  <HeroOrbitCollage 
+                    reduced={prefersReducedMotion} 
+                    onOpenProject={openProject}
+                  />
                 </div>
               </div>
             </motion.div>
@@ -1176,7 +1229,7 @@ export default function Home() {
           <section id="comparison" className="relative overflow-hidden border-t border-white/[0.05] px-6 py-32">
             <div
               aria-hidden
-              className="pointer-events-none absolute left-1/2 top-[44%] h-[520px] w-[min(100%,1100px)] -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent-indigo/[0.08] blur-[130px]"
+              className="pointer-events-none absolute left-1/2 top-[44%] h-[520px] w-[min(100%,1100px)] -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent-zinc/[0.08] blur-[130px]"
             />
             <motion.div
               className="relative mx-auto max-w-6xl"
@@ -1187,7 +1240,7 @@ export default function Home() {
               onViewportEnter={() => setComparisonInView(true)}
             >
               <motion.div variants={fadeSlide} className="mb-14 text-center md:mb-16">
-                <p className="type-meta-uppercase mb-4 text-accent-indigo/90">How We Operate</p>
+                <p className="type-meta-uppercase mb-4 text-accent-zinc/90">How We Operate</p>
                 <h2 className="type-display-xl mb-5 text-balance">Two lanes. One product engine.</h2>
                 <p className="type-intro mx-auto max-w-3xl text-center">
                   We run our own products (TeraMotors, Gari) and ship client products (Araba, Aqua
@@ -1205,9 +1258,9 @@ export default function Home() {
                   <motion.div
                     variants={fadeSlide}
                     transition={{ ...fadeSlide.visible.transition, delay: prefersReducedMotion ? 0 : 0.05 }}
-                    className="order-2 rounded-[2rem] border border-accent-indigo/20 bg-gradient-to-br from-accent-indigo/[0.12] via-accent-indigo/[0.05] to-transparent p-8 md:p-10 lg:order-1"
+                    className="order-2 rounded-[2rem] border border-accent-zinc/20 bg-gradient-to-br from-accent-zinc/[0.12] via-accent-zinc/[0.05] to-transparent p-8 md:p-10 lg:order-1"
                   >
-                    <p className="type-meta-uppercase text-accent-indigo/85">Why teams choose us</p>
+                    <p className="type-meta-uppercase text-accent-zinc/85">Why teams choose us</p>
                     <h3 className="mt-3 max-w-lg text-3xl font-semibold tracking-tight text-white md:text-4xl">
                       Built like founders, shipped like operators.
                     </h3>
@@ -1255,12 +1308,12 @@ export default function Home() {
                               onFocus={() => setActiveWhyIndex(idx)}
                               className={`w-full rounded-xl border px-4 py-3 text-left transition-all duration-300 ${
                                 active
-                                  ? "border-accent-indigo/45 bg-accent-indigo/[0.18] shadow-[0_0_42px_-20px_rgba(99,102,241,0.8)]"
-                                  : "border-white/[0.08] bg-black/20 hover:border-accent-indigo/30"
+                                  ? "border-accent-zinc/45 bg-accent-zinc/[0.18] shadow-[0_0_42px_-20px_rgba(99,102,241,0.8)]"
+                                  : "border-white/[0.08] bg-black/20 hover:border-accent-zinc/30"
                               }`}
                             >
                               <p className="flex items-center gap-3 text-sm font-semibold text-white md:text-base">
-                                <Check className="h-4 w-4 shrink-0 text-accent-indigo" />
+                                <Check className="h-4 w-4 shrink-0 text-accent-zinc" />
                                 {point.title}
                               </p>
                               <p className="mt-2 pl-7 text-sm leading-relaxed text-slate-300">{point.body}</p>
@@ -1281,7 +1334,7 @@ export default function Home() {
                       <div className="absolute inset-0 rounded-full border border-white/[0.08]" />
                       <motion.div
                         aria-hidden
-                        className="absolute inset-5 rounded-full border border-accent-indigo/20"
+                        className="absolute inset-5 rounded-full border border-accent-zinc/20"
                         animate={prefersReducedMotion ? undefined : { rotate: 360 }}
                         transition={{
                           duration: [24, 20, 17, 14][activeWhyIndex],
@@ -1301,7 +1354,7 @@ export default function Home() {
                       />
                       <motion.div
                         aria-hidden
-                        className="absolute inset-0 rounded-full bg-accent-indigo/[0.08] blur-2xl"
+                        className="absolute inset-0 rounded-full bg-accent-zinc/[0.08] blur-2xl"
                         animate={
                           prefersReducedMotion
                             ? undefined
@@ -1312,9 +1365,9 @@ export default function Home() {
                         }
                         transition={{ duration: 3.8, repeat: Infinity, ease: "easeInOut" }}
                       />
-                      <div className="relative z-[1] flex h-44 w-44 items-center justify-center rounded-full border border-accent-indigo/30 bg-obsidian/85 text-center shadow-[0_0_60px_-18px_rgba(99,102,241,0.7)] backdrop-blur-xl">
+                      <div className="relative z-[1] flex h-44 w-44 items-center justify-center rounded-full border border-accent-zinc/30 bg-zinc/85 text-center shadow-[0_0_60px_-18px_rgba(99,102,241,0.7)] backdrop-blur-xl">
                         <div>
-                          <p className="type-meta-uppercase text-accent-indigo/80">VantLaunch</p>
+                          <p className="type-meta-uppercase text-accent-zinc/80">VantLaunch</p>
                           <p className="mt-2 text-lg font-semibold text-white">MicroSaaS Studio</p>
                           <p className="mt-2 text-xs text-slate-400">{WHY_US_POINTS[activeWhyIndex].title}</p>
                         </div>
@@ -1322,12 +1375,12 @@ export default function Home() {
                       {!prefersReducedMotion ? (
                         <>
                           <motion.div
-                            className="absolute left-4 top-1/2 h-2 w-2 -translate-y-1/2 rounded-full bg-accent-indigo shadow-[0_0_14px_2px_rgba(99,102,241,0.7)]"
+                            className="absolute left-4 top-1/2 h-2 w-2 -translate-y-1/2 rounded-full bg-accent-zinc shadow-[0_0_14px_2px_rgba(99,102,241,0.7)]"
                             animate={{ x: [0, 310, 0], y: [0, -72, 0] }}
                             transition={{ duration: 4.8, repeat: Infinity, ease: "easeInOut" }}
                           />
                           <motion.div
-                            className="absolute right-6 top-1/2 h-2 w-2 -translate-y-1/2 rounded-full bg-indigo-200 shadow-[0_0_14px_2px_rgba(165,180,252,0.7)]"
+                            className="absolute right-6 top-1/2 h-2 w-2 -translate-y-1/2 rounded-full bg-zinc-200 shadow-[0_0_14px_2px_rgba(165,180,252,0.7)]"
                             animate={{ x: [0, -300, 0], y: [0, 72, 0] }}
                             transition={{ duration: 5.2, repeat: Infinity, ease: "easeInOut", delay: 0.4 }}
                           />
@@ -1368,10 +1421,10 @@ export default function Home() {
                                     ease: "easeInOut",
                                   }
                             }
-                            className={`group relative flex min-h-[56px] items-center overflow-hidden rounded-xl border bg-obsidian/55 px-3 py-2 backdrop-blur-md transition-[border-color,box-shadow,transform] duration-300 ${
+                            className={`group relative flex min-h-[56px] items-center overflow-hidden rounded-xl border bg-zinc/55 px-3 py-2 backdrop-blur-md transition-[border-color,box-shadow,transform] duration-300 ${
                               idx === activeWhyIndex
-                                ? "border-accent-indigo/45 shadow-[0_0_44px_-22px_rgba(99,102,241,0.9)]"
-                                : "border-white/[0.10] hover:border-accent-indigo/30 hover:shadow-[0_0_40px_-26px_rgba(99,102,241,0.7)]"
+                                ? "border-accent-zinc/45 shadow-[0_0_44px_-22px_rgba(99,102,241,0.9)]"
+                                : "border-white/[0.10] hover:border-accent-zinc/30 hover:shadow-[0_0_40px_-26px_rgba(99,102,241,0.7)]"
                             }`}
                           >
                             {!prefersReducedMotion ? (
@@ -1388,7 +1441,7 @@ export default function Home() {
                               />
                             ) : null}
                             <div className="flex items-center gap-2">
-                              <span className="relative inline-flex h-9 w-9 shrink-0 items-center justify-center overflow-hidden rounded-lg border border-white/10 bg-obsidian/70">
+                              <span className="relative inline-flex h-9 w-9 shrink-0 items-center justify-center overflow-hidden rounded-lg border border-white/10 bg-zinc/70">
                                 {!prefersReducedMotion ? (
                                   <motion.span
                                     aria-hidden
@@ -1442,12 +1495,12 @@ export default function Home() {
               {!prefersReducedMotion ? (
                 <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 h-[520px]">
                   <motion.div
-                    className="absolute left-[8%] top-[18%] h-52 w-52 rounded-full bg-accent-indigo/10 blur-[70px]"
+                    className="absolute left-[8%] top-[18%] h-52 w-52 rounded-full bg-accent-zinc/10 blur-[70px]"
                     animate={{ x: [0, 28, 0], y: [0, -22, 0], opacity: [0.22, 0.5, 0.22] }}
                     transition={{ duration: 10.5, repeat: Infinity, ease: "easeInOut" }}
                   />
                   <motion.div
-                    className="absolute right-[10%] top-[38%] h-64 w-64 rounded-full bg-indigo-200/10 blur-[80px]"
+                    className="absolute right-[10%] top-[38%] h-64 w-64 rounded-full bg-zinc-200/10 blur-[80px]"
                     animate={{ x: [0, -26, 0], y: [0, 18, 0], opacity: [0.18, 0.45, 0.18] }}
                     transition={{ duration: 12.5, repeat: Infinity, ease: "easeInOut" }}
                   />
@@ -1469,134 +1522,151 @@ export default function Home() {
                 className="grid auto-rows-[minmax(380px,auto)] grid-cols-1 items-start gap-6 md:auto-rows-auto md:grid-cols-12"
               >
                 <motion.div variants={fadeSlide} className="md:col-span-6">
-                  <CardPointerGlow className="relative isolate min-h-[380px] overflow-hidden rounded-[3rem] border border-white/[0.06] bg-white/[0.02] glass-card hover:border-accent-indigo/35 group transition-colors duration-500 h-full">
-                    <motion.div
-                      className="absolute inset-0"
-                      style={prefersReducedMotion ? undefined : { y: venturesParallaxA, scale: venturesParallaxScale }}
-                    >
-                      <Image
-                        src="/teramotors.png"
-                        alt="TeraMotors product experience"
-                        fill
-                        sizes="(max-width: 768px) 100vw, 48vw"
-                        className="object-cover opacity-40 transition-transform duration-700 group-hover:scale-[1.03]"
-                      />
-                    </motion.div>
-                    <div className="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/20 to-transparent" />
-                    <div className="relative z-[1] flex h-full flex-col justify-end p-10 md:p-12">
-                      <div className="mb-6 flex flex-wrap gap-2">
-                        <Badge>Automotive</Badge>
-                        <Badge>Enterprise · Compliance-ready</Badge>
+                  <div 
+                    onClick={() => openProject("teramotors")}
+                    className="cursor-pointer h-full"
+                  >
+                    <CardPointerGlow className="relative isolate min-h-[380px] overflow-hidden rounded-[3rem] border border-white/[0.06] bg-white/[0.02] glass-card hover:border-accent-zinc/35 group transition-colors duration-500 h-full">
+                      <motion.div
+                        className="absolute inset-0"
+                        style={prefersReducedMotion ? undefined : { y: venturesParallaxA, scale: venturesParallaxScale }}
+                      >
+                        <Image
+                          src="/teramotors.png"
+                          alt="TeraMotors product experience"
+                          fill
+                          sizes="(max-width: 768px) 100vw, 48vw"
+                          className="object-cover opacity-40 transition-transform duration-700 group-hover:scale-[1.03]"
+                        />
+                      </motion.div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-zinc via-zinc/20 to-transparent" />
+                      <div className="relative z-[1] flex h-full flex-col justify-end p-10 md:p-12">
+                        <div className="mb-6 flex flex-wrap gap-2">
+                          <Badge>Automotive</Badge>
+                          <Badge>Enterprise · Compliance-ready</Badge>
+                        </div>
+                        <h3 className="type-portfolio-product-title">TeraMotors</h3>
+                        <p className="type-portfolio-product-body">
+                          Enterprise auto repair ops — bilingual UX, realtime job boards, Stripe, and
+                          invoicing flows built for regulated markets and growing workshop networks.
+                        </p>
+                        <div className="relative z-[1] flex flex-wrap items-center gap-x-8 gap-y-4">
+                          <span className="type-link-strong">
+                            Full case study
+                            <ArrowUpRight className="h-5 w-5" />
+                          </span>
+                          <Link 
+                            href="https://app.teramotor.cc/" 
+                            className="type-link-soft"
+                            onClick={(e) => e.stopPropagation()}
+                          >
+                            Live app
+                            <ArrowUpRight className="h-4 w-4 shrink-0" />
+                          </Link>
+                        </div>
                       </div>
-                      <h3 className="type-portfolio-product-title">TeraMotors</h3>
-                      <p className="type-portfolio-product-body">
-                        Enterprise auto repair ops — bilingual UX, realtime job boards, Stripe, and
-                        invoicing flows built for regulated markets and growing workshop networks.
-                      </p>
-                      <div className="relative z-[1] flex flex-wrap items-center gap-x-8 gap-y-4">
-                        <Link href="/work/teramotors" className="type-link-strong">
-                          Full case study
-                          <ArrowUpRight className="h-5 w-5" />
-                        </Link>
-                        <Link href="https://app.teramotor.cc/" className="type-link-soft">
-                          Live app
-                          <ArrowUpRight className="h-4 w-4 shrink-0" />
-                        </Link>
-                      </div>
-                    </div>
-                  </CardPointerGlow>
+                    </CardPointerGlow>
+                  </div>
                 </motion.div>
 
                 <motion.div variants={fadeSlide} className="md:col-span-6">
-                  <CardPointerGlow className="relative isolate min-h-[380px] overflow-hidden rounded-[3rem] border border-white/[0.06] bg-white/[0.02] glass-card hover:border-accent-indigo/35 group transition-colors duration-500 h-full">
-                    <motion.div
-                      className="absolute inset-0"
-                      style={prefersReducedMotion ? undefined : { y: venturesParallaxB, scale: venturesParallaxScale }}
-                    >
-                      <Image
-                        src="/salasel-hero.png"
-                        alt="Salasel HORECA marketplace marketing site with chef imagery, mobile app preview, and order stats"
-                        fill
-                        sizes="(max-width: 768px) 100vw, 48vw"
-                        className="object-cover object-[center_12%] opacity-45 transition-transform duration-700 group-hover:scale-[1.03]"
-                      />
-                    </motion.div>
-                    <div className="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/35 to-obsidian/15" />
-                    <div className="relative z-[1] flex h-full flex-col justify-end p-10 md:p-12">
-                      <div className="mb-6 flex flex-wrap gap-2">
-                        <Badge>B2B marketplace</Badge>
-                        <Badge>HORECA · Procurement</Badge>
+                  <div 
+                    onClick={() => openProject("salasel")}
+                    className="cursor-pointer h-full"
+                  >
+                    <CardPointerGlow className="relative isolate min-h-[380px] overflow-hidden rounded-[3rem] border border-white/[0.06] bg-white/[0.02] glass-card hover:border-accent-zinc/35 group transition-colors duration-500 h-full">
+                      <motion.div
+                        className="absolute inset-0"
+                        style={prefersReducedMotion ? undefined : { y: venturesParallaxB, scale: venturesParallaxScale }}
+                      >
+                        <Image
+                          src="/salasel-hero.png"
+                          alt="Salasel HORECA marketplace experience"
+                          fill
+                          sizes="(max-width: 768px) 100vw, 48vw"
+                          className="object-cover object-[center_12%] opacity-45 transition-transform duration-700 group-hover:scale-[1.03]"
+                        />
+                      </motion.div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-zinc via-zinc/35 to-zinc/15" />
+                      <div className="relative z-[1] flex h-full flex-col justify-end p-10 md:p-12">
+                        <div className="mb-6 flex flex-wrap gap-2">
+                          <Badge>B2B marketplace</Badge>
+                          <Badge>HORECA · Procurement</Badge>
+                        </div>
+                        <h3 className="type-portfolio-product-title">Salasel</h3>
+                        <p className="type-portfolio-product-body">
+                          Procurement for hotels, cafés, and catering crews — BNPL-ready buying, logistics
+                          handoffs, supplier orchestration inside one Laravel platform.
+                        </p>
+                        <div className="relative z-[1] flex flex-wrap items-center gap-x-8 gap-y-4">
+                          <span className="type-link-strong">
+                            Full case study
+                            <ArrowUpRight className="h-5 w-5" />
+                          </span>
+                          <Link
+                            href="https://salasel.com.sa/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="type-link-soft"
+                            onClick={(e) => e.stopPropagation()}
+                          >
+                            Live site
+                            <ArrowUpRight className="h-4 w-4 shrink-0" />
+                          </Link>
+                        </div>
                       </div>
-                      <h3 className="type-portfolio-product-title">Salasel</h3>
-                      <p className="type-portfolio-product-body">
-                        Procurement for hotels, cafés, and catering crews — BNPL-ready buying, logistics
-                        handoffs, supplier orchestration inside one Laravel platform.
-                      </p>
-                      <div className="relative z-[1] flex flex-wrap items-center gap-x-8 gap-y-4">
-                        <Link href="/work/salasel" className="type-link-strong">
-                          Full case study
-                          <ArrowUpRight className="h-5 w-5" />
-                        </Link>
-                        <Link
-                          href="https://salasel.com.sa/"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="type-link-soft"
-                        >
-                          Live site
-                          <ArrowUpRight className="h-4 w-4 shrink-0" />
-                        </Link>
-                      </div>
-                    </div>
-                  </CardPointerGlow>
+                    </CardPointerGlow>
+                  </div>
                 </motion.div>
 
                 {extraVentures.map((v) => (
                   <motion.div key={v.key} variants={fadeSlide} className="md:col-span-4">
-                    <TiltSpecular disabled={prefersReducedMotion} className="relative">
-                      <CardPointerGlow className="group relative isolate aspect-[9/19.5] w-full max-w-[min(100%,320px)] overflow-hidden rounded-[3rem] border border-white/[0.06] bg-obsidian glass-card transition-colors duration-500 hover:border-accent-indigo/35 sm:mx-auto md:mx-0 md:max-w-none">
-                        {!prefersReducedMotion ? (
-                          <motion.div
-                            aria-hidden
-                            className="pointer-events-none absolute -inset-10 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-                            style={{
-                              background:
-                                "conic-gradient(from 180deg, transparent 0%, rgba(99,102,241,0.22) 18%, transparent 42%, transparent 68%, rgba(165,180,252,0.18) 86%, transparent 100%)",
-                            }}
-                            animate={{ rotate: 360 }}
-                            transition={{ duration: 14, repeat: Infinity, ease: "linear" }}
-                          />
-                        ) : null}
-                        <div className="absolute inset-0 bg-obsidian">
-                          <Image
-                            src={v.imageSrc}
-                            alt={v.imageAlt}
-                            fill
-                            sizes="(max-width: 768px) 320px, 33vw"
-                            className={v.imgClass}
-                          />
-                        </div>
-                        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/45 to-obsidian/10" />
-                        <div className="relative z-[1] flex min-h-full flex-col justify-end p-8 md:p-10">
-                          <div className="mb-4 flex flex-wrap gap-2">
-                            {v.badges.map((b) => (
-                              <Badge key={b}>{b}</Badge>
-                            ))}
+                    <div 
+                      onClick={() => openProject(v.slug)}
+                      className="cursor-pointer h-full"
+                    >
+                      <TiltSpecular disabled={prefersReducedMotion} className="relative">
+                        <CardPointerGlow className="group relative isolate aspect-[9/19.5] w-full max-w-[min(100%,320px)] overflow-hidden rounded-[3rem] border border-white/[0.06] bg-zinc glass-card transition-colors duration-500 hover:border-accent-zinc/35 sm:mx-auto md:mx-0 md:max-w-none">
+                          {!prefersReducedMotion ? (
+                            <motion.div
+                              aria-hidden
+                              className="pointer-events-none absolute -inset-10 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+                              style={{
+                                background:
+                                  "conic-gradient(from 180deg, transparent 0%, rgba(99,102,241,0.22) 18%, transparent 42%, transparent 68%, rgba(165,180,252,0.18) 86%, transparent 100%)",
+                              }}
+                              animate={{ rotate: 360 }}
+                              transition={{ duration: 14, repeat: Infinity, ease: "linear" }}
+                            />
+                          ) : null}
+                          <div className="absolute inset-0 bg-zinc">
+                            <Image
+                              src={v.imageSrc}
+                              alt={v.imageAlt}
+                              fill
+                              sizes="(max-width: 768px) 320px, 33vw"
+                              className={v.imgClass}
+                            />
                           </div>
-                          <h3 className="type-portfolio-card-title">{v.title}</h3>
-                          <p className="type-portfolio-card-body">
-                            {v.description}
-                          </p>
-                          <Link
-                            href={v.href}
-                            className="type-link-strong relative z-[1] text-sm md:text-base"
-                          >
-                            Project preview
-                            <ArrowUpRight className="h-4 w-4 shrink-0 md:h-5 md:w-5" />
-                          </Link>
-                        </div>
-                      </CardPointerGlow>
-                    </TiltSpecular>
+                          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-zinc via-zinc/45 to-zinc/10" />
+                          <div className="relative z-[1] flex min-h-full flex-col justify-end p-8 md:p-10">
+                            <div className="mb-4 flex flex-wrap gap-2">
+                              {v.badges.map((b) => (
+                                <Badge key={b}>{b}</Badge>
+                              ))}
+                            </div>
+                            <h3 className="type-portfolio-card-title">{v.title}</h3>
+                            <p className="type-portfolio-card-body">
+                              {v.description}
+                            </p>
+                            <span className="type-link-strong relative z-[1] text-sm md:text-base">
+                              Project preview
+                              <ArrowUpRight className="h-4 w-4 shrink-0 md:h-5 md:w-5" />
+                            </span>
+                          </div>
+                        </CardPointerGlow>
+                      </TiltSpecular>
+                    </div>
                   </motion.div>
                 ))}
 
@@ -1609,7 +1679,7 @@ export default function Home() {
           <section className="relative overflow-hidden px-6 py-48 text-center md:py-64">
             <div aria-hidden className="pointer-events-none absolute inset-0">
               <motion.div
-                className="absolute left-1/2 top-[35%] h-[520px] w-[min(100%,980px)] -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent-indigo/[0.10] blur-[140px]"
+                className="absolute left-1/2 top-[35%] h-[520px] w-[min(100%,980px)] -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent-zinc/[0.10] blur-[140px]"
                 animate={
                   prefersReducedMotion
                     ? undefined
@@ -1661,7 +1731,7 @@ export default function Home() {
                 </motion.span>
                 <motion.span
                   variants={fadeSlide}
-                  className="block text-accent-indigo"
+                  className="block text-accent-zinc"
                 >
                   experience your vision?
                 </motion.span>
@@ -1705,7 +1775,7 @@ export default function Home() {
           </section>
         </main>
 
-        <footer className="py-20 px-6 border-t border-white/[0.05] bg-obsidian-surface/50">
+        <footer className="py-20 px-6 border-t border-white/[0.05] bg-zinc-surface/50">
           <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start gap-12">
             <div className="max-w-sm">
               <div className="flex items-center gap-2 mb-8">
@@ -1737,6 +1807,8 @@ export default function Home() {
             <p className="type-legal-muted font-normal">Made with care for teams who ship with heart.</p>
           </div>
         </footer>
+
+        <ProjectOverlay activeSlug={activeProject} onClose={closeProject} />
       </div>
     </MotionConfig>
   );
@@ -1791,7 +1863,7 @@ function ProcessOrbIcon({
           {[0, 1, 2].map((i) => (
             <motion.span
               key={i}
-              className="pointer-events-none absolute inset-[-3px] rounded-full border border-accent-indigo/40"
+              className="pointer-events-none absolute inset-[-3px] rounded-full border border-accent-zinc/40"
               animate={{ scale: [1, 1.5], opacity: [0.5, 0] }}
               transition={{
                 duration: 2.75,
@@ -1814,9 +1886,9 @@ function ProcessOrbIcon({
         </>
       ) : null}
       <div
-        className={`relative z-[1] flex ${inner} items-center justify-center rounded-full border border-white/[0.12] bg-obsidian/95 shadow-[0_0_40px_-10px_rgba(99,102,241,0.5)] backdrop-blur-md ${reduced ? "ring-1 ring-white/10" : ""}`}
+        className={`relative z-[1] flex ${inner} items-center justify-center rounded-full border border-white/[0.12] bg-zinc/95 shadow-[0_0_40px_-10px_rgba(99,102,241,0.5)] backdrop-blur-md ${reduced ? "ring-1 ring-white/10" : ""}`}
       >
-        <Icon className={`${iconSz} text-accent-indigo`} strokeWidth={1.65} />
+        <Icon className={`${iconSz} text-accent-zinc`} strokeWidth={1.65} />
       </div>
     </div>
   );
@@ -1832,7 +1904,7 @@ function ProcessPipelineSection() {
     >
       <div
         aria-hidden
-        className="pointer-events-none absolute left-1/2 top-[30%] h-[480px] w-[min(100%,880px)] -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent-indigo/[0.07] blur-[100px]"
+        className="pointer-events-none absolute left-1/2 top-[30%] h-[480px] w-[min(100%,880px)] -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent-zinc/[0.07] blur-[100px]"
       />
       <motion.div
         className="relative z-[1] mx-auto max-w-7xl"
@@ -1842,7 +1914,7 @@ function ProcessPipelineSection() {
         variants={staggerSection}
       >
         <motion.div variants={fadeSlide} className="mb-16 max-w-2xl md:mb-20">
-          <p className="type-meta-uppercase mb-3 text-accent-indigo/90">How we work</p>
+          <p className="type-meta-uppercase mb-3 text-accent-zinc/90">How we work</p>
           <h2 className="type-display-lg text-balance">From first sketch to launch day</h2>
           <p className="type-intro mt-5 max-w-xl text-slate-400">
             One continuous pipeline—ideas become interfaces, interfaces become builds, builds become
@@ -1861,10 +1933,11 @@ function ProcessPipelineSection() {
             >
               <defs>
                 <linearGradient id="processFlowGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stopColor="rgb(99 102 241)" stopOpacity="0.15" />
-                  <stop offset="45%" stopColor="rgb(165 180 252)" stopOpacity="1" />
-                  <stop offset="100%" stopColor="rgb(99 102 241)" stopOpacity="0.15" />
+                  <stop offset="0%" stopColor="#6366f1" stopOpacity="0.15" />
+                  <stop offset="45%" stopColor="#a5b4fc" stopOpacity="1" />
+                  <stop offset="100%" stopColor="#6366f1" stopOpacity="0.15" />
                 </linearGradient>
+           
                 <filter id="processFlowGlow" x="-20%" y="-20%" width="140%" height="140%">
                   <feGaussianBlur stdDeviation="2.5" result="blur" />
                   <feMerge>
@@ -1938,7 +2011,7 @@ function ProcessPipelineSection() {
                 >
                   <ProcessOrbIcon phase={phase} reduced={reduced} />
                 </motion.div>
-                <span className="type-meta-uppercase mt-10 text-accent-indigo/80">{phase.num}</span>
+                <span className="type-meta-uppercase mt-10 text-accent-zinc/80">{phase.num}</span>
                 <h3 className="type-process-title mt-2 max-w-[16rem] text-balance">{phase.title}</h3>
                 <p className="type-process-desc mx-auto mt-3 max-w-[18rem] text-balance">
                   {phase.desc}
@@ -1953,7 +2026,7 @@ function ProcessPipelineSection() {
           <div className="relative pl-2">
             <motion.div
               aria-hidden
-              className="absolute bottom-6 left-[1.35rem] top-14 w-px origin-top bg-gradient-to-b from-accent-indigo/50 via-white/20 to-transparent"
+              className="absolute bottom-6 left-[1.35rem] top-14 w-px origin-top bg-gradient-to-b from-accent-zinc/50 via-white/20 to-transparent"
               initial={{ scaleY: reduced ? 1 : 0 }}
               whileInView={{ scaleY: 1 }}
               viewport={{ once: true, margin: "-40px" }}
@@ -1968,7 +2041,7 @@ function ProcessPipelineSection() {
                 >
                   <div className="relative z-[1] flex shrink-0 flex-col items-center pt-1">
                     <ProcessOrbIcon phase={phase} size="md" reduced={reduced} />
-                    <span className="type-meta-uppercase mt-3 text-[10px] text-accent-indigo/75">
+                    <span className="type-meta-uppercase mt-3 text-[10px] text-accent-zinc/75">
                       {phase.num}
                     </span>
                   </div>

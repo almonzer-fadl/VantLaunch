@@ -30,14 +30,13 @@ export function ProjectStubPage({ config }: { config: WorkStubConfig }) {
   ] as const;
 
   return (
-    <div className="relative min-h-screen overflow-x-hidden bg-obsidian text-slate-50 selection:bg-accent-indigo/30">
+    <div className="relative min-h-screen overflow-x-hidden bg-zinc text-slate-50 selection:bg-accent-blue/30">
       <div className="pointer-events-none fixed inset-0 z-0">
-        <div className="absolute inset-0 noise" />
         <div className="absolute inset-0 bg-dot-grid opacity-[0.14]" />
-        <div className="absolute left-1/2 top-[-20%] h-[620px] w-[1100px] -translate-x-1/2 rounded-full bg-accent-indigo/[0.07] blur-[140px]" />
+        <div className="absolute left-1/2 top-[-20%] h-[620px] w-[1100px] -translate-x-1/2 rounded-full bg-accent-blue/[0.04] blur-[140px]" />
       </div>
 
-      <header className="sticky top-0 z-40 border-b border-white/[0.06] bg-obsidian/70 backdrop-blur-xl">
+      <header className="sticky top-0 z-40 border-b border-white/[0.06] bg-zinc/70 backdrop-blur-xl">
         <div className="mx-auto flex h-16 max-w-5xl items-center justify-between px-6">
           <Link href="/#ventures" className="type-work-back-link">
             <ArrowLeft className="h-4 w-4" />
@@ -65,9 +64,7 @@ export function ProjectStubPage({ config }: { config: WorkStubConfig }) {
                 {b}
               </span>
             ))}
-            <span className="rounded-full border border-amber-500/25 bg-amber-500/10 px-3 py-1 text-xs font-semibold text-amber-200/90">
-              Case study in progress
-            </span>
+            
           </div>
 
           <h1 className="type-case-h1 text-balance">{config.title}</h1>
@@ -98,7 +95,7 @@ export function ProjectStubPage({ config }: { config: WorkStubConfig }) {
         >
           {config.bullets.map((item) => (
             <li key={item} className="flex gap-3">
-              <span className="mt-2 inline-block h-1 w-1 shrink-0 rounded-full bg-accent-indigo" />
+              <span className="mt-2 inline-block h-1 w-1 shrink-0 rounded-full bg-accent-zinc" />
               {item}
             </li>
           ))}
@@ -109,7 +106,7 @@ export function ProjectStubPage({ config }: { config: WorkStubConfig }) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
-          className="relative mt-12 overflow-hidden rounded-[1.75rem] border border-white/[0.1] bg-obsidian-surface shadow-[0_40px_100px_-40px_rgba(0,0,0,0.85)]"
+          className="relative mt-12 overflow-hidden rounded-[1.75rem] border border-white/[0.1] bg-zinc-surface shadow-[0_40px_100px_-40px_rgba(0,0,0,0.85)]"
         >
           <div className="relative mx-auto aspect-[10/16] w-full max-w-sm sm:max-w-md md:aspect-[16/10] md:max-h-[min(70vh,640px)] md:max-w-none">
             <Image
@@ -121,7 +118,7 @@ export function ProjectStubPage({ config }: { config: WorkStubConfig }) {
               className="object-cover object-top md:object-center"
             />
           </div>
-          <figcaption className="type-figure-caption border-t border-white/[0.06] bg-obsidian-surface/95 px-5 py-4">
+          <figcaption className="type-figure-caption border-t border-white/[0.06] bg-zinc-surface/95 px-5 py-4">
             {config.figureCaption} Full write-up, stack notes, and outcomes will land here soon.
           </figcaption>
         </motion.figure>
@@ -150,8 +147,8 @@ export function ProjectStubPage({ config }: { config: WorkStubConfig }) {
               <p className="type-meta-uppercase mb-3 text-white/60">Typical stack</p>
               <div className="grid grid-cols-2 gap-2">
                 {STACK_TECH.map((tech) => (
-                  <div key={tech.label} className="flex items-center gap-2 rounded-xl border border-white/[0.08] bg-obsidian/55 px-3 py-2">
-                    <span className="inline-flex h-8 w-8 items-center justify-center rounded-lg border border-white/10 bg-obsidian/70">
+                  <div key={tech.label} className="flex items-center gap-2 rounded-xl border border-white/[0.08] bg-zinc/55 px-3 py-2">
+                    <span className="inline-flex h-8 w-8 items-center justify-center rounded-lg border border-white/10 bg-zinc/70">
                       <svg role="img" viewBox="0 0 24 24" className="h-4 w-4" aria-label={tech.icon.title} fill={`#${tech.icon.hex}`}>
                         <path d={tech.icon.path} />
                       </svg>

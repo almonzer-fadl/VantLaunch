@@ -3,16 +3,26 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Rocket, Check, ArrowRight } from "lucide-react";
+import { sendContactEmail } from "../actions/contact";
 
 export function ContactForm() {
-  const [status, setStatus] = useState<"idle" | "submitting" | "success">("idle");
+  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState("");
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStatus("submitting");
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    setStatus("success");
+    
+    const formData = new FormData(e.currentTarget);
+    const result = await sendContactEmail(formData);
+
+    if (result.success) {
+      setStatus("success");
+    } else {
+      setStatus("error");
+      setErrorMessage(result.error || "Something went wrong.");
+      setTimeout(() => setStatus("idle"), 3000);
+    }
   };
 
   if (status === "success") {
@@ -43,6 +53,7 @@ export function ContactForm() {
         <div className="relative">
           <input
             required
+            name="name"
             type="text"
             placeholder="Name"
             className="w-full border-b border-white/10 bg-transparent py-4 text-lg font-medium text-white placeholder:text-zinc-700 focus:border-white focus:outline-none transition-colors"
@@ -51,6 +62,7 @@ export function ContactForm() {
         <div className="relative">
           <input
             required
+            name="email"
             type="email"
             placeholder="Email address"
             className="w-full border-b border-white/10 bg-transparent py-4 text-lg font-medium text-white placeholder:text-zinc-700 focus:border-white focus:outline-none transition-colors"
@@ -59,6 +71,7 @@ export function ContactForm() {
         <div className="relative">
           <textarea
             required
+            name="message"
             rows={1}
             placeholder="What are you building?"
             className="w-full border-b border-white/10 bg-transparent py-4 text-lg font-medium text-white placeholder:text-zinc-700 focus:border-white focus:outline-none transition-colors resize-none"
@@ -78,8 +91,8 @@ export function ContactForm() {
             <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500"></span>
           </span>
           <span className="text-[11px] font-bold uppercase tracking-[0.2em] text-zinc-500">
-            Current capacity: 3 projects
-         </span>
+            Current capacity: 1 project
+          </span>
         </div>
 
         <button
@@ -91,6 +104,12 @@ export function ContactForm() {
           <ArrowRight className="h-4 w-4" />
         </button>
       </div>
+      
+      {status === "error" && (
+        <p className="mt-4 text-center text-xs font-bold text-red-500 uppercase tracking-widest">
+          {errorMessage}
+        </p>
+      )}
     </form>
   );
 }

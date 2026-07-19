@@ -20,10 +20,10 @@ export function CTASection() {
           className="mb-16 text-center"
         >
           <span className="mb-4 inline-flex rounded-full border border-black/10 bg-[#F3F2ED] px-3 py-1.5 text-xs font-bold uppercase tracking-[0.16em] text-[#74695B]">Contact</span>
-          <h2 className="text-3xl font-bold tracking-tight text-[#11100E] sm:text-4xl md:text-5xl">Request the product you want built.</h2>
+          <h2 className="text-3xl font-bold tracking-tight text-[#11100E] sm:text-4xl md:text-5xl">Tell us what you need built.</h2>
           <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-[#74695B] sm:text-lg">
-            Choose the productized build, send the context, and we&apos;ll confirm fit,
-            timeline, and any add-ons before payment. No vague discovery funnel.
+            Pick a product, give us the context, and we&apos;ll confirm fit and timeline
+            before you pay anything. No sales calls. No vague proposals.
           </p>
           <p className="mx-auto mt-3 max-w-2xl text-sm text-[#74695B]">
             Or email us directly:{' '}

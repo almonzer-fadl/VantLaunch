@@ -31,6 +31,7 @@ type Product = {
   timeline: string;
   icon: LucideIcon;
   accent: string;
+  href: string;
   image?: string;
   featured?: boolean;
 };
@@ -47,6 +48,8 @@ const PRODUCTS = [
     timeline: "1-3 days",
     icon: LineChart,
     accent: "#004225",
+    href: "https://whop.com/almonzer-fadl/meta-google-conversion-tracking/",
+    image: "/media/vantlaunch_banner_1.png",
   },
   {
     name: "Custom Marketing & ROI Dashboard",
@@ -59,6 +62,8 @@ const PRODUCTS = [
     timeline: "3-5 days",
     icon: LayoutDashboard,
     accent: "#0f766e",
+    href: "https://whop.com/almonzer-fadl/custom-marketing-roi-dashboard-connect-ads-whatsapp-revenue/",
+    image: "/media/vantlaunch_roi_banner_v2.png",
   },
   {
     name: "Automated WhatsApp & SMS Lead Nurture System",
@@ -72,6 +77,8 @@ const PRODUCTS = [
     icon: Bot,
     accent: "#16a34a",
     featured: true,
+    href: "https://whop.com/almonzer-fadl/automated-whatsapp-sms-lead-nurture-system/",
+    image: "/media/vantlaunch_messaging_engine_banner.png",
   },
   {
     name: "High-Converting Landing Page",
@@ -84,6 +91,8 @@ const PRODUCTS = [
     timeline: "3-6 days",
     icon: PanelTop,
     accent: "#334155",
+    href: "https://whop.com/almonzer-fadl/high-converting-landing-page-88/",
+    image: "/media/vantlaunch_landing_page_banner.png",
   },
   {
     name: "Branded Client & Partner Portal System",
@@ -96,6 +105,8 @@ const PRODUCTS = [
     timeline: "7-14 days",
     icon: Users,
     accent: "#2563eb",
+    href: "https://whop.com/almonzer-fadl/branded-client-partner-portal-system/",
+    image: "/media/vantlaunch_client_portal_banner.png",
   },
   {
     name: "Staff Portal & Internal Workflow",
@@ -108,6 +119,8 @@ const PRODUCTS = [
     timeline: "7-14 days",
     icon: Workflow,
     accent: "#7c3aed",
+    href: "https://whop.com/almonzer-fadl/staff-portal-internal-workflow/",
+    image: "/media/vantlaunch_staff_portal_banner.png",
   },
   {
     name: "Custom CRM Setup & Sales Pipeline Build",
@@ -120,6 +133,8 @@ const PRODUCTS = [
     timeline: "3-5 days",
     icon: Gauge,
     accent: "#dc2626",
+    href: "https://whop.com/almonzer-fadl/custom-crm-setup-sales-pipeline-build/",
+    image: "/media/vantlaunch_crm_setup_banner.png",
   },
   {
     name: "Custom-Built Operating System",
@@ -133,6 +148,8 @@ const PRODUCTS = [
     icon: MonitorSmartphone,
     accent: "#004225",
     featured: true,
+    href: "https://whop.com/almonzer-fadl/custom-built-operating-system/",
+    image: "/media/vantlaunch_custom_os_banner.png",
   },
 ] satisfies readonly Product[];
 
@@ -252,11 +269,13 @@ function ProductModal({
 
                 <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                   <Link
-                    href={`/?product=${encodeURIComponent(product.name)}#contact`}
+                    href={product.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     onClick={onClose}
                     className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#004225] px-5 py-3 text-sm font-bold text-white transition-colors hover:bg-[#11100E] sm:w-auto"
                   >
-                    Request this build
+                    Buy on Whop
                     <ArrowRight className="h-4 w-4" />
                   </Link>
                   <button
@@ -310,11 +329,11 @@ export function ServicesSection() {
             Productized builds
           </span>
           <h2 className="text-2xl font-bold tracking-tight text-[#11100E] sm:text-3xl md:text-4xl lg:text-5xl">
-            Pick the build your business already needs.
+            What do you need built?
           </h2>
           <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-[#74695B] sm:mt-4 sm:text-base sm:leading-relaxed lg:text-lg">
-            Fixed products with fixed starting prices. Open a product to see what it does,
-            what is included, what we need from you, and the usual delivery window.
+            Eight products. Fixed starting prices. Clear delivery windows. Click any
+            product to see exactly what you get and what we need from you.
           </p>
         </motion.div>
 
@@ -343,37 +362,25 @@ export function ServicesSection() {
               <ProductImage product={product} />
 
               <div className="flex flex-1 flex-col p-4 sm:p-5">
-                <div className="flex items-start justify-between gap-4">
-                  <div>
-                    <div
-                      className="mb-4 flex h-11 w-11 items-center justify-center rounded-xl text-white shadow-low"
-                      style={{ backgroundColor: product.accent }}
-                    >
-                      <product.icon className="h-5 w-5" />
-                    </div>
-                    <p className="text-[9px] font-bold uppercase tracking-[0.12em] text-[#74695B] sm:text-[10px]">{product.eyebrow}</p>
-                    <h3 className="mt-1.5 text-lg font-bold leading-tight tracking-tight text-[#11100E]">
-                      {product.name}
-                    </h3>
-                  </div>
-                  <ArrowRight className="mt-1 h-4 w-4 shrink-0 text-[#74695B] transition-transform group-hover:translate-x-0.5 group-hover:text-[#11100E]" />
+                <div className="flex items-start justify-between gap-3">
+                  <h3 className="text-base font-bold leading-tight tracking-tight text-[#11100E] sm:text-lg">
+                    {product.name}
+                  </h3>
+                  <ArrowRight className="mt-0.5 h-4 w-4 shrink-0 text-[#74695B] transition-transform group-hover:translate-x-0.5 group-hover:text-[#11100E]" />
                 </div>
 
-                <p className="mt-4 line-clamp-3 text-[13px] leading-relaxed text-[#74695B]">
+                <p className="mt-2 text-[13px] leading-relaxed text-[#74695B] line-clamp-2">
                   {product.description}
                 </p>
 
-                <div className="mt-4 rounded-lg border border-black/[0.06] bg-[#F8F6EF] p-3">
-                  <p className="text-[9px] font-bold uppercase tracking-[0.12em] text-[#74695B]">Outcome</p>
-                  <p className="mt-1 line-clamp-2 text-[12px] font-bold leading-relaxed text-[#11100E]">{product.outcome}</p>
-                </div>
-
-                <div className="mt-auto pt-5">
-                  <div className="border-t border-black/[0.06] pt-4">
-                    <span className="text-2xl font-bold tracking-tighter text-[#11100E]">{product.price}</span>
-                    <span className="ml-1 text-[11px] font-medium text-[#74695B]">starting price</span>
+                <div className="mt-auto pt-4">
+                  <div className="border-t border-black/[0.06] pt-4 flex items-baseline justify-between">
+                    <div>
+                      <span className="text-xl font-bold tracking-tighter text-[#11100E]">{product.price}</span>
+                      <span className="ml-1 text-[11px] font-medium text-[#74695B]">starting price</span>
+                    </div>
+                    <span className="text-[11px] font-bold text-[#004225]">View details →</span>
                   </div>
-                  <p className="mt-2 text-[12px] font-bold text-[#004225]">View details</p>
                 </div>
               </div>
             </motion.button>
@@ -388,11 +395,11 @@ export function ServicesSection() {
           className="mt-10 rounded-xl border border-[#004225]/20 bg-white p-5 text-left shadow-mid sm:mt-14 sm:rounded-2xl sm:p-7 lg:p-8"
         >
           <h3 className="text-base font-bold tracking-tight text-[#11100E] sm:text-lg">
-            How buying works
+            How it works
           </h3>
           <p className="mt-2 max-w-2xl text-[13px] leading-relaxed text-[#74695B] sm:text-sm">
-            Open a product, check the details, then request that exact build. If your business
-            needs a slightly adjusted version, we quote the add-on clearly before payment.
+            Open a product, check the details, then buy directly on Whop.
+            Need something custom? We&apos;ll quote the add-on before any work starts.
           </p>
         </motion.div>
       </div>

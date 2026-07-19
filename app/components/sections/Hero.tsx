@@ -77,18 +77,18 @@ export function HeroSection() {
             className="text-left"
           >
             <h1 className="font-display text-balance text-2xl font-bold leading-[1.06] tracking-tight text-[#11100E] sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl">
-              Productized systems for businesses running on messy tools.
+              Your business runs on spreadsheets, WhatsApp, and hope.
             </h1>
 
             <p className="mt-5 max-w-xl text-sm leading-relaxed text-[#74695B] sm:text-base">
-              Pick a fixed build from the catalog: tracking, dashboards, landing pages,
-              lead nurture, CRM, portals, staff workflows, or a compact operating system.
+              We replace the mess with one system you own. Tracking, dashboards, landing
+              pages, lead nurture, CRM, portals, staff workflows, or a full operating system
+              — pick what you need, we ship it.
             </p>
 
             <p className="mt-5 max-w-xl text-base leading-relaxed text-[#74695B] sm:mt-6 sm:text-lg">
-              This is not an open-ended agency call. Each product has a clear outcome,
-              starting price, and delivery path. You choose the system your business needs,
-              we configure and ship it.
+              No hourly billing. No vague scoping. Every product has a fixed starting price, clear
+              deliverables, and a delivery window. You own the code.
             </p>
 
             <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 text-[10px] font-bold uppercase tracking-[0.14em] text-[#74695B] sm:mt-8 sm:gap-x-6 sm:text-[11px]">

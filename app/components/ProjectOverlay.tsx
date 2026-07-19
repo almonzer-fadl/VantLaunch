@@ -48,8 +48,8 @@ export function ProjectOverlay({ activeSlug, onClose }: ProjectOverlayProps) {
   ] as const;
 
   function renderContent(slug: string) {
-    if (slug === "teramotors") return <TeraMotorsContent />;
-    if (slug === "salasel") return <SalaselContent />;
+    if (slug === "teramotors") return <TeraMotorsContent onClose={onClose} />;
+    if (slug === "salasel") return <SalaselContent onClose={onClose} />;
     
     const config = WORK_STUBS[slug as keyof typeof WORK_STUBS];
     if (!config) return null;
@@ -116,11 +116,17 @@ export function ProjectOverlay({ activeSlug, onClose }: ProjectOverlayProps) {
               <p className="mt-4 text-lg text-zinc-400">
                 We&apos;re happy to share the architecture, stack decisions, and outcomes of this project in detail.
               </p>
-              <Link href={mailto} className="type-email-cta-solid mt-10">
+              <button 
+                onClick={() => {
+                  onClose();
+                  window.location.hash = "contact";
+                }}
+                className="type-email-cta-solid mt-10"
+              >
                 <Mail className="h-5 w-5" />
-                Contact VantLaunch
+                Start an Inquiry
                 <ArrowUpRight className="h-5 w-5 opacity-50" />
-              </Link>
+              </button>
             </div>
 
             <div className="rounded-3xl border border-white/5 bg-black/40 p-6">

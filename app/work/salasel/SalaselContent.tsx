@@ -137,7 +137,7 @@ const featuresP2 = [
   },
 ];
 
-export function SalaselContent() {
+export function SalaselContent({ onClose }: { onClose?: () => void }) {
   return (
     <div className="space-y-16">
       <section>
@@ -439,10 +439,16 @@ docs/{complete,srs,files,...}`}
             Visit salasel.com.sa
             <ArrowUpRight className="h-5 w-5" />
           </Link>
-          <Link href="mailto:build@vantlaunch.com?subject=Salasel-like%20build" className="type-email-cta-solid">
+          <button 
+            onClick={() => {
+              onClose?.();
+              window.location.hash = "contact";
+            }}
+            className="type-email-cta-solid"
+          >
             Email VantLaunch
             <ArrowUpRight className="h-5 w-5" />
-          </Link>
+          </button>
         </div>
       </section>
     </div>

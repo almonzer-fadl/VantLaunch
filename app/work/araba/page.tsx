@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { ProjectStubPage } from "../ProjectStubPage";
-import { WORK_STUBS } from "../stub-projects";
+import { WORK_STUBS } from "../../components/stub-projects";
 
 const config = WORK_STUBS.araba;
 

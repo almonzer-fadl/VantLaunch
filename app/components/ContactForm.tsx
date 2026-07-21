@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Rocket, Check, ArrowRight } from "lucide-react";
+import { motion } from "framer-motion";
+import { Check, ArrowRight } from "lucide-react";
 import { sendContactEmail } from "../actions/contact";
 
 export function ContactForm() {

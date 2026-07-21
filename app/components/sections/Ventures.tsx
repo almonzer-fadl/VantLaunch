@@ -134,7 +134,19 @@ export function VenturesSection({
 
 function VentureCard({ 
   slug, title, description, badges, imageSrc, parallax, scale, reduced, onOpen, colSpan, liveHref 
-}: any) {
+}: {
+  slug: string;
+  title: string;
+  description: string;
+  badges: string[];
+  imageSrc: string;
+  parallax: import("framer-motion").MotionValue<number>;
+  scale: import("framer-motion").MotionValue<number>;
+  reduced: boolean;
+  onOpen: (slug: string) => void;
+  colSpan: string;
+  liveHref?: string;
+}) {
   return (
     <motion.div variants={fadeSlide} className={colSpan}>
       <div onClick={() => onOpen(slug)} className="cursor-pointer h-full group">

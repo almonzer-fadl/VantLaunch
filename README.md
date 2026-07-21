@@ -1,36 +1,78 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# VantLaunch Portfolio
 
-## Getting Started
+A production-style portfolio site for VantLaunch built with Next.js App Router, TypeScript, Tailwind CSS v4, and Framer Motion.
 
-First, run the development server:
+## What This Includes
+
+- High-conversion landing page sections (hero, comparison, ventures, process, CTA)
+- Dedicated case-study routes under `/work/*`
+- Interactive project overlay from the homepage
+- Contact form wired to a server action and Resend email delivery
+- SEO metadata and Open Graph setup on project pages
+
+## Tech Stack
+
+- Next.js 16 (App Router)
+- React 19 + TypeScript 5
+- Tailwind CSS v4
+- Framer Motion
+- Resend (contact email)
+- Vercel Analytics + Speed Insights
+
+## Local Development
+
+1. Install dependencies:
+
+```bash
+npm install
+```
+
+2. Create `.env.local`:
+
+```bash
+RESEND_API_KEY=your_resend_api_key
+```
+
+3. Run dev server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+4. Open `http://localhost:3000`
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Quality Checks
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run lint
+npm run build
+```
 
-## Learn More
+## Contact Email Flow
 
-To learn more about Next.js, take a look at the following resources:
+`app/actions/contact.ts` sends:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Confirmation email to the visitor
+- Notification email to `build@vantlaunch.com`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Before production deployment, ensure:
 
-## Deploy on Vercel
+- `RESEND_API_KEY` is set in Vercel environment variables
+- Sending domain for `noreply@vantlaunch.com` is verified in Resend
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Project Structure
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `app/page.tsx` homepage composition
+- `app/components/sections/*` landing sections
+- `app/components/ProjectOverlay.tsx` in-page case-study overlay
+- `app/work/*` standalone project pages
+- `app/actions/contact.ts` contact server action
+
+## Deployment
+
+Optimized for Vercel:
+
+1. Push repo to GitHub
+2. Import project in Vercel
+3. Add environment variables (`RESEND_API_KEY`)
+4. Deploy

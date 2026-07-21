@@ -1,14 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Rocket } from "lucide-react";
-import Link from "next/link";
 import { fadeSlide, staggerSection } from "@/app/lib/motion-variants";
-import { MagneticWrap } from "../UI";
 
 import { ContactForm } from "../ContactForm";
 
-export function CTASection({ prefersReducedMotion }: { prefersReducedMotion: boolean }) {
+export function CTASection() {
   return (
     <section id="contact" className="relative overflow-hidden px-6 py-48 text-center md:py-64">
       <motion.div

@@ -104,13 +104,13 @@ export default function Home() {
             prefersReducedMotion={prefersReducedMotion} 
             onOpenProject={openProject} 
           />
-          <ComparisonSection prefersReducedMotion={prefersReducedMotion} />
+          <ComparisonSection />
           <VenturesSection 
             prefersReducedMotion={prefersReducedMotion} 
             onOpenProject={openProject} 
           />
-          <ProcessSection prefersReducedMotion={prefersReducedMotion} />
-          <CTASection prefersReducedMotion={prefersReducedMotion} />
+          <ProcessSection />
+          <CTASection />
         </main>
 
         <Footer />

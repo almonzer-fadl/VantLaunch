@@ -8,7 +8,7 @@ import {
   useTransform,
   MotionValue,
 } from "framer-motion";
-import { useEffect, useRef, useState, useSyncExternalStore, CSSProperties } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import Image from "next/image";
 
 type HeroOrbitShot = {

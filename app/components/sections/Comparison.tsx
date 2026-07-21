@@ -7,7 +7,7 @@ import { fadeSlide, staggerSection } from "@/app/lib/motion-variants";
 import { WHY_US_POINTS, STACK_TECH } from "@/app/lib/constants";
 import { useCountUp } from "@/app/hooks/use-count-up";
 
-export function ComparisonSection({ prefersReducedMotion }: { prefersReducedMotion: boolean }) {
+export function ComparisonSection() {
   const [inView, setInView] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
 

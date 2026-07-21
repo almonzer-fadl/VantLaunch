@@ -119,7 +119,7 @@ export function ProjectStubPage({ config }: { config: WorkStubConfig }) {
             />
           </div>
           <figcaption className="type-figure-caption border-t border-white/[0.06] bg-zinc-surface/95 px-5 py-4">
-            {config.figureCaption} Full write-up, stack notes, and outcomes will land here soon.
+            {config.figureCaption}
           </figcaption>
         </motion.figure>
 
@@ -133,12 +133,12 @@ export function ProjectStubPage({ config }: { config: WorkStubConfig }) {
           <div className="grid gap-8 md:grid-cols-[1fr_auto] md:items-center">
             <div>
               <p className="type-intro-wide mx-auto max-w-2xl text-slate-300 md:mx-0">
-                We&apos;re drafting the long-form case study for this product. Want the technical or GTM
-                story first?
+                Want a deeper technical walkthrough, delivery timeline, or product strategy breakdown
+                for this build?
               </p>
               <Link href={mailto} className="type-email-cta-solid mt-8 inline-flex">
                 <Mail className="h-5 w-5" />
-                Email VantLaunch
+                Request full project breakdown
                 <ArrowUpRight className="h-5 w-5 opacity-70" />
               </Link>
             </div>

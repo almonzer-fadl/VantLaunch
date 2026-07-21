@@ -54,6 +54,7 @@ const PRODUCTS = [
   {
     name: "Custom Marketing & ROI Dashboard",
     price: "$399",
+    eyebrow: "Marketing dashboard",
     description: "A focused dashboard that connects campaign spend, traffic, leads, and revenue into one view.",
     outcome: "See ROI without stitching reports together manually.",
     features: ["Campaign KPI dashboard", "Lead source reporting", "Revenue and spend views", "Owner-friendly summary screen"],

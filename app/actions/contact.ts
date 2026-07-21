@@ -3,6 +3,7 @@
 import { Resend } from "resend";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
+const internalContactEmail = process.env.INTERNAL_CONTACT_EMAIL ?? "build@vantlaunch.com";
 
 export async function sendContactEmail(formData: FormData) {
   const name = formData.get("name") as string;
@@ -67,9 +68,10 @@ export async function sendContactEmail(formData: FormData) {
     // 2. Send notification to the VantLaunch team
     await resend.emails.send({
       from: "VantLaunch System <noreply@vantlaunch.com>",
-      to: "build@vantlaunch.com",
+      to: internalContactEmail,
       subject: `New Project Inquiry: ${name}`,
       text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
+      replyTo: email,
     });
 
     return { success: true };

@@ -197,9 +197,9 @@ export function TeraMotorsContent({ onClose }: { onClose?: () => void }) {
           {highlights.map(({ title, body, icon: Icon }) => (
             <div
               key={title}
-              className="glass-card rounded-[1.75rem] border border-white/[0.06] bg-white/[0.02] p-7 transition-colors hover:border-accent-blue/25"
+              className="glass-card rounded-[1.75rem] border border-white/[0.06] bg-white/[0.02] p-7 transition-colors hover:border-white/20"
             >
-              <Icon className="h-10 w-10 text-accent-blue" aria-hidden />
+              <Icon className="h-10 w-10 text-white/90" aria-hidden />
               <p className="type-case-card-title">{title}</p>
               <p className="type-case-card-body">{body}</p>
             </div>
@@ -207,9 +207,9 @@ export function TeraMotorsContent({ onClose }: { onClose?: () => void }) {
         </div>
       </section>
 
-      <section className="rounded-[1.75rem] border border-white/[0.08] bg-gradient-to-br from-accent-blue/[0.07] to-transparent p-8 md:p-10">
+      <section className="rounded-[1.75rem] border border-white/[0.08] bg-gradient-to-br from-white/[0.07] to-transparent p-8 md:p-10">
         <h2 className="type-case-section-heading-inline">
-          <Car className="h-8 w-8 text-accent-blue" />
+          <Car className="h-8 w-8 text-white/90" />
           Portfolio story
         </h2>
         <ul className="mt-6 space-y-3 type-prose-list">
@@ -223,7 +223,7 @@ export function TeraMotorsContent({ onClose }: { onClose?: () => void }) {
             "Executive-ready exports bridging finance and aftermarket inventory reality.",
           ].map((item) => (
             <li key={item} className="flex gap-3">
-              <span className="mt-2 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-accent-blue" />
+              <span className="mt-2 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-white/60" />
               {item}
             </li>
           ))}
@@ -232,7 +232,7 @@ export function TeraMotorsContent({ onClose }: { onClose?: () => void }) {
 
       <section>
         <h2 className="type-case-section-heading-inline">
-          <Layers className="h-8 w-8 text-accent-blue" />
+          <Layers className="h-8 w-8 text-white/90" />
           Technical architecture
         </h2>
 
@@ -243,13 +243,13 @@ export function TeraMotorsContent({ onClose }: { onClose?: () => void }) {
         <StackGrid rows={backendStack} />
 
         <h3 className="mt-10 flex items-center gap-2 type-stack-heading">
-          <Shield className="h-6 w-6 text-accent-blue" aria-hidden />
+          <Shield className="h-6 w-6 text-white/90" aria-hidden />
           Security &amp; compliance
         </h3>
         <ul className="type-prose-muted mt-4 space-y-3 rounded-2xl border border-white/[0.06] bg-white/[0.02] px-6 py-5">
           {securityCompliance.map((line) => (
             <li key={line} className="flex gap-3">
-              <span className="text-accent-blue">·</span>
+              <span className="text-white/90">·</span>
               {line}
             </li>
           ))}
@@ -285,7 +285,7 @@ export function TeraMotorsContent({ onClose }: { onClose?: () => void }) {
 
       <section>
         <h2 className="type-case-section-heading-inline">
-          <Globe2 className="h-8 w-8 text-accent-blue" />
+          <Globe2 className="h-8 w-8 text-white/90" />
           Internationalization
         </h2>
         <p className="mt-4 type-prose-intro">
@@ -297,20 +297,20 @@ export function TeraMotorsContent({ onClose }: { onClose?: () => void }) {
 
       <section>
         <h2 className="type-case-section-heading-inline">
-          <Rocket className="h-8 w-8 text-accent-blue" />
+          <Rocket className="h-8 w-8 text-white/90" />
           Performance profile
         </h2>
         <ul className="mt-6 space-y-3 type-prose-list">
           <li className="flex gap-3">
-            <span className="mt-2 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-accent-blue" />
+            <span className="mt-2 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-white/60" />
             Next.js 15 streaming, selective static segments, tuned image pipelines.
           </li>
           <li className="flex gap-3">
-            <span className="mt-2 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-accent-blue" />
+            <span className="mt-2 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-white/60" />
             Code splitting tuned for dashboards with heavy charts and tables.
           </li>
           <li className="flex gap-3">
-            <span className="mt-2 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-accent-blue" />
+            <span className="mt-2 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-white/60" />
             Redis-backed caching hotspots for KPI queries when configured.
           </li>
         </ul>
@@ -318,7 +318,7 @@ export function TeraMotorsContent({ onClose }: { onClose?: () => void }) {
 
       <section>
         <h2 className="type-case-section-heading-inline">
-          <Palette className="h-8 w-8 text-accent-blue" />
+          <Palette className="h-8 w-8 text-white/90" />
           UX & interface
         </h2>
         <ul className="mt-6 grid gap-3 sm:grid-cols-2">
@@ -339,7 +339,7 @@ export function TeraMotorsContent({ onClose }: { onClose?: () => void }) {
 
       <section>
         <h2 className="type-case-section-heading-inline">
-          <BarChart3 className="h-8 w-8 text-accent-blue" />
+          <BarChart3 className="h-8 w-8 text-white/90" />
           Business impact
         </h2>
         <div className="mt-8 grid gap-4 sm:grid-cols-2">
@@ -361,7 +361,7 @@ export function TeraMotorsContent({ onClose }: { onClose?: () => void }) {
 
       <section>
         <h2 className="type-case-section-heading-inline">
-          <FileCode2 className="h-8 w-8 text-accent-blue" />
+          <FileCode2 className="h-8 w-8 text-white/90" />
           Repository layout
         </h2>
         <pre className="mt-6 overflow-x-auto rounded-2xl border border-white/[0.08] bg-black/55 p-6 text-[13px] leading-relaxed text-slate-300">
@@ -382,7 +382,7 @@ export function TeraMotorsContent({ onClose }: { onClose?: () => void }) {
 
       <section>
         <h2 className="type-case-section-heading-inline">
-          <Plug className="h-8 w-8 text-accent-blue" aria-hidden />
+          <Plug className="h-8 w-8 text-white/90" aria-hidden />
           REST surface (sample)
         </h2>
         <div className="mt-6 overflow-x-auto rounded-[1rem] border border-white/[0.08]">
@@ -397,7 +397,7 @@ export function TeraMotorsContent({ onClose }: { onClose?: () => void }) {
             <tbody className="divide-y divide-white/[0.05]">
               {apiEndpoints.map((row) => (
                 <tr key={`${row.method}-${row.path}`} className="text-slate-400 hover:bg-white/[0.02]">
-                  <td className="px-4 py-3 font-mono text-xs text-accent-blue">{row.method}</td>
+                  <td className="px-4 py-3 font-mono text-xs text-white/90">{row.method}</td>
                   <td className="px-4 py-3 font-mono text-[13px] text-slate-300">{row.path}</td>
                   <td className="px-4 py-3">{row.note}</td>
                 </tr>
@@ -411,13 +411,13 @@ export function TeraMotorsContent({ onClose }: { onClose?: () => void }) {
 
       <section>
         <h2 className="type-case-section-heading-inline">
-          <TestTube className="h-8 w-8 text-accent-blue" />
+          <TestTube className="h-8 w-8 text-white/90" />
           Testing & quality gates
         </h2>
         <div className="mt-6 glass-card rounded-3xl border border-white/[0.07] p-8">
           <ul className="space-y-3 type-prose-muted">
             <li>
-              <span className="font-mono text-accent-blue/90">npm run test</span> · unit suites
+              <span className="font-mono text-white/90">npm run test</span> · unit suites
             </li>
             <li>
               <span className="font-mono text-slate-500">npm run test:integration</span> · API /
@@ -457,7 +457,7 @@ docker run -p 3000:3000 teramotors`}</pre>
 
       <section className="rounded-2xl border border-white/[0.07] bg-white/[0.02] px-6 py-8">
         <h2 className="type-doc-inline-heading">
-          <BookOpen className="h-7 w-7 shrink-0 text-accent-blue" aria-hidden />
+          <BookOpen className="h-7 w-7 shrink-0 text-white/90" aria-hidden />
           Documentation &amp; collaboration
         </h2>
         <p className="type-doc-note">
@@ -467,7 +467,7 @@ docker run -p 3000:3000 teramotors`}</pre>
         </p>
       </section>
 
-      <section className="rounded-[2rem] border border-accent-blue/25 bg-accent-blue/[0.08] px-8 py-12 text-center">
+      <section className="rounded-[2rem] border border-white/20 bg-white/[0.08] px-8 py-12 text-center">
         <p className="type-accent-label-sm mx-auto max-w-lg">
           Need compliance-heavy tooling for your aftermarket or mobility fleet?
         </p>
@@ -520,13 +520,13 @@ function FeatureBlock({
     <section>
       <p className="type-meta-accent-caps">{eyebrow}</p>
       <h2 className="mt-2 type-case-section-heading-inline">
-        <Icon className="h-8 w-8 text-accent-blue" />
+        <Icon className="h-8 w-8 text-white/90" />
         {title}
       </h2>
       <ul className="mt-6 space-y-4 type-prose-muted">
         {items.map((item) => (
           <li key={item} className="flex gap-3">
-            <span className="mt-2 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-accent-blue" />
+            <span className="mt-2 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-white/60" />
             {item}
           </li>
         ))}
@@ -558,7 +558,7 @@ function FeatureTwoCol({
           <ul className="mt-4 space-y-3 type-prose-muted">
             {leftItems.map((item) => (
               <li key={item} className="flex gap-3 border-b border-white/[0.04] pb-3 last:border-0">
-                <span className="text-accent-blue">·</span>
+                <span className="text-white/90">·</span>
                 {item}
               </li>
             ))}
@@ -572,7 +572,7 @@ function FeatureTwoCol({
                 key={b.title}
                 className="rounded-[1.25rem] border border-white/[0.06] bg-white/[0.02] px-6 py-5"
               >
-                <Ico className="h-7 w-7 text-accent-blue" />
+                <Ico className="h-7 w-7 text-white/90" />
                 <p className="type-feature-card-title-sm">{b.title}</p>
                 <p className="type-feature-card-body">{b.body}</p>
               </div>
@@ -602,10 +602,10 @@ function TeraMotorsDeveloperPlaybook() {
             Requires Node&nbsp;18+ LTS, MongoDB Atlas, Cloudinary media, Resend email, Stripe + ZATCA
             sandbox credentials depending on surfaces you toggle on.
           </p>
-          <h3 className="type-playbook-h3">Clone &amp; install</h3>
-          <pre className="mt-3 overflow-x-auto rounded-xl border border-white/[0.08] bg-black/55 p-4 text-[13px] text-slate-300">{`git clone https://github.com/yourusername/teramotors.git
-cd teramotors/client
-npm install`}</pre>
+          <h3 className="type-playbook-h3">Repository access</h3>
+          <pre className="mt-3 overflow-x-auto rounded-xl border border-white/[0.08] bg-black/55 p-4 text-[13px] text-slate-300">{`Private client repository
+Access granted during project onboarding
+Install with: npm install`}</pre>
 
           <h3 className="type-playbook-h3">Environment</h3>
           <pre className="mt-3 overflow-x-auto rounded-xl border border-white/[0.08] bg-black/55 p-4 text-[13px] text-slate-300">{`cp .env.example .env.local

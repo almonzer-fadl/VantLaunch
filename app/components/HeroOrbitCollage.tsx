@@ -77,10 +77,10 @@ function orbitLayoutAtTheta(
   reducedMotion: boolean,
   shotCount: number,
 ): HeroOrbitLayout {
-  const BW = narrowLayout ? 300 : 364;
-  const BH = narrowLayout ? 400 : 478;
-  const RX = narrowLayout ? 92 : 150;
-  const RY = narrowLayout ? 72 : 112;
+  const BW = narrowLayout ? 266 : 326;
+  const BH = narrowLayout ? 346 : 418;
+  const RX = narrowLayout ? 84 : 132;
+  const RY = narrowLayout ? 66 : 98;
   const yLift = narrowLayout ? -6 : -10;
   const a = thetaRad + (idx * HERO_ORBIT_TWO_PI) / shotCount;
 
@@ -138,8 +138,8 @@ function HeroOrbitLayer({
   shotCount: number;
   onClick?: () => void;
 }) {
-  const BW = narrow ? 300 : 364;
-  const BH = narrow ? 400 : 478;
+  const BW = narrow ? 266 : 326;
+  const BH = narrow ? 346 : 418;
 
   const x = useTransform(theta, (th) =>
     orbitLayoutAtTheta(idx, th, narrow, reduced, shotCount).x,
@@ -316,8 +316,8 @@ export function HeroOrbitCollage({
 
   return (
     <div className="relative isolate mx-auto w-full max-w-lg select-none lg:max-w-none">
-      <div className="relative z-[2] mx-auto h-[min(68vh,520px)] w-full touch-pan-y md:h-[540px]">
-        <div className="absolute inset-x-2 top-[6%] h-[calc(100%-3.5rem)] sm:inset-x-4 md:top-[4%]">
+      <div className="relative z-[2] mx-auto h-[min(54vh,430px)] w-full touch-pan-y md:h-[460px]">
+        <div className="absolute inset-x-2 top-[4%] h-[calc(100%-3.3rem)] sm:inset-x-4 md:top-[3%]">
           <div className="relative mx-auto h-full max-w-xl md:max-w-3xl lg:max-w-[46rem]">
             {heroOrbitImages.map((shot, idx) =>
               orbitMotionReady ? (

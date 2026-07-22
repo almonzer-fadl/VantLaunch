@@ -20,7 +20,7 @@
 body {
   background: var(--background);
   font-family: var(--font-sans), sans-serif;
-  @apply text-[14px] leading-relaxed tracking-tight text-zinc-500 antialiased;
+  @apply text-[14px] leading-relaxed tracking-normal text-zinc-400 antialiased;
 }
 
 @layer base {
@@ -30,6 +30,24 @@ body {
 }
 
 @layer utilities {
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  @keyframes marquee-rev {
+    from {
+      transform: translateX(-50%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+
   .bg-dot-grid {
     background-image: radial-gradient(circle, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
     background-size: 24px 24px;
@@ -41,7 +59,7 @@ body {
   }
 
   .type-nav-link {
-    @apply text-[13px] font-semibold text-zinc-500 transition-colors duration-200 hover:text-white;
+    @apply text-[13px] font-semibold text-zinc-400 transition-colors duration-200 hover:text-white;
   }
 
   .type-hero-line {
@@ -60,7 +78,7 @@ body {
   }
 
   .type-intro {
-    @apply text-[16px] font-medium leading-relaxed text-zinc-500 md:text-[18px];
+    @apply text-[16px] font-medium leading-[1.72] text-zinc-300 md:text-[18px];
   }
 
   .type-meta-uppercase {
@@ -69,15 +87,19 @@ body {
 
   /* Components */
   .type-btn-solid {
-    @apply inline-flex items-center justify-center rounded-full bg-white px-6 py-2.5 text-[13px] font-bold text-black transition-transform active:scale-95;
+    @apply inline-flex items-center justify-center rounded-full bg-white px-6 py-2.5 text-[13px] font-bold text-black transition-transform active:scale-95 hover:-translate-y-0.5;
+  }
+
+  .type-btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-white px-8 py-3.5 text-[13px] font-bold text-black transition-all hover:-translate-y-0.5 hover:shadow-[0_12px_24px_-10px_rgba(255,255,255,0.5)];
   }
 
   .type-btn-ghost-prominent {
-    @apply inline-flex items-center justify-center gap-2 rounded-full border border-white/10 bg-white/5 px-8 py-3 text-[13px] font-bold text-white transition-colors hover:bg-white/10;
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-white/15 bg-white/5 px-8 py-3 text-[13px] font-bold text-white transition-colors hover:bg-white/10;
   }
 
   .type-chip {
-    @apply rounded-full border border-white/5 bg-white/5 px-3 py-1 text-[11px] font-bold text-zinc-400;
+    @apply rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] font-bold text-zinc-300;
   }
 
   .type-portfolio-product-title {
@@ -99,6 +121,8 @@ body {
   .stack-card {
     @apply flex items-center gap-2.5 rounded-lg border border-white/[0.04] bg-white/[0.02] p-2 transition-colors hover:border-white/10 hover:bg-white/[0.04];
   }
+
+  .type-proof-kicker {
+    @apply text-[11px] font-semibold uppercase tracking-[0.14em] text-zinc-500;
+  }
 }
-
-

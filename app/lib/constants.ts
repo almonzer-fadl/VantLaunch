@@ -19,6 +19,14 @@ import { Sparkles, MonitorPlay, Rocket } from "lucide-react";
 
 export const EASE_CURSOR: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
+export const SOCIAL_LINKS = {
+  x: "https://x.com/vantlaunch",
+  github: "https://github.com/vantlaunch",
+  instagram: "https://instagram.com/vantlaunch",
+  facebook: "https://facebook.com/vantlaunch",
+  linkedin: "https://www.linkedin.com/company/vantlaunch",
+} as const;
+
 export const PROCESS_FLOW_PATH_D = "M 96 44 C 252 6 348 82 450 44 S 648 6 804 44";
 
 export const PROCESS_PHASES = [

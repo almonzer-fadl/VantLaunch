@@ -63,41 +63,55 @@ export function HeroSection({
               variants={subReveal}
               initial="hidden"
               animate="visible"
-              className="type-intro mt-8 max-w-xl !text-zinc-500 leading-relaxed"
+              className="type-intro mt-8 max-w-xl !text-zinc-300 leading-relaxed"
             >
-              Strategy, brand-feel, and engineering together — from investor decks to the
-              first time someone taps your product.
+              We design, build, and launch SaaS and internal tools in focused weekly releases, with
+              clean UX and production-grade engineering from day one.
             </motion.p>
 
             <motion.div
               initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55, delay: 0.12, ease: EASE_CURSOR }}
-              className="mt-9 flex flex-col gap-7 sm:flex-row sm:items-center"
+              className="mt-9 flex flex-col gap-7"
             >
-              <MagneticWrap active={!prefersReducedMotion}>
-                <Link
-                  href="#ventures"
-                  className="group/browse type-btn-ghost-prominent relative isolate inline-flex w-full sm:w-auto"
-                >
-                  <span className="relative">Browse work</span>
-                  <ArrowRight className="relative h-4 w-4 transition-transform duration-300 group-hover/browse:translate-x-0.5" />
-                </Link>
-              </MagneticWrap>
-              <div className="flex items-center gap-3 sm:gap-4">
-                <div className="flex -space-x-2">
-                  {['AE', 'MS', 'JP'].map((initials) => (
-                    <div
-                      key={initials}
-                      className="flex h-8 w-8 items-center justify-center rounded-full border-2 border-zinc bg-zinc-surface text-[9px] font-bold text-white/80"
-                    >
-                      {initials}
-                    </div>
-                  ))}
+              <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
+                <MagneticWrap active={!prefersReducedMotion}>
+                  <Link
+                    href="#contact"
+                    className="group/start type-btn-primary relative isolate inline-flex w-full sm:w-auto"
+                  >
+                    <span className="relative">Start your build</span>
+                    <ArrowRight className="relative h-4 w-4 transition-transform duration-300 group-hover/start:translate-x-0.5" />
+                  </Link>
+                </MagneticWrap>
+                <MagneticWrap active={!prefersReducedMotion}>
+                  <Link
+                    href="#ventures"
+                    className="group/browse type-btn-ghost-prominent relative isolate inline-flex w-full sm:w-auto"
+                  >
+                    <span className="relative">Browse work</span>
+                    <ArrowRight className="relative h-4 w-4 transition-transform duration-300 group-hover/browse:translate-x-0.5" />
+                  </Link>
+                </MagneticWrap>
+              </div>
+              <div className="flex flex-wrap items-center gap-5 sm:gap-6">
+                <div className="flex items-center gap-3 sm:gap-4">
+                  <div className="flex -space-x-2">
+                    {['AE', 'MS', 'JP'].map((initials) => (
+                      <div
+                        key={initials}
+                        className="flex h-8 w-8 items-center justify-center rounded-full border-2 border-zinc bg-zinc-surface text-[9px] font-bold text-white/80"
+                      >
+                        {initials}
+                      </div>
+                    ))}
+                  </div>
+                  <p className="type-caption-micro">
+                    Product teams worldwide ship with us
+                  </p>
                 </div>
-                <p className="type-caption-micro">
-                  Product teams worldwide ship with us
-                </p>
+                <p className="type-proof-kicker">2 ventures live · 3 client builds shipped · ~7 day release rhythm</p>
               </div>
             </motion.div>
           </div>

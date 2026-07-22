@@ -40,7 +40,7 @@ export function VenturesSection({
   });
 
   return (
-    <section ref={sectionRef} id="ventures" className="py-32 px-6 border-t border-white/5 bg-gradient-to-b from-transparent via-white/[0.01] to-transparent">
+    <section ref={sectionRef} id="ventures" className="border-t border-white/5 bg-gradient-to-b from-transparent via-white/[0.01] to-transparent px-6 py-20 md:py-32">
       <motion.div
         className="max-w-7xl mx-auto"
         initial="hidden"
@@ -48,7 +48,7 @@ export function VenturesSection({
         viewport={{ once: true, margin: "-60px" }}
         variants={staggerSection}
       >
-        <motion.div variants={fadeSlide} className="flex flex-col md:flex-row md:items-end justify-between mb-24 gap-8">
+        <motion.div variants={fadeSlide} className="mb-16 flex flex-col gap-8 md:mb-24 md:flex-row md:items-end md:justify-between">
           <div className="max-w-2xl">
             <h2 className="type-display-lg">Work you can feel</h2>
             <p className="type-intro mt-6 max-w-xl !text-zinc-300">

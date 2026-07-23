@@ -6,8 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRef } from "react";
 import { fadeSlide, staggerSection } from "@/app/lib/motion-variants";
-import { HOME_PREVIEW_STUB_ORDER, WORK_STUBS } from "../stub-projects";
-import { CardPointerGlow, TiltSpecular } from "../UI";
+import { CardPointerGlow } from "../UI";
 
 export function VenturesSection({ 
   prefersReducedMotion,
@@ -26,19 +25,6 @@ export function VenturesSection({
   const parallaxB = useTransform(scrollYProgress, [0, 1], [30, -30]);
   const scale = useTransform(scrollYProgress, [0, 1], [1.02, 1.08]);
 
-  const extraVentures = HOME_PREVIEW_STUB_ORDER.map((slug) => {
-    const s = WORK_STUBS[slug as keyof typeof WORK_STUBS];
-    return {
-      key: slug,
-      slug: s.slug,
-      imageSrc: s.imageSrc,
-      imageAlt: s.imageAlt,
-      title: s.title,
-      description: s.cardSummary,
-      imgClass: s.previewImgClass,
-    };
-  });
-
   return (
     <section ref={sectionRef} id="ventures" className="border-t border-white/5 bg-gradient-to-b from-transparent via-white/[0.01] to-transparent px-6 py-20 md:py-32">
       <motion.div
@@ -50,10 +36,9 @@ export function VenturesSection({
       >
         <motion.div variants={fadeSlide} className="mb-16 flex flex-col gap-8 md:mb-24 md:flex-row md:items-end md:justify-between">
           <div className="max-w-2xl">
-            <h2 className="type-display-lg">Work you can feel</h2>
+            <h2 className="type-display-lg">Product profile</h2>
             <p className="type-intro mt-6 max-w-xl !text-zinc-300">
-              SaaS products already shipping in market, with practical workflows, trust-first UX,
-              and measurable operational value.
+              Two owned automotive software products: one live workshop platform and one trust-first service product in development.
             </p>
           </div>
         </motion.div>
@@ -62,70 +47,54 @@ export function VenturesSection({
           variants={staggerSection}
           className="grid grid-cols-1 gap-6 md:grid-cols-12"
         >
-          {/* Main Case Studies */}
           <VentureCard 
             slug="teramotors"
             title="TeraMotors"
-            description="Enterprise auto repair ops with bilingual workflows, real-time job boards, and invoicing that keeps service teams moving."
-            imageSrc="/teramotors.png"
+            description="Live workshop management SaaS for Saudi Arabia with job cards, ZATCA-ready invoicing, SAR reporting, and customer communication workflows."
+            imageSrc="/media/teramotors-dashboard.webp"
             parallax={parallaxA}
             scale={scale}
             reduced={prefersReducedMotion}
             onOpen={onOpenProject}
             colSpan="md:col-span-6"
             liveHref="https://app.teramotor.cc/"
+            liveLabel="Live app"
+            detailLabel="Product case study"
           />
 
           <VentureCard 
-            slug="salasel"
-            title="Salasel"
-            description="B2B procurement platform for HORECA teams with multi-supplier ordering, financing-aware checkout, and logistics control."
-            imageSrc="/salasel-hero.png"
+            slug="gari"
+            title="Gari"
+            description="Coming soon: a transparent auto-service experience with workshop discovery, active job tracking, payments, and secure handover controls."
+            imageSrc="/media/gari-home.webp"
             parallax={parallaxB}
             scale={scale}
             reduced={prefersReducedMotion}
             onOpen={onOpenProject}
             colSpan="md:col-span-6"
-            liveHref="https://salasel.com.sa/"
+            imageClassName="object-contain object-center opacity-55"
+            detailLabel="Product direction"
           />
-
-          {/* Smaller Venture Cards */}
-          {extraVentures.map((v) => (
-            <motion.div key={v.key} variants={fadeSlide} className="md:col-span-4">
-              <div onClick={() => onOpenProject(v.slug)} className="cursor-pointer h-full group">
-                <TiltSpecular disabled={prefersReducedMotion} className="h-full">
-                  <CardPointerGlow className="relative h-full min-h-[480px] overflow-hidden rounded-[2.5rem] border border-white/10 bg-zinc-surface p-8 md:p-10 flex flex-col justify-end transition-colors hover:border-white/20">
-                    <div className="absolute inset-0 z-0">
-                      <Image
-                        src={v.imageSrc}
-                        alt={v.imageAlt}
-                        fill
-                        className={`object-cover opacity-20 transition-transform duration-700 group-hover:scale-105 ${v.imgClass}`}
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-zinc via-zinc/60 to-transparent" />
-                    </div>
-                    
-                    <div className="relative z-10">
-                      <h3 className="type-portfolio-card-title">{v.title}</h3>
-                      <p className="type-portfolio-card-body line-clamp-3 text-zinc-300">{v.description}</p>
-                      <span className="type-link-strong text-sm">
-                        View project
-                        <ArrowUpRight className="h-4 w-4" />
-                      </span>
-                    </div>
-                  </CardPointerGlow>
-                </TiltSpecular>
-              </div>
-            </motion.div>
-          ))}
         </motion.div>
       </motion.div>
     </section>
   );
 }
 
-function VentureCard({ 
-  slug, title, description, imageSrc, parallax, scale, reduced, onOpen, colSpan, liveHref 
+function VentureCard({
+  slug,
+  title,
+  description,
+  imageSrc,
+  parallax,
+  scale,
+  reduced,
+  onOpen,
+  colSpan,
+  liveHref,
+  liveLabel = "Live site",
+  imageClassName = "object-cover opacity-40",
+  detailLabel = "Product details",
 }: {
   slug: string;
   title: string;
@@ -137,6 +106,9 @@ function VentureCard({
   onOpen: (slug: string) => void;
   colSpan: string;
   liveHref?: string;
+  liveLabel?: string;
+  imageClassName?: string;
+  detailLabel?: string;
 }) {
   return (
     <motion.div variants={fadeSlide} className={colSpan}>
@@ -150,7 +122,7 @@ function VentureCard({
               src={imageSrc}
               alt={title}
               fill
-              className="object-cover opacity-40 transition-transform duration-700 group-hover:scale-105"
+              className={`${imageClassName} transition-transform duration-700 group-hover:scale-105`}
             />
           </motion.div>
           <div className="absolute inset-0 bg-gradient-to-t from-zinc via-zinc/20 to-transparent" />
@@ -160,17 +132,18 @@ function VentureCard({
             <p className="type-portfolio-product-body text-zinc-200">{description}</p>
             <div className="flex flex-wrap items-center gap-x-8 gap-y-4">
               <span className="type-link-strong">
-                Full case study
+                {detailLabel}
                 <ArrowUpRight className="h-5 w-5" />
               </span>
               {liveHref && (
                 <Link 
                   href={liveHref} 
                   target="_blank"
+                  rel="noopener noreferrer"
                   className="type-link-soft text-sm"
                   onClick={(e) => e.stopPropagation()}
                 >
-                  Live site
+                  {liveLabel}
                   <ArrowUpRight className="h-4 w-4" />
                 </Link>
               )}

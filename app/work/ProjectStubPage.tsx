@@ -40,13 +40,13 @@ export function ProjectStubPage({ config }: { config: WorkStubConfig }) {
         <div className="mx-auto flex h-16 max-w-5xl items-center justify-between px-6">
           <Link href="/#ventures" className="type-work-back-link">
             <ArrowLeft className="h-4 w-4" />
-            Our work
+            Products
           </Link>
           <Link href="/" className="type-brand-xl">
             VantLaunch
           </Link>
           <Link href={mailto} className="type-nav-accent">
-            Ask about this build
+            Contact
           </Link>
         </div>
       </header>
@@ -133,12 +133,12 @@ export function ProjectStubPage({ config }: { config: WorkStubConfig }) {
           <div className="grid gap-8 md:grid-cols-[1fr_auto] md:items-center">
             <div>
               <p className="type-intro-wide mx-auto max-w-2xl text-zinc-200 md:mx-0">
-                Want a deeper technical walkthrough, delivery timeline, or product strategy breakdown
-                for this build?
+                Want to discuss the product direction, release timing, or a possible automotive
+                workflow fit?
               </p>
               <Link href={mailto} className="type-email-cta-solid mt-8 inline-flex">
                 <Mail className="h-5 w-5" />
-                Request full project breakdown
+                Contact VantLaunch
                 <ArrowUpRight className="h-5 w-5 opacity-70" />
               </Link>
             </div>

@@ -32,20 +32,20 @@ export const PROCESS_FLOW_PATH_D = "M 96 44 C 252 6 348 82 450 44 S 648 6 804 44
 export const PROCESS_PHASES = [
   {
     num: "01",
-    title: "Dream it together",
-    desc: "We shape the story, the screens, and the must-have moments—until you are excited to show it off.",
+    title: "Find the operator pain",
+    desc: "We start from real automotive workflows, then choose the smallest useful product surface to ship.",
     Icon: Sparkles,
   },
   {
     num: "02",
-    title: "Craft it in the open",
-    desc: "Early previews land fast so stakeholders and customers see real progress every week—not slides.",
+    title: "Ship the working loop",
+    desc: "The first release focuses on the core job: bookings, job flow, approvals, payments, or handover.",
     Icon: MonitorPlay,
   },
   {
     num: "03",
-    title: "Launch and lift off",
-    desc: "Payments, onboarding, polish, and analytics—then we celebrate the release and coach your team on what is next.",
+    title: "Improve from usage",
+    desc: "We keep the product grounded in adoption, support questions, and the workflows customers repeat.",
     Icon: Rocket,
   },
 ] as const;
@@ -57,7 +57,7 @@ export const WHY_US_POINTS = [
   },
   {
     title: "Operator-grade quality bar",
-    body: "The same engineering and UX standards we enforce on TeraMotors and Gari go into client work.",
+    body: "The same engineering and UX standards apply across TeraMotors and the upcoming Gari product line.",
   },
   {
     title: "Direct maker collaboration",

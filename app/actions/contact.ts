@@ -5,11 +5,22 @@ import { Resend } from "resend";
 const resend = new Resend(process.env.RESEND_API_KEY);
 const internalContactEmail = process.env.INTERNAL_CONTACT_EMAIL ?? "build@vantlaunch.com";
 
+function escapeHtml(value: string) {
+  return value.replace(/[<>&"]/g, (char) => {
+    if (char === "<") return "&lt;";
+    if (char === ">") return "&gt;";
+    if (char === "&") return "&amp;";
+    return "&quot;";
+  });
+}
+
 export async function sendContactEmail(formData: FormData) {
   const name = formData.get("name") as string;
   const email = formData.get("email") as string;
+  const company = formData.get("company") as string;
+  const role = formData.get("role") as string;
   const message = formData.get("message") as string;
-  const productInterest = (formData.get("product_interest") as string) || "General updates";
+  const productInterest = (formData.get("product_interest") as string) || "General VantLaunch inquiry";
   const timeline = (formData.get("timeline") as string) || "Not provided";
   const website = formData.get("website") as string;
 
@@ -17,7 +28,7 @@ export async function sendContactEmail(formData: FormData) {
     return { success: true };
   }
 
-  if (!name || !email || !message || !productInterest || !timeline) {
+  if (!name || !email || !company || !role || !message || !productInterest || !timeline) {
     return { success: false, error: "All fields are required." };
   }
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -26,18 +37,13 @@ export async function sendContactEmail(formData: FormData) {
   }
 
   try {
-    const safeName = name.replace(/[<>&"]/g, (char) => {
-      if (char === "<") return "&lt;";
-      if (char === ">") return "&gt;";
-      if (char === "&") return "&amp;";
-      return "&quot;";
-    });
-    const safeMessage = message.replace(/[<>&"]/g, (char) => {
-      if (char === "<") return "&lt;";
-      if (char === ">") return "&gt;";
-      if (char === "&") return "&amp;";
-      return "&quot;";
-    });
+    const safeName = escapeHtml(name);
+    const safeEmail = escapeHtml(email);
+    const safeCompany = escapeHtml(company);
+    const safeRole = escapeHtml(role);
+    const safeProductInterest = escapeHtml(productInterest);
+    const safeTimeline = escapeHtml(timeline);
+    const safeMessage = escapeHtml(message);
 
     // 1. Send confirmation to the user
     await resend.emails.send({
@@ -49,6 +55,8 @@ export async function sendContactEmail(formData: FormData) {
         "",
         "Thanks for reaching out to VantLaunch. We've received your inquiry and we'll review it shortly.",
         "",
+        `Company: ${company}`,
+        `Role: ${role}`,
         `Product interest: ${productInterest}`,
         `Use case: "${message}"`,
         "",
@@ -67,6 +75,9 @@ export async function sendContactEmail(formData: FormData) {
             <p style="color:#a1a1aa;font-size:15px;line-height:1.7;margin:0 0 14px 0;">
               Thanks for reaching out to VantLaunch. We've received your inquiry and our team is reviewing it.
             </p>
+            <p style="color:#a1a1aa;font-size:14px;line-height:1.7;margin:0 0 6px 0;"><strong style="color:#fff;">Company:</strong> ${safeCompany}</p>
+            <p style="color:#a1a1aa;font-size:14px;line-height:1.7;margin:0 0 6px 0;"><strong style="color:#fff;">Role:</strong> ${safeRole}</p>
+            <p style="color:#a1a1aa;font-size:14px;line-height:1.7;margin:0 0 14px 0;"><strong style="color:#fff;">Product:</strong> ${safeProductInterest}</p>
             <div style="margin:18px 0;padding:14px 16px;border-radius:10px;background:rgba(255,255,255,0.04);border-left:3px solid #fff;">
               <p style="margin:0;color:#fff;font-size:14px;line-height:1.7;">${safeMessage}</p>
             </div>
@@ -84,7 +95,7 @@ export async function sendContactEmail(formData: FormData) {
       from: "VantLaunch System <noreply@vantlaunch.com>",
       to: internalContactEmail,
       subject: `New Project Inquiry: ${name}`,
-      text: `Name: ${name}\nEmail: ${email}\nProduct: ${productInterest}\nTimeline: ${timeline}\nUse case: ${message}`,
+      text: `Name: ${name}\nEmail: ${email}\nCompany: ${company}\nRole: ${role}\nProduct: ${productInterest}\nTimeline: ${timeline}\nUse case: ${message}`,
       replyTo: email,
     });
 
@@ -97,6 +108,8 @@ export async function sendContactEmail(formData: FormData) {
         "Customer-facing confirmation was sent.",
         "",
         `Lead: ${name} <${email}>`,
+        `Company: ${company}`,
+        `Role: ${role}`,
         `Product: ${productInterest}`,
         `Timeline: ${timeline}`,
         "",
@@ -106,9 +119,11 @@ export async function sendContactEmail(formData: FormData) {
         <div style="background:#080808;padding:28px 16px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;">
           <div style="max-width:560px;margin:0 auto;background:#121212;border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:24px;">
             <h2 style="margin:0 0 14px 0;color:#fff;font-size:20px;">Customer Confirmation Copy</h2>
-            <p style="margin:0 0 8px 0;color:#d4d4d8;"><strong>Lead:</strong> ${safeName} (${email})</p>
-            <p style="margin:0 0 8px 0;color:#a1a1aa;"><strong>Product:</strong> ${productInterest}</p>
-            <p style="margin:0 0 8px 0;color:#a1a1aa;"><strong>Timeline:</strong> ${timeline}</p>
+            <p style="margin:0 0 8px 0;color:#d4d4d8;"><strong>Lead:</strong> ${safeName} (${safeEmail})</p>
+            <p style="margin:0 0 8px 0;color:#a1a1aa;"><strong>Company:</strong> ${safeCompany}</p>
+            <p style="margin:0 0 8px 0;color:#a1a1aa;"><strong>Role:</strong> ${safeRole}</p>
+            <p style="margin:0 0 8px 0;color:#a1a1aa;"><strong>Product:</strong> ${safeProductInterest}</p>
+            <p style="margin:0 0 8px 0;color:#a1a1aa;"><strong>Timeline:</strong> ${safeTimeline}</p>
             <div style="margin-top:14px;padding:12px 14px;border-left:3px solid #fff;background:rgba(255,255,255,0.04);border-radius:8px;">
               <p style="margin:0;color:#fff;">${safeMessage}</p>
             </div>

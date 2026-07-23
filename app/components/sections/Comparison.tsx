@@ -6,20 +6,20 @@ import { STACK_TECH } from "@/app/lib/constants";
 
 const PRINCIPLES = [
   {
-    title: "SaaS-first roadmap",
-    body: "Every sprint prioritizes product retention, activation, and compounding usage.",
+    title: "Owned product focus",
+    body: "We show the products we own and operate, with TeraMotors live and Gari in development.",
   },
   {
-    title: "Shipping in market",
-    body: "Features are tested against live user behavior, not hypothetical requirements.",
+    title: "Automotive first",
+    body: "The current focus is repair shop operations, vehicle service trust, and customer handover workflows.",
   },
   {
-    title: "Lean execution",
-    body: "Small, focused releases keep velocity high without sacrificing product quality.",
+    title: "Practical release loops",
+    body: "Small, focused releases keep the products tied to actual operator needs instead of broad platform promises.",
   },
 ] as const;
 
-const STATS = ["2 SaaS live", "3 products shipping", "~7 day release rhythm"] as const;
+const STATS = ["TeraMotors live", "Gari coming soon", "Automotive SaaS focus"] as const;
 
 export function ComparisonSection() {
   return (
@@ -36,9 +36,9 @@ export function ComparisonSection() {
       >
         <motion.div variants={fadeSlide} className="mx-auto max-w-3xl text-center">
           <p className="type-meta-uppercase mb-4">Why teams choose us</p>
-          <h2 className="type-display-xl mb-5 text-balance">SaaS products built to survive real usage.</h2>
+          <h2 className="type-display-xl mb-5 text-balance">Focused products, clear ownership.</h2>
           <p className="type-intro text-zinc-300">
-            We operate as product builders: tight feedback loops, real user inputs, and weekly improvements across the stack.
+            The public company profile is centered on owned automotive products: TeraMotors now, Gari next.
           </p>
         </motion.div>
 

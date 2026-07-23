@@ -7,7 +7,7 @@ import { useRef } from "react";
 import { EASE_CURSOR } from "@/app/lib/constants";
 import { heroTitleStagger, getHeroLineReveal, getHeroSubReveal } from "@/app/lib/motion-variants";
 import { MagneticWrap } from "../UI";
-import { HeroOrbitCollage } from "../HeroOrbitCollage";
+import { HeroProductShowcase } from "../HeroProductShowcase";
 
 export function HeroSection({ 
   prefersReducedMotion,
@@ -42,7 +42,7 @@ export function HeroSection({
               transition={{ duration: 0.5, ease: EASE_CURSOR }}
               className="mb-8 type-meta-uppercase !text-white/40"
             >
-              Micro SaaS company · products live in market
+              Micro-SaaS studio · starting with automotive
             </motion.div>
 
             <motion.h1
@@ -52,10 +52,10 @@ export function HeroSection({
               className="max-w-xl sm:max-w-2xl lg:max-w-[42rem]"
             >
               <motion.span variants={lineReveal} className="type-hero-line">
-                Practical micro SaaS for
+                Focused SaaS for
               </motion.span>
               <motion.span variants={lineReveal} className="type-hero-line-accent">
-                ops-heavy teams.
+                automotive operators.
               </motion.span>
             </motion.h1>
 
@@ -65,7 +65,7 @@ export function HeroSection({
               animate="visible"
               className="type-intro mt-8 max-w-xl !text-zinc-300 leading-relaxed"
             >
-              We launch and operate focused SaaS products with short release cycles, clean UX, and measurable value from week one.
+              VantLaunch builds practical software products for operational businesses, starting with repair shops and trusted vehicle service.
             </motion.p>
 
             <motion.div
@@ -80,7 +80,7 @@ export function HeroSection({
                     href="#contact"
                     className="group/start type-btn-primary relative isolate inline-flex w-full sm:w-auto"
                   >
-                    <span className="relative">Join early access</span>
+                    <span className="relative">Contact VantLaunch</span>
                     <ArrowRight className="relative h-4 w-4 transition-transform duration-300 group-hover/start:translate-x-0.5" />
                   </Link>
                 </MagneticWrap>
@@ -89,7 +89,7 @@ export function HeroSection({
                     href="#ventures"
                     className="group/browse type-btn-ghost-prominent relative isolate inline-flex w-full sm:w-auto"
                   >
-                    <span className="relative">See our SaaS</span>
+                    <span className="relative">See the products</span>
                     <ArrowRight className="relative h-4 w-4 transition-transform duration-300 group-hover/browse:translate-x-0.5" />
                   </Link>
                 </MagneticWrap>
@@ -106,20 +106,15 @@ export function HeroSection({
                       </div>
                     ))}
                   </div>
-                  <p className="type-caption-micro">
-                    Product teams worldwide ship with us
-                  </p>
+                  <p className="type-caption-micro">Owned products, built in public-facing markets</p>
                 </div>
-                <p className="type-proof-kicker">2 SaaS live · 3 shipping in market · ~7 day release rhythm</p>
+                <p className="type-status-kicker">TeraMotors live · Gari in development</p>
               </div>
             </motion.div>
           </div>
 
           <div className="relative lg:col-span-7">
-            <HeroOrbitCollage 
-              reduced={prefersReducedMotion} 
-              onOpenProject={onOpenProject}
-            />
+            <HeroProductShowcase onOpenProject={onOpenProject} />
           </div>
         </div>
       </motion.div>

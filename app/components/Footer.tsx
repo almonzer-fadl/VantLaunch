@@ -22,7 +22,8 @@ export function Footer() {
           <div className="flex flex-col gap-6">
             <span className="type-meta-uppercase">Explore</span>
             <FooterLink href="#products">Products</FooterLink>
-            <FooterLink href="#ventures">Our work</FooterLink>
+            <FooterLink href="#demo">Demo</FooterLink>
+            <FooterLink href="#ventures">Product notes</FooterLink>
             <FooterLink href="#comparison">Why us</FooterLink>
             <FooterLink href="#process">How it works</FooterLink>
           </div>
@@ -33,7 +34,7 @@ export function Footer() {
             <FooterLink href={SOCIAL_LINKS.instagram}>Instagram</FooterLink>
             <FooterLink href={SOCIAL_LINKS.facebook}>Facebook</FooterLink>
             <FooterLink href={SOCIAL_LINKS.linkedin}>LinkedIn</FooterLink>
-            <FooterLink href="#contact">Inquiry</FooterLink>
+            <FooterLink href="#contact">Contact</FooterLink>
             <FooterLink href="/privacy">Privacy</FooterLink>
             <FooterLink href="/terms">Terms</FooterLink>
           </div>

@@ -177,7 +177,7 @@ export function TeraMotorsContent({ onClose }: { onClose?: () => void }) {
         <figure className="relative mt-12 overflow-hidden rounded-[1.75rem] border border-white/[0.1] bg-zinc-surface shadow-[0_40px_100px_-40px_rgba(0,0,0,0.85)]">
           <div className="relative aspect-[16/10] w-full">
             <Image
-              src="/teramotors.png"
+              src="/media/teramotors-dashboard.webp"
               alt="TeraMotors dashboard: job operations, KPIs, and workshop workflows"
               fill
               priority
@@ -214,7 +214,7 @@ export function TeraMotorsContent({ onClose }: { onClose?: () => void }) {
         </h2>
         <ul className="mt-6 space-y-3 type-prose-list">
           {[
-            "Full-stack delivery on Next.js 15 with strict TypeScript throughout the client workspace.",
+            "Full-stack product delivery on Next.js 15 with strict TypeScript throughout the workspace.",
             "Enterprise authentication, authorization, and abuse resistance suited to regulated operations.",
             "Deep domain modeling: vehicles, bays, inspectors, catalogs, approvals, payouts.",
             "International compliance showcased through ZATCA e-invoice flows.",
@@ -276,7 +276,7 @@ export function TeraMotorsContent({ onClose }: { onClose?: () => void }) {
       />
 
       <FeatureTwoCol
-        eyebrow="Money & proofs"
+        eyebrow="Money & records"
         title="Financial stack & inspections"
         leftTitle="Financial management"
         leftItems={financialFeatures.map((f) => `${f.title}: ${f.body}`)}
@@ -463,7 +463,7 @@ docker run -p 3000:3000 teramotors`}</pre>
         <p className="type-doc-note">
           Companion docs ship for API surfaces, reusable components, deployment runbooks, and
           contributing guidelines inside the repo. MIT license with explicit attribution preserves
-          client flexibility when you fork for white-label fleets.
+          deployment flexibility for white-label fleets.
         </p>
       </section>
 
@@ -603,8 +603,8 @@ function TeraMotorsDeveloperPlaybook() {
             sandbox credentials depending on surfaces you toggle on.
           </p>
           <h3 className="type-playbook-h3">Repository access</h3>
-          <pre className="mt-3 overflow-x-auto rounded-xl border border-white/[0.08] bg-black/55 p-4 text-[13px] text-slate-300">{`Private client repository
-Access granted during project onboarding
+          <pre className="mt-3 overflow-x-auto rounded-xl border border-white/[0.08] bg-black/55 p-4 text-[13px] text-slate-300">{`Private product repository
+Access granted during workspace onboarding
 Install with: npm install`}</pre>
 
           <h3 className="type-playbook-h3">Environment</h3>

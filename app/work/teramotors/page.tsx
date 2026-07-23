@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     description:
       "Next.js + MongoDB platform for workshops: job cards, inspections, ZATCA invoicing, Stripe, Excel reporting, Socket.io.",
     images: [
-      { url: "/teramotors.png", width: 1200, height: 630, alt: "TeraMotors dashboard experience" },
+      { url: "/media/teramotors-dashboard.webp", width: 1800, height: 944, alt: "TeraMotors dashboard experience" },
     ],
   },
 };
@@ -30,7 +30,7 @@ export default function TeramotorsProjectPage() {
         <div className="mx-auto flex h-16 max-w-5xl items-center justify-between px-6">
           <Link href="/#ventures" className="type-work-back-link">
             <ArrowLeft className="h-4 w-4" />
-            Our work
+            Products
           </Link>
           <Link href="/" className="type-brand-xl">
             VantLaunch

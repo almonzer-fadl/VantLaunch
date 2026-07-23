@@ -42,7 +42,7 @@ export function HeroSection({
               transition={{ duration: 0.5, ease: EASE_CURSOR }}
               className="mb-8 type-meta-uppercase !text-white/40"
             >
-              Venture studio · products live in market
+              Micro SaaS company · products live in market
             </motion.div>
 
             <motion.h1
@@ -52,10 +52,10 @@ export function HeroSection({
               className="max-w-xl sm:max-w-2xl lg:max-w-[42rem]"
             >
               <motion.span variants={lineReveal} className="type-hero-line">
-                Turn the idea in your head into
+                Practical micro SaaS for
               </motion.span>
               <motion.span variants={lineReveal} className="type-hero-line-accent">
-                software people use.
+                ops-heavy teams.
               </motion.span>
             </motion.h1>
 
@@ -65,8 +65,7 @@ export function HeroSection({
               animate="visible"
               className="type-intro mt-8 max-w-xl !text-zinc-300 leading-relaxed"
             >
-              We design, build, and launch SaaS and internal tools in focused weekly releases, with
-              clean UX and production-grade engineering from day one.
+              We launch and operate focused SaaS products with short release cycles, clean UX, and measurable value from week one.
             </motion.p>
 
             <motion.div
@@ -81,7 +80,7 @@ export function HeroSection({
                     href="#contact"
                     className="group/start type-btn-primary relative isolate inline-flex w-full sm:w-auto"
                   >
-                    <span className="relative">Start your build</span>
+                    <span className="relative">Join early access</span>
                     <ArrowRight className="relative h-4 w-4 transition-transform duration-300 group-hover/start:translate-x-0.5" />
                   </Link>
                 </MagneticWrap>
@@ -90,7 +89,7 @@ export function HeroSection({
                     href="#ventures"
                     className="group/browse type-btn-ghost-prominent relative isolate inline-flex w-full sm:w-auto"
                   >
-                    <span className="relative">Browse work</span>
+                    <span className="relative">See our SaaS</span>
                     <ArrowRight className="relative h-4 w-4 transition-transform duration-300 group-hover/browse:translate-x-0.5" />
                   </Link>
                 </MagneticWrap>
@@ -111,7 +110,7 @@ export function HeroSection({
                     Product teams worldwide ship with us
                   </p>
                 </div>
-                <p className="type-proof-kicker">2 ventures live · 3 client builds shipped · ~7 day release rhythm</p>
+                <p className="type-proof-kicker">2 SaaS live · 3 shipping in market · ~7 day release rhythm</p>
               </div>
             </motion.div>
           </div>

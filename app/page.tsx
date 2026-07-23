@@ -6,6 +6,8 @@ import { SpotlightLayer } from "./components/UI";
 import { Navbar } from "./components/Navbar";
 import { HeroSection } from "./components/sections/Hero";
 import { ComparisonSection } from "./components/sections/Comparison";
+import { ProductsSection } from "./components/sections/Products";
+import { SocialProofSection } from "./components/sections/SocialProof";
 import { VenturesSection } from "./components/sections/Ventures";
 import { ProcessSection } from "./components/sections/Process";
 import { CTASection } from "./components/sections/CTA";
@@ -48,7 +50,7 @@ export default function Home() {
   };
 
   useEffect(() => {
-    const ids = ["#ventures", "#comparison", "#process"];
+    const ids = ["#products", "#proof", "#ventures", "#comparison", "#process"];
     const targets = ids
       .map((id) => ({ id, el: document.querySelector(id) as HTMLElement | null }))
       .filter((x): x is { id: string; el: HTMLElement } => Boolean(x.el));
@@ -104,6 +106,8 @@ export default function Home() {
             prefersReducedMotion={prefersReducedMotion} 
             onOpenProject={openProject} 
           />
+          <ProductsSection />
+          <SocialProofSection />
           <ComparisonSection />
           <VenturesSection 
             prefersReducedMotion={prefersReducedMotion} 

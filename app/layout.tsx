@@ -22,9 +22,9 @@ const siteUrl =
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "VantLaunch | Product Studio for SaaS and Internal Tools",
+  title: "VantLaunch | Micro SaaS Products in Market",
   description:
-    "VantLaunch designs and ships production-ready SaaS and internal tools with clear UX, strong engineering, and fast release cycles.",
+    "VantLaunch builds and operates practical micro SaaS products for operations-heavy teams.",
 };
 
 export default function RootLayout({

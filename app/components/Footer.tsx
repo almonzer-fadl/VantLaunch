@@ -6,7 +6,7 @@ import { SOCIAL_LINKS } from "../lib/constants";
 
 export function Footer() {
   return (
-    <footer className="py-20 px-6 border-t border-white/5 bg-zinc-surface/50">
+    <footer className="border-t border-white/5 bg-zinc-surface/50 px-6 py-16 md:py-20">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start gap-12">
         <div className="max-w-sm">
           <div className="flex items-center gap-2 mb-8">
@@ -14,13 +14,14 @@ export function Footer() {
             <span className="type-brand-xl !text-2xl">VantLaunch</span>
           </div>
           <p className="text-zinc-500 leading-relaxed">
-            We design and ship standout apps for founders, brands, and teams who care how their
-            product feels in someone&apos;s hands.
+            We build and operate focused micro SaaS products for teams that need reliable,
+            practical software in real operations.
           </p>
         </div>
-        <div className="flex gap-24">
+        <div className="flex w-full flex-col gap-10 sm:w-auto sm:flex-row sm:gap-20 md:gap-24">
           <div className="flex flex-col gap-6">
             <span className="type-meta-uppercase">Explore</span>
+            <FooterLink href="#products">Products</FooterLink>
             <FooterLink href="#ventures">Our work</FooterLink>
             <FooterLink href="#comparison">Why us</FooterLink>
             <FooterLink href="#process">How it works</FooterLink>
@@ -33,10 +34,12 @@ export function Footer() {
             <FooterLink href={SOCIAL_LINKS.facebook}>Facebook</FooterLink>
             <FooterLink href={SOCIAL_LINKS.linkedin}>LinkedIn</FooterLink>
             <FooterLink href="#contact">Inquiry</FooterLink>
+            <FooterLink href="/privacy">Privacy</FooterLink>
+            <FooterLink href="/terms">Terms</FooterLink>
           </div>
         </div>
       </div>
-      <div className="mx-auto mt-24 flex max-w-7xl flex-col items-center justify-between gap-4 border-t border-white/5 pt-10 md:flex-row">
+      <div className="mx-auto mt-16 flex max-w-7xl flex-col items-center justify-between gap-4 border-t border-white/5 pt-10 md:mt-24 md:flex-row">
         <p className="text-xs text-zinc-600">© 2026 VantLaunch. All rights reserved.</p>
         <p className="text-xs text-zinc-600 font-normal">Made with care for teams who ship with heart.</p>
       </div>

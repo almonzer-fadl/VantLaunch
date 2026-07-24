@@ -6,16 +6,7 @@ import Image from "next/image";
 import { useEffect } from "react";
 import { WORK_STUBS } from "./stub-projects";
 import { TeraMotorsContent } from "../work/teramotors/TeraMotorsContent";
-import {
-  siBetterauth,
-  siMongodb,
-  siNextdotjs,
-  siResend,
-  siShadcnui,
-  siTailwindcss,
-  siTypescript,
-  siVercel,
-} from "simple-icons";
+import { GariPhonePreview, GariScreenGallery } from "./GariPhonePreview";
 
 type ProjectOverlayProps = {
   activeSlug: string | null;
@@ -33,17 +24,6 @@ export function ProjectOverlay({ activeSlug, onClose }: ProjectOverlayProps) {
       document.body.style.overflow = "unset";
     };
   }, [activeSlug]);
-
-  const STACK_TECH = [
-    { label: "Next.js", icon: siNextdotjs },
-    { label: "TypeScript", icon: siTypescript },
-    { label: "Tailwind", icon: siTailwindcss },
-    { label: "shadcn/ui", icon: siShadcnui },
-    { label: "MongoDB", icon: siMongodb },
-    { label: "Vercel", icon: siVercel },
-    { label: "Resend", icon: siResend },
-    { label: "Better Auth", icon: siBetterauth },
-  ] as const;
 
   function renderContent(slug: string) {
     if (slug === "teramotors") return <TeraMotorsContent onClose={onClose} />;
@@ -82,18 +62,25 @@ export function ProjectOverlay({ activeSlug, onClose }: ProjectOverlayProps) {
           )}
         </section>
 
-        <figure className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-zinc-surface shadow-2xl">
-          <div className="relative mx-auto aspect-[10/16] w-full max-w-sm sm:max-w-md md:aspect-[16/10] md:max-h-[min(70vh,640px)] md:max-w-none">
-            <Image
-              src={config.imageSrc}
-              alt={config.imageAlt}
-              fill
-              priority
-              sizes="(max-width: 768px) 100vw, 1024px"
-              className="object-cover object-top md:object-center"
-            />
+        {config.slug === "gari" ? (
+          <div className="space-y-12">
+            <GariPhonePreview />
+            <GariScreenGallery />
           </div>
-        </figure>
+        ) : (
+          <figure className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-zinc-surface shadow-2xl">
+            <div className="relative mx-auto aspect-[780/2232] w-full max-w-sm bg-white sm:max-w-md">
+              <Image
+                src={config.imageSrc}
+                alt={config.imageAlt}
+                fill
+                priority
+                sizes="(max-width: 768px) 100vw, 1024px"
+                className="object-contain object-top"
+              />
+            </div>
+          </figure>
+        )}
 
         <ul className="max-w-3xl space-y-4">
           {config.bullets.map((item) => (
@@ -105,40 +92,23 @@ export function ProjectOverlay({ activeSlug, onClose }: ProjectOverlayProps) {
         </ul>
 
         <section className="rounded-[2.5rem] border border-white/5 bg-white/[0.02] p-10 md:p-14">
-          <div className="grid gap-12 lg:grid-cols-[1fr_320px] lg:items-center">
-            <div>
-              <h3 className="text-2xl font-bold text-white">Interested in the technical build?</h3>
-              <p className="mt-4 text-lg text-zinc-400">
-                We&apos;re happy to share the architecture, stack decisions, and outcomes of this project in detail.
-              </p>
-              <button 
-                onClick={() => {
-                  onClose();
-                  window.location.hash = "contact";
-                }}
-                className="type-email-cta-solid mt-10"
-              >
-                <Mail className="h-5 w-5" />
-                Start an Inquiry
-                <ArrowUpRight className="h-5 w-5 opacity-50" />
-              </button>
-            </div>
-
-            <div className="rounded-3xl border border-white/5 bg-black/40 p-6">
-              <p className="type-meta-uppercase mb-5">Primary stack</p>
-              <div className="grid grid-cols-2 gap-3">
-                {STACK_TECH.map((tech) => (
-                  <div key={tech.label} className="flex items-center gap-2 rounded-xl border border-white/5 bg-white/5 p-2.5">
-                    <span className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-black/50">
-                      <svg role="img" viewBox="0 0 24 24" className="h-4 w-4" fill="white">
-                        <path d={tech.icon.path} />
-                      </svg>
-                    </span>
-                    <span className="text-[10px] font-bold text-zinc-300">{tech.label}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
+          <div>
+            <h3 className="text-2xl font-bold text-white">Want updates on Gari?</h3>
+            <p className="mt-4 max-w-2xl text-lg text-zinc-400">
+              Send a note if you want to follow the product, discuss pilot interest, or talk about
+              automotive workflows.
+            </p>
+            <button
+              onClick={() => {
+                onClose();
+                window.location.hash = "contact";
+              }}
+              className="type-email-cta-solid mt-10"
+            >
+              <Mail className="h-5 w-5" />
+              Contact VantLaunch
+              <ArrowUpRight className="h-5 w-5 opacity-50" />
+            </button>
           </div>
         </section>
       </div>

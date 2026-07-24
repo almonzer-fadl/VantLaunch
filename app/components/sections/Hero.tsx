@@ -4,17 +4,15 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { useRef } from "react";
-import { EASE_CURSOR } from "@/app/lib/constants";
+import { EASE_CURSOR, TERAMOTORS_REGISTER_URL } from "@/app/lib/constants";
 import { heroTitleStagger, getHeroLineReveal, getHeroSubReveal } from "@/app/lib/motion-variants";
 import { MagneticWrap } from "../UI";
 import { HeroProductShowcase } from "../HeroProductShowcase";
 
 export function HeroSection({ 
   prefersReducedMotion,
-  onOpenProject 
 }: { 
   prefersReducedMotion: boolean;
-  onOpenProject: (slug: string) => void;
 }) {
   const sectionRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
@@ -42,7 +40,7 @@ export function HeroSection({
               transition={{ duration: 0.5, ease: EASE_CURSOR }}
               className="mb-8 type-meta-uppercase !text-white/40"
             >
-              Micro-SaaS studio · starting with automotive
+              Workshop software for modern repair shops
             </motion.div>
 
             <motion.h1
@@ -52,10 +50,10 @@ export function HeroSection({
               className="max-w-xl sm:max-w-2xl lg:max-w-[42rem]"
             >
               <motion.span variants={lineReveal} className="type-hero-line">
-                Focused SaaS for
+                Run every repair
               </motion.span>
               <motion.span variants={lineReveal} className="type-hero-line-accent">
-                automotive operators.
+                from one place.
               </motion.span>
             </motion.h1>
 
@@ -65,7 +63,8 @@ export function HeroSection({
               animate="visible"
               className="type-intro mt-8 max-w-xl !text-zinc-300 leading-relaxed"
             >
-              VantLaunch builds practical software products for operational businesses, starting with repair shops and trusted vehicle service.
+              Keep every repair visit, invoice, customer update, and shop report organized without
+              bouncing between chats, spreadsheets, and paper.
             </motion.p>
 
             <motion.div
@@ -77,19 +76,21 @@ export function HeroSection({
               <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
                 <MagneticWrap active={!prefersReducedMotion}>
                   <Link
-                    href="#contact"
+                    href={TERAMOTORS_REGISTER_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="group/start type-btn-primary relative isolate inline-flex w-full sm:w-auto"
                   >
-                    <span className="relative">Contact VantLaunch</span>
+                    <span className="relative">Start free trial</span>
                     <ArrowRight className="relative h-4 w-4 transition-transform duration-300 group-hover/start:translate-x-0.5" />
                   </Link>
                 </MagneticWrap>
                 <MagneticWrap active={!prefersReducedMotion}>
                   <Link
-                    href="#ventures"
+                    href="#demo"
                     className="group/browse type-btn-ghost-prominent relative isolate inline-flex w-full sm:w-auto"
                   >
-                    <span className="relative">See the products</span>
+                    <span className="relative">Watch demo</span>
                     <ArrowRight className="relative h-4 w-4 transition-transform duration-300 group-hover/browse:translate-x-0.5" />
                   </Link>
                 </MagneticWrap>
@@ -106,15 +107,15 @@ export function HeroSection({
                       </div>
                     ))}
                   </div>
-                  <p className="type-caption-micro">Owned products, built in public-facing markets</p>
+                  <p className="type-caption-micro">14-day trial · no credit card · create account to start</p>
                 </div>
-                <p className="type-status-kicker">TeraMotors live · Gari in development</p>
+                <p className="type-status-kicker">Invoicing · job cards · reporting</p>
               </div>
             </motion.div>
           </div>
 
           <div className="relative lg:col-span-7">
-            <HeroProductShowcase onOpenProject={onOpenProject} />
+            <HeroProductShowcase />
           </div>
         </div>
       </motion.div>

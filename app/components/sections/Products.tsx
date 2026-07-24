@@ -9,18 +9,10 @@ const PRODUCTS = [
   {
     name: "TeraMotors",
     stage: "Live",
-    oneLiner: "Workshop management for Saudi auto repair shops: customers, vehicles, job cards, ZATCA invoices, SAR reporting, and WhatsApp-ready workflows.",
-    cta: "https://app.teramotor.cc/",
-    ctaLabel: "Open live app",
-    details: ["14-day trial", "Free, SAR 199, SAR 499 plans", "Built for Saudi workshops"],
-  },
-  {
-    name: "Gari",
-    stage: "Coming soon",
-    oneLiner: "Auto-service customer app focused on transparent booking, workshop discovery, vehicle profiles, active jobs, payments, and secure handover.",
-    cta: "/work/gari",
-    ctaLabel: "View product direction",
-    details: ["Customer app UI ready", "Two-code handover concept", "Payments and job tracking planned"],
+    oneLiner: "A cleaner way to run repairs, keep records, issue invoices, and see what is happening across the shop.",
+    cta: "#pricing",
+    ctaLabel: "See pricing and access",
+    details: ["14-day trial", "Free, $49, $129 plans", "Built for repair shops"],
   },
 ] as const;
 
@@ -35,14 +27,15 @@ export function ProductsSection() {
         variants={staggerSection}
       >
         <motion.div variants={fadeSlide} className="mb-14 text-center md:mb-16">
-          <p className="type-meta-uppercase mb-4">Our SaaS</p>
-          <h2 className="type-display-xl mb-5 text-balance">Owned products for automotive operations.</h2>
+          <p className="type-meta-uppercase mb-4">TeraMotors</p>
+          <h2 className="type-display-xl mb-5 text-balance">Keep the shop moving.</h2>
           <p className="type-intro mx-auto max-w-3xl text-center">
-            VantLaunch is focused on software we own and operate. TeraMotors is live; Gari is the next product in development.
+            Replace scattered notes, WhatsApp follow-ups, and manual invoice tracking with one
+            workspace for daily repair operations.
           </p>
         </motion.div>
 
-        <motion.div variants={staggerSection} className="grid gap-4 md:grid-cols-2">
+        <motion.div variants={staggerSection} className="mx-auto grid max-w-3xl gap-4">
           {PRODUCTS.map((product) => {
             const external = product.cta.startsWith("http");
             return (

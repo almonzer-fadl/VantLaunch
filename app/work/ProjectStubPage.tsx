@@ -4,30 +4,12 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, ArrowUpRight, Mail } from "lucide-react";
-import {
-  siBetterauth,
-  siMongodb,
-  siNextdotjs,
-  siResend,
-  siShadcnui,
-  siTailwindcss,
-  siTypescript,
-  siVercel,
-} from "simple-icons";
 import type { WorkStubConfig } from "../components/stub-projects";
+import { GariPhonePreview, GariScreenGallery } from "../components/GariPhonePreview";
+import { CONTACT_EMAILS } from "@/app/lib/constants";
 
 export function ProjectStubPage({ config }: { config: WorkStubConfig }) {
-  const mailto = `mailto:build@vantlaunch.com?subject=${config.emailSubject}`;
-  const STACK_TECH = [
-    { label: "Next.js", icon: siNextdotjs },
-    { label: "TypeScript", icon: siTypescript },
-    { label: "Tailwind", icon: siTailwindcss },
-    { label: "shadcn/ui", icon: siShadcnui },
-    { label: "MongoDB", icon: siMongodb },
-    { label: "Vercel", icon: siVercel },
-    { label: "Resend", icon: siResend },
-    { label: "Better Auth / NextAuth", icon: siBetterauth },
-  ] as const;
+  const mailto = `mailto:${CONTACT_EMAILS.company}?subject=${config.emailSubject}`;
 
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-zinc text-slate-50 selection:bg-white/10">
@@ -101,27 +83,38 @@ export function ProjectStubPage({ config }: { config: WorkStubConfig }) {
           ))}
         </motion.ul>
 
-        <motion.figure
+        <motion.div
           initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
-          className="relative mt-12 overflow-hidden rounded-[1.75rem] border border-white/[0.1] bg-zinc-surface shadow-[0_40px_100px_-40px_rgba(0,0,0,0.85)]"
+          className="mt-12"
         >
-          <div className="relative mx-auto aspect-[10/16] w-full max-w-sm sm:max-w-md md:aspect-[16/10] md:max-h-[min(70vh,640px)] md:max-w-none">
-            <Image
-              src={config.imageSrc}
-              alt={config.imageAlt}
-              fill
-              priority
-              sizes="(max-width: 768px) 100vw, 896px"
-              className="object-cover object-top md:object-center"
-            />
-          </div>
-          <figcaption className="type-figure-caption border-t border-white/[0.06] bg-zinc-surface/95 px-5 py-4">
-            {config.figureCaption}
-          </figcaption>
-        </motion.figure>
+          {config.slug === "gari" ? (
+            <>
+              <GariPhonePreview />
+              <div className="mt-12">
+                <GariScreenGallery />
+              </div>
+            </>
+          ) : (
+            <figure className="relative overflow-hidden rounded-[1.75rem] border border-white/[0.1] bg-zinc-surface shadow-[0_40px_100px_-40px_rgba(0,0,0,0.85)]">
+              <div className="relative mx-auto aspect-[780/2232] w-full max-w-sm bg-white sm:max-w-md">
+                <Image
+                  src={config.imageSrc}
+                  alt={config.imageAlt}
+                  fill
+                  priority
+                  sizes="(max-width: 768px) 100vw, 896px"
+                  className="object-contain object-top"
+                />
+              </div>
+              <figcaption className="type-figure-caption border-t border-white/[0.06] bg-zinc-surface/95 px-5 py-4">
+                {config.figureCaption}
+              </figcaption>
+            </figure>
+          )}
+        </motion.div>
 
         <motion.section
           initial={{ opacity: 0, y: 16 }}
@@ -130,34 +123,15 @@ export function ProjectStubPage({ config }: { config: WorkStubConfig }) {
           transition={{ duration: 0.55, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
           className="mt-16 overflow-hidden rounded-[1.75rem] border border-white/[0.08] bg-white/[0.02] px-8 py-10"
         >
-          <div className="grid gap-8 md:grid-cols-[1fr_auto] md:items-center">
-            <div>
-              <p className="type-intro-wide mx-auto max-w-2xl text-zinc-200 md:mx-0">
-                Want to discuss the product direction, release timing, or a possible automotive
-                workflow fit?
-              </p>
-              <Link href={mailto} className="type-email-cta-solid mt-8 inline-flex">
-                <Mail className="h-5 w-5" />
-                Contact VantLaunch
-                <ArrowUpRight className="h-5 w-5 opacity-70" />
-              </Link>
-            </div>
-
-            <div className="rounded-2xl border border-white/[0.08] bg-black/25 p-5 md:w-[320px]">
-              <p className="type-meta-uppercase mb-3 text-white/60">Typical stack</p>
-              <div className="grid grid-cols-2 gap-2">
-                {STACK_TECH.map((tech) => (
-                  <div key={tech.label} className="flex items-center gap-2 rounded-xl border border-white/[0.08] bg-zinc/55 px-3 py-2">
-                    <span className="inline-flex h-8 w-8 items-center justify-center rounded-lg border border-white/10 bg-zinc/70">
-                      <svg role="img" viewBox="0 0 24 24" className="h-4 w-4" aria-label={tech.icon.title} fill={`#${tech.icon.hex}`}>
-                        <path d={tech.icon.path} />
-                      </svg>
-                    </span>
-                    <span className="text-[11px] font-semibold leading-tight text-zinc-200">{tech.label}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
+          <div>
+            <p className="type-intro-wide mx-auto max-w-2xl text-zinc-200 md:mx-0">
+              Want updates on Gari or have an automotive workflow to discuss?
+            </p>
+            <Link href={mailto} className="type-email-cta-solid mt-8 inline-flex">
+              <Mail className="h-5 w-5" />
+              Contact VantLaunch
+              <ArrowUpRight className="h-5 w-5 opacity-70" />
+            </Link>
           </div>
         </motion.section>
       </article>

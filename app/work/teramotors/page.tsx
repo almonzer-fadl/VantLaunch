@@ -2,15 +2,16 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { TeraMotorsContent } from "./TeraMotorsContent";
+import { CONTACT_EMAILS, TERAMOTORS_REGISTER_URL } from "@/app/lib/constants";
 
 export const metadata: Metadata = {
-  title: "TeraMotors | Enterprise auto repair platform — VantLaunch",
+  title: "TeraMotors | Workshop Management Software - VantLaunch",
   description:
-    "Production-ready shop management: Next.js 15, TypeScript, MongoDB, ZATCA e-invoicing, JWT & RBAC, real-time job tracking, bilingual English / Arabic.",
+    "TeraMotors helps repair shops organize customers, vehicles, job cards, invoices, reports, and daily workshop activity.",
   openGraph: {
-    title: "TeraMotors | Enterprise auto repair platform — VantLaunch",
+    title: "TeraMotors | Workshop Management Software - VantLaunch",
     description:
-      "Next.js + MongoDB platform for workshops: job cards, inspections, ZATCA invoicing, Stripe, Excel reporting, Socket.io.",
+      "Workshop software for repair shops that want cleaner records, smoother job tracking, and organized invoicing.",
     images: [
       { url: "/media/teramotors-dashboard.webp", width: 1800, height: 944, alt: "TeraMotors dashboard experience" },
     ],
@@ -36,10 +37,10 @@ export default function TeramotorsProjectPage() {
             VantLaunch
           </Link>
           <div className="flex items-center gap-4">
-            <Link href="https://app.teramotor.cc/" className="type-nav-accent hidden sm:inline">
-              Live app
+            <Link href={TERAMOTORS_REGISTER_URL} target="_blank" rel="noopener noreferrer" className="type-nav-accent hidden sm:inline">
+              Start trial
             </Link>
-            <Link href="mailto:build@vantlaunch.com?subject=TeraMotors%20follow-up" className="type-nav-link hidden md:inline">
+            <Link href={`mailto:${CONTACT_EMAILS.product}?subject=TeraMotors%20follow-up`} className="type-nav-link hidden md:inline">
               Talk to us
             </Link>
           </div>

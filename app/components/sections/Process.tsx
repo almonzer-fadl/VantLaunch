@@ -18,10 +18,10 @@ export function ProcessSection() {
         variants={staggerSection}
       >
         <motion.div variants={fadeSlide} className="mb-16 max-w-2xl md:mb-24">
-          <p className="type-meta-uppercase mb-4">How we work</p>
-          <h2 className="type-display-lg">From operator signal to shipped product</h2>
+          <p className="type-meta-uppercase mb-4">Getting started</p>
+          <h2 className="type-display-lg">A guided start for your shop.</h2>
           <p className="type-intro mt-6 max-w-xl text-zinc-300">
-            We turn operator pain points into production-ready features through short, measurable release loops.
+            Create an account, try the workspace, and keep using TeraMotors when it fits your team.
           </p>
         </motion.div>
 

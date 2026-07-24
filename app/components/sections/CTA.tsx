@@ -16,15 +16,15 @@ export function CTASection() {
         className="relative z-10 mx-auto max-w-4xl"
       >
         <motion.h2 variants={fadeSlide} className="type-cta-heading">
-          Want to talk about <br />
-          <span className="text-white/40">TeraMotors or Gari?</span>
+          Start your <br />
+          <span className="text-white/40">TeraMotors trial.</span>
         </motion.h2>
 
         <motion.div variants={fadeSlide}>
           <ContactForm />
         </motion.div>
         <motion.p variants={fadeSlide} className="mx-auto mt-8 max-w-xl text-sm text-zinc-400">
-          Contact us at build@vantlaunch.com or use the form. We reply to relevant product inquiries directly.
+          Use the form for product questions, company contact, or setup help.
         </motion.p>
       </motion.div>
     </section>

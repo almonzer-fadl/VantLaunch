@@ -35,8 +35,8 @@ export function ContactForm() {
         <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-white text-black">
           <Check className="h-8 w-8" />
         </div>
-        <h3 className="text-2xl font-bold text-white">Message received.</h3>
-        <p className="mt-2 text-zinc-500">Thanks for contacting VantLaunch. We&apos;ll follow up shortly.</p>
+        <h3 className="text-2xl font-bold text-white">Request received.</h3>
+        <p className="mt-2 text-zinc-500">We&apos;ll review the details and follow up shortly.</p>
         <button 
           onClick={() => setStatus("idle")}
           className="mt-8 text-sm font-bold text-white underline underline-offset-4"
@@ -94,7 +94,7 @@ export function ContactForm() {
             <option value="" disabled className="bg-zinc text-zinc-400">I am a...</option>
             <option value="owner-founder" className="bg-zinc text-zinc-200">Owner / founder</option>
             <option value="operations" className="bg-zinc text-zinc-200">Operations lead</option>
-            <option value="technical" className="bg-zinc text-zinc-200">Technical lead</option>
+            <option value="service-advisor" className="bg-zinc text-zinc-200">Service advisor</option>
             <option value="investor-partner" className="bg-zinc text-zinc-200">Investor / partner</option>
             <option value="other" className="bg-zinc text-zinc-200">Other</option>
           </select>
@@ -108,7 +108,7 @@ export function ContactForm() {
           >
             <option value="" disabled className="bg-zinc text-zinc-400">Product interest</option>
             <option value="teramotors" className="bg-zinc text-zinc-200">TeraMotors</option>
-            <option value="gari" className="bg-zinc text-zinc-200">Gari</option>
+            <option value="gari" className="bg-zinc text-zinc-200">Gari preview</option>
             <option value="general" className="bg-zinc text-zinc-200">General VantLaunch inquiry</option>
           </select>
 
@@ -131,7 +131,7 @@ export function ContactForm() {
             required
             name="message"
             rows={1}
-            placeholder="Tell us what you want to solve"
+            placeholder="Tell us about your shop and what you want to organize"
             className="w-full border-b border-white/10 bg-transparent py-4 text-base font-medium text-white placeholder:text-zinc-700 focus:border-white focus:outline-none transition-colors resize-none sm:text-lg"
             onInput={(e) => {
               const target = e.target as HTMLTextAreaElement;
@@ -148,7 +148,7 @@ export function ContactForm() {
           disabled={status === "submitting"}
           className="group flex w-full items-center justify-center gap-3 rounded-full bg-white px-8 py-4 text-[13px] font-bold text-black transition-all hover:gap-5 disabled:opacity-50 sm:w-auto"
         >
-          {status === "submitting" ? "Sending..." : "Contact VantLaunch"}
+          {status === "submitting" ? "Sending..." : "Send inquiry"}
           <ArrowRight className="h-4 w-4" />
         </button>
       </div>

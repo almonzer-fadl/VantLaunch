@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { CONTACT_EMAILS } from "@/app/lib/constants";
 
 export const metadata: Metadata = {
   title: "Privacy Policy — VantLaunch",
@@ -31,7 +32,7 @@ export default function PrivacyPage() {
         </p>
         <p>
           You can request correction or deletion of your data by emailing{" "}
-          <a className="text-white underline" href="mailto:build@vantlaunch.com">build@vantlaunch.com</a>.
+          <a className="text-white underline" href={`mailto:${CONTACT_EMAILS.company}`}>{CONTACT_EMAILS.company}</a>.
         </p>
       </article>
     </main>

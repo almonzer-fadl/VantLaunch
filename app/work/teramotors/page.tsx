@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { TeraMotorsContent } from "./TeraMotorsContent";
@@ -33,8 +34,15 @@ export default function TeramotorsProjectPage() {
             <ArrowLeft className="h-4 w-4" />
             Products
           </Link>
-          <Link href="/" className="type-brand-xl">
-            VantLaunch
+          <Link href="/" className="flex items-center gap-2">
+            <Image
+              src="/vantlaunch-logo.png"
+              alt="VantLaunch logo"
+              width={32}
+              height={32}
+              className="h-8 w-8 rounded-lg object-contain"
+            />
+            <span className="type-brand-xl">VantLaunch</span>
           </Link>
           <div className="flex items-center gap-4">
             <Link href={TERAMOTORS_REGISTER_URL} target="_blank" rel="noopener noreferrer" className="type-nav-accent hidden sm:inline">

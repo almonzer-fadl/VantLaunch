@@ -1,6 +1,6 @@
 "use client";
 
-import { Rocket } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { SOCIAL_LINKS } from "../lib/constants";
 
@@ -10,14 +10,20 @@ export function Footer() {
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start gap-12">
         <div className="max-w-sm">
           <div className="flex items-center gap-2 mb-8">
-            <Rocket className="text-white w-7 h-7" />
+            <Image
+              src="/vantlaunch-logo.png"
+              alt="VantLaunch logo"
+              width={36}
+              height={36}
+              className="h-9 w-9 rounded-xl object-contain"
+            />
             <span className="type-brand-xl !text-2xl">VantLaunch</span>
           </div>
           <p className="text-zinc-500 leading-relaxed">
             Practical software for automotive teams, starting with TeraMotors.
           </p>
         </div>
-        <div className="flex w-full flex-col gap-10 sm:w-auto sm:flex-row sm:gap-20 md:gap-24">
+        <div className="grid w-full grid-cols-1 gap-10 sm:grid-cols-3 md:w-auto md:gap-16 lg:gap-20">
           <div className="flex flex-col gap-6">
             <span className="type-meta-uppercase">Explore</span>
             <FooterLink href="#products">TeraMotors</FooterLink>
@@ -27,12 +33,14 @@ export function Footer() {
             <FooterLink href="#process">How it works</FooterLink>
           </div>
           <div className="flex flex-col gap-6">
-            <span className="type-meta-uppercase">Connect</span>
+            <span className="type-meta-uppercase">Social</span>
             <FooterLink href={SOCIAL_LINKS.x}>Twitter / X</FooterLink>
             <FooterLink href={SOCIAL_LINKS.github}>GitHub</FooterLink>
             <FooterLink href={SOCIAL_LINKS.instagram}>Instagram</FooterLink>
-            <FooterLink href={SOCIAL_LINKS.facebook}>Facebook</FooterLink>
             <FooterLink href={SOCIAL_LINKS.linkedin}>LinkedIn</FooterLink>
+          </div>
+          <div className="flex flex-col gap-6">
+            <span className="type-meta-uppercase">Company</span>
             <FooterLink href="#contact">Contact</FooterLink>
             <FooterLink href="/privacy">Privacy</FooterLink>
             <FooterLink href="/terms">Terms</FooterLink>

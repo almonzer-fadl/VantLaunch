@@ -24,8 +24,15 @@ export function ProjectStubPage({ config }: { config: WorkStubConfig }) {
             <ArrowLeft className="h-4 w-4" />
             Products
           </Link>
-          <Link href="/" className="type-brand-xl">
-            VantLaunch
+          <Link href="/" className="flex items-center gap-2">
+            <Image
+              src="/vantlaunch-logo.png"
+              alt="VantLaunch logo"
+              width={32}
+              height={32}
+              className="h-8 w-8 rounded-lg object-contain"
+            />
+            <span className="type-brand-xl">VantLaunch</span>
           </Link>
           <Link href={mailto} className="type-nav-accent">
             Contact

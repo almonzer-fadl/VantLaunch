@@ -100,4 +100,4 @@ This project is optimized for Vercel.
 
 ## Status
 
-TeraMotors is live and usable. Gari is in development and presented as a coming-soon product.
+TeraMotors is live and usable, Gari is in development and presented as a coming-soon product.

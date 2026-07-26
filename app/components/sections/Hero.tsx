@@ -4,7 +4,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { useRef } from "react";
-import { EASE_CURSOR, TERAMOTORS_REGISTER_URL } from "@/app/lib/constants";
+import { EASE_CURSOR } from "@/app/lib/constants";
 import { heroTitleStagger, getHeroLineReveal, getHeroSubReveal } from "@/app/lib/motion-variants";
 import { MagneticWrap } from "../UI";
 import { HeroProductShowcase } from "../HeroProductShowcase";
@@ -40,7 +40,7 @@ export function HeroSection({
               transition={{ duration: 0.5, ease: EASE_CURSOR }}
               className="mb-8 type-meta-uppercase !text-white/40"
             >
-              Workshop software for modern repair shops
+              Product studio
             </motion.div>
 
             <motion.h1
@@ -50,10 +50,13 @@ export function HeroSection({
               className="max-w-xl sm:max-w-2xl lg:max-w-[42rem]"
             >
               <motion.span variants={lineReveal} className="type-hero-line">
-                Run every repair
+                Build.
               </motion.span>
               <motion.span variants={lineReveal} className="type-hero-line-accent">
-                from one place.
+                Ship.
+              </motion.span>
+              <motion.span variants={lineReveal} className="type-hero-line">
+                Scale.
               </motion.span>
             </motion.h1>
 
@@ -63,8 +66,8 @@ export function HeroSection({
               animate="visible"
               className="type-intro mt-8 max-w-xl !text-zinc-300 leading-relaxed"
             >
-              Keep every repair visit, invoice, customer update, and shop report organized without
-              bouncing between chats, spreadsheets, and paper.
+              We build focused SaaS products for real businesses — from workshops to invoices to
+              mobile service platforms. Zero bloat, real traction.
             </motion.p>
 
             <motion.div
@@ -76,40 +79,26 @@ export function HeroSection({
               <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
                 <MagneticWrap active={!prefersReducedMotion}>
                   <Link
-                    href={TERAMOTORS_REGISTER_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href="#ventures"
                     className="group/start type-btn-primary relative isolate inline-flex w-full sm:w-auto"
                   >
-                    <span className="relative">Start free trial</span>
+                    <span className="relative">See our work</span>
                     <ArrowRight className="relative h-4 w-4 transition-transform duration-300 group-hover/start:translate-x-0.5" />
                   </Link>
                 </MagneticWrap>
                 <MagneticWrap active={!prefersReducedMotion}>
                   <Link
-                    href="#demo"
+                    href="#contact"
                     className="group/browse type-btn-ghost-prominent relative isolate inline-flex w-full sm:w-auto"
                   >
-                    <span className="relative">Watch demo</span>
+                    <span className="relative">Start a project</span>
                     <ArrowRight className="relative h-4 w-4 transition-transform duration-300 group-hover/browse:translate-x-0.5" />
                   </Link>
                 </MagneticWrap>
               </div>
               <div className="flex flex-wrap items-center gap-5 sm:gap-6">
-                <div className="flex items-center gap-3 sm:gap-4">
-                  <div className="flex -space-x-2">
-                    {['AE', 'MS', 'JP'].map((initials) => (
-                      <div
-                        key={initials}
-                        className="flex h-8 w-8 items-center justify-center rounded-full border-2 border-zinc bg-zinc-surface text-[9px] font-bold text-white/80"
-                      >
-                        {initials}
-                      </div>
-                    ))}
-                  </div>
-                  <p className="type-caption-micro">14-day trial · no credit card · create account to start</p>
-                </div>
-                <p className="type-status-kicker">Invoicing · job cards · reporting</p>
+                <p className="type-caption-micro">TeraMotors · SpeakBill · Gari — and more in the pipeline</p>
+                <p className="type-status-kicker">Workshops · Invoicing · Auto service</p>
               </div>
             </motion.div>
           </div>

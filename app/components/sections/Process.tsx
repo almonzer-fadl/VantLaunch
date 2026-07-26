@@ -2,7 +2,31 @@
 
 import { motion } from "framer-motion";
 import { fadeSlide, staggerSection } from "@/app/lib/motion-variants";
-import { PROCESS_PHASES, PROCESS_FLOW_PATH_D, EASE_CURSOR } from "@/app/lib/constants";
+import { Sparkles, MonitorPlay, Rocket } from "lucide-react";
+import { EASE_CURSOR } from "@/app/lib/constants";
+
+const PROCESS_PHASES = [
+  {
+    num: "01",
+    title: "We scope it tight",
+    desc: "Define the core problem and ship a focused MVP — no feature creep, no endless planning.",
+    Icon: Sparkles,
+  },
+  {
+    num: "02",
+    title: "Ship to real users",
+    desc: "Get the product in front of actual customers fast. Collect feedback, measure retention.",
+    Icon: MonitorPlay,
+  },
+  {
+    num: "03",
+    title: "Scale what works",
+    desc: "Double down on the features and channels that drive adoption and revenue.",
+    Icon: Rocket,
+  },
+] as const;
+
+const PROCESS_FLOW_PATH_D = "M 96 44 C 252 6 348 82 450 44 S 648 6 804 44";
 
 export function ProcessSection() {
   return (
@@ -18,10 +42,10 @@ export function ProcessSection() {
         variants={staggerSection}
       >
         <motion.div variants={fadeSlide} className="mb-16 max-w-2xl md:mb-24">
-          <p className="type-meta-uppercase mb-4">Getting started</p>
-          <h2 className="type-display-lg">A guided start for your shop.</h2>
+          <p className="type-meta-uppercase mb-4">How we work</p>
+          <h2 className="type-display-lg">Build. Ship. Scale.</h2>
           <p className="type-intro mt-6 max-w-xl text-zinc-300">
-            Create an account, try the workspace, and keep using TeraMotors when it fits your team.
+            Every product follows the same tight loop — scope, ship, iterate — until it earns its place.
           </p>
         </motion.div>
 
@@ -68,8 +92,8 @@ export function ProcessSection() {
                     {phase.num}
                   </span>
                 </div>
-                <h3 className="type-process-title">{phase.title}</h3>
-                <p className="type-process-desc max-w-[18rem]">{phase.desc}</p>
+                <h3 className="text-xl font-bold text-white">{phase.title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-zinc-400 max-w-[18rem]">{phase.desc}</p>
               </motion.div>
             ))}
           </div>

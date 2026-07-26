@@ -16,16 +16,17 @@ export function CTASection() {
         className="relative z-10 mx-auto max-w-4xl"
       >
         <motion.h2 variants={fadeSlide} className="type-cta-heading">
-          Start your <br />
-          <span className="text-white/40">TeraMotors trial.</span>
+          Let's build <br />
+          <span className="text-white/40">something.</span>
         </motion.h2>
 
-        <motion.div variants={fadeSlide}>
+        <motion.p variants={fadeSlide} className="mx-auto mt-6 max-w-xl text-base text-zinc-400">
+          Whether you need a product built, want early access to SpeakBill, or just want to talk shop — reach out.
+        </motion.p>
+
+        <motion.div variants={fadeSlide} className="mt-10">
           <ContactForm />
         </motion.div>
-        <motion.p variants={fadeSlide} className="mx-auto mt-8 max-w-xl text-sm text-zinc-400">
-          Use the form for product questions, company contact, or setup help.
-        </motion.p>
       </motion.div>
     </section>
   );

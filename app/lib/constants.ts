@@ -42,19 +42,19 @@ export const PROCESS_PHASES = [
 
 export const WHY_US_POINTS = [
   {
-    title: "Launch in weeks, not quarters",
-    body: "We ship usable product increments fast so you can validate with real users early.",
+    title: "Ship fast, iterate faster",
+    body: "We go from zero to live in weeks, not months — validate with real users, then refine based on traction.",
   },
   {
-    title: "Operator-grade quality bar",
-    body: "The same engineering and UX standards apply across TeraMotors and the upcoming Gari product line.",
+    title: "One quality bar, every product",
+    body: "Whether it's TeraMotors, SpeakBill, or Gari — every product ships with the same engineering and design standards.",
   },
   {
-    title: "Direct maker collaboration",
-    body: "You work with the people designing and building, without account-layer bottlenecks.",
+    title: "You talk to builders, not account managers",
+    body: "Work directly with the people designing and coding your product. No handoffs, no bottlenecks, no fluff.",
   },
   {
-    title: "Decisions tied to traction",
-    body: "We optimize for adoption, retention, and measurable product momentum after launch.",
+    title: "Traction over vanity",
+    body: "Every decision is measured against adoption, retention, and revenue — not pitch decks or inflated metrics.",
   },
 ] as const;

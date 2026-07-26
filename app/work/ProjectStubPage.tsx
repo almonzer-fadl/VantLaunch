@@ -104,6 +104,27 @@ export function ProjectStubPage({ config }: { config: WorkStubConfig }) {
                 <GariScreenGallery />
               </div>
             </>
+          ) : config.slug === "speakbill" ? (
+            <div className="grid gap-4 sm:grid-cols-2">
+              {[
+                { src: "/media/speakbill-dashboard.png", alt: "SpeakBill dashboard" },
+                { src: "/media/speakbill-mic.png", alt: "SpeakBill voice input" },
+                { src: "/media/speakbill-invoice-preview.png", alt: "SpeakBill invoice preview" },
+                { src: "/media/speakbill-invoice-review.png", alt: "SpeakBill invoice review" },
+              ].map((img) => (
+                <figure key={img.src} className="overflow-hidden rounded-2xl border border-white/[0.08] bg-zinc-surface shadow-lg">
+                  <div className="relative aspect-[16/10] w-full bg-[#0a0f1a]">
+                    <Image
+                      src={img.src}
+                      alt={img.alt}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 500px"
+                      className="object-contain object-center"
+                    />
+                  </div>
+                </figure>
+              ))}
+            </div>
           ) : (
             <figure className="relative overflow-hidden rounded-[1.75rem] border border-white/[0.1] bg-zinc-surface shadow-[0_40px_100px_-40px_rgba(0,0,0,0.85)]">
               <div className="relative mx-auto aspect-[780/2232] w-full max-w-sm bg-white sm:max-w-md">
@@ -130,16 +151,33 @@ export function ProjectStubPage({ config }: { config: WorkStubConfig }) {
           transition={{ duration: 0.55, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
           className="mt-16 overflow-hidden rounded-[1.75rem] border border-white/[0.08] bg-white/[0.02] px-8 py-10"
         >
-          <div>
-            <p className="type-intro-wide mx-auto max-w-2xl text-zinc-200 md:mx-0">
-              Want updates on Gari or have an automotive workflow to discuss?
-            </p>
-            <Link href={mailto} className="type-email-cta-solid mt-8 inline-flex">
-              <Mail className="h-5 w-5" />
-              Contact VantLaunch
-              <ArrowUpRight className="h-5 w-5 opacity-70" />
-            </Link>
-          </div>
+          {config.slug === "speakbill" ? (
+            <div>
+              <p className="type-intro-wide mx-auto max-w-2xl text-zinc-200 md:mx-0">
+                Ready to try SpeakBill? Live now — start creating invoices by voice.
+              </p>
+              <a
+                href="https://speakbill.vantlaunch.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="type-email-cta-solid mt-8 inline-flex"
+              >
+                Visit SpeakBill
+                <ArrowUpRight className="h-5 w-5 opacity-70" />
+              </a>
+            </div>
+          ) : (
+            <div>
+              <p className="type-intro-wide mx-auto max-w-2xl text-zinc-200 md:mx-0">
+                Want updates on Gari or have an automotive workflow to discuss?
+              </p>
+              <Link href={mailto} className="type-email-cta-solid mt-8 inline-flex">
+                <Mail className="h-5 w-5" />
+                Contact VantLaunch
+                <ArrowUpRight className="h-5 w-5 opacity-70" />
+              </Link>
+            </div>
+          )}
         </motion.section>
       </article>
     </div>

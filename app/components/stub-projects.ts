@@ -56,6 +56,40 @@ export const WORK_STUBS = {
     previewImgClass:
       "object-contain object-center opacity-42 transition-transform duration-700 group-hover:scale-[1.03]",
   },
+  speakbill: {
+    slug: "speakbill",
+    title: "SpeakBill",
+    metaTitle: "SpeakBill | Voice-to-Invoice — VantLaunch",
+    metaDescription:
+      "SpeakBill turns voice into professional invoices in seconds. Built for freelancers, boutiques, and small teams.",
+    imageSrc: "/media/speakbill-dashboard.png",
+    imageAlt: "SpeakBill dashboard with invoice list and voice input",
+    badges: ["Invoicing", "Live"],
+    cardSummary:
+      "Voice-to-invoice. Speak your bill and get a clean, professional invoice in seconds.",
+    lede: "Speak. Invoice. Done.",
+    detail:
+      "SpeakBill lets you create professional invoices by voice — no typing, no templates, no hassle. Built for freelancers, boutique businesses, and small teams who want to get paid faster.",
+    bullets: [
+      "Speak your bill and get an instant invoice",
+      "Multi-currency support with automatic formatting",
+      "Multi-language voice recognition",
+      "Client and product management built in",
+      "Professional PDF invoices ready to send",
+    ],
+    capabilities: [
+      "Voice-to-invoice",
+      "Multi-currency",
+      "Client management",
+      "Product catalog",
+      "PDF export",
+    ],
+    emailSubject: "SpeakBill%20inquiry",
+    figureCaption:
+      "SpeakBill — voice-powered invoicing dashboard, mic input, invoice preview, and client management.",
+    previewImgClass:
+      "object-contain object-center transition-transform duration-700 group-hover:scale-[1.02]",
+  },
 } as const satisfies Record<string, WorkStubConfig>;
 
 export type WorkStubSlug = keyof typeof WORK_STUBS;

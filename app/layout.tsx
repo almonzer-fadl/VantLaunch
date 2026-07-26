@@ -22,17 +22,17 @@ const siteUrl =
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "VantLaunch | TeraMotors Workshop Software",
+  title: "VantLaunch — Build. Ship. Scale.",
   description:
-    "VantLaunch builds TeraMotors, workshop management software for repair shops, with Gari previewed as the next automotive product.",
+    "VantLaunch is a product studio that builds, ships, and scales focused SaaS products — starting with TeraMotors for automotive workshops and expanding into booking, invoicing, and operations tools.",
   icons: {
     icon: "/vantlaunch-logo.png",
     apple: "/vantlaunch-logo.png",
   },
   openGraph: {
-    title: "VantLaunch | TeraMotors Workshop Software",
+    title: "VantLaunch — Build. Ship. Scale.",
     description:
-      "VantLaunch builds focused automotive SaaS products, starting with TeraMotors workshop management software.",
+      "A product studio that builds, ships, and scales focused SaaS products — TeraMotors for workshops, SpeakBill for invoicing, Gari for drivers.",
     images: [
       {
         url: "/vantlaunch-logo.jpeg",
@@ -44,9 +44,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary",
-    title: "VantLaunch | TeraMotors Workshop Software",
+    title: "VantLaunch — Build. Ship. Scale.",
     description:
-      "Focused automotive SaaS products, starting with TeraMotors workshop management software.",
+      "A product studio that builds, ships, and scales focused SaaS products for real businesses.",
     images: ["/vantlaunch-logo.jpeg"],
   },
 };

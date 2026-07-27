@@ -31,7 +31,7 @@ const PILLARS = [
 
 export function TeraMotorsPricingSection() {
   return (
-    <section id="pricing" className="border-t border-white/5 bg-zinc-surface/30 px-6 py-20 md:py-28">
+    <section id="pricing" className="border-t border-black/[0.06] bg-[#f8f6ef] px-6 py-20 text-[#11100e] md:py-28">
       <motion.div
         className="mx-auto max-w-7xl"
         initial="hidden"
@@ -42,8 +42,8 @@ export function TeraMotorsPricingSection() {
         <motion.div variants={fadeSlide} className="mx-auto mb-16 max-w-3xl text-center md:mb-20">
           <p className="type-meta-uppercase mb-4">How we work</p>
           <h2 className="type-display-xl mb-5 text-balance">Build. Ship. Scale.</h2>
-          <p className="type-intro text-zinc-300">
-            We turn ideas into products — fast. Whether it's a workshop management system, voice-to-invoice tool,
+          <p className="type-intro">
+            We turn ideas into products — fast. Whether it&apos;s a workshop management system, voice-to-invoice tool,
             or a mobile service platform, the process stays the same.
           </p>
         </motion.div>
@@ -53,35 +53,35 @@ export function TeraMotorsPricingSection() {
             <motion.article
               key={pillar.title}
               variants={fadeSlide}
-              className="rounded-2xl border border-white/10 bg-zinc-surface/70 p-6 transition-colors hover:border-white/20"
+              className="rounded-2xl border border-black/10 bg-white p-6 transition-colors hover:bg-black/[0.03]"
             >
-              <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-white">
+              <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl border border-black/10 bg-black/[0.03] text-[#11100e]">
                 <pillar.Icon className="h-5 w-5" />
               </div>
-              <h3 className="text-lg font-bold text-white mb-3">{pillar.title}</h3>
-              <p className="text-sm leading-relaxed text-zinc-400">{pillar.body}</p>
+              <h3 className="mb-3 text-lg font-bold text-[#11100e]">{pillar.title}</h3>
+              <p className="text-sm leading-relaxed text-[#5f5548]">{pillar.body}</p>
             </motion.article>
           ))}
         </motion.div>
 
         <motion.div variants={fadeSlide} className="mt-12">
-          <section className="rounded-[2rem] border border-white/10 bg-white/[0.02] p-8 md:p-12 text-center">
-            <h3 className="text-2xl font-bold text-white md:text-3xl">Have a product idea?</h3>
-            <p className="mt-4 mx-auto max-w-xl text-base text-zinc-400 leading-relaxed">
+          <section className="rounded-2xl border border-black/10 bg-white p-8 text-center md:p-12">
+            <h3 className="text-2xl font-bold text-[#11100e] md:text-3xl">Have a product idea?</h3>
+            <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-[#5f5548]">
               We take on select projects — from MVPs to full product builds. If you have a real business problem
-              that needs a focused SaaS solution, let's talk.
+              that needs a focused SaaS solution, let&apos;s talk.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link
                 href="#contact"
-                className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-3.5 text-sm font-bold text-black transition-all hover:-translate-y-0.5 hover:shadow-[0_12px_24px_-10px_rgba(255,255,255,0.5)]"
+                className="inline-flex items-center gap-2 rounded-xl bg-blue-700 px-8 py-3.5 text-sm font-bold text-white transition-colors hover:bg-[#11100e]"
               >
                 Start a project
                 <ArrowRight className="h-4 w-4" />
               </Link>
               <a
                 href={`mailto:${CONTACT_EMAILS.product}`}
-                className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-8 py-3.5 text-sm font-bold text-white transition-colors hover:bg-white/10"
+                className="inline-flex items-center gap-2 rounded-xl border border-black/10 bg-white px-8 py-3.5 text-sm font-bold text-[#11100e] transition-colors hover:bg-black/[0.03]"
               >
                 {CONTACT_EMAILS.product}
               </a>

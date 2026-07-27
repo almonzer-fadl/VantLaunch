@@ -24,7 +24,7 @@ export function VenturesSection({
   const scale = useTransform(scrollYProgress, [0, 1], [1.02, 1.08]);
 
   return (
-    <section ref={sectionRef} id="ventures" className="border-t border-white/5 bg-gradient-to-b from-transparent via-white/[0.01] to-transparent px-6 py-20 md:py-32">
+    <section ref={sectionRef} id="ventures" className="border-t border-black/[0.06] bg-[#fffaf0] px-6 py-20 text-[#11100e] md:py-32">
       <motion.div
         className="max-w-7xl mx-auto"
         initial="hidden"
@@ -35,8 +35,8 @@ export function VenturesSection({
         <motion.div variants={fadeSlide} className="mb-16 flex flex-col gap-8 md:mb-24 md:flex-row md:items-end md:justify-between">
           <div className="max-w-2xl">
             <p className="type-meta-uppercase mb-4">Coming up</p>
-            <h2 className="type-display-lg">What we're building next.</h2>
-            <p className="type-intro mt-6 max-w-xl !text-zinc-300">
+            <h2 className="type-display-lg">What we&apos;re building next.</h2>
+            <p className="type-intro mt-6 max-w-xl">
               Products in development and early access — built with the same speed and standards.
             </p>
           </div>
@@ -73,9 +73,9 @@ function GariVentureCard({
   return (
     <motion.div variants={fadeSlide} className="md:col-span-8">
       <div onClick={onOpen} className="h-full cursor-pointer group">
-        <CardPointerGlow className="relative flex h-full min-h-[520px] flex-col justify-end overflow-hidden rounded-[3rem] border border-white/5 bg-zinc-surface transition-colors hover:border-white/20 lg:min-h-[560px]">
+        <CardPointerGlow className="relative flex h-full min-h-[520px] flex-col justify-end overflow-hidden rounded-2xl border border-black/10 bg-white transition-colors hover:bg-black/[0.03] lg:min-h-[560px]">
           <motion.div
-            className="absolute inset-0 z-0 bg-[#070b14]"
+            className="absolute inset-0 z-0 bg-[#eef2f8]"
             style={reduced ? undefined : { y: parallax, scale }}
           >
             <div className="absolute inset-x-6 top-8 flex justify-center gap-4 sm:gap-6 md:top-10">
@@ -85,7 +85,7 @@ function GariVentureCard({
               ].map((screen, index) => (
                 <div
                   key={screen.src}
-                  className={`w-[34%] min-w-[128px] max-w-[210px] overflow-hidden rounded-[1.6rem] border border-white/12 bg-white shadow-[0_26px_90px_-42px_rgba(0,0,0,0.9)] transition-transform duration-700 group-hover:scale-[1.025] ${
+                  className={`w-[34%] min-w-[128px] max-w-[210px] overflow-hidden rounded-[1.6rem] border border-black/10 bg-white shadow-[0_18px_55px_-42px_rgba(17,16,14,0.35)] transition-transform duration-700 group-hover:scale-[1.025] ${
                     index === 1 ? "mt-10" : ""
                   }`}
                 >
@@ -102,14 +102,14 @@ function GariVentureCard({
               ))}
             </div>
           </motion.div>
-          <div className="absolute inset-0 bg-gradient-to-t from-zinc via-zinc/35 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-white via-white/55 to-transparent" />
 
           <div className="relative z-10 max-w-2xl p-10 md:p-12">
             <h3 className="type-portfolio-product-title">Gari</h3>
-            <p className="text-zinc-200 mt-3 text-lg leading-relaxed">
+            <p className="mt-3 text-lg leading-relaxed text-[#5f5548]">
               Find workshops, track service, manage vehicles, and pay from one mobile app.
             </p>
-            <span className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-white/90">
+            <span className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-[#11100e]">
               View Gari screens
               <ArrowUpRight className="h-5 w-5" />
             </span>
@@ -124,10 +124,10 @@ function SpeakBillPreviewCard({ onOpen }: { onOpen: () => void }) {
   return (
     <motion.div variants={fadeSlide} className="md:col-span-4">
       <div onClick={onOpen} className="h-full cursor-pointer group">
-        <CardPointerGlow className="relative flex h-full min-h-[520px] flex-col justify-end overflow-hidden rounded-[3rem] border border-white/5 bg-zinc-surface transition-colors hover:border-white/20 lg:min-h-[560px]">
-          <div className="absolute inset-0 z-0 bg-[#070b14]">
+        <CardPointerGlow className="relative flex h-full min-h-[520px] flex-col justify-end overflow-hidden rounded-2xl border border-black/10 bg-white transition-colors hover:bg-black/[0.03] lg:min-h-[560px]">
+          <div className="absolute inset-0 z-0 bg-[#eef2f8]">
             <div className="absolute inset-0 flex items-start justify-center pt-10">
-              <div className="w-[42%] min-w-[140px] max-w-[200px] overflow-hidden rounded-[1.6rem] border border-white/12 bg-white shadow-[0_26px_90px_-42px_rgba(0,0,0,0.9)] transition-transform duration-700 group-hover:scale-[1.025]">
+              <div className="w-[42%] min-w-[140px] max-w-[200px] overflow-hidden rounded-[1.6rem] border border-black/10 bg-white shadow-[0_18px_55px_-42px_rgba(17,16,14,0.35)] transition-transform duration-700 group-hover:scale-[1.025]">
                 <div className="relative aspect-[9/19] w-full">
                   <Image
                     src="/media/speakbill-phone-mic.png"
@@ -140,9 +140,9 @@ function SpeakBillPreviewCard({ onOpen }: { onOpen: () => void }) {
               </div>
             </div>
           </div>
-          <div className="absolute inset-0 bg-gradient-to-t from-zinc via-zinc/35 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-white via-white/55 to-transparent" />
           
-          <div className="absolute top-10 left-10 flex h-12 w-12 items-center justify-center rounded-xl border border-white/10 bg-white/5 overflow-hidden">
+          <div className="absolute left-10 top-10 flex h-12 w-12 items-center justify-center overflow-hidden rounded-xl border border-black/10 bg-white">
             <Image
               src="/media/speakbill-logo.png"
               alt="SpeakBill logo"
@@ -154,10 +154,10 @@ function SpeakBillPreviewCard({ onOpen }: { onOpen: () => void }) {
           
           <div className="relative z-10 max-w-2xl p-10 md:p-12">
             <h3 className="type-portfolio-product-title">SpeakBill</h3>
-            <p className="text-zinc-200 mt-3 text-lg leading-relaxed">
+            <p className="mt-3 text-lg leading-relaxed text-[#5f5548]">
               Voice-to-invoice. Speak and get a clean invoice in seconds.
             </p>
-            <span className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-white/90 group-hover:text-white transition-colors">
+            <span className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-[#11100e] transition-colors hover:text-blue-700">
               View details
               <ArrowUpRight className="h-5 w-5" />
             </span>

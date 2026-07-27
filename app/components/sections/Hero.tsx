@@ -1,112 +1,68 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
-import { useRef } from "react";
-import { EASE_CURSOR } from "@/app/lib/constants";
-import { heroTitleStagger, getHeroLineReveal, getHeroSubReveal } from "@/app/lib/motion-variants";
-import { MagneticWrap } from "../UI";
-import { HeroProductShowcase } from "../HeroProductShowcase";
 
-export function HeroSection({ 
-  prefersReducedMotion,
-}: { 
-  prefersReducedMotion: boolean;
-}) {
-  const sectionRef = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start start", "end start"],
-  });
-
-  const y = useTransform(scrollYProgress, [0, 1], [0, -28]);
-  const opacity = useTransform(scrollYProgress, [0, 1], [1, 0.88]);
-
-  const lineReveal = getHeroLineReveal(prefersReducedMotion);
-  const subReveal = getHeroSubReveal(prefersReducedMotion);
-
+export function HeroSection() {
   return (
-    <section ref={sectionRef} className="relative overflow-hidden px-6 pb-16 pt-16 md:pb-28 md:pt-20 lg:pb-36">
+    <section className="relative overflow-hidden px-6 pb-20 pt-24 md:pb-32 md:pt-32 lg:pb-40 lg:pt-40">
+      {/* Warm ambient glow */}
+      <div className="absolute inset-0 z-0">
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-amber-500/[0.03] blur-[120px]" />
+        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-amber-600/[0.02] blur-[100px]" />
+      </div>
+
       <motion.div
-        className="max-w-7xl mx-auto"
-        style={prefersReducedMotion ? undefined : { y, opacity }}
+        className="relative z-10 mx-auto max-w-4xl text-center"
+        initial={{ opacity: 0, y: 24 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
       >
-        <div className="grid items-center gap-14 lg:grid-cols-12 lg:gap-10 xl:gap-14">
-          <div className="lg:col-span-5">
-            <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, ease: EASE_CURSOR }}
-              className="mb-8 type-meta-uppercase !text-white/40"
-            >
-              Product studio
-            </motion.div>
+        <motion.div
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1, duration: 0.5 }}
+          className="mb-8"
+        >
+          <span className="badge">Product Studio</span>
+        </motion.div>
 
-            <motion.h1
-              variants={heroTitleStagger}
-              initial="hidden"
-              animate="visible"
-              className="max-w-xl sm:max-w-2xl lg:max-w-[42rem]"
-            >
-              <motion.span variants={lineReveal} className="type-hero-line">
-                Build.
-              </motion.span>
-              <motion.span variants={lineReveal} className="type-hero-line-accent">
-                Ship.
-              </motion.span>
-              <motion.span variants={lineReveal} className="type-hero-line">
-                Scale.
-              </motion.span>
-            </motion.h1>
+        <h1 className="type-hero-heading max-w-3xl mx-auto">
+          Custom software for
+          <br />
+          <span className="text-accent-gradient">your business.</span>
+        </h1>
 
-            <motion.p
-              variants={subReveal}
-              initial="hidden"
-              animate="visible"
-              className="type-intro mt-8 max-w-xl !text-zinc-300 leading-relaxed"
-            >
-              We build focused SaaS products for real businesses — from workshops to invoices to
-              mobile service platforms. Zero bloat, real traction.
-            </motion.p>
+        <p className="type-hero-sub mx-auto mt-8 max-w-xl">
+          We build dashboards, client portals, and mobile apps — on your terms.
+          Fixed price. Clear process. Real results.
+        </p>
 
-            <motion.div
-              initial={{ opacity: 0, y: 14 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.55, delay: 0.12, ease: EASE_CURSOR }}
-              className="mt-9 flex flex-col gap-7"
-            >
-              <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
-                <MagneticWrap active={!prefersReducedMotion}>
-                  <Link
-                    href="#ventures"
-                    className="group/start type-btn-primary relative isolate inline-flex w-full sm:w-auto"
-                  >
-                    <span className="relative">See our work</span>
-                    <ArrowRight className="relative h-4 w-4 transition-transform duration-300 group-hover/start:translate-x-0.5" />
-                  </Link>
-                </MagneticWrap>
-                <MagneticWrap active={!prefersReducedMotion}>
-                  <Link
-                    href="#contact"
-                    className="group/browse type-btn-ghost-prominent relative isolate inline-flex w-full sm:w-auto"
-                  >
-                    <span className="relative">Start a project</span>
-                    <ArrowRight className="relative h-4 w-4 transition-transform duration-300 group-hover/browse:translate-x-0.5" />
-                  </Link>
-                </MagneticWrap>
-              </div>
-              <div className="flex flex-wrap items-center gap-5 sm:gap-6">
-                <p className="type-caption-micro">TeraMotors · SpeakBill · Gari — and more in the pipeline</p>
-                <p className="type-status-kicker">Workshops · Invoicing · Auto service</p>
-              </div>
-            </motion.div>
-          </div>
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3, duration: 0.5 }}
+          className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center"
+        >
+          <Link href="#services" className="btn-primary">
+            See pricing
+            <ArrowRight className="h-4 w-4" />
+          </Link>
+          <Link href="#portfolio" className="btn-ghost">
+            View our work
+            <ArrowRight className="h-4 w-4" />
+          </Link>
+        </motion.div>
 
-          <div className="relative lg:col-span-7">
-            <HeroProductShowcase />
-          </div>
-        </div>
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5, duration: 0.5 }}
+          className="mt-8 text-sm text-stone-600"
+        >
+          8 products shipped · Trusted by businesses in 5 countries
+        </motion.p>
       </motion.div>
     </section>
   );

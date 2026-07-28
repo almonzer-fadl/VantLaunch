@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, PlayCircle, Sparkles } from "lucide-react";
+import { ArrowRight, PlayCircle } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -22,18 +22,6 @@ export function HeroSection({ onOpenProject }: { onOpenProject: (slug: string) =
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="text-left"
           >
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2, duration: 0.6 }}
-              className="mb-8 flex items-center gap-3"
-            >
-              <span className="flex items-center gap-2 rounded-full border border-black/10 bg-white px-4 py-1.5 text-xs font-bold uppercase tracking-[0.16em] text-[#74695b]">
-                <Sparkles className="h-3.5 w-3.5 text-blue-700" />
-                Now Shipping Micro-SaaS
-              </span>
-            </motion.div>
-
             <h1 className="text-balance text-4xl font-bold leading-[1.04] tracking-tight text-[#11100e] sm:text-5xl md:text-6xl lg:text-7xl">
               Turn your business operations into 
               <span className="mt-2 block">profitable software.</span>
@@ -66,7 +54,7 @@ export function HeroSection({ onOpenProject }: { onOpenProject: (slug: string) =
               transition={{ delay: 0.4, duration: 0.6 }}
               className="mt-12 flex flex-col items-center gap-5 sm:flex-row sm:justify-start"
             >
-              <Link href="#contact" className="inline-flex items-center justify-center gap-2 rounded-xl bg-blue-700 px-8 py-3.5 text-sm font-bold text-white transition-colors hover:bg-[#11100e]">
+              <Link href="#contact" className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#11100e] px-8 py-3.5 text-sm font-bold text-white transition-colors hover:bg-amber-600">
                 Get a Quote
                 <ArrowRight className="h-5 w-5" />
               </Link>
@@ -99,7 +87,7 @@ export function HeroSection({ onOpenProject }: { onOpenProject: (slug: string) =
               
               <div className="absolute bottom-10 left-10 right-10">
                 <div className="flex items-center gap-5 rounded-2xl border border-black/10 bg-white/90 p-5 shadow-[0_18px_50px_-35px_rgba(17,16,14,0.45)] backdrop-blur-xl transition-all">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-700">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#11100e]">
                     <PlayCircle className="h-8 w-8 text-white" />
                   </div>
                   <div>
@@ -107,7 +95,7 @@ export function HeroSection({ onOpenProject }: { onOpenProject: (slug: string) =
                     <p className="text-sm font-medium text-[#5f5548]">Click to see it in action</p>
                   </div>
                   <div className="ml-auto hidden sm:block">
-                     <div className="flex h-10 w-10 items-center justify-center rounded-full border border-black/10 transition-colors group-hover:border-blue-700/30">
+                     <div className="flex h-10 w-10 items-center justify-center rounded-full border border-black/10 transition-colors group-hover:border-amber-600/30">
                         <ArrowRight className="h-5 w-5 text-[#11100e]" />
                      </div>
                   </div>

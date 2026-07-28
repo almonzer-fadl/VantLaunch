@@ -53,10 +53,10 @@ export function Footer() {
           © 2026 VantLaunch. All rights reserved.
         </p>
         <div className="flex gap-6">
-          <Link href="/privacy" className="text-xs text-[#74695b] transition-colors hover:text-blue-700">
+          <Link href="/privacy" className="text-xs text-[#74695b] transition-colors hover:text-[#004225]">
             Privacy
           </Link>
-          <Link href="/terms" className="text-xs text-[#74695b] transition-colors hover:text-blue-700">
+          <Link href="/terms" className="text-xs text-[#74695b] transition-colors hover:text-[#004225]">
             Terms
           </Link>
         </div>
@@ -78,7 +78,7 @@ function FooterLink({
       href={href}
       target={isExternal ? "_blank" : undefined}
       rel={isExternal ? "noopener noreferrer" : undefined}
-      className="text-sm font-bold text-[#5f5548] transition-colors hover:text-blue-700"
+      className="text-sm font-bold text-[#5f5548] transition-colors hover:text-[#004225]"
     >
       {children}
     </Link>

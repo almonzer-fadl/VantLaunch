@@ -11,7 +11,7 @@ export function HeroSection({ onOpenProject }: { onOpenProject: (slug: string) =
       {/* Dynamic Background */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-x-0 top-0 h-px bg-black/[0.06]" />
-        <div className="absolute bottom-[-18rem] left-1/2 h-[34rem] w-[72rem] -translate-x-1/2 rounded-full bg-[#f59e0b]/[0.06] blur-[120px]" />
+        <div className="absolute bottom-[-18rem] left-1/2 h-[34rem] w-[72rem] -translate-x-1/2 rounded-full bg-[#004225]/[0.06] blur-[120px]" />
       </div>
 
       <div className="relative z-10 mx-auto max-w-7xl">
@@ -54,7 +54,7 @@ export function HeroSection({ onOpenProject }: { onOpenProject: (slug: string) =
               transition={{ delay: 0.4, duration: 0.6 }}
               className="mt-12 flex flex-col items-center gap-5 sm:flex-row sm:justify-start"
             >
-              <Link href="#contact" className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#11100e] px-8 py-3.5 text-sm font-bold text-white transition-colors hover:bg-amber-600">
+              <Link href="#contact" className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#11100e] px-8 py-3.5 text-sm font-bold text-white transition-colors hover:bg-[#004225]">
                 Get a Quote
                 <ArrowRight className="h-5 w-5" />
               </Link>
@@ -95,7 +95,7 @@ export function HeroSection({ onOpenProject }: { onOpenProject: (slug: string) =
                     <p className="text-sm font-medium text-[#5f5548]">Click to see it in action</p>
                   </div>
                   <div className="ml-auto hidden sm:block">
-                     <div className="flex h-10 w-10 items-center justify-center rounded-full border border-black/10 transition-colors group-hover:border-amber-600/30">
+                     <div className="flex h-10 w-10 items-center justify-center rounded-full border border-black/10 transition-colors group-hover:border-[#004225]/30">
                         <ArrowRight className="h-5 w-5 text-[#11100e]" />
                      </div>
                   </div>

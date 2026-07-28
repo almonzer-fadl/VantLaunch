@@ -54,7 +54,7 @@ const TIERS = [
     ],
     popular: false,
     icon: ShieldCheck,
-    color: "amber",
+    color: "green",
   },
 ];
 
@@ -64,21 +64,21 @@ const TIER_STYLES = {
     ring: "ring-black/10",
     iconBg: "bg-black/[0.03]",
     iconText: "text-[#11100e]",
-    checkText: "text-blue-700",
+    checkText: "text-[#004225]",
   },
   indigo: {
     hover: "hover:bg-black/[0.03]",
     ring: "ring-black/10",
     iconBg: "bg-black/[0.03]",
     iconText: "text-[#11100e]",
-    checkText: "text-blue-700",
+    checkText: "text-[#004225]",
   },
-  amber: {
+  green: {
     hover: "hover:bg-black/[0.03]",
     ring: "ring-black/10",
     iconBg: "bg-black/[0.03]",
     iconText: "text-[#11100e]",
-    checkText: "text-blue-700",
+    checkText: "text-[#004225]",
   },
 } as const;
 
@@ -94,7 +94,7 @@ export function ServicesSection() {
           className="mb-16 text-center"
         >
           <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-3 py-1 text-xs font-bold uppercase tracking-[0.16em] text-[#74695b]">
-            <Sparkles className="h-3 w-3 text-blue-700" />
+            <Sparkles className="h-3 w-3 text-[#004225]" />
             Pricing
           </span>
           <h2 className="text-3xl font-bold tracking-tight text-[#11100e] sm:text-4xl md:text-5xl">High-velocity product building.</h2>
@@ -156,7 +156,7 @@ export function ServicesSection() {
               <Link
                 href="#contact"
                 className={tier.popular 
-                  ? "inline-flex w-full items-center justify-center gap-2 rounded-xl bg-blue-700 px-6 py-4 text-sm font-bold text-white transition-colors hover:bg-[#11100e]" 
+                  ? "inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#004225] px-6 py-4 text-sm font-bold text-white transition-colors hover:bg-[#11100e]" 
                   : "inline-flex w-full items-center justify-center gap-2 rounded-xl border border-black/10 bg-white px-6 py-4 text-sm font-bold text-[#11100e] transition-colors hover:bg-black/[0.03]"
                 }
               >

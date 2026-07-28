@@ -32,7 +32,7 @@ export default function PrivacyPage() {
         </p>
         <p>
           You can request correction or deletion of your data by emailing{" "}
-          <a className="font-semibold text-blue-700 underline" href={`mailto:${CONTACT_EMAILS.company}`}>{CONTACT_EMAILS.company}</a>.
+          <a className="font-semibold text-[#004225] underline" href={`mailto:${CONTACT_EMAILS.company}`}>{CONTACT_EMAILS.company}</a>.
         </p>
       </article>
     </main>

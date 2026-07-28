@@ -12,10 +12,10 @@ export function ProjectStubPage({ config }: { config: WorkStubConfig }) {
   const mailto = `mailto:${CONTACT_EMAILS.company}?subject=${config.emailSubject}`;
 
   return (
-    <div className="relative min-h-screen overflow-x-hidden bg-[#f8f6ef] text-[#11100e] selection:bg-blue-700/15">
+    <div className="relative min-h-screen overflow-x-hidden bg-[#f8f6ef] text-[#11100e] selection:bg-[#004225]/15">
       <div className="pointer-events-none fixed inset-0 z-0">
         <div className="absolute inset-0 bg-dot-grid opacity-[0.08]" />
-        <div className="absolute left-1/2 top-[-20%] h-[620px] w-[1100px] -translate-x-1/2 rounded-full bg-[#f59e0b]/[0.05] blur-[140px]" />
+        <div className="absolute left-1/2 top-[-20%] h-[620px] w-[1100px] -translate-x-1/2 rounded-full bg-[#004225]/[0.05] blur-[140px]" />
       </div>
 
       <header className="sticky top-0 z-40 border-b border-black/10 bg-[#f8f6ef]/85 backdrop-blur-xl">

@@ -27,7 +27,7 @@ const FAQS = [
 
 export function FAQSection() {
   return (
-    <section className="border-t border-black/10 bg-[#fffaf0] px-6 py-24 text-[#11100e] md:py-32">
+    <section className="border-t border-black/10 bg-[#fffaf0] px-6 py-16 text-[#11100e] sm:py-24 md:py-32">
       <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.8fr_1.2fr]">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
@@ -53,7 +53,7 @@ export function FAQSection() {
               className="group rounded-2xl border border-black/10 bg-white p-6 shadow-[0_14px_45px_-36px_rgba(17,16,14,0.28)] open:bg-black/[0.02]"
               open={index === 0}
             >
-              <summary className="cursor-pointer list-none text-lg font-bold tracking-tight text-[#11100e] marker:hidden">
+              <summary className="cursor-pointer list-none text-base font-bold tracking-tight text-[#11100e] marker:hidden sm:text-lg">
                 <span className="flex items-center justify-between gap-5">
                   {item.question}
                   <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-black/10 text-[#74695b] transition-colors group-open:text-[#11100e]">

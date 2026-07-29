@@ -7,7 +7,7 @@ import Image from "next/image";
 
 export function HeroSection({ onOpenProject }: { onOpenProject: (slug: string) => void }) {
   return (
-    <section className="relative overflow-hidden bg-[#f8f6ef] px-6 pb-20 pt-24 text-[#11100e] md:pb-32 md:pt-32 lg:pb-40 lg:pt-40">
+    <section className="relative overflow-hidden bg-[#f8f6ef] px-4 pb-16 pt-20 text-[#11100e] sm:px-6 sm:pb-20 sm:pt-24 md:pb-32 md:pt-32 lg:pb-40 lg:pt-40">
       {/* Dynamic Background */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-x-0 top-0 h-px bg-black/[0.06]" />
@@ -22,18 +22,18 @@ export function HeroSection({ onOpenProject }: { onOpenProject: (slug: string) =
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="text-left"
           >
-            <h1 className="text-balance text-4xl font-bold leading-[1.04] tracking-tight text-[#11100e] sm:text-5xl md:text-6xl lg:text-7xl">
-              Turn your business operations into 
-              <span className="mt-2 block">profitable software.</span>
+            <h1 className="text-balance text-3xl font-bold leading-[1.04] tracking-tight text-[#11100e] sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl">
+              Turn your business operations into{" "}
+              <span className="sm:mt-2 sm:block">profitable software.</span>
             </h1>
 
-            <p className="mt-8 max-w-xl text-lg leading-relaxed text-[#5f5548] sm:text-xl">
+            <p className="mt-6 max-w-xl text-base leading-relaxed text-[#5f5548] sm:mt-8 sm:text-lg md:text-xl">
               We don&apos;t just build apps. We build automation, visibility, and control. 
               From workshop management to voice-powered billing, we transform 
               manual work into digital assets.
             </p>
 
-            <div className="mt-8 flex flex-wrap gap-x-8 gap-y-4 text-[13px] font-bold uppercase tracking-widest text-[#74695b]">
+            <div className="mt-6 flex flex-wrap gap-x-4 gap-y-3 text-[11px] font-bold uppercase tracking-widest text-[#74695b] sm:mt-8 sm:gap-x-8 sm:gap-y-4 sm:text-[13px]">
               <span className="flex items-center gap-2.5">
                 <div className="h-1.5 w-1.5 rounded-full bg-[#11100e]" />
                 Fixed Pricing
@@ -52,13 +52,13 @@ export function HeroSection({ onOpenProject }: { onOpenProject: (slug: string) =
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.6 }}
-              className="mt-12 flex flex-col items-center gap-5 sm:flex-row sm:justify-start"
+              className="mt-10 flex flex-col gap-4 sm:mt-12 sm:flex-row sm:items-center sm:gap-5"
             >
-              <Link href="#contact" className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#11100e] px-8 py-3.5 text-sm font-bold text-white transition-colors hover:bg-[#004225]">
+              <Link href="#contact" className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#11100e] px-6 py-3.5 text-sm font-bold text-white transition-colors hover:bg-[#004225] sm:w-auto sm:px-8">
                 Get a Quote
                 <ArrowRight className="h-5 w-5" />
               </Link>
-              <Link href="#portfolio" className="inline-flex items-center justify-center gap-2 rounded-xl border border-black/10 bg-white px-8 py-3.5 text-sm font-bold text-[#11100e] transition-colors hover:bg-black/[0.03]">
+              <Link href="#portfolio" className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-black/10 bg-white px-6 py-3.5 text-sm font-bold text-[#11100e] transition-colors hover:bg-black/[0.03] sm:w-auto sm:px-8">
                 Browse Solutions
               </Link>
             </motion.div>
@@ -85,16 +85,16 @@ export function HeroSection({ onOpenProject }: { onOpenProject: (slug: string) =
                 <div className="absolute inset-0 bg-gradient-to-t from-black/[0.08] via-transparent to-transparent opacity-60 transition-opacity group-hover:opacity-30" />
                </div>
               
-              <div className="absolute bottom-10 left-10 right-10">
-                <div className="flex items-center gap-5 rounded-2xl border border-black/10 bg-white/90 p-5 shadow-[0_18px_50px_-35px_rgba(17,16,14,0.45)] backdrop-blur-xl transition-all">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#11100e]">
-                    <PlayCircle className="h-8 w-8 text-white" />
+              <div className="absolute bottom-4 left-4 right-4 sm:bottom-8 sm:left-8 sm:right-8 lg:bottom-10 lg:left-10 lg:right-10">
+                <div className="flex items-center gap-3 rounded-2xl border border-black/10 bg-white/90 p-3 shadow-[0_18px_50px_-35px_rgba(17,16,14,0.45)] backdrop-blur-xl transition-all sm:gap-5 sm:p-5">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#11100e] sm:h-12 sm:w-12">
+                    <PlayCircle className="h-6 w-6 text-white sm:h-8 sm:w-8" />
                   </div>
-                  <div>
-                    <p className="text-lg font-bold tracking-tight text-[#11100e]">Watch TeraMotors Demo</p>
-                    <p className="text-sm font-medium text-[#5f5548]">Click to see it in action</p>
+                  <div className="min-w-0 flex-1">
+                    <p className="text-sm font-bold tracking-tight text-[#11100e] sm:text-lg">Watch TeraMotors Demo</p>
+                    <p className="text-xs font-medium text-[#5f5548] sm:text-sm">Click to see it in action</p>
                   </div>
-                  <div className="ml-auto hidden sm:block">
+                  <div className="ml-auto hidden shrink-0 sm:block">
                      <div className="flex h-10 w-10 items-center justify-center rounded-full border border-black/10 transition-colors group-hover:border-[#004225]/30">
                         <ArrowRight className="h-5 w-5 text-[#11100e]" />
                      </div>

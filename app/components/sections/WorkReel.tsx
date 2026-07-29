@@ -47,7 +47,7 @@ const REEL_ITEMS = [
 
 export function WorkReelSection() {
   return (
-    <section className="overflow-hidden bg-[#fffaf0] px-6 py-24 text-[#11100e] md:py-32">
+    <section className="overflow-hidden bg-[#fffaf0] px-6 py-16 text-[#11100e] sm:py-24 md:py-32">
       <div className="mx-auto max-w-7xl">
         <div className="mb-12 flex flex-col justify-between gap-6 md:flex-row md:items-end">
           <motion.div

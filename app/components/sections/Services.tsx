@@ -84,7 +84,7 @@ const TIER_STYLES = {
 
 export function ServicesSection() {
   return (
-    <section id="services" className="border-t border-black/10 bg-[#f8f6ef] px-6 py-24 text-[#11100e] md:py-32">
+    <section id="services" className="border-t border-black/10 bg-[#f8f6ef] px-6 py-16 text-[#11100e] sm:py-24 md:py-32">
       <div className="mx-auto max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
@@ -114,7 +114,7 @@ export function ServicesSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                className={`relative flex flex-col rounded-2xl border border-black/10 bg-white p-10 shadow-[0_18px_55px_-42px_rgba(17,16,14,0.35)] transition-all ${styles.hover} ${
+                className={`relative flex flex-col rounded-2xl border border-black/10 bg-white p-6 shadow-[0_18px_55px_-42px_rgba(17,16,14,0.35)] sm:p-10 transition-all ${styles.hover} ${
                   tier.popular
                     ? `ring-1 ${styles.ring}`
                     : ""

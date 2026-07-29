@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Check, ArrowRight, ShieldCheck, Zap, Globe, Sparkles } from "lucide-react";
 import Link from "next/link";
+import { useMobileMotion } from "@/app/hooks/use-mobile-motion";
 
 const TIERS = [
   {
@@ -83,14 +84,16 @@ const TIER_STYLES = {
 } as const;
 
 export function ServicesSection() {
+  const { shouldReduceMotion } = useMobileMotion();
+
   return (
     <section id="services" className="border-t border-black/10 bg-[#f8f6ef] px-6 py-16 text-[#11100e] sm:py-24 md:py-32">
       <div className="mx-auto max-w-7xl">
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: shouldReduceMotion ? 8 : 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: shouldReduceMotion ? 0.3 : 0.5 }}
           className="mb-16 text-center"
         >
           <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-3 py-1 text-xs font-bold uppercase tracking-[0.16em] text-[#74695b]">
@@ -110,10 +113,10 @@ export function ServicesSection() {
             return (
               <motion.div
                 key={tier.name}
-                initial={{ opacity: 0, y: 24 }}
+                initial={{ opacity: 0, y: shouldReduceMotion ? 8 : 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
+                transition={{ duration: shouldReduceMotion ? 0.3 : 0.5, delay: shouldReduceMotion ? 0 : i * 0.1 }}
                 className={`relative flex flex-col rounded-2xl border border-black/10 bg-white p-6 shadow-[0_18px_55px_-42px_rgba(17,16,14,0.35)] sm:p-10 transition-all ${styles.hover} ${
                   tier.popular
                     ? `ring-1 ${styles.ring}`

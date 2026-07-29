@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight, PlayCircle } from "lucide-react";
 import Image from "next/image";
+import { useMobileMotion } from "@/app/hooks/use-mobile-motion";
 
 const REEL_ITEMS = [
   {
@@ -46,15 +47,18 @@ const REEL_ITEMS = [
 ];
 
 export function WorkReelSection() {
+  const { shouldReduceMotion } = useMobileMotion();
+  const reelItems = shouldReduceMotion ? REEL_ITEMS : [...REEL_ITEMS, ...REEL_ITEMS];
+
   return (
     <section className="overflow-hidden bg-[#fffaf0] px-6 py-16 text-[#11100e] sm:py-24 md:py-32">
       <div className="mx-auto max-w-7xl">
         <div className="mb-12 flex flex-col justify-between gap-6 md:flex-row md:items-end">
           <motion.div
-            initial={{ opacity: 0, y: 16 }}
+            initial={{ opacity: 0, y: shouldReduceMotion ? 8 : 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: shouldReduceMotion ? 0.3 : 0.5 }}
           >
             <span className="mb-4 inline-flex rounded-full border border-black/10 bg-white px-3 py-1 text-xs font-bold uppercase tracking-[0.16em] text-[#74695b]">
               Product reel
@@ -74,10 +78,10 @@ export function WorkReelSection() {
       </div>
 
       <div className="relative">
-        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-[#fffaf0] to-transparent" />
-        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-[#fffaf0] to-transparent" />
-        <div className="flex animate-work-reel gap-5 pr-5">
-          {[...REEL_ITEMS, ...REEL_ITEMS].map((item, index) => (
+        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 hidden w-24 bg-gradient-to-r from-[#fffaf0] to-transparent sm:block" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 hidden w-24 bg-gradient-to-l from-[#fffaf0] to-transparent sm:block" />
+        <div className="mobile-scroll-reel flex animate-work-reel gap-5 px-6 pr-5 sm:px-0">
+          {reelItems.map((item, index) => (
             <figure
               key={`${item.title}-${index}`}
               className={`group relative shrink-0 overflow-hidden rounded-2xl border border-black/10 bg-white shadow-[0_20px_60px_-44px_rgba(17,16,14,0.42)] ${

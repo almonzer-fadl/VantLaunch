@@ -49,10 +49,12 @@ body {
 
   .animate-logo-marquee {
     animation: logo-marquee 28s linear infinite;
+    will-change: transform;
   }
 
   .animate-work-reel {
     animation: work-reel 46s linear infinite;
+    will-change: transform;
   }
 
   .animate-work-reel:hover,
@@ -268,5 +270,32 @@ body {
   .animate-logo-marquee,
   .animate-work-reel {
     animation: none;
+    transform: none;
+    will-change: auto;
+  }
+}
+
+@media (max-width: 767px), (pointer: coarse) {
+  .animate-logo-marquee,
+  .animate-work-reel {
+    animation: none;
+    transform: none;
+    will-change: auto;
+  }
+
+  .mobile-scroll-reel {
+    -webkit-overflow-scrolling: touch;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
+  }
+
+  .mobile-scroll-reel::-webkit-scrollbar {
+    display: none;
+  }
+
+  .mobile-scroll-reel > * {
+    scroll-snap-align: start;
   }
 }

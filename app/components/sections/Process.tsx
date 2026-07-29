@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Search, Layers, Send, CheckCircle2 } from "lucide-react";
+import { useMobileMotion } from "@/app/hooks/use-mobile-motion";
 
 const STEPS = [
   {
@@ -49,14 +50,16 @@ const STEP_STYLES = {
 } as const;
 
 export function ProcessSection() {
+  const { shouldReduceMotion } = useMobileMotion();
+
   return (
     <section id="process" className="border-t border-black/10 bg-[#f8f6ef] px-6 py-16 text-[#11100e] sm:py-24 md:py-32">
       <div className="mx-auto max-w-7xl">
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: shouldReduceMotion ? 8 : 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: shouldReduceMotion ? 0.3 : 0.5 }}
           className="mb-16 text-center"
         >
           <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-3 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-[#74695b]">
@@ -76,10 +79,10 @@ export function ProcessSection() {
             return (
               <motion.div
                 key={step.title}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: shouldReduceMotion ? 8 : 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.5, delay: i * 0.12 }}
+                transition={{ duration: shouldReduceMotion ? 0.3 : 0.5, delay: shouldReduceMotion ? 0 : i * 0.12 }}
                 className="relative overflow-hidden rounded-2xl border border-black/10 bg-white p-6 shadow-[0_18px_55px_-42px_rgba(17,16,14,0.35)] sm:p-10 transition-all hover:bg-black/[0.03]"
               >
                 <div className={`absolute -right-8 -top-8 h-32 w-32 rounded-full ${styles.glow} blur-3xl`} />
@@ -96,7 +99,7 @@ export function ProcessSection() {
                     initial={{ width: 0 }}
                     whileInView={{ width: "100%" }}
                     viewport={{ once: true }}
-                    transition={{ duration: 1, delay: i * 0.2 + 0.5 }}
+                    transition={{ duration: shouldReduceMotion ? 0.45 : 1, delay: shouldReduceMotion ? 0.1 : i * 0.2 + 0.5 }}
                     className={`h-full ${styles.bar}`}
                   />
                 </div>

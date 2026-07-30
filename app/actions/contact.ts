@@ -18,7 +18,7 @@ export async function sendContactEmail(formData: FormData) {
   const name = formData.get("name") as string;
   const email = formData.get("email") as string;
   const company = formData.get("company") as string;
-  const role = formData.get("role") as string;
+  const role = (formData.get("role") as string) || "Not provided";
   const message = formData.get("message") as string;
   const productInterest = (formData.get("product_interest") as string) || "General VantLaunch inquiry";
   const timeline = (formData.get("timeline") as string) || "Not provided";
@@ -28,7 +28,7 @@ export async function sendContactEmail(formData: FormData) {
     return { success: true };
   }
 
-  if (!name || !email || !company || !role || !message || !productInterest || !timeline) {
+  if (!name || !email || !company || !message || !productInterest || !timeline) {
     return { success: false, error: "All fields are required." };
   }
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;

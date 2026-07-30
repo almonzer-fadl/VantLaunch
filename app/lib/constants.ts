@@ -2,6 +2,8 @@ import { Sparkles, MonitorPlay, Rocket } from "lucide-react";
 
 export const EASE_CURSOR: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
+export const POLAR_ORG = "vantlaunch";
+
 export const SOCIAL_LINKS = {
   x: "https://x.com/vantlaunch",
   github: "https://github.com/vantlaunch",

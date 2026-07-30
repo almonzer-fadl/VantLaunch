@@ -29,28 +29,28 @@ export function HeroSection({ onOpenProject }: { onOpenProject: (slug: string) =
             className="text-left"
           >
             <h1 className="text-balance text-3xl font-bold leading-[1.04] tracking-tight text-[#11100e] sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl">
-              Turn your business operations into{" "}
-              <span className="sm:mt-2 sm:block">profitable software.</span>
+              Your business runs on too many tools.{' '}
+              <span className="sm:mt-2 sm:block">We build you one. That you own.</span>
             </h1>
 
             <p className="mt-6 max-w-xl text-base leading-relaxed text-[#5f5548] sm:mt-8 sm:text-lg md:text-xl">
-              We don&apos;t just build apps. We build automation, visibility, and control. 
-              From workshop management to voice-powered billing, we transform 
-              manual work into digital assets.
+              Websites, client portals, CRM, invoicing, dashboards, analytics, and automations —
+              built into one owned operating system around your process. No scattered tools.
+              No subscription chaos. Maintained monthly.
             </p>
 
             <div className="mt-6 flex flex-wrap gap-x-4 gap-y-3 text-[11px] font-bold uppercase tracking-widest text-[#74695b] sm:mt-8 sm:gap-x-8 sm:gap-y-4 sm:text-[13px]">
               <span className="flex items-center gap-2.5">
                 <div className="h-1.5 w-1.5 rounded-full bg-[#11100e]" />
-                Fixed Pricing
+                Build + Retainer
               </span>
               <span className="flex items-center gap-2.5">
                 <div className="h-1.5 w-1.5 rounded-full bg-[#11100e]" />
-                Rapid Delivery
+                You Own the Code
               </span>
               <span className="flex items-center gap-2.5">
                 <div className="h-1.5 w-1.5 rounded-full bg-[#11100e]" />
-                Lifetime Ownership
+                Monthly Maintenance
               </span>
             </div>
 
@@ -61,11 +61,11 @@ export function HeroSection({ onOpenProject }: { onOpenProject: (slug: string) =
               className="mt-10 flex flex-col gap-4 sm:mt-12 sm:flex-row sm:items-center sm:gap-5"
             >
               <Link href="#contact" className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#11100e] px-6 py-3.5 text-sm font-bold text-white transition-colors hover:bg-[#004225] sm:w-auto sm:px-8">
-                Get a Quote
+                Build my system
                 <ArrowRight className="h-5 w-5" />
               </Link>
               <Link href="#portfolio" className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-black/10 bg-white px-6 py-3.5 text-sm font-bold text-[#11100e] transition-colors hover:bg-black/[0.03] sm:w-auto sm:px-8">
-                Browse Solutions
+                See proof
               </Link>
             </motion.div>
           </motion.div>

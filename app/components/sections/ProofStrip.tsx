@@ -4,10 +4,10 @@ import { motion } from "framer-motion";
 import { useMobileMotion } from "@/app/hooks/use-mobile-motion";
 
 const PROOF_STATS = [
-  { value: "8+", label: "shipped products" },
-  { value: "3-8w", label: "typical delivery" },
-  { value: "$1.5k+", label: "fixed-price builds" },
+  { value: "8+", label: "systems shipped" },
+  { value: "3-8w", label: "typical build" },
   { value: "100%", label: "source ownership" },
+  { value: "monthly", label: "maintenance included" },
 ];
 
 const PRODUCT_MARKS = ["TeraMotors", "SpeakBill", "Gari", "Araba", "Salasel"];
@@ -25,10 +25,10 @@ export function ProofStripSection() {
           viewport={{ once: true }}
           transition={{ duration: shouldReduceMotion ? 0.28 : 0.45 }}
         >
-          <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#74695b]">Proof of shipping</p>
+          <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#74695b]">Proof of work</p>
           <p className="mt-2 max-w-xl text-sm font-medium leading-relaxed text-[#5f5548]">
-            VantLaunch is built around real product work: dashboards, portals, mobile flows,
-            invoicing, workshop operations, and marketplace experiences.
+            Real operating systems shipped for workshops, freelancers, and service businesses —
+            replacing scattered tools with one owned platform.
           </p>
         </motion.div>
 

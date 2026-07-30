@@ -50,15 +50,15 @@ export function StudioProofSection() {
             transition={{ duration: shouldReduceMotion ? 0.3 : 0.55 }}
           >
             <span className="inline-flex rounded-full border border-black/10 bg-white px-3 py-1 text-xs font-bold uppercase tracking-[0.16em] text-[#5f5548]">
-              Studio operating system
+              How we deliver
             </span>
             <h2 className="mt-5 max-w-2xl text-4xl font-bold leading-[1.05] tracking-tight sm:text-5xl">
-              Fixed-price software builds with the boring parts handled properly.
+              We don&apos;t just write code. We replace the mess with a system you own.
             </h2>
             <p className="mt-6 max-w-xl text-base font-medium leading-relaxed text-[#5f5548] sm:text-lg">
-              The strongest agency sites feel confident because they show what clients get. This
-              section makes the VantLaunch offer concrete: planning, screens, build, launch, and
-              ownership.
+              Every engagement produces a business requirements document, wireframes, a working
+              product, source access, and a deployment you control — plus monthly maintenance
+              to keep everything running and improving.
             </p>
           </motion.div>
 

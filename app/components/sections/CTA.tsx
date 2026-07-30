@@ -20,10 +20,10 @@ export function CTASection() {
           className="mb-16 text-center"
         >
           <span className="mb-4 inline-flex rounded-full border border-black/10 bg-white px-3 py-1 text-xs font-bold uppercase tracking-[0.16em] text-[#74695b]">Contact</span>
-          <h2 className="text-3xl font-bold tracking-tight text-[#11100e] sm:text-4xl md:text-5xl">Start a project.</h2>
+          <h2 className="text-3xl font-bold tracking-tight text-[#11100e] sm:text-4xl md:text-5xl">Tell us what tools you&apos;re using now.</h2>
           <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-[#5f5548] sm:text-lg">
-            Tell us what you need. We will review and respond within 24 hours —
-            usually with a few questions and a rough timeline.
+            We&apos;ll show you what can be replaced by one owned operating system.
+            Response within 24 hours — usually with a few questions and a rough timeline.
           </p>
         </motion.div>
 
@@ -92,6 +92,7 @@ function ContactForm() {
         className="hidden"
         aria-hidden="true"
       />
+      <input type="hidden" name="role" value="Lead" />
 
       <div>
         <label className="mb-2 block text-xs font-bold uppercase tracking-wider text-[#74695b]">
@@ -136,16 +137,17 @@ function ContactForm() {
             Project tier
           </label>
           <select
-            name="tier"
+            name="product_interest"
             defaultValue=""
             className="w-full rounded-xl border border-black/10 bg-[#f8f6ef] px-4 py-3 text-sm font-medium text-[#11100e] transition-all focus:border-[#004225]/40 focus:outline-none focus:ring-1 focus:ring-[#004225]/20"
           >
             <option value="" disabled className="bg-white text-[#74695b]">
               Select tier
             </option>
-            <option value="dashboard" className="bg-white text-[#11100e]">Dashboard — $1,500</option>
-            <option value="portal" className="bg-white text-[#11100e]">Portal + Dashboard — $3,000</option>
-            <option value="mobile" className="bg-white text-[#11100e]">Mobile Native — $5,000+</option>
+            <option value="foundation" className="bg-white text-[#11100e]">Foundation — Website &amp; Leads</option>
+            <option value="portal" className="bg-white text-[#11100e]">Portal — Client Operations</option>
+            <option value="command" className="bg-white text-[#11100e]">Command — Internal Workflows</option>
+            <option value="os" className="bg-white text-[#11100e]">OS — Complete System</option>
             <option value="not-sure" className="bg-white text-[#11100e]">Not sure yet</option>
           </select>
         </div>

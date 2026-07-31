@@ -24,7 +24,7 @@ export function VenturesSection({
   const scale = useTransform(scrollYProgress, [0, 1], [1.02, 1.08]);
 
   return (
-    <section ref={sectionRef} id="ventures" className="border-t border-black/[0.06] bg-[#fffaf0] px-6 py-20 text-[#11100e] md:py-32">
+    <section ref={sectionRef} id="ventures" className="border-t border-black/[0.06] bg-[#fff9ed] px-6 py-20 text-[#17140d] md:py-32">
       <motion.div
         className="max-w-7xl mx-auto"
         initial="hidden"
@@ -75,7 +75,7 @@ function GariVentureCard({
       <div onClick={onOpen} className="h-full cursor-pointer group">
         <CardPointerGlow className="relative flex h-full min-h-[520px] flex-col justify-end overflow-hidden rounded-2xl border border-black/10 bg-white transition-colors hover:bg-black/[0.03] lg:min-h-[560px]">
           <motion.div
-            className="absolute inset-0 z-0 bg-[#eef2f8]"
+            className="absolute inset-0 z-0 bg-[#efe2c7]"
             style={reduced ? undefined : { y: parallax, scale }}
           >
             <div className="absolute inset-x-6 top-8 flex justify-center gap-4 sm:gap-6 md:top-10">
@@ -85,7 +85,7 @@ function GariVentureCard({
               ].map((screen, index) => (
                 <div
                   key={screen.src}
-                  className={`w-[34%] min-w-[128px] max-w-[210px] overflow-hidden rounded-[1.6rem] border border-black/10 bg-white shadow-[0_18px_55px_-42px_rgba(17,16,14,0.35)] transition-transform duration-700 group-hover:scale-[1.025] ${
+                  className={`w-[34%] min-w-[128px] max-w-[210px] overflow-hidden rounded-[1.6rem] border border-black/10 bg-white shadow-[0_18px_55px_-42px_rgba(23,20,13,0.35)] transition-transform duration-700 group-hover:scale-[1.025] ${
                     index === 1 ? "mt-10" : ""
                   }`}
                 >
@@ -106,10 +106,10 @@ function GariVentureCard({
 
           <div className="relative z-10 max-w-2xl p-10 md:p-12">
             <h3 className="type-portfolio-product-title">Gari</h3>
-            <p className="mt-3 text-lg leading-relaxed text-[#5f5548]">
+            <p className="mt-3 text-lg leading-relaxed text-[#695b45]">
               Find workshops, track service, manage vehicles, and pay from one mobile app.
             </p>
-            <span className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-[#11100e]">
+            <span className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-[#17140d]">
               View Gari screens
               <ArrowUpRight className="h-5 w-5" />
             </span>
@@ -125,9 +125,9 @@ function SpeakBillPreviewCard({ onOpen }: { onOpen: () => void }) {
     <motion.div variants={fadeSlide} className="md:col-span-4">
       <div onClick={onOpen} className="h-full cursor-pointer group">
         <CardPointerGlow className="relative flex h-full min-h-[520px] flex-col justify-end overflow-hidden rounded-2xl border border-black/10 bg-white transition-colors hover:bg-black/[0.03] lg:min-h-[560px]">
-          <div className="absolute inset-0 z-0 bg-[#eef2f8]">
+          <div className="absolute inset-0 z-0 bg-[#efe2c7]">
             <div className="absolute inset-0 flex items-start justify-center pt-10">
-              <div className="w-[42%] min-w-[140px] max-w-[200px] overflow-hidden rounded-[1.6rem] border border-black/10 bg-white shadow-[0_18px_55px_-42px_rgba(17,16,14,0.35)] transition-transform duration-700 group-hover:scale-[1.025]">
+              <div className="w-[42%] min-w-[140px] max-w-[200px] overflow-hidden rounded-[1.6rem] border border-black/10 bg-white shadow-[0_18px_55px_-42px_rgba(23,20,13,0.35)] transition-transform duration-700 group-hover:scale-[1.025]">
                 <div className="relative aspect-[9/19] w-full">
                   <Image
                     src="/media/speakbill-phone-mic.png"
@@ -154,10 +154,10 @@ function SpeakBillPreviewCard({ onOpen }: { onOpen: () => void }) {
           
           <div className="relative z-10 max-w-2xl p-10 md:p-12">
             <h3 className="type-portfolio-product-title">SpeakBill</h3>
-            <p className="mt-3 text-lg leading-relaxed text-[#5f5548]">
+            <p className="mt-3 text-lg leading-relaxed text-[#695b45]">
               Voice-to-invoice. Speak and get a clean invoice in seconds.
             </p>
-            <span className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-[#11100e] transition-colors hover:text-[#004225]">
+            <span className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-[#17140d] transition-colors hover:text-[#00401f]">
               View details
               <ArrowUpRight className="h-5 w-5" />
             </span>

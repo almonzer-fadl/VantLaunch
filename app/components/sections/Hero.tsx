@@ -13,11 +13,11 @@ export function HeroSection({ onOpenProject }: { onOpenProject: (slug: string) =
   const mediaY = shouldReduceMotion ? 8 : 20;
 
   return (
-    <section className="relative overflow-hidden bg-[#f8f6ef] px-4 pb-16 pt-20 text-[#11100e] sm:px-6 sm:pb-20 sm:pt-24 md:pb-32 md:pt-32 lg:pb-40 lg:pt-40">
+    <section className="relative overflow-hidden bg-[#fbf4e2] px-4 pb-16 pt-20 text-[#17140d] sm:px-6 sm:pb-20 sm:pt-24 md:pb-32 md:pt-32 lg:pb-40 lg:pt-40">
       {/* Dynamic Background */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-x-0 top-0 h-px bg-black/[0.06]" />
-        <div className="absolute bottom-[-18rem] left-1/2 hidden h-[34rem] w-[72rem] -translate-x-1/2 rounded-full bg-[#004225]/[0.06] blur-[120px] sm:block" />
+        <div className="absolute bottom-[-18rem] left-1/2 hidden h-[34rem] w-[72rem] -translate-x-1/2 rounded-full bg-[#00401f]/[0.06] blur-[120px] sm:block" />
       </div>
 
       <div className="relative z-10 mx-auto max-w-7xl">
@@ -28,28 +28,28 @@ export function HeroSection({ onOpenProject }: { onOpenProject: (slug: string) =
             transition={{ duration: shouldReduceMotion ? 0.35 : 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="text-left"
           >
-            <h1 className="text-balance text-3xl font-bold leading-[1.04] tracking-tight text-[#11100e] sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl">
+            <h1 className="text-balance text-3xl font-bold leading-[1.04] tracking-tight text-[#17140d] sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl">
               Your business runs on too many tools.{' '}
               <span className="sm:mt-2 sm:block">We build you one. That you own.</span>
             </h1>
 
-            <p className="mt-6 max-w-xl text-base leading-relaxed text-[#5f5548] sm:mt-8 sm:text-lg md:text-xl">
+            <p className="mt-6 max-w-xl text-base leading-relaxed text-[#695b45] sm:mt-8 sm:text-lg md:text-xl">
               Websites, client portals, CRM, invoicing, dashboards, analytics, and automations —
               built into one owned operating system around your process. No scattered tools.
               No subscription chaos. Maintained monthly.
             </p>
 
-            <div className="mt-6 flex flex-wrap gap-x-4 gap-y-3 text-[11px] font-bold uppercase tracking-widest text-[#74695b] sm:mt-8 sm:gap-x-8 sm:gap-y-4 sm:text-[13px]">
+            <div className="mt-6 flex flex-wrap gap-x-4 gap-y-3 text-[11px] font-bold uppercase tracking-widest text-[#8a7657] sm:mt-8 sm:gap-x-8 sm:gap-y-4 sm:text-[13px]">
               <span className="flex items-center gap-2.5">
-                <div className="h-1.5 w-1.5 rounded-full bg-[#11100e]" />
+                <div className="h-1.5 w-1.5 rounded-full bg-[#17140d]" />
                 Build + Retainer
               </span>
               <span className="flex items-center gap-2.5">
-                <div className="h-1.5 w-1.5 rounded-full bg-[#11100e]" />
+                <div className="h-1.5 w-1.5 rounded-full bg-[#17140d]" />
                 You Own the Code
               </span>
               <span className="flex items-center gap-2.5">
-                <div className="h-1.5 w-1.5 rounded-full bg-[#11100e]" />
+                <div className="h-1.5 w-1.5 rounded-full bg-[#17140d]" />
                 Monthly Maintenance
               </span>
             </div>
@@ -60,11 +60,11 @@ export function HeroSection({ onOpenProject }: { onOpenProject: (slug: string) =
               transition={{ delay: shouldReduceMotion ? 0.05 : 0.4, duration: shouldReduceMotion ? 0.3 : 0.6 }}
               className="mt-10 flex flex-col gap-4 sm:mt-12 sm:flex-row sm:items-center sm:gap-5"
             >
-              <Link href="#contact" className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#11100e] px-6 py-3.5 text-sm font-bold text-white transition-colors hover:bg-[#004225] sm:w-auto sm:px-8">
+              <Link href="#contact" className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#17140d] px-6 py-3.5 text-sm font-bold text-white transition-colors hover:bg-[#00401f] sm:w-auto sm:px-8">
                 Build my system
                 <ArrowRight className="h-5 w-5" />
               </Link>
-              <Link href="#portfolio" className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-black/10 bg-white px-6 py-3.5 text-sm font-bold text-[#11100e] transition-colors hover:bg-black/[0.03] sm:w-auto sm:px-8">
+              <Link href="#portfolio" className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-black/10 bg-white px-6 py-3.5 text-sm font-bold text-[#17140d] transition-colors hover:bg-black/[0.03] sm:w-auto sm:px-8">
                 See proof
               </Link>
             </motion.div>
@@ -78,9 +78,9 @@ export function HeroSection({ onOpenProject }: { onOpenProject: (slug: string) =
           >
             <div 
               onClick={() => onOpenProject("teramotors")}
-              className="group relative aspect-[16/10] w-full cursor-pointer overflow-hidden rounded-2xl border border-black/10 bg-white p-2 shadow-[0_28px_80px_-56px_rgba(17,16,14,0.5)] transition-all hover:bg-black/[0.02]"
+              className="group relative aspect-[16/10] w-full cursor-pointer overflow-hidden rounded-2xl border border-black/10 bg-white p-2 shadow-[0_28px_80px_-56px_rgba(23,20,13,0.5)] transition-all hover:bg-black/[0.02]"
             >
-               <div className="relative h-full w-full overflow-hidden rounded-xl bg-[#eef2f8]">
+               <div className="relative h-full w-full overflow-hidden rounded-xl bg-[#efe2c7]">
                  <Image
                   src="/media/teramotors-dashboard.webp"
                   alt="TeraMotors Dashboard"
@@ -92,17 +92,17 @@ export function HeroSection({ onOpenProject }: { onOpenProject: (slug: string) =
                </div>
               
               <div className="absolute bottom-4 left-4 right-4 sm:bottom-8 sm:left-8 sm:right-8 lg:bottom-10 lg:left-10 lg:right-10">
-                <div className="flex items-center gap-3 rounded-2xl border border-black/10 bg-white/95 p-3 shadow-[0_18px_50px_-35px_rgba(17,16,14,0.45)] transition-all sm:gap-5 sm:bg-white/90 sm:p-5 sm:backdrop-blur-xl">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#11100e] sm:h-12 sm:w-12">
+                <div className="flex items-center gap-3 rounded-2xl border border-black/10 bg-white/95 p-3 shadow-[0_18px_50px_-35px_rgba(23,20,13,0.45)] transition-all sm:gap-5 sm:bg-white/90 sm:p-5 sm:backdrop-blur-xl">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#17140d] sm:h-12 sm:w-12">
                     <PlayCircle className="h-6 w-6 text-white sm:h-8 sm:w-8" />
                   </div>
                   <div className="min-w-0 flex-1">
-                    <p className="text-sm font-bold tracking-tight text-[#11100e] sm:text-lg">Watch TeraMotors Demo</p>
-                    <p className="text-xs font-medium text-[#5f5548] sm:text-sm">Click to see it in action</p>
+                    <p className="text-sm font-bold tracking-tight text-[#17140d] sm:text-lg">Watch TeraMotors Demo</p>
+                    <p className="text-xs font-medium text-[#695b45] sm:text-sm">Click to see it in action</p>
                   </div>
                   <div className="ml-auto hidden shrink-0 sm:block">
-                     <div className="flex h-10 w-10 items-center justify-center rounded-full border border-black/10 transition-colors group-hover:border-[#004225]/30">
-                        <ArrowRight className="h-5 w-5 text-[#11100e]" />
+                     <div className="flex h-10 w-10 items-center justify-center rounded-full border border-black/10 transition-colors group-hover:border-[#00401f]/30">
+                        <ArrowRight className="h-5 w-5 text-[#17140d]" />
                      </div>
                   </div>
                 </div>

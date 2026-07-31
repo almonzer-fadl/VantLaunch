@@ -31,7 +31,7 @@ const PILLARS = [
 
 export function TeraMotorsPricingSection() {
   return (
-    <section id="pricing" className="border-t border-black/[0.06] bg-[#f8f6ef] px-6 py-20 text-[#11100e] md:py-28">
+    <section id="pricing" className="border-t border-black/[0.06] bg-[#fbf4e2] px-6 py-20 text-[#17140d] md:py-28">
       <motion.div
         className="mx-auto max-w-7xl"
         initial="hidden"
@@ -55,33 +55,33 @@ export function TeraMotorsPricingSection() {
               variants={fadeSlide}
               className="rounded-2xl border border-black/10 bg-white p-6 transition-colors hover:bg-black/[0.03]"
             >
-              <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl border border-black/10 bg-black/[0.03] text-[#11100e]">
+              <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl border border-black/10 bg-black/[0.03] text-[#17140d]">
                 <pillar.Icon className="h-5 w-5" />
               </div>
-              <h3 className="mb-3 text-lg font-bold text-[#11100e]">{pillar.title}</h3>
-              <p className="text-sm leading-relaxed text-[#5f5548]">{pillar.body}</p>
+              <h3 className="mb-3 text-lg font-bold text-[#17140d]">{pillar.title}</h3>
+              <p className="text-sm leading-relaxed text-[#695b45]">{pillar.body}</p>
             </motion.article>
           ))}
         </motion.div>
 
         <motion.div variants={fadeSlide} className="mt-12">
           <section className="rounded-2xl border border-black/10 bg-white p-8 text-center md:p-12">
-            <h3 className="text-2xl font-bold text-[#11100e] md:text-3xl">Have a product idea?</h3>
-            <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-[#5f5548]">
+            <h3 className="text-2xl font-bold text-[#17140d] md:text-3xl">Have a product idea?</h3>
+            <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-[#695b45]">
               We take on select projects — from MVPs to full product builds. If you have a real business problem
               that needs a focused SaaS solution, let&apos;s talk.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link
                 href="#contact"
-                className="inline-flex items-center gap-2 rounded-xl bg-[#004225] px-8 py-3.5 text-sm font-bold text-white transition-colors hover:bg-[#11100e]"
+                className="inline-flex items-center gap-2 rounded-xl bg-[#00401f] px-8 py-3.5 text-sm font-bold text-white transition-colors hover:bg-[#17140d]"
               >
                 Start a project
                 <ArrowRight className="h-4 w-4" />
               </Link>
               <a
                 href={`mailto:${CONTACT_EMAILS.product}`}
-                className="inline-flex items-center gap-2 rounded-xl border border-black/10 bg-white px-8 py-3.5 text-sm font-bold text-[#11100e] transition-colors hover:bg-black/[0.03]"
+                className="inline-flex items-center gap-2 rounded-xl border border-black/10 bg-white px-8 py-3.5 text-sm font-bold text-[#17140d] transition-colors hover:bg-black/[0.03]"
               >
                 {CONTACT_EMAILS.product}
               </a>

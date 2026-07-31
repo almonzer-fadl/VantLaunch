@@ -9,13 +9,13 @@ export function Footer() {
     <footer className="border-t border-black/10 bg-[#fff9ed] px-6 py-12 text-[#17140d] sm:py-16 md:py-20">
       <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-12 md:flex-row">
         <div className="max-w-sm">
-          <div className="mb-6 flex items-center gap-3">
+          <div className="mb-6 flex items-center gap-0">
             <Image
               src="/brand/icon.PNG"
               alt="VantLaunch logo"
-              width={32}
-              height={32}
-              className="h-8 w-8 rounded-lg object-contain"
+              width={49}
+              height={49}
+              className="h-10 w-10 rounded-lg object-contain sm:h-14 sm:w-14"
             />
             <span className="text-lg font-bold tracking-tight text-[#17140d]">
               VantLaunch

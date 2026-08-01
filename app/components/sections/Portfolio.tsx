@@ -95,7 +95,7 @@ export function PortfolioSection({ onOpenProject }: { onOpenProject: (slug: stri
   const { shouldReduceMotion } = useMobileMotion();
 
   return (
-    <section id="portfolio" className="border-t border-black/10 bg-[#fff9ed] px-6 py-16 text-[#17140d] sm:py-24 md:py-32">
+    <section id="portfolio" className="border-t border-black/10 bg-[#F8F6EF] px-6 py-16 text-[#11100E] sm:py-24 md:py-32">
       <div className="mx-auto max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: shouldReduceMotion ? 8 : 16 }}
@@ -104,9 +104,9 @@ export function PortfolioSection({ onOpenProject }: { onOpenProject: (slug: stri
           transition={{ duration: shouldReduceMotion ? 0.3 : 0.5 }}
           className="mb-16 text-center"
         >
-          <span className="mb-4 inline-flex rounded-full border border-black/10 bg-white px-3 py-1 text-xs font-bold uppercase tracking-[0.16em] text-[#8a7657]">Proof</span>
-          <h2 className="text-3xl font-bold tracking-tight text-[#17140d] sm:text-4xl md:text-5xl">We&apos;ve done this before. Here&apos;s the proof.</h2>
-          <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-[#695b45] sm:text-lg">
+          <span className="mb-4 inline-flex rounded-full border border-black/10 bg-[#F3F2ED] px-3 py-1.5 text-xs font-bold uppercase tracking-[0.16em] text-[#74695B]">Proof</span>
+          <h2 className="text-3xl font-bold tracking-tight text-[#11100E] sm:text-4xl md:text-5xl">We&apos;ve done this before. Here&apos;s the proof.</h2>
+          <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-[#74695B] sm:text-lg">
             Each project shows the messy process it replaced, the system we built,
             and the business value it unlocked — so you know exactly what you&apos;re buying.
           </p>
@@ -123,7 +123,7 @@ export function PortfolioSection({ onOpenProject }: { onOpenProject: (slug: stri
                 viewport={{ once: true }}
                 transition={{ duration: shouldReduceMotion ? 0.32 : 0.6, delay: shouldReduceMotion ? 0 : i * 0.1 }}
                 onClick={() => onOpenProject(project.slug)}
-                className="group relative cursor-pointer flex flex-col overflow-hidden rounded-2xl border border-black/10 bg-white shadow-[0_18px_55px_-42px_rgba(23,20,13,0.35)] transition-all hover:bg-black/[0.03]"
+                className="group relative cursor-pointer flex flex-col overflow-hidden rounded-2xl border border-black/10 bg-white shadow-mid transition-all hover:bg-black/[0.03]"
               >
                 <div className="relative aspect-video w-full overflow-hidden border-b border-black/10 bg-[#efe2c7]">
                   {project.image ? (
@@ -141,7 +141,7 @@ export function PortfolioSection({ onOpenProject }: { onOpenProject: (slug: stri
                   
                   {/* Floating Icon */}
                   <div className="absolute top-6 left-6">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-black/10 bg-white/95 text-[#17140d] shadow-xl sm:bg-white/85 sm:backdrop-blur-md">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-black/10 bg-white/95 text-[#11100E] shadow-mid sm:bg-white/85 sm:backdrop-blur-md">
                       {project.icon && <project.icon className="h-6 w-6" />}
                     </div>
                   </div>
@@ -149,28 +149,28 @@ export function PortfolioSection({ onOpenProject }: { onOpenProject: (slug: stri
                 
                 <div className="flex flex-1 flex-col p-5 sm:p-8">
                   <div className="mb-2 flex items-center justify-between">
-                    <h3 className="text-2xl font-bold tracking-tight text-[#17140d]">{project.name}</h3>
-                    <ArrowUpRight className="h-5 w-5 text-[#8a7657] transition-colors group-hover:text-[#17140d]" />
+                    <h3 className="text-2xl font-bold tracking-tight text-[#11100E]">{project.name}</h3>
+                    <ArrowUpRight className="h-5 w-5 text-[#74695B] transition-colors group-hover:text-[#11100E]" />
                   </div>
-                  <p className="text-sm font-bold uppercase tracking-widest text-[#8a7657]">{project.tagline}</p>
+                  <p className="text-sm font-bold uppercase tracking-widest text-[#74695B]">{project.tagline}</p>
 
                   <div className="mt-5 space-y-3">
                     <div>
-                      <span className="text-[10px] font-bold uppercase tracking-[0.14em] text-[#8a7657]">Before</span>
-                      <p className="mt-1 text-sm leading-relaxed text-[#695b45]">{project.before}</p>
+                      <span className="text-[10px] font-bold uppercase tracking-[0.14em] text-[#74695B]">Before</span>
+                      <p className="mt-1 text-sm leading-relaxed text-[#74695B]">{project.before}</p>
                     </div>
                     <div>
-                      <span className="text-[10px] font-bold uppercase tracking-[0.14em] text-[#8a7657]">System Built</span>
-                      <p className="mt-1 text-sm leading-relaxed text-[#695b45]">{project.system}</p>
+                      <span className="text-[10px] font-bold uppercase tracking-[0.14em] text-[#74695B]">System Built</span>
+                      <p className="mt-1 text-sm leading-relaxed text-[#74695B]">{project.system}</p>
                     </div>
                   </div>
 
-                  <div className="mt-5 rounded-xl border border-black/[0.06] bg-[#fbf4e2] p-4">
-                    <span className="text-[10px] font-bold uppercase tracking-[0.14em] text-[#8a7657]">Replaced</span>
-                    <p className="mt-1 text-sm font-medium leading-relaxed text-[#17140d]">{project.replaced}</p>
+                  <div className="mt-5 rounded-xl border border-black/[0.06] bg-[#F8F6EF] p-4">
+                    <span className="text-[10px] font-bold uppercase tracking-[0.14em] text-[#74695B]">Replaced</span>
+                    <p className="mt-1 text-sm font-medium leading-relaxed text-[#11100E]">{project.replaced}</p>
                   </div>
 
-                  <div className="mt-8 flex items-center gap-2 text-xs font-bold text-[#17140d] transition-colors">
+                  <div className="mt-8 flex items-center gap-2 text-xs font-bold text-[#11100E] transition-colors">
                     View Case Study
                     <div className="h-px flex-1 bg-black/10 transition-colors" />
                   </div>
@@ -191,14 +191,14 @@ export function PortfolioSection({ onOpenProject }: { onOpenProject: (slug: stri
                 className="group flex flex-col rounded-2xl border border-black/10 bg-white p-5 transition-all hover:bg-black/[0.03] sm:p-6"
               >
                 <div className="mb-3 flex items-center justify-between">
-                   <h3 className="text-base font-bold tracking-tight text-[#17140d]">{project.name}</h3>
+                   <h3 className="text-base font-bold tracking-tight text-[#11100E]">{project.name}</h3>
                    <div className="h-1.5 w-1.5 rounded-full" style={{ backgroundColor: project.accent }} />
                 </div>
-                <p className="text-[10px] font-bold uppercase tracking-widest text-[#8a7657]">{project.tagline}</p>
-                <p className="mt-3 text-xs font-bold leading-snug text-[#17140d]">{project.value}</p>
-                <div className="mt-4 flex-1 rounded-lg border border-black/[0.04] bg-[#fbf4e2] p-3">
-                  <p className="text-[10px] font-bold uppercase tracking-[0.1em] text-[#8a7657]">Replaced</p>
-                  <p className="mt-1 text-xs leading-relaxed text-[#695b45]">{project.replaced}</p>
+                <p className="text-[10px] font-bold uppercase tracking-widest text-[#74695B]">{project.tagline}</p>
+                <p className="mt-3 text-xs font-bold leading-snug text-[#11100E]">{project.value}</p>
+                <div className="mt-4 flex-1 rounded-lg border border-black/[0.04] bg-[#F8F6EF] p-3">
+                  <p className="text-[10px] font-bold uppercase tracking-[0.1em] text-[#74695B]">Replaced</p>
+                  <p className="mt-1 text-xs leading-relaxed text-[#74695B]">{project.replaced}</p>
                 </div>
               </motion.div>
             ))}

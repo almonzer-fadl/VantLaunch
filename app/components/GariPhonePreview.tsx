@@ -31,12 +31,12 @@ const gariGallery = [
 
 export function GariPhonePreview() {
   return (
-    <figure className="overflow-hidden rounded-2xl border border-black/10 bg-white shadow-[0_18px_55px_-42px_rgba(23,20,13,0.35)]">
+    <figure className="overflow-hidden rounded-2xl border border-black/10 bg-white shadow-mid">
       <div className="grid gap-4 bg-[#efe2c7] p-5 sm:grid-cols-2 sm:p-8">
         {gariPreviewScreens.map((screen, index) => (
           <div
             key={screen.src}
-            className={`mx-auto w-full max-w-[240px] overflow-hidden rounded-[1.7rem] border border-black/10 bg-white shadow-[0_18px_55px_-42px_rgba(23,20,13,0.35)] ${
+            className={`mx-auto w-full max-w-[240px] overflow-hidden rounded-[1.7rem] border border-black/10 bg-white shadow-mid ${
               index === 1 ? "sm:mt-10" : ""
             }`}
           >
@@ -50,7 +50,7 @@ export function GariPhonePreview() {
                 className="object-cover object-top"
               />
             </div>
-            <figcaption className="border-t border-black/10 bg-white px-3 py-2 text-center text-[11px] font-bold text-[#695b45]">
+            <figcaption className="border-t border-black/10 bg-white px-3 py-2 text-center text-[11px] font-bold text-[#74695B]">
               {screen.label}
             </figcaption>
           </div>
@@ -65,8 +65,8 @@ export function GariScreenGallery() {
     <section>
       <div className="mb-6">
         <p className="type-meta-uppercase mb-3">Gari app preview</p>
-        <h2 className="text-3xl font-bold tracking-tight text-[#17140d]">Explore the app experience.</h2>
-        <p className="mt-3 max-w-2xl text-sm leading-relaxed text-[#695b45]">
+        <h2 className="text-3xl font-bold tracking-tight text-[#11100E]">Explore the app experience.</h2>
+        <p className="mt-3 max-w-2xl text-sm leading-relaxed text-[#74695B]">
           Garage, booking, parts, active jobs, payments, reviews, and account screens.
         </p>
       </div>
@@ -74,7 +74,7 @@ export function GariScreenGallery() {
         {gariGallery.map((screen) => (
           <figure
             key={screen.src}
-            className="overflow-hidden rounded-[1.35rem] border border-black/10 bg-white shadow-[0_14px_45px_-36px_rgba(23,20,13,0.28)]"
+            className="overflow-hidden rounded-[1.35rem] border border-black/10 bg-white shadow-mid"
           >
             <div className="relative aspect-[9/19] w-full">
               <Image
@@ -85,7 +85,7 @@ export function GariScreenGallery() {
                 className="object-cover object-top"
               />
             </div>
-            <figcaption className="border-t border-black/10 bg-white px-3 py-2 text-center text-[11px] font-bold text-[#695b45]">
+            <figcaption className="border-t border-black/10 bg-white px-3 py-2 text-center text-[11px] font-bold text-[#74695B]">
               {screen.title}
             </figcaption>
           </figure>

@@ -9,11 +9,11 @@ export const metadata: Metadata = {
 
 export default function PrivacyPage() {
   return (
-    <main className="min-h-screen bg-[#fbf4e2] px-6 py-16 text-[#695b45]">
+    <main className="min-h-screen bg-[#F8F6EF] px-6 py-16 text-[#74695B]">
       <article className="mx-auto max-w-3xl space-y-6">
-        <Link href="/" className="text-sm font-bold text-[#8a7657] hover:text-[#17140d]">← Back to site</Link>
-        <h1 className="text-4xl font-bold text-[#17140d]">Privacy Policy</h1>
-        <p className="text-sm text-[#8a7657]">Last updated: May 12, 2026</p>
+        <Link href="/" className="text-sm font-bold text-[#74695B] hover:text-[#11100E]">← Back to site</Link>
+        <h1 className="text-4xl font-bold text-[#11100E]">Privacy Policy</h1>
+        <p className="text-sm text-[#74695B]">Last updated: May 12, 2026</p>
         <p>
           VantLaunch collects contact details you submit through forms, including name, email,
           company or shop name, role, product interest, timeline, and use-case notes.
@@ -32,7 +32,7 @@ export default function PrivacyPage() {
         </p>
         <p>
           You can request correction or deletion of your data by emailing{" "}
-          <a className="font-semibold text-[#00401f] underline" href={`mailto:${CONTACT_EMAILS.company}`}>{CONTACT_EMAILS.company}</a>.
+          <a className="font-semibold text-[#004225] underline" href={`mailto:${CONTACT_EMAILS.company}`}>{CONTACT_EMAILS.company}</a>.
         </p>
       </article>
     </main>

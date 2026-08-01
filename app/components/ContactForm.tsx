@@ -32,14 +32,14 @@ export function ContactForm() {
         animate={{ opacity: 1, scale: 1 }}
         className="flex flex-col items-center justify-center py-12 text-center"
       >
-        <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-black/[0.04] text-[#17140d]">
+        <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-black/[0.04] text-[#11100E]">
           <Check className="h-8 w-8" />
         </div>
-        <h3 className="text-2xl font-bold text-[#17140d]">Request received.</h3>
-        <p className="mt-2 text-[#8a7657]">We&apos;ll review the details and follow up shortly.</p>
+        <h3 className="text-2xl font-bold text-[#11100E]">Request received.</h3>
+        <p className="mt-2 text-[#74695B]">We&apos;ll review the details and follow up shortly.</p>
         <button 
           onClick={() => setStatus("idle")}
-          className="mt-8 text-sm font-bold text-[#00401f] underline underline-offset-4"
+          className="mt-8 text-sm font-bold text-[#004225] underline underline-offset-4"
         >
           Send another
         </button>
@@ -59,85 +59,109 @@ export function ContactForm() {
           aria-hidden="true"
         />
 
-        <div className="relative">
+        <div>
+          <label className="mb-2 block text-xs font-bold uppercase tracking-wider text-[#74695B]">
+            Your name
+          </label>
           <input
             required
             name="name"
             type="text"
             placeholder="Name"
-            className="w-full border-b border-black/10 bg-transparent py-4 text-base font-medium text-[#17140d] placeholder:text-[#a89472] transition-colors focus:border-[#00401f] focus:outline-none sm:text-lg"
+            className="h-12 w-full rounded-xl border border-black/10 bg-[#F8F6EF] px-4 text-sm font-medium text-[#11100E] placeholder:text-[#a89472] transition-all focus:border-[#004225]/40 focus:outline-none focus:ring-1 focus:ring-[#004225]/20"
           />
         </div>
-        <div className="relative">
+        <div>
+          <label className="mb-2 block text-xs font-bold uppercase tracking-wider text-[#74695B]">
+            Email address
+          </label>
           <input
             required
             name="email"
             type="email"
             placeholder="Email address"
-            className="w-full border-b border-black/10 bg-transparent py-4 text-base font-medium text-[#17140d] placeholder:text-[#a89472] transition-colors focus:border-[#00401f] focus:outline-none sm:text-lg"
+            className="h-12 w-full rounded-xl border border-black/10 bg-[#F8F6EF] px-4 text-sm font-medium text-[#11100E] placeholder:text-[#a89472] transition-all focus:border-[#004225]/40 focus:outline-none focus:ring-1 focus:ring-[#004225]/20"
           />
         </div>
         <div className="grid gap-6 sm:grid-cols-2">
-          <input
-            required
-            name="company"
-            type="text"
-            placeholder="Company / shop name"
-            className="w-full border-b border-black/10 bg-transparent py-4 text-base font-medium text-[#17140d] placeholder:text-[#a89472] transition-colors focus:border-[#00401f] focus:outline-none"
-          />
-          <select
-            name="role"
-            defaultValue=""
-            className="w-full border-b border-black/10 bg-transparent py-4 text-base font-medium text-[#17140d] transition-colors focus:border-[#00401f] focus:outline-none"
-            required
-          >
-            <option value="" disabled className="bg-white text-[#8a7657]">I am a...</option>
-            <option value="owner-founder" className="bg-white text-[#17140d]">Owner / founder</option>
-            <option value="operations" className="bg-white text-[#17140d]">Operations lead</option>
-            <option value="service-advisor" className="bg-white text-[#17140d]">Service advisor</option>
-            <option value="investor-partner" className="bg-white text-[#17140d]">Investor / partner</option>
-            <option value="other" className="bg-white text-[#17140d]">Other</option>
-          </select>
+          <div>
+            <label className="mb-2 block text-xs font-bold uppercase tracking-wider text-[#74695B]">
+              Company / shop name
+            </label>
+            <input
+              required
+              name="company"
+              type="text"
+              placeholder="Company / shop name"
+              className="h-12 w-full rounded-xl border border-black/10 bg-[#F8F6EF] px-4 text-sm font-medium text-[#11100E] placeholder:text-[#a89472] transition-all focus:border-[#004225]/40 focus:outline-none focus:ring-1 focus:ring-[#004225]/20"
+            />
+          </div>
+          <div>
+            <label className="mb-2 block text-xs font-bold uppercase tracking-wider text-[#74695B]">
+              I am a...
+            </label>
+            <select
+              name="role"
+              defaultValue=""
+              className="h-12 w-full rounded-xl border border-black/10 bg-[#F8F6EF] px-4 text-sm font-medium text-[#11100E] transition-all focus:border-[#004225]/40 focus:outline-none focus:ring-1 focus:ring-[#004225]/20"
+              required
+            >
+              <option value="" disabled className="bg-white text-[#74695B]">I am a...</option>
+              <option value="owner-founder" className="bg-white text-[#11100E]">Owner / founder</option>
+              <option value="operations" className="bg-white text-[#11100E]">Operations lead</option>
+              <option value="service-advisor" className="bg-white text-[#11100E]">Service advisor</option>
+              <option value="investor-partner" className="bg-white text-[#11100E]">Investor / partner</option>
+              <option value="other" className="bg-white text-[#11100E]">Other</option>
+            </select>
+          </div>
         </div>
         <div className="grid gap-6 sm:grid-cols-2">
-          <select
-            name="product_interest"
-            defaultValue=""
-            className="w-full border-b border-black/10 bg-transparent py-4 text-base font-medium text-[#17140d] transition-colors focus:border-[#00401f] focus:outline-none"
-            required
-          >
-            <option value="" disabled className="bg-white text-[#8a7657]">Product interest</option>
-            <option value="teramotors" className="bg-white text-[#17140d]">TeraMotors</option>
-            <option value="gari" className="bg-white text-[#17140d]">Gari preview</option>
-            <option value="general" className="bg-white text-[#17140d]">General VantLaunch inquiry</option>
-          </select>
+          <div>
+            <label className="mb-2 block text-xs font-bold uppercase tracking-wider text-[#74695B]">
+              Product interest
+            </label>
+            <select
+              name="product_interest"
+              defaultValue=""
+              className="h-12 w-full rounded-xl border border-black/10 bg-[#F8F6EF] px-4 text-sm font-medium text-[#11100E] transition-all focus:border-[#004225]/40 focus:outline-none focus:ring-1 focus:ring-[#004225]/20"
+              required
+            >
+              <option value="" disabled className="bg-white text-[#74695B]">Product interest</option>
+              <option value="teramotors" className="bg-white text-[#11100E]">TeraMotors</option>
+              <option value="gari" className="bg-white text-[#11100E]">Gari preview</option>
+              <option value="general" className="bg-white text-[#11100E]">General VantLaunch inquiry</option>
+            </select>
+          </div>
 
-          <select
-            name="timeline"
-            defaultValue=""
-            className="w-full border-b border-black/10 bg-transparent py-4 text-base font-medium text-[#17140d] transition-colors focus:border-[#00401f] focus:outline-none"
-            required
-          >
-            <option value="" disabled className="bg-white text-[#8a7657]">Expected timeline</option>
-            <option value="asap" className="bg-white text-[#17140d]">ASAP</option>
-            <option value="1m" className="bg-white text-[#17140d]">Within 1 month</option>
-            <option value="quarter" className="bg-white text-[#17140d]">This quarter</option>
-            <option value="exploring" className="bg-white text-[#17140d]">Exploring only</option>
-          </select>
+          <div>
+            <label className="mb-2 block text-xs font-bold uppercase tracking-wider text-[#74695B]">
+              Expected timeline
+            </label>
+            <select
+              name="timeline"
+              defaultValue=""
+              className="h-12 w-full rounded-xl border border-black/10 bg-[#F8F6EF] px-4 text-sm font-medium text-[#11100E] transition-all focus:border-[#004225]/40 focus:outline-none focus:ring-1 focus:ring-[#004225]/20"
+              required
+            >
+              <option value="" disabled className="bg-white text-[#74695B]">Expected timeline</option>
+              <option value="asap" className="bg-white text-[#11100E]">ASAP</option>
+              <option value="1m" className="bg-white text-[#11100E]">Within 1 month</option>
+              <option value="quarter" className="bg-white text-[#11100E]">This quarter</option>
+              <option value="exploring" className="bg-white text-[#11100E]">Exploring only</option>
+            </select>
+          </div>
         </div>
 
-        <div className="relative">
+        <div>
+          <label className="mb-2 block text-xs font-bold uppercase tracking-wider text-[#74695B]">
+            Tell us about your project
+          </label>
           <textarea
             required
             name="message"
-            rows={1}
+            rows={4}
             placeholder="Tell us about your shop and what you want to organize"
-            className="w-full resize-none border-b border-black/10 bg-transparent py-4 text-base font-medium text-[#17140d] placeholder:text-[#a89472] transition-colors focus:border-[#00401f] focus:outline-none sm:text-lg"
-            onInput={(e) => {
-              const target = e.target as HTMLTextAreaElement;
-              target.style.height = "auto";
-              target.style.height = `${target.scrollHeight}px`;
-            }}
+            className="w-full resize-none rounded-xl border border-black/10 bg-[#F8F6EF] px-4 py-3 text-sm font-medium text-[#11100E] placeholder:text-[#a89472] transition-all focus:border-[#004225]/40 focus:outline-none focus:ring-1 focus:ring-[#004225]/20"
           />
         </div>
       </div>
@@ -146,7 +170,7 @@ export function ContactForm() {
         <button
           type="submit"
           disabled={status === "submitting"}
-          className="group flex w-full items-center justify-center gap-3 rounded-xl bg-[#00401f] px-8 py-4 text-[13px] font-bold text-white transition-all hover:bg-[#17140d] disabled:opacity-50 sm:w-auto"
+          className="group flex w-full items-center justify-center gap-3 rounded-xl bg-[#004225] px-8 py-4 text-[13px] font-bold text-white transition-all hover:bg-[#11100E] disabled:opacity-50 sm:w-auto"
         >
           {status === "submitting" ? "Sending..." : "Send inquiry"}
           <ArrowRight className="h-4 w-4" />
@@ -158,7 +182,7 @@ export function ContactForm() {
           {errorMessage}
         </p>
       )}
-      <p className="mt-4 text-center text-xs text-[#8a7657] sm:text-right">No spam. Product inquiries and relevant replies only.</p>
+      <p className="mt-4 text-center text-xs text-[#74695B] sm:text-right">No spam. Product inquiries and relevant replies only.</p>
     </form>
   );
 }

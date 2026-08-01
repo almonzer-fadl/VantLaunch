@@ -19,6 +19,10 @@ export type WorkStubConfig = {
   figureCaption: string;
   /** Tailwind classes for the homepage venture card image */
   previewImgClass: string;
+  /** Optional demo video path (relative to /public) */
+  demoVideo?: string;
+  /** Optional poster image for the demo video */
+  demoPoster?: string;
 };
 
 export const WORK_STUBS = {
@@ -89,6 +93,7 @@ export const WORK_STUBS = {
       "SpeakBill — voice-powered invoicing dashboard, mic input, invoice preview, and client management.",
     previewImgClass:
       "object-contain object-center transition-transform duration-700 group-hover:scale-[1.02]",
+    demoVideo: "/media/6F57B964-0E1C-4DA3-9B6B-D76E46A30FA0.MP4",
   },
 } as const satisfies Record<string, WorkStubConfig>;
 

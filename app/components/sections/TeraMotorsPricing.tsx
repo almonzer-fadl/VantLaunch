@@ -73,7 +73,7 @@ export function TeraMotorsPricingSection() {
             </p>
             <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link
-                href="#contact"
+                href="/#contact"
                 className="inline-flex items-center gap-2 rounded-xl bg-[#004225] px-8 py-3.5 text-sm font-bold text-white transition-colors hover:bg-[#11100E]"
               >
                 Start a project

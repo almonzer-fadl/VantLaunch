@@ -33,10 +33,10 @@ export function ProofStripSection() {
           viewport={{ once: true }}
           transition={{ duration: shouldReduceMotion ? 0.28 : 0.45 }}
         >
-          <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#74695B]">Proof of work</p>
+          <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#74695B]">Who we&apos;ve shipped for</p>
           <p className="mt-2 max-w-xl text-sm font-medium leading-relaxed text-[#74695B]">
-            Real operating systems shipped for workshops, freelancers, and service businesses —
-            replacing scattered tools with one owned platform.
+            TeraMotors runs a 3-location workshop. SpeakBill replaced manual invoicing for freelancers.
+            Gari connects drivers to repair shops. Every system is owned by the business, not us.
           </p>
         </motion.div>
 

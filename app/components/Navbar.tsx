@@ -8,9 +8,9 @@ import Link from "next/link";
 import { useMobileMotion } from "../hooks/use-mobile-motion";
 
 const NAV_LINKS = [
-  { href: "#services", label: "Tiers" },
-  { href: "#portfolio", label: "Proof" },
-  { href: "#process", label: "Process" },
+  { href: "/work", label: "Work" },
+  { href: "/#services", label: "Tiers" },
+  { href: "/#process", label: "Process" },
 ];
 
 export function Navbar() {
@@ -36,17 +36,19 @@ export function Navbar() {
             transition={{ duration: 0.5 }}
             className="flex items-center gap-0"
           >
-            <Image
-              src="/brand/icon.PNG"
-              alt="VantLaunch logo"
-              width={49}
-              height={49}
-              priority
-              className="h-10 w-10 rounded-lg object-contain sm:h-14 sm:w-14"
-            />
-            <span className="text-base font-bold tracking-tight text-[#11100E] sm:text-lg">
-              VantLaunch
-            </span>
+            <Link href="/" className="flex items-center gap-0">
+              <Image
+                src="/brand/icon.PNG"
+                alt="VantLaunch logo"
+                width={49}
+                height={49}
+                priority
+                className="h-10 w-10 rounded-lg object-contain sm:h-14 sm:w-14"
+              />
+              <span className="text-base font-bold tracking-tight text-[#11100E] sm:text-lg">
+                VantLaunch
+              </span>
+            </Link>
           </motion.div>
 
           {/* Desktop links */}

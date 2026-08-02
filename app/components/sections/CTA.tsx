@@ -20,10 +20,11 @@ export function CTASection() {
           className="mb-16 text-center"
         >
           <span className="mb-4 inline-flex rounded-full border border-black/10 bg-[#F3F2ED] px-3 py-1.5 text-xs font-bold uppercase tracking-[0.16em] text-[#74695B]">Contact</span>
-          <h2 className="text-3xl font-bold tracking-tight text-[#11100E] sm:text-4xl md:text-5xl">Tell us what tools you&apos;re using now.</h2>
+          <h2 className="text-3xl font-bold tracking-tight text-[#11100E] sm:text-4xl md:text-5xl">Tell us what tools you&apos;re piecing together.</h2>
           <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-[#74695B] sm:text-lg">
-            We&apos;ll show you what can be replaced by one owned operating system.
-            Response within 24 hours — usually with a few questions and a rough timeline.
+            We did it for a workshop running on paper, Excel, and WhatsApp.
+            We&apos;ll show you what one owned system looks like for your business.
+            Response within 24 hours — with a rough timeline.
           </p>
         </motion.div>
 

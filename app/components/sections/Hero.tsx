@@ -76,15 +76,15 @@ export function HeroSection({ onOpenProject }: { onOpenProject: (slug: string) =
             transition={{ duration: shouldReduceMotion ? 0.35 : 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="text-left"
           >
-            <h1 className="font-display text-balance text-3xl font-bold leading-[1.04] tracking-tight text-[#11100E] sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl">
+            <h1 className="font-display text-balance text-2xl font-bold leading-[1.06] tracking-tight text-[#11100E] sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl">
               Your business runs on too many tools.{' '}
               <span className="sm:mt-2 sm:block">We build you one. That you own.</span>
             </h1>
 
             <p className="mt-6 max-w-xl text-base leading-relaxed text-[#74695B] sm:mt-8 sm:text-lg md:text-xl">
-              Websites, client portals, CRM, invoicing, dashboards, analytics, and automations —
-              built into one owned operating system around your process. No scattered tools.
-              No subscription chaos. Maintained monthly.
+              We built TeraMotors for a 3-location workshop — job cards, invoicing, customer records,
+              and reports in one dashboard. We built SpeakBill so freelancers invoice by voice.
+              We build one system around how you actually work. You own it. We maintain it.
             </p>
 
             <div className="mt-6 flex flex-wrap gap-x-4 gap-y-3 text-[11px] font-bold uppercase tracking-widest text-[#74695B] sm:mt-8 sm:gap-x-8 sm:gap-y-4 sm:text-[13px]">

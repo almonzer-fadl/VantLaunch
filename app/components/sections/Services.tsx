@@ -109,11 +109,11 @@ export function ServicesSection() {
             Tiers
           </span>
           <h2 className="text-3xl font-bold tracking-tight text-[#11100E] sm:text-4xl md:text-5xl">
-            One system. Built for you. Maintained monthly.
+            A website. A portal. A CRM. An OS. You pick the scope.
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-[#74695B] sm:text-lg">
-            Every engagement includes a build fee and a monthly retainer for hosting,
-            maintenance, fixes, and ongoing improvements. You own the system. We keep it running.
+            Every tier includes build + monthly retainer for hosting, fixes, and improvements.
+            Like TeraMotors — one build fee, one retainer, one system replacing four tools.
           </p>
         </motion.div>
 
@@ -196,11 +196,15 @@ export function ServicesSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.4, delay: 0.2 }}
-          className="mt-14 rounded-2xl border border-black/10 bg-white p-6 text-center shadow-mid sm:p-8"
+          className="mt-14 rounded-2xl border border-[#004225]/20 bg-white p-6 text-center shadow-mid sm:p-8"
         >
+          <div className="mb-3 inline-flex items-center gap-1.5 rounded-full bg-[#004225]/10 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-[#004225]">
+            <span className="h-1.5 w-1.5 rounded-full bg-[#004225] animate-pulse" />
+            3 founding-client slots remaining
+          </div>
           <p className="text-sm font-medium leading-relaxed text-[#74695B]">
             <strong className="text-[#11100E]">Founding-client pricing shown.</strong>{" "}
-            These rates are for our first 1-3 clients per tier — in exchange for a case study
+            These rates are for our first clients — in exchange for a case study
             and your patience as we refine the delivery process. Standard pricing is roughly
             double what you see above.
           </p>

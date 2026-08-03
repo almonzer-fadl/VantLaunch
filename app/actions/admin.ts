@@ -7,12 +7,7 @@ export async function getProjects() {
   try {
     await connectDB();
     const projects = await Project.find().sort({ createdAt: -1 }).lean();
-    return projects.map((p) => ({
-      ...p,
-      _id: p._id.toString(),
-      createdAt: p.createdAt?.toISOString(),
-      updatedAt: p.updatedAt?.toISOString(),
-    }));
+    return JSON.parse(JSON.stringify(projects));
   } catch (error) {
     console.error("Failed to fetch projects:", error);
     return [];

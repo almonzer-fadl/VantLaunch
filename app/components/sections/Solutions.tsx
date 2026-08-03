@@ -5,6 +5,7 @@ import { ArrowRight, BarChart3, LayoutDashboard, Building2, Check } from "lucide
 import Image from "next/image";
 import Link from "next/link";
 import { useMobileMotion } from "@/app/hooks/use-mobile-motion";
+import { PRODUCT_LINKS } from "@/app/lib/constants";
 
 const SOLUTIONS = [
   {
@@ -24,7 +25,7 @@ const SOLUTIONS = [
     icon: BarChart3,
     accent: "#004225",
     image: "/media/banner-executive-dashboard.png",
-    href: "https://whop.com/joined/almonzer-fadl/products/executive-dashboard/",
+    href: PRODUCT_LINKS.executiveDashboard,
   },
   {
     name: "Business Dashboard Pro",
@@ -44,7 +45,7 @@ const SOLUTIONS = [
     accent: "#0f766e",
     image: "/media/banner-business-dashboard-pro.png",
     featured: true,
-    href: "https://whop.com/joined/almonzer-fadl/products/business-dashboard-pro/",
+    href: PRODUCT_LINKS.businessDashboardPro,
   },
   {
     name: "Business Operating System",
@@ -63,7 +64,7 @@ const SOLUTIONS = [
     icon: Building2,
     accent: "#1e40af",
     image: "/media/banner-business-operating-system.png",
-    href: "https://whop.com/joined/almonzer-fadl/products/business-operating-system-7f/",
+    href: PRODUCT_LINKS.businessOperatingSystem,
   },
 ];
 

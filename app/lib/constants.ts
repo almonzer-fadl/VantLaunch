@@ -19,10 +19,20 @@ export const CONTACT_EMAILS = {
 
 export const TERAMOTORS_REGISTER_URL = "https://app.teramotor.cc/register";
 
+export const POLAR_PRODUCT_IDS = {
+  executiveDashboard: "e1caeeda-8223-4df9-a0fc-adbcba65ea55",
+  businessDashboardPro: "83802323-2db4-4fb7-bc2b-e138b96daaef",
+  businessOperatingSystem: "cdab126e-5475-48b0-8304-473cf8e4e53f",
+} as const;
+
+export function getPolarCheckoutUrl(productId: string): string {
+  return `https://buy.polar.sh/product/${productId}`;
+}
+
 export const PRODUCT_LINKS = {
-  executiveDashboard: "https://whop.com/joined/almonzer-fadl/products/executive-dashboard/",
-  businessDashboardPro: "https://whop.com/joined/almonzer-fadl/products/business-dashboard-pro/",
-  businessOperatingSystem: "https://whop.com/joined/almonzer-fadl/products/business-operating-system-7f/",
+  executiveDashboard: getPolarCheckoutUrl(POLAR_PRODUCT_IDS.executiveDashboard),
+  businessDashboardPro: getPolarCheckoutUrl(POLAR_PRODUCT_IDS.businessDashboardPro),
+  businessOperatingSystem: getPolarCheckoutUrl(POLAR_PRODUCT_IDS.businessOperatingSystem),
 } as const;
 
 export const PROCESS_FLOW_PATH_D = "M 96 44 C 252 6 348 82 450 44 S 648 6 804 44";

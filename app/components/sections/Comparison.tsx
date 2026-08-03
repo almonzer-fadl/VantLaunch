@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Check, Minus, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { useMobileMotion } from "@/app/hooks/use-mobile-motion";
+import { PRODUCT_LINKS } from "@/app/lib/constants";
 
 const ROWS = [
   { label: "KPI Dashboard", executive: true, pro: true, os: true },
@@ -23,20 +24,20 @@ const ROWS = [
 const COLUMNS = [
   {
     name: "Executive Dashboard",
-    href: "https://whop.com/joined/almonzer-fadl/products/executive-dashboard/",
+    href: PRODUCT_LINKS.executiveDashboard,
     price: "$699",
     accent: "#004225",
   },
   {
     name: "Business Dashboard Pro",
-    href: "https://whop.com/joined/almonzer-fadl/products/business-dashboard-pro/",
+    href: PRODUCT_LINKS.businessDashboardPro,
     price: "$999",
     accent: "#0f766e",
     featured: true,
   },
   {
     name: "Business Operating System",
-    href: "https://whop.com/joined/almonzer-fadl/products/business-operating-system-7f/",
+    href: PRODUCT_LINKS.businessOperatingSystem,
     price: "From $1,699",
     accent: "#1e40af",
   },

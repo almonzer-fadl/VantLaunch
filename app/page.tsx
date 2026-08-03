@@ -8,6 +8,7 @@ import { WorkReelSection } from "./components/sections/WorkReel";
 import { ServicesSection } from "./components/sections/Services";
 import { PortfolioSection } from "./components/sections/Portfolio";
 import { StudioProofSection } from "./components/sections/StudioProof";
+import { OwnershipSection } from "./components/sections/Ownership";
 import { ProcessSection } from "./components/sections/Process";
 import { FounderSection } from "./components/sections/Founder";
 import { FAQSection } from "./components/sections/FAQ";
@@ -24,12 +25,13 @@ export default function Home() {
       <main>
         <HeroSection onOpenProject={setActiveProject} />
         <ProofStripSection />
-        <WorkReelSection />
-        <ServicesSection />
         <PortfolioSection onOpenProject={setActiveProject} />
+        <WorkReelSection />
+        <FounderSection />
+        <ServicesSection />
+        <OwnershipSection />
         <StudioProofSection />
         <ProcessSection />
-        <FounderSection />
         <FAQSection />
         <CTASection />
       </main>

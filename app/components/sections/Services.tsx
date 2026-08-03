@@ -196,17 +196,15 @@ export function ServicesSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.4, delay: 0.2 }}
-          className="mt-14 rounded-2xl border border-[#004225]/20 bg-white p-6 text-center shadow-mid sm:p-8"
+          className="mt-14 rounded-2xl border border-[#004225]/20 bg-white p-6 text-left shadow-mid sm:p-8"
         >
-          <div className="mb-3 inline-flex items-center gap-1.5 rounded-full bg-[#004225]/10 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-[#004225]">
-            <span className="h-1.5 w-1.5 rounded-full bg-[#004225] animate-pulse" />
-            3 founding-client slots remaining
-          </div>
-          <p className="text-sm font-medium leading-relaxed text-[#74695B]">
-            <strong className="text-[#11100E]">Founding-client pricing shown.</strong>{" "}
-            These rates are for our first clients — in exchange for a case study
-            and your patience as we refine the delivery process. Standard pricing is roughly
-            double what you see above.
+          <h3 className="text-lg font-bold tracking-tight text-[#11100E]">
+            Founding-client pricing
+          </h3>
+          <p className="mt-2 text-sm leading-relaxed text-[#74695B] max-w-2xl">
+            These rates are available while we build our first public case studies and refine
+            the delivery process. Early clients receive reduced pricing in exchange for feedback
+            and permission to showcase results. Standard pricing is roughly double what you see above.
           </p>
         </motion.div>
       </div>

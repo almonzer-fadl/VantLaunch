@@ -16,16 +16,19 @@ export function MeetingContent({ meeting }: { meeting: IMeeting & { _id: string 
 
   const isCancelled = cancelled;
   const scheduledDate = new Date(currentDate);
-  const formattedDate = scheduledDate.toLocaleDateString("en-US", {
+  const userTz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+  const formattedDate = scheduledDate.toLocaleDateString(undefined, {
     weekday: "long",
     year: "numeric",
     month: "long",
     day: "numeric",
+    timeZone: userTz,
   });
-  const formattedTime = scheduledDate.toLocaleTimeString("en-US", {
+  const formattedTime = scheduledDate.toLocaleTimeString(undefined, {
     hour: "numeric",
     minute: "2-digit",
-    hour12: true,
+    timeZoneName: "short",
+    timeZone: userTz,
   });
 
   const handleReschedule = async (e: React.FormEvent) => {

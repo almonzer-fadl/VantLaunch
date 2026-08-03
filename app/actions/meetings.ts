@@ -64,7 +64,18 @@ export async function cancelMeeting(slug: string) {
 export async function rescheduleMeeting(slug: string, newDate: string) {
   try {
     await connectDB();
-    await Meeting.findOneAndUpdate({ slug }, { scheduledDate: new Date(newDate) });
+    const meeting = await Meeting.findOne({ slug });
+    if (!meeting) return { success: false, error: "Meeting not found" };
+    const oldDate = meeting.scheduledDate.toISOString();
+    const newDateObj = new Date(newDate);
+    meeting.scheduledDate = newDateObj;
+    meeting.history.push({
+      action: "rescheduled",
+      oldValue: oldDate,
+      newValue: newDateObj.toISOString(),
+      timestamp: new Date(),
+    });
+    await meeting.save();
     return { success: true };
   } catch (error) {
     console.error("Failed to reschedule meeting:", error);

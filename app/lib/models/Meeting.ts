@@ -1,5 +1,12 @@
 import mongoose, { Document, Model, Schema } from "mongoose";
 
+export interface IMeetingHistory {
+  action: string;
+  oldValue: string;
+  newValue: string;
+  timestamp: Date;
+}
+
 export interface IMeeting {
   slug: string;
   title: string;
@@ -9,11 +16,22 @@ export interface IMeeting {
   recipientName: string;
   recipientEmail: string;
   status: "scheduled" | "cancelled";
+  history: IMeetingHistory[];
   createdAt: Date;
   updatedAt: Date;
 }
 
 export interface IMeetingDocument extends IMeeting, Document {}
+
+const HistorySchema = new Schema<IMeetingHistory>(
+  {
+    action: { type: String, required: true },
+    oldValue: { type: String, required: true },
+    newValue: { type: String, required: true },
+    timestamp: { type: Date, default: Date.now },
+  },
+  { _id: false }
+);
 
 const MeetingSchema = new Schema<IMeetingDocument>(
   {
@@ -29,6 +47,7 @@ const MeetingSchema = new Schema<IMeetingDocument>(
       enum: ["scheduled", "cancelled"],
       default: "scheduled",
     },
+    history: { type: [HistorySchema], default: [] },
   },
   { timestamps: true }
 );

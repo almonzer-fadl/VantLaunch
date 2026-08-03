@@ -2,6 +2,12 @@ import { POLAR_PRODUCT_IDS } from "@/app/lib/constants";
 
 const POLAR_API = "https://api.polar.sh";
 
+function getSiteUrl(): string {
+  const url = process.env.NEXT_PUBLIC_SITE_URL;
+  if (!url) return "http://localhost:3000";
+  return url.endsWith("/") ? url.slice(0, -1) : url;
+}
+
 function getAccessToken(): string {
   const token = process.env.POLAR_ACCESS_TOKEN;
   if (!token) throw new Error("POLAR_ACCESS_TOKEN not set");
@@ -20,9 +26,16 @@ export async function createCheckoutSession(
   options?: { customerEmail?: string; customerName?: string; metadata?: Record<string, string> }
 ): Promise<CheckoutSession> {
   const token = getAccessToken();
+  const siteUrl = getSiteUrl();
+  const meta = options?.metadata || {};
+
+  const successParams = new URLSearchParams();
+  if (meta.product_name) successParams.set("product", meta.product_name);
+  if (meta.product_amount) successParams.set("amount", meta.product_amount);
 
   const body: Record<string, unknown> = {
     product_id: productId,
+    success_redirect_url: `${siteUrl}/checkout/success?${successParams.toString()}`,
   };
 
   if (options?.customerEmail) {

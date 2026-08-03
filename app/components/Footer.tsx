@@ -53,13 +53,19 @@ export function Footer() {
         <p className="text-xs text-[#74695B]">
           © 2026 VantLaunch. All rights reserved.
         </p>
-        <div className="flex gap-6">
+        <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
           <Link href="/privacy" className="text-xs text-[#74695B] transition-colors hover:text-[#004225]">
-            Privacy
+            Privacy Policy
           </Link>
           <Link href="/terms" className="text-xs text-[#74695B] transition-colors hover:text-[#004225]">
             Terms
           </Link>
+          <Link href={SOCIAL_LINKS.linkedin} target="_blank" rel="noopener noreferrer" className="text-xs text-[#74695B] transition-colors hover:text-[#004225]">
+            LinkedIn
+          </Link>
+          <a href="mailto:build@vantlaunch.com" className="text-xs text-[#74695B] transition-colors hover:text-[#004225]">
+            build@vantlaunch.com
+          </a>
         </div>
       </div>
     </footer>

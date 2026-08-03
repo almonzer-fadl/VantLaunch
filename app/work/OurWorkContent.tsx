@@ -26,15 +26,15 @@ const CLIENTS = [
 const CASE_STUDIES = [
   {
     name: "TeraMotors",
-    subtitle: "Workshop Operating System",
+    subtitle: "Saved 18 hours per week. Replaced 4 disconnected tools.",
     outcome: "Paper to platform in 5 weeks",
     metrics: [
-      { value: "18 hrs", label: "Saved weekly vs manual job cards" },
+      { value: "18 hrs", label: "Admin time eliminated weekly" },
+      { value: "4", label: "Tools replaced by one dashboard" },
       { value: "100%", label: "Digital invoicing — zero lost bills" },
-      { value: "1", label: "Dashboard replaces 4 tools" },
     ],
     description:
-      "A complete workshop OS replacing paper job cards, manual invoicing, Excel spreadsheets, and WhatsApp tracking. The owner now sees every job, part, and invoice in one real-time dashboard.",
+      "A unified dashboard for job cards, invoicing, customer records, and reporting. A 3-location workshop went from paper, Excel, and WhatsApp to seeing every job, part, and invoice in one screen. Billing is automatic. Service records are digital.",
     image: "/media/teramotors-dashboard.webp",
     href: "/work/teramotors",
     demoVideo: "/media/teramotors-demo.mp4",
@@ -42,30 +42,30 @@ const CASE_STUDIES = [
   },
   {
     name: "SpeakBill",
-    subtitle: "Voice-Powered Invoicing",
-    outcome: "Invoice in under 60 seconds",
+    subtitle: "Professional invoices generated in under 60 seconds.",
+    outcome: "Hours of admin reduced to seconds",
     metrics: [
-      { value: "<60s", label: "From voice to invoice" },
-      { value: "100%", label: "EU-compliant PDFs, auto-generated" },
+      { value: "<60s", label: "From voice to professional PDF" },
+      { value: "100%", label: "EU-compliant, auto-generated" },
       { value: "3", label: "Currencies supported" },
     ],
     description:
-      "Voice-to-invoice system that turns natural speech into professional invoices. Freelancers went from hours of manual typing to seconds of speaking. Client records, PDFs, and compliance handled automatically.",
+      "Speak your bill and get a professional invoice in under a minute. Freelancers went from hours of manual typing and template-switching to speaking. Client records, multi-currency PDFs, and compliance handled automatically.",
     image: "/media/speakbill-dashboard.png",
     href: "/work/speakbill",
     demoVideo: "/media/6F57B964-0E1C-4DA3-9B6B-D76E46A30FA0.MP4",
   },
   {
     name: "Gari",
-    subtitle: "Customer Service Marketplace",
-    outcome: "Real-time workshop discovery",
+    subtitle: "Drivers find, book, and track workshop services in one app.",
+    outcome: "Workshop discovery, booking, and payments — unified",
     metrics: [
       { value: "24/7", label: "Workshop availability visible" },
       { value: "100%", label: "Digital service history" },
-      { value: "1 app", label: "Replaces phone calls + cash" },
+      { value: "1 app", label: "Replaces phone calls, paper, and cash" },
     ],
     description:
-      "Mobile-first customer portal for auto service — workshop discovery, vehicle garage, active job tracking, digital payments, and service history. Drivers find, book, pay, and track in one app.",
+      "A mobile marketplace for auto service — workshop discovery, vehicle garage, active job tracking, digital payments, and full service history. Drivers find, book, pay, and track in one place. Workshops get a digital storefront.",
     image: "/media/gari-home.webp",
     href: "/work/gari",
   },

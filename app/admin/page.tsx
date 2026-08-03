@@ -90,10 +90,6 @@ export default function AdminPage() {
   const [selectedProject, setSelectedProject] = useState<ProjectData | null>(null);
   const [updatingId, setUpdatingId] = useState<string | null>(null);
 
-  if (!authenticated) {
-    return <AdminGate onUnlock={() => setAuthenticated(true)} />;
-  }
-
   const fetchProjects = useCallback(async () => {
     const data = await getProjects();
     setProjects(data as ProjectData[]);
@@ -101,8 +97,10 @@ export default function AdminPage() {
   }, []);
 
   useEffect(() => {
-    fetchProjects();
-  }, [fetchProjects]);
+    if (authenticated) {
+      fetchProjects();
+    }
+  }, [authenticated, fetchProjects]);
 
   const handleStatusChange = async (projectId: string, status: string) => {
     setUpdatingId(projectId);
@@ -114,6 +112,10 @@ export default function AdminPage() {
   const copyEmail = (email: string) => {
     navigator.clipboard.writeText(email);
   };
+
+  if (!authenticated) {
+    return <AdminGate onUnlock={() => setAuthenticated(true)} />;
+  }
 
   if (loading) {
     return (

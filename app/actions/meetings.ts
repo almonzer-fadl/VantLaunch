@@ -60,3 +60,14 @@ export async function cancelMeeting(slug: string) {
     return { success: false, error: "Failed to cancel meeting" };
   }
 }
+
+export async function rescheduleMeeting(slug: string, newDate: string) {
+  try {
+    await connectDB();
+    await Meeting.findOneAndUpdate({ slug }, { scheduledDate: new Date(newDate) });
+    return { success: true };
+  } catch (error) {
+    console.error("Failed to reschedule meeting:", error);
+    return { success: false, error: "Failed to reschedule meeting" };
+  }
+}

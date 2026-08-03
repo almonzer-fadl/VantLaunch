@@ -20,10 +20,9 @@ export function CTASection() {
           className="mb-16 text-center"
         >
           <span className="mb-4 inline-flex rounded-full border border-black/10 bg-[#F3F2ED] px-3 py-1.5 text-xs font-bold uppercase tracking-[0.16em] text-[#74695B]">Contact</span>
-          <h2 className="text-3xl font-bold tracking-tight text-[#11100E] sm:text-4xl md:text-5xl">Tell us what you need built.</h2>
+          <h2 className="text-3xl font-bold tracking-tight text-[#11100E] sm:text-4xl md:text-5xl">Ready to replace spreadsheets with a real system?</h2>
           <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-[#74695B] sm:text-lg">
-            Pick a product, give us the context, and we&apos;ll confirm fit and timeline
-            before you pay anything. No sales calls. No vague proposals.
+            Tell us what you need and we will confirm fit and timeline before you pay anything. No sales calls. No vague proposals.
           </p>
           <p className="mx-auto mt-3 max-w-2xl text-sm text-[#74695B]">
             Or email us directly:{' '}
@@ -53,14 +52,9 @@ function ContactForm() {
     if (!product) return;
 
     const productToValue: Record<string, string> = {
-      "Meta & Google Conversion Tracking": "conversion-tracking",
-      "Custom Marketing & ROI Dashboard": "marketing-roi-dashboard",
-      "Automated WhatsApp & SMS Lead Nurture System": "lead-nurture",
-      "High-Converting Landing Page": "landing-page",
-      "Branded Client & Partner Portal System": "client-portal",
-      "Staff Portal & Internal Workflow": "staff-portal",
-      "Custom CRM Setup & Sales Pipeline Build": "crm-pipeline",
-      "Custom-Built Operating System": "operating-system",
+      "Executive Dashboard": "executive-dashboard",
+      "Business Dashboard Pro": "business-dashboard-pro",
+      "Business Operating System": "business-operating-system",
     };
 
     const timeout = window.setTimeout(() => {
@@ -164,7 +158,7 @@ function ContactForm() {
         </div>
         <div>
           <label className="mb-2 block text-xs font-bold uppercase tracking-wider text-[#74695B]">
-            Product
+            Solution
           </label>
           <select
             name="product_interest"
@@ -174,16 +168,11 @@ function ContactForm() {
             className="w-full rounded-xl border border-black/10 bg-[#F8F6EF] px-4 py-3 text-sm font-medium text-[#11100E] transition-all focus:border-[#004225]/40 focus:outline-none focus:ring-1 focus:ring-[#004225]/20"
           >
             <option value="" disabled className="bg-white text-[#74695B]">
-              Select product
+              Select solution
             </option>
-            <option value="conversion-tracking" className="bg-white text-[#11100E]">Meta & Google Conversion Tracking</option>
-            <option value="marketing-roi-dashboard" className="bg-white text-[#11100E]">Custom Marketing & ROI Dashboard</option>
-            <option value="lead-nurture" className="bg-white text-[#11100E]">Automated WhatsApp & SMS Lead Nurture</option>
-            <option value="landing-page" className="bg-white text-[#11100E]">High-Converting Landing Page</option>
-            <option value="client-portal" className="bg-white text-[#11100E]">Branded Client & Partner Portal</option>
-            <option value="staff-portal" className="bg-white text-[#11100E]">Staff Portal & Internal Workflow</option>
-            <option value="crm-pipeline" className="bg-white text-[#11100E]">Custom CRM Setup & Sales Pipeline</option>
-            <option value="operating-system" className="bg-white text-[#11100E]">Custom-Built Operating System</option>
+            <option value="executive-dashboard" className="bg-white text-[#11100E]">Executive Dashboard</option>
+            <option value="business-dashboard-pro" className="bg-white text-[#11100E]">Business Dashboard Pro</option>
+            <option value="business-operating-system" className="bg-white text-[#11100E]">Business Operating System</option>
             <option value="not-sure" className="bg-white text-[#11100E]">Not sure yet</option>
           </select>
         </div>
@@ -211,13 +200,13 @@ function ContactForm() {
 
       <div>
         <label className="mb-2 block text-xs font-bold uppercase tracking-wider text-[#74695B]">
-          Build context
+          What do you need built?
         </label>
         <textarea
           required
           name="message"
           rows={4}
-          placeholder="Which product do you want? What tools, pages, forms, workflows, or accounts need to be connected?"
+          placeholder="Which solution are you interested in? What tools, data sources, or workflows need to be connected?"
           className="w-full resize-none rounded-xl border border-black/10 bg-[#F8F6EF] px-4 py-3 text-sm font-medium text-[#11100E] placeholder:text-[#a89472] transition-all focus:border-[#004225]/40 focus:outline-none focus:ring-1 focus:ring-[#004225]/20"
         />
       </div>
@@ -238,7 +227,7 @@ function ContactForm() {
       )}
 
       <p className="text-center text-xs text-[#74695B]">
-        No spam. Product requests and relevant build questions only.
+        No spam. Solution requests and relevant build questions only.
       </p>
     </form>
   );

@@ -1,4 +1,4 @@
-import { Sparkles, MonitorPlay, Rocket } from "lucide-react";
+import { BarChart3, LayoutDashboard, Settings, LineChart, Workflow, Code2 } from "lucide-react";
 
 export const EASE_CURSOR: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
@@ -19,44 +19,37 @@ export const CONTACT_EMAILS = {
 
 export const TERAMOTORS_REGISTER_URL = "https://app.teramotor.cc/register";
 
+export const PRODUCT_LINKS = {
+  executiveDashboard: "https://whop.com/joined/almonzer-fadl/products/executive-dashboard/",
+  businessDashboardPro: "https://whop.com/joined/almonzer-fadl/products/business-dashboard-pro/",
+  businessOperatingSystem: "https://whop.com/joined/almonzer-fadl/products/business-operating-system-7f/",
+} as const;
+
 export const PROCESS_FLOW_PATH_D = "M 96 44 C 252 6 348 82 450 44 S 648 6 804 44";
 
 export const PROCESS_PHASES = [
   {
     num: "01",
-    title: "Create account",
-    desc: "Add your shop details and start setting up the workspace.",
-    Icon: Sparkles,
+    title: "Discovery & Scoping",
+    desc: "We map your current tools, data sources, and what you need to see. Clear requirements before any build starts.",
+    Icon: LineChart,
   },
   {
     num: "02",
-    title: "Start the trial",
-    desc: "Use TeraMotors for 14 days with no credit card required.",
-    Icon: MonitorPlay,
+    title: "Build & Integrate",
+    desc: "We build your dashboard or system, connect your data sources, and configure every integration.",
+    Icon: Code2,
   },
   {
     num: "03",
-    title: "Keep what works",
-    desc: "Continue on the plan that fits your workshop after the trial.",
-    Icon: Rocket,
-  },
-] as const;
-
-export const WHY_US_POINTS = [
-  {
-    title: "Ship fast, iterate faster",
-    body: "We go from zero to live in weeks, not months — validate with real users, then refine based on traction.",
+    title: "Review & Refine",
+    desc: "You review the working system. We fine-tune based on your feedback until it fits your workflow.",
+    Icon: Settings,
   },
   {
-    title: "One quality bar, every product",
-    body: "Whether it's TeraMotors, SpeakBill, or Gari — every product ships with the same engineering and design standards.",
-  },
-  {
-    title: "You talk to builders, not account managers",
-    body: "Work directly with the people designing and coding your product. No handoffs, no bottlenecks, no fluff.",
-  },
-  {
-    title: "Traction over vanity",
-    body: "Every decision is measured against adoption, retention, and revenue — not pitch decks or inflated metrics.",
+    num: "04",
+    title: "Launch & Train",
+    desc: "Your system goes live with full training and documentation so your team can use it from day one.",
+    Icon: BarChart3,
   },
 ] as const;

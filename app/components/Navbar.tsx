@@ -8,10 +8,10 @@ import Link from "next/link";
 import { useMobileMotion } from "../hooks/use-mobile-motion";
 
 const NAV_LINKS = [
-  { href: "/work", label: "Work" },
-  { href: "/#products", label: "Products" },
+  { href: "/#solutions", label: "Solutions" },
   { href: "/#process", label: "Process" },
   { href: "/#faq", label: "FAQ" },
+  { href: "/#contact", label: "Contact" },
 ];
 
 export function Navbar() {
@@ -77,7 +77,7 @@ export function Navbar() {
                 href="/#contact"
                 className="inline-flex items-center justify-center rounded-xl bg-[#004225] px-4 py-2 text-xs font-bold text-white transition-colors hover:bg-[#11100E]"
               >
-                Request a build
+                Book a Discovery Call
               </Link>
             </motion.div>
 
@@ -146,7 +146,7 @@ export function Navbar() {
                     onClick={() => setOpen(false)}
                     className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#004225] px-6 py-3.5 text-sm font-bold text-white transition-colors hover:bg-[#11100E]"
                   >
-                    Request a build
+                    Book a Discovery Call
                   </Link>
                 </motion.div>
 
@@ -156,7 +156,7 @@ export function Navbar() {
                   transition={{ delay: shouldReduceMotion ? 0.08 : 0.45 }}
                   className="mt-8 text-center text-xs font-medium text-[#74695B]"
                 >
-                  One system. Built for you. Owned by you.
+                  Custom dashboards and business systems.
                 </motion.p>
               </div>
             </motion.div>

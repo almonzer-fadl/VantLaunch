@@ -22,29 +22,30 @@ export function Footer() {
             </span>
           </Link>
           <p className="text-sm leading-relaxed text-[#74695B]">
-            Fixed productized builds for tracking, dashboards, pages, CRM, portals, workflows, and operating systems.
+            Custom dashboards and business systems built for growing companies.
           </p>
         </div>
 
         <div className="grid w-full grid-cols-2 gap-10 sm:grid-cols-3 md:w-auto md:gap-16">
           <div className="flex flex-col gap-4">
-            <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#74695B]">Products</span>
-            <FooterLink href="/#products">Tracking</FooterLink>
-            <FooterLink href="/#products">Landing Page</FooterLink>
-            <FooterLink href="/#products">CRM</FooterLink>
-            <FooterLink href="/#products">Operating System</FooterLink>
-          </div>
-          <div className="flex flex-col gap-4">
-            <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#74695B]">Work</span>
-            <FooterLink href="https://speakbill.vantlaunch.com">SpeakBill</FooterLink>
-            <FooterLink href="https://app.teramotor.cc/register">TeraMotors</FooterLink>
-            <FooterLink href="/work/gari">Gari</FooterLink>
+            <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#74695B]">Solutions</span>
+            <FooterLink href="/#solutions">Executive Dashboard</FooterLink>
+            <FooterLink href="/#solutions">Business Dashboard Pro</FooterLink>
+            <FooterLink href="/#solutions">Business Operating System</FooterLink>
           </div>
           <div className="flex flex-col gap-4">
             <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#74695B]">Company</span>
+            <FooterLink href="/#process">Process</FooterLink>
+            <FooterLink href="/#faq">FAQ</FooterLink>
             <FooterLink href="/#contact">Contact</FooterLink>
+          </div>
+          <div className="flex flex-col gap-4">
+            <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#74695B]">Connect</span>
             <FooterLink href={SOCIAL_LINKS.github}>GitHub</FooterLink>
             <FooterLink href={SOCIAL_LINKS.linkedin}>LinkedIn</FooterLink>
+            <a href="mailto:vantlaunch@gmail.com" className="text-sm font-bold text-[#74695B] transition-colors hover:text-[#004225]">
+              Email
+            </a>
           </div>
         </div>
       </div>

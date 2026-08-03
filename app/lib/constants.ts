@@ -25,14 +25,10 @@ export const POLAR_PRODUCT_IDS = {
   businessOperatingSystem: "cdab126e-5475-48b0-8304-473cf8e4e53f",
 } as const;
 
-export function getPolarCheckoutUrl(productId: string): string {
-  return `https://buy.polar.sh/product/${productId}`;
-}
-
 export const PRODUCT_LINKS = {
-  executiveDashboard: getPolarCheckoutUrl(POLAR_PRODUCT_IDS.executiveDashboard),
-  businessDashboardPro: getPolarCheckoutUrl(POLAR_PRODUCT_IDS.businessDashboardPro),
-  businessOperatingSystem: getPolarCheckoutUrl(POLAR_PRODUCT_IDS.businessOperatingSystem),
+  executiveDashboard: "/api/checkout?product=executive",
+  businessDashboardPro: "/api/checkout?product=dashboard-pro",
+  businessOperatingSystem: "/api/checkout?product=business-os",
 } as const;
 
 export const PROCESS_FLOW_PATH_D = "M 96 44 C 252 6 348 82 450 44 S 648 6 804 44";

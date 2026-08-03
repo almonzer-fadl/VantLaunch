@@ -4,8 +4,10 @@ const POLAR_API = "https://api.polar.sh";
 
 function getSiteUrl(): string {
   const url = process.env.NEXT_PUBLIC_SITE_URL;
-  if (!url) return "http://localhost:3000";
-  return url.endsWith("/") ? url.slice(0, -1) : url;
+  if (!url) return "https://vantlaunch.com";
+  const clean = url.endsWith("/") ? url.slice(0, -1) : url;
+  if (clean.startsWith("http://localhost")) return "https://vantlaunch.com";
+  return clean;
 }
 
 function getAccessToken(): string {

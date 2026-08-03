@@ -32,14 +32,12 @@ const STATS = [
 
 function BrandIcon({ icon, color }: { icon: typeof siMeta; color: string }) {
   return (
-    <svg
-      role="img"
-      viewBox="0 0 24 24"
-      width="20"
-      height="20"
-      fill={color}
-      className="h-5 w-5 shrink-0"
-      dangerouslySetInnerHTML={{ __html: icon.path }}
+    <span
+      className="inline-flex h-5 w-5 shrink-0 items-center justify-center"
+      style={{ color }}
+      dangerouslySetInnerHTML={{
+        __html: icon.svg.replace(/<svg /, '<svg width="20" height="20" ').replace(/fill="[^"]*"/g, 'fill="currentColor"'),
+      }}
       aria-hidden
     />
   );

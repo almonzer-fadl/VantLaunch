@@ -35,9 +35,10 @@ function BrandIcon({ icon, color }: { icon: typeof siMeta; color: string }) {
     <svg
       role="img"
       viewBox="0 0 24 24"
-      fill="currentColor"
-      className="h-5 w-5"
-      style={{ color }}
+      width="20"
+      height="20"
+      fill={color}
+      className="h-5 w-5 shrink-0"
       dangerouslySetInnerHTML={{ __html: icon.path }}
       aria-hidden
     />

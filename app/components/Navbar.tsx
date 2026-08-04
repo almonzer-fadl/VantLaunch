@@ -9,7 +9,7 @@ import { useMobileMotion } from "../hooks/use-mobile-motion";
 
 const NAV_LINKS = [
   { href: "/work", label: "Work" },
-  { href: "/#services", label: "Pricing" },
+  { href: "/#services", label: "Systems" },
   { href: "/#process", label: "Process" },
   { href: "/#faq", label: "FAQ" },
 ];

@@ -1,31 +1,34 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Check, ArrowRight, Globe, Users, Building2, Layers } from "lucide-react";
+import { Check, ArrowRight, Users, Building2, Layers } from "lucide-react";
 import Link from "next/link";
 import { useMobileMotion } from "@/app/hooks/use-mobile-motion";
 
 const TIERS = [
   {
-    name: "Foundation",
-    subtitle: "Digital Presence & Lead System",
-    who: "Local services, consultants, small businesses, early-stage founders",
-    buildPrice: "$2,500–$4,000",
-    retainerPrice: "$300–$500/mo",
+    name: "PropertyOS",
+    subtitle: "Ready Property Management System",
+    who: "Property managers who want tenant, owner, maintenance, and manager workflows without starting from zero",
+    buildPrice: "From $4,000",
+    retainerPrice: "$500+/mo",
     description:
-      "A serious online presence with lead generation — website, service pages, contact forms, analytics, and SEO structure.",
+      "A ready operating system for property management teams — white-labeled first, then customized around your workflow.",
     features: [
-      "Landing page or full website",
-      "Service pages and content structure",
-      "Contact and lead forms",
-      "Basic analytics setup",
-      "Basic SEO structure",
-      "Optional CMS for content editing",
-      "Responsive design — every device",
-      "Deployment and handover",
+      "Tenant and owner portal foundation",
+      "Property manager dashboard",
+      "Maintenance requests and work orders",
+      "Lease and document records",
+      "White-labeling and deployment",
+      "Customization available as needed",
+      "Integrations quoted separately",
+      "Full details on PropertyOS",
     ],
     popular: false,
-    icon: Globe,
+    icon: Building2,
+    href: "https://propertyos.vantlaunch.com",
+    cta: "View PropertyOS",
+    external: true,
   },
   {
     name: "Portal",
@@ -34,9 +37,8 @@ const TIERS = [
     buildPrice: "$4,000–$7,000",
     retainerPrice: "$500–$800/mo",
     description:
-      "Everything in Foundation plus client login, dashboards, request forms, file access, notifications, and admin tools.",
+      "A client-facing system with login, dashboards, request forms, file access, notifications, and admin tools.",
     features: [
-      "Everything in Foundation",
       "Client login and authentication",
       "Client dashboard",
       "Request and intake forms",
@@ -44,6 +46,7 @@ const TIERS = [
       "Email and in-app notifications",
       "Admin area to manage clients",
       "Basic CRM records",
+      "Responsive design — every device",
     ],
     popular: true,
     icon: Users,
@@ -76,7 +79,7 @@ const TIERS = [
     buildPrice: "$15,000–$25,000",
     retainerPrice: "$1,500–$2,500/mo",
     description:
-      "The full stack. Website, portal, CRM, invoicing, analytics, automations, admin tools, and custom workflows — all in one owned platform.",
+      "The full stack. Portal, CRM, invoicing, analytics, automations, admin tools, integrations, and custom workflows — all in one owned platform.",
     features: [
       "Everything in Command",
       "Custom workflow design",
@@ -106,14 +109,15 @@ export function ServicesSection() {
           className="mb-16 text-center"
         >
           <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-black/10 bg-[#F3F2ED] px-3 py-1.5 text-xs font-bold uppercase tracking-[0.16em] text-[#74695B]">
-            Tiers
+            Systems
           </span>
           <h2 className="text-3xl font-bold tracking-tight text-[#11100E] sm:text-4xl md:text-5xl">
-            A website. A portal. A CRM. An OS. You pick the scope.
+            Ready OS. Portal. Command. Full OS. You pick the scope.
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-[#74695B] sm:text-lg">
-            Every tier includes build + monthly retainer for hosting, fixes, and improvements.
-            Like TeraMotors — one build fee, one retainer, one system replacing four tools.
+            Some businesses start with a ready system like PropertyOS. Others need a custom portal,
+            dashboard, or full operating system. Every tier includes build + monthly retainer for
+            hosting, fixes, and improvements.
           </p>
         </motion.div>
 
@@ -177,14 +181,16 @@ export function ServicesSection() {
               </ul>
 
               <Link
-                href="#contact"
+                href={tier.href ?? "#contact"}
+                target={tier.external ? "_blank" : undefined}
+                rel={tier.external ? "noreferrer" : undefined}
                 className={
                   tier.popular
                     ? "inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#004225] px-5 py-3 text-sm font-bold text-white transition-colors hover:bg-[#11100E]"
                     : "inline-flex w-full items-center justify-center gap-2 rounded-xl border border-black/10 bg-transparent px-5 py-3 text-sm font-bold text-[#11100E] transition-colors hover:bg-black/[0.03]"
                 }
               >
-                Build my system
+                {tier.cta ?? "Build my system"}
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </motion.div>
@@ -204,7 +210,8 @@ export function ServicesSection() {
           <p className="mt-2 text-sm leading-relaxed text-[#74695B] max-w-2xl">
             These rates are available while we build our first public case studies and refine
             the delivery process. Early clients receive reduced pricing in exchange for feedback
-            and permission to showcase results. Standard pricing is roughly double what you see above.
+            and permission to showcase results. Ready systems have their own detail pages for
+            white-labeling, customization, and integration pricing.
           </p>
         </motion.div>
       </div>

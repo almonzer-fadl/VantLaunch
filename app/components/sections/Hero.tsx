@@ -78,18 +78,19 @@ export function HeroSection({ onOpenProject }: { onOpenProject: (slug: string) =
           >
             <h1 className="font-display text-balance text-2xl font-bold leading-[1.06] tracking-tight text-[#11100E] sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl">
               Your business runs on too many tools.{' '}
-              <span className="sm:mt-2 sm:block">We build you one. That you own.</span>
+              <span className="sm:mt-2 sm:block">We build the operating system.</span>
             </h1>
 
             <p className="mt-5 max-w-xl text-sm leading-relaxed text-[#74695B] sm:text-base">
-              Trusted by workshops, service businesses, and operational teams to replace scattered
-              tools with one system they own.
+              Ready demos, custom workflows, and owned software systems that replace spreadsheets,
+              WhatsApp workflows, paper processes, and scattered SaaS.
             </p>
 
             <p className="mt-5 max-w-xl text-base leading-relaxed text-[#74695B] sm:mt-6 sm:text-lg">
               We built TeraMotors for a 3-location workshop — job cards, invoicing, customer records,
               and reports in one dashboard. We built SpeakBill so freelancers invoice by voice.
-              We build one system around how you actually work. You own it. We maintain it.
+              Some systems start from a ready OS. Others are built around how you actually work.
+              You own it. We maintain it.
             </p>
 
             <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 text-[10px] font-bold uppercase tracking-[0.14em] text-[#74695B] sm:mt-8 sm:gap-x-6 sm:text-[11px]">

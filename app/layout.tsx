@@ -18,18 +18,18 @@ const siteUrl =
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "VantLaunch — Custom Dashboards, Portals & Mobile Apps",
+  title: "VantLaunch — Business Operating Systems",
   description:
-    "We build custom dashboards, client portals, and mobile apps for businesses. Fixed-price projects starting at $1,500. Portfolio of 8 shipped products.",
+    "We build ready and custom operating systems for businesses that want to replace spreadsheets, WhatsApp workflows, paper processes, and scattered SaaS.",
   icons: {
     icon: "/brand/favicon.PNG",
     shortcut: "/brand/favicon.PNG",
     apple: "/brand/icon.PNG",
   },
   openGraph: {
-    title: "VantLaunch — Custom Dashboards, Portals & Mobile Apps",
+    title: "VantLaunch — Business Operating Systems",
     description:
-      "Custom dashboards, client portals, and mobile apps — built for your business. Fixed prices, clear process, real portfolio.",
+      "Ready and custom business operating systems — portals, dashboards, workflows, and owned software built around how your team works.",
     images: [
       {
         url: "/brand/vantlaunch-og.png",
@@ -41,9 +41,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary",
-    title: "VantLaunch — Custom Dashboards, Portals & Mobile Apps",
+    title: "VantLaunch — Business Operating Systems",
     description:
-      "We build custom software for businesses — dashboards, portals, and mobile apps. Starting at $1,500.",
+      "We build ready and custom operating systems for businesses — portals, dashboards, workflows, and owned software.",
     images: ["/brand/vantlaunch-og.png"],
   },
 };

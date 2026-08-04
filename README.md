@@ -69,7 +69,7 @@ npm run build
 The contact form in `app/actions/contact.ts` sends:
 
 - A confirmation email to the visitor
-- A lead notification email to `build@vantlaunch.com`
+- A lead notification email to `vantlaunch@gmail.com`
 
 For production, make sure `RESEND_API_KEY` is configured in the deployment environment and the sending domain is verified in Resend.
 

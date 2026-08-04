@@ -63,8 +63,8 @@ export function Footer() {
           <Link href={SOCIAL_LINKS.linkedin} target="_blank" rel="noopener noreferrer" className="text-xs text-[#74695B] transition-colors hover:text-[#004225]">
             LinkedIn
           </Link>
-          <a href="mailto:build@vantlaunch.com" className="text-xs text-[#74695B] transition-colors hover:text-[#004225]">
-            build@vantlaunch.com
+          <a href="mailto:vantlaunch@gmail.com" className="text-xs text-[#74695B] transition-colors hover:text-[#004225]">
+            vantlaunch@gmail.com
           </a>
         </div>
       </div>

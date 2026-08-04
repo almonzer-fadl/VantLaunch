@@ -28,8 +28,8 @@ export function CTASection() {
           </p>
           <p className="mx-auto mt-3 max-w-2xl text-sm text-[#74695B]">
             Or email us directly:{' '}
-            <a href="mailto:build@vantlaunch.com" className="font-bold text-[#004225] hover:text-[#11100E] transition-colors">
-              build@vantlaunch.com
+            <a href="mailto:vantlaunch@gmail.com" className="font-bold text-[#004225] hover:text-[#11100E] transition-colors">
+              vantlaunch@gmail.com
             </a>
           </p>
         </motion.div>

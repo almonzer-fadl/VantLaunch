@@ -151,10 +151,9 @@ function ContactForm() {
             <option value="" disabled className="bg-white text-[#74695B]">
               Select tier
             </option>
-            <option value="foundation" className="bg-white text-[#11100E]">Foundation — Website &amp; Leads</option>
-            <option value="portal" className="bg-white text-[#11100E]">Portal — Client Operations</option>
-            <option value="command" className="bg-white text-[#11100E]">Command — Internal Workflows</option>
-            <option value="os" className="bg-white text-[#11100E]">OS — Complete System</option>
+            <option value="propertyos" className="bg-white text-[#11100E]">PropertyOS — Ready-to-Deploy</option>
+            <option value="workshopos" className="bg-white text-[#11100E]">WorkshopOS — Ready-to-Deploy</option>
+            <option value="custom" className="bg-white text-[#11100E]">Custom — Built From Scratch</option>
             <option value="not-sure" className="bg-white text-[#11100E]">Not sure yet</option>
           </select>
         </div>

@@ -9,11 +9,11 @@ const PROJECTS = [
   {
     slug: "propertyos",
     name: "PropertyOS",
-    tagline: "A ready operating system for property management teams.",
+    tagline: "A ready-to-deploy property management operating system.",
     before: "Maintenance requests, tenant updates, owner questions, lease records, contractor work, and documents spread across email, phone calls, spreadsheets, and portals that do not talk to each other.",
-    system: "Tenant portal, owner portal, property manager dashboard, maintenance tickets, work orders, contractor tracking, lease records, reporting, and role-based access in one owned system.",
+    system: "Tenant portal. Owner portal. Maintenance requests. Work orders. Property records. Customized to your workflow.",
     replaced: "Scattered tenant emails, manual maintenance tracking, owner update threads, document chasing, spreadsheet reporting, disconnected property tools.",
-    value: "Property managers can start from a working demo, then customize the remaining workflow around how their team handles tenants, owners, vendors, and maintenance.",
+    value: "Property managers start from a working system, not a blank custom software project. We set it up, brand it, configure it, customize it, deploy it, and support it.",
     image: "/media/propertyos-dashboard.png",
     accent: "#004225",
     icon: Building2,
@@ -123,7 +123,7 @@ export function PortfolioSection({ onOpenProject }: { onOpenProject: (slug: stri
           <span className="mb-4 inline-flex rounded-full border border-black/10 bg-[#F3F2ED] px-3 py-1.5 text-xs font-bold uppercase tracking-[0.16em] text-[#74695B]">Case studies</span>
           <h2 className="text-3xl font-bold tracking-tight text-[#11100E] sm:text-4xl md:text-5xl">Ready systems. Custom workflows. Source code yours.</h2>
           <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-[#74695B] sm:text-lg">
-            PropertyOS starts from a working property management system.
+            PropertyOS is a ready system prospects can see before they buy.
             TeraMotors replaced paper job cards and Excel at a 3-location repair shop.
             SpeakBill turned invoicing from a chore into a voice command.
             Gari gave drivers a digital garage. Every system replaced scattered tools with one owned platform.
@@ -153,7 +153,7 @@ export function PortfolioSection({ onOpenProject }: { onOpenProject: (slug: stri
 
                 <div className="flex flex-col justify-center p-6 sm:p-8 lg:p-10">
                   <span className="mb-4 inline-flex w-fit rounded-full border border-[#004225]/20 bg-[#004225]/5 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.16em] text-[#004225]">
-                    Ready system
+                    Featured system
                   </span>
                   <h3 className="text-2xl font-bold tracking-tight text-[#11100E] sm:text-3xl">
                     {project.name}
@@ -164,21 +164,35 @@ export function PortfolioSection({ onOpenProject }: { onOpenProject: (slug: stri
                   <p className="mt-5 text-sm leading-relaxed text-[#74695B] sm:text-base">
                     {project.system}
                   </p>
+                  <p className="mt-3 text-sm leading-relaxed text-[#74695B] sm:text-base">
+                    {project.value}
+                  </p>
 
                   <div className="mt-6 rounded-xl border border-black/[0.06] bg-[#F8F6EF] p-4">
                     <span className="text-[10px] font-bold uppercase tracking-[0.14em] text-[#74695B]">Replaces</span>
                     <p className="mt-1 text-sm font-medium leading-relaxed text-[#11100E]">{project.replaced}</p>
                   </div>
 
-                  <a
-                    href={project.externalHref}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="mt-7 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#004225] px-5 py-3 text-sm font-bold text-white transition-colors hover:bg-[#11100E] sm:w-fit"
-                  >
-                    {project.cta}
-                    <ArrowUpRight className="h-4 w-4" />
-                  </a>
+                  <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+                    <a
+                      href="https://propertyos.vantlaunch.com/dashboard"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#004225] px-5 py-3 text-sm font-bold text-white transition-colors hover:bg-[#11100E] sm:w-fit"
+                    >
+                      Watch Demo
+                      <ArrowUpRight className="h-4 w-4" />
+                    </a>
+                    <a
+                      href={project.externalHref}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-black/10 bg-transparent px-5 py-3 text-sm font-bold text-[#11100E] transition-colors hover:bg-black/[0.03] sm:w-fit"
+                    >
+                      {project.cta}
+                      <ArrowUpRight className="h-4 w-4" />
+                    </a>
+                  </div>
                 </div>
               </div>
             </motion.div>

@@ -8,23 +8,23 @@ import { useMobileMotion } from "@/app/hooks/use-mobile-motion";
 const TIERS = [
   {
     name: "PropertyOS",
-    subtitle: "Ready Property Management System",
-    who: "Property managers who want tenant, owner, maintenance, and manager workflows without starting from zero",
-    buildPrice: "From $4,000",
-    retainerPrice: "$500+/mo",
+    subtitle: "Ready-to-Deploy Property Management OS",
+    who: "Small property managers who want a working tenant, owner, maintenance, and property records system quickly",
+    buildPrice: "$1,500-$3,000",
+    retainerPrice: "$200-$500/mo",
     description:
-      "A ready operating system for property management teams — white-labeled first, then customized around your workflow.",
+      "A productized PropertyOS setup: branding, configuration, deployment, training, and support. Live in weeks, not months.",
     features: [
-      "Tenant and owner portal foundation",
-      "Property manager dashboard",
-      "Maintenance requests and work orders",
-      "Lease and document records",
-      "White-labeling and deployment",
-      "Customization available as needed",
-      "Integrations quoted separately",
+      "Branding",
+      "Tenant portal",
+      "Owner portal",
+      "Maintenance requests",
+      "Work orders",
+      "Property records",
+      "Deployment and training",
       "Full details on PropertyOS",
     ],
-    popular: false,
+    popular: true,
     icon: Building2,
     href: "https://propertyos.vantlaunch.com",
     cta: "View PropertyOS",
@@ -34,8 +34,8 @@ const TIERS = [
     name: "Portal",
     subtitle: "Client-Facing Operations System",
     who: "Agencies, clinics, repair businesses, B2B service providers",
-    buildPrice: "$4,000–$7,000",
-    retainerPrice: "$500–$800/mo",
+    buildPrice: "$3,000-$7,000",
+    retainerPrice: "$400-$800/mo",
     description:
       "A client-facing system with login, dashboards, request forms, file access, notifications, and admin tools.",
     features: [
@@ -48,15 +48,15 @@ const TIERS = [
       "Basic CRM records",
       "Responsive design — every device",
     ],
-    popular: true,
+    popular: false,
     icon: Users,
   },
   {
     name: "Command",
     subtitle: "Internal Operations & Workflow System",
     who: "Workshops, logistics, real estate teams, businesses with messy admin",
-    buildPrice: "$8,000–$12,000",
-    retainerPrice: "$800–$1,200/mo",
+    buildPrice: "$6,000-$12,000",
+    retainerPrice: "$800-$1,500/mo",
     description:
       "Replace spreadsheets and manual tracking with a CRM, invoicing, reporting, permissions, and workflow automation.",
     features: [
@@ -76,8 +76,8 @@ const TIERS = [
     name: "OS",
     subtitle: "Complete Business Operating System",
     who: "Businesses ready to replace multiple SaaS subscriptions with one owned system",
-    buildPrice: "$15,000–$25,000",
-    retainerPrice: "$1,500–$2,500/mo",
+    buildPrice: "$12,000+",
+    retainerPrice: "$1,500+/mo",
     description:
       "The full stack. Portal, CRM, invoicing, analytics, automations, admin tools, integrations, and custom workflows — all in one owned platform.",
     features: [
@@ -112,12 +112,12 @@ export function ServicesSection() {
             Systems
           </span>
           <h2 className="text-3xl font-bold tracking-tight text-[#11100E] sm:text-4xl md:text-5xl">
-            Ready OS. Portal. Command. Full OS. You pick the scope.
+            Start from a working system. Customize what matters.
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-[#74695B] sm:text-lg">
-            Some businesses start with a ready system like PropertyOS. Others need a custom portal,
-            dashboard, or full operating system. Every tier includes build + monthly retainer for
-            hosting, fixes, and improvements.
+            PropertyOS is the lowest-risk way to start: setup, branding, configuration,
+            deployment, and support around a system that already exists. Custom systems are still
+            available when the workflow needs to be built from scratch.
           </p>
         </motion.div>
 
@@ -156,7 +156,7 @@ export function ServicesSection() {
                   <span className="text-2xl font-bold tracking-tighter text-[#11100E]">
                     {tier.buildPrice}
                   </span>
-                  <span className="ml-1 text-xs font-medium text-[#74695B]">build</span>
+                  <span className="ml-1 text-xs font-medium text-[#74695B]">setup</span>
                 </div>
                 <div>
                   <span className="text-base font-bold tracking-tight text-[#004225]">
@@ -210,8 +210,8 @@ export function ServicesSection() {
           <p className="mt-2 text-sm leading-relaxed text-[#74695B] max-w-2xl">
             These rates are available while we build our first public case studies and refine
             the delivery process. Early clients receive reduced pricing in exchange for feedback
-            and permission to showcase results. Ready systems have their own detail pages for
-            white-labeling, customization, and integration pricing.
+            and permission to showcase results. The goal is simple: launch useful systems, earn
+            testimonials, and build proof with serious early clients.
           </p>
         </motion.div>
       </div>

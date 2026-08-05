@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: "VantLaunch — Business Operating Systems",
   description:
-    "We build ready and custom operating systems for businesses that want to replace spreadsheets, WhatsApp workflows, paper processes, and scattered SaaS.",
+    "Start from proven business operating systems instead of building from zero. Featured system: PropertyOS for property management teams.",
   icons: {
     icon: "/brand/favicon.PNG",
     shortcut: "/brand/favicon.PNG",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "VantLaunch — Business Operating Systems",
     description:
-      "Ready and custom business operating systems — portals, dashboards, workflows, and owned software built around how your team works.",
+      "Ready and custom business operating systems. PropertyOS is our featured ready-to-deploy system for property management teams.",
     images: [
       {
         url: "/brand/vantlaunch-og.png",
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     card: "summary",
     title: "VantLaunch — Business Operating Systems",
     description:
-      "We build ready and custom operating systems for businesses — portals, dashboards, workflows, and owned software.",
+      "Start from proven operating systems instead of building from zero. Featured system: PropertyOS.",
     images: ["/brand/vantlaunch-og.png"],
   },
 };

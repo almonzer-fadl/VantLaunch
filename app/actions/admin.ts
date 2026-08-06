@@ -2,6 +2,7 @@
 
 import { connectDB } from "@/app/lib/db";
 import { Project } from "@/app/lib/models/Project";
+import { Contact } from "@/app/lib/models/Contact";
 
 export async function getProjects() {
   try {
@@ -21,6 +22,28 @@ export async function updateProjectStatus(projectId: string, status: "new" | "co
     return { success: true };
   } catch (error) {
     console.error("Failed to update project status:", error);
+    return { success: false, error: "Failed to update" };
+  }
+}
+
+export async function getContacts() {
+  try {
+    await connectDB();
+    const contacts = await Contact.find().sort({ createdAt: -1 }).lean();
+    return JSON.parse(JSON.stringify(contacts));
+  } catch (error) {
+    console.error("Failed to fetch contacts:", error);
+    return [];
+  }
+}
+
+export async function updateContactStatus(contactId: string, status: "new" | "contacted" | "in_progress" | "completed") {
+  try {
+    await connectDB();
+    await Contact.findByIdAndUpdate(contactId, { status });
+    return { success: true };
+  } catch (error) {
+    console.error("Failed to update contact status:", error);
     return { success: false, error: "Failed to update" };
   }
 }

@@ -10,10 +10,10 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL?.startsWith("http")
   ? process.env.NEXT_PUBLIC_SITE_URL
   : process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000";
 
-const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
-const CLARITY_ID = process.env.NEXT_PUBLIC_CLARITY_ID;
+const GA_ID = process.env.NEXT_PUBLIC_GA_ID || "G-Z2R44P9G25";
+const CLARITY_ID = process.env.NEXT_PUBLIC_CLARITY_ID || "xyasxe0o3n";
 const GSC_VERIFICATION = process.env.NEXT_PUBLIC_GSC_VERIFICATION;
-const BING_VERIFICATION = process.env.NEXT_PUBLIC_BING_VERIFICATION;
+const BING_VERIFICATION = process.env.NEXT_PUBLIC_BING_VERIFICATION || "BF7EE9D2795443BE87154FB3A271A4CA";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

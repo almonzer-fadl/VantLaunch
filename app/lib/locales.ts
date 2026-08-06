@@ -3,6 +3,7 @@ export type Locale =
   | (typeof GULF_LOCALES)[number]
   | "us" | "uk" | "ca" | "au" | "nz" | "sg"
   | "ie" | "de" | "nl" | "se" | "no" | "dk"
+  | "tr" | "my"
   | "global";
 
 export function isRTL(locale: Locale): boolean {
@@ -231,6 +232,28 @@ export const LOCALE_DATA: Record<Locale, LocaleData> = {
     ctaSub: A.ctaSub,
     ctaButton: A.ctaButton,
     dir: "rtl", lang: "ar-OM",
+  },
+
+  // ── Turkey ──
+  tr: {
+    currency: "TRY",
+    engagementPrices: { starter: "₺29,900", pro: "₺49,900", mobile: "₺74,900" },
+    heroSubheadline: "Helping Turkish service businesses replace scattered tools with custom internal business systems built around the way they operate.",
+    ctaHeading: EN.ctaHeading,
+    ctaSub: EN.ctaSub,
+    ctaButton: EN.ctaButton,
+    dir: "ltr", lang: "tr-TR",
+  },
+
+  // ── Malaysia ──
+  my: {
+    currency: "MYR",
+    engagementPrices: { starter: "RM2,990", pro: "RM5,490", mobile: "RM8,490" },
+    heroSubheadline: "Helping Malaysian service businesses centralize operations with custom internal business systems built around their workflow.",
+    ctaHeading: EN.ctaHeading,
+    ctaSub: EN.ctaSub,
+    ctaButton: EN.ctaButton,
+    dir: "ltr", lang: "en-MY",
   },
 
   // ── Global fallback ──

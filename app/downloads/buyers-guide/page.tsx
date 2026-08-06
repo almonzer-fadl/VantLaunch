@@ -1,0 +1,2 @@
+"use client"; import { DownloadPage } from "@/app/components/DownloadPage";
+export default function(){return<DownloadPage title="Internal Software Buyer's Guide" desc="Everything to know before investing in custom software." items={["Build vs buy decision framework","Total cost of ownership calculator","Vendor evaluation checklist","Custom software timeline guide","Integration strategy template","Post-launch success metrics"]}/>;}

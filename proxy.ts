@@ -15,6 +15,10 @@ function getCountry(request: NextRequest): string {
   return request.headers.get("x-vercel-ip-country") ?? "";
 }
 
+function getLocaleForCountry(country: string): string {
+  return LOCALE_REDIRECTS[country]?.replace("/", "") || "";
+}
+
 export default function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
@@ -26,18 +30,29 @@ export default function proxy(request: NextRequest) {
     pathname.startsWith("/_next") || pathname.startsWith("/meet") ||
     pathname.startsWith("/project-brief") || pathname.startsWith("/checkout") ||
     pathname.includes(".")
-  ) return NextResponse.next();
+  ) {
+    const country = getCountry(request);
+    const locale = getLocaleForCountry(country);
+    const response = NextResponse.next();
+    if (locale) response.cookies.set("vl_locale", locale, { path: "/", maxAge: 86400, sameSite: "lax" });
+    return response;
+  }
 
   const country = getCountry(request);
   const localePath = LOCALE_REDIRECTS[country];
+
   if (localePath && pathname === "/") {
-    return NextResponse.redirect(new URL(localePath, request.url));
-  }
-  if (localePath && !pathname.startsWith(localePath)) {
-    return NextResponse.redirect(new URL(`${localePath}${pathname}`, request.url));
+    const response = NextResponse.redirect(new URL(localePath, request.url));
+    response.cookies.set("vl_locale", localePath.replace("/", ""), { path: "/", maxAge: 86400, sameSite: "lax" });
+    return response;
   }
 
-  return NextResponse.next();
+  const locale = getLocaleForCountry(country);
+  const response = localePath && !pathname.startsWith(localePath)
+    ? NextResponse.redirect(new URL(`${localePath}${pathname}`, request.url))
+    : NextResponse.next();
+  if (locale) response.cookies.set("vl_locale", locale, { path: "/", maxAge: 86400, sameSite: "lax" });
+  return response;
 }
 
 export const config = {

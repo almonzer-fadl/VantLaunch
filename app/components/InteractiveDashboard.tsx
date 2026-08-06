@@ -4,10 +4,9 @@ import { useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   TrendingUp, Users, CheckCircle2,
-  Bell, Activity, Zap,
-  DollarSign, Target, ArrowUpRight, ArrowDownRight,
-  Layers,
+  Bell, Activity, Zap, DollarSign, Target, ArrowUpRight, ArrowDownRight, Layers,
 } from "lucide-react";
+import { useIsRTL } from "@/app/lib/LocaleContext";
 
 interface Props {
   activeIndex: number;
@@ -100,15 +99,16 @@ function BarChartMini({ data, color }: { data: number[]; color: string }) {
 
 /* --- State 0: Scattered Apps --- */
 function ScatteredState() {
+  const isRTL = useIsRTL();
   const apps = [
-    { label: "Slack", x: 12, y: 8, color: "#4A154B" },
-    { label: "Sheets", x: 50, y: 5, color: "#34A853" },
-    { label: "CRM", x: 80, y: 18, color: "#4285F4" },
-    { label: "Email", x: 5, y: 35, color: "#EA4335" },
-    { label: "Stripe", x: 42, y: 38, color: "#635BFF" },
-    { label: "Analytics", x: 70, y: 42, color: "#E37400" },
-    { label: "Notion", x: 18, y: 60, color: "#000000" },
-    { label: "Calendar", x: 55, y: 62, color: "#1a73e8" },
+    { label: "Slack", x: isRTL ? 88 : 12, y: 8, color: "#4A154B" },
+    { label: "Sheets", x: isRTL ? 50 : 50, y: 5, color: "#34A853" },
+    { label: "CRM", x: isRTL ? 20 : 80, y: 18, color: "#4285F4" },
+    { label: "Email", x: isRTL ? 95 : 5, y: 35, color: "#EA4335" },
+    { label: "Stripe", x: isRTL ? 58 : 42, y: 38, color: "#635BFF" },
+    { label: "Analytics", x: isRTL ? 30 : 70, y: 42, color: "#E37400" },
+    { label: "Notion", x: isRTL ? 82 : 18, y: 60, color: "#000000" },
+    { label: "Calendar", x: isRTL ? 45 : 55, y: 62, color: "#1a73e8" },
   ];
   return (
     <div className="relative h-56 w-full">

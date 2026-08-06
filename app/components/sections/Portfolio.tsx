@@ -1,42 +1,26 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowUpRight, Building2, Layout, MessageSquare, ShieldCheck } from "lucide-react";
+import { ArrowUpRight, Layout, MessageSquare, ShieldCheck } from "lucide-react";
 import Image from "next/image";
 import { useMobileMotion } from "@/app/hooks/use-mobile-motion";
 
 const PROJECTS = [
   {
-    slug: "propertyos",
-    name: "PropertyOS",
-    tagline: "A ready-to-deploy property management operating system.",
-    before: "Maintenance requests, tenant updates, owner questions, lease records, contractor work, and documents spread across email, phone calls, spreadsheets, and portals that do not talk to each other.",
-    system: "Tenant portal. Owner portal. Maintenance requests. Work orders. Property records. Customized to your workflow.",
-    replaced: "Scattered tenant emails, manual maintenance tracking, owner update threads, document chasing, spreadsheet reporting, disconnected property tools.",
-    value: "Property managers start from a working system, not a blank custom software project. We set it up, brand it, configure it, customize it, deploy it, and support it.",
-    image: "/media/propertyos-dashboard.png",
-    accent: "#004225",
-    icon: Building2,
-    featured: false,
-    product: true,
-    externalHref: "https://propertyos.vantlaunch.com",
-    cta: "View PropertyOS",
-  },
-  {
     slug: "teramotors",
-    name: "WorkshopOS",
+    name: "TeraMotors",
     tagline: "A ready-to-deploy workshop management operating system.",
     before: "Paper job cards, manual invoicing, spreadsheets for tracking customers and parts. WhatsApp messages scattered across phones. No visibility into workshop operations.",
     system: "Customer and vehicle records. Job cards and work orders. Estimates and invoicing. Appointment scheduling. Parts inventory. Team workflows.",
     replaced: "Paper job cards, manual invoicing, Excel spreadsheets, WhatsApp customer tracking, disconnected billing, no digital service history.",
     value: "Auto repair shops start from a working system, not a blank custom software project. We set it up, brand it, configure it, customize it, deploy it, and support it.",
     image: "/media/teramotors-dashboard.webp",
-    accent: "#3b82f6",
+    accent: "#004225",
     icon: Layout,
     featured: false,
     product: true,
-    externalHref: "https://app.teramotor.cc",
-    cta: "View WorkshopOS",
+    externalHref: "https://app.teramotor.cc/register",
+    cta: "View TeraMotors",
   },
   {
     slug: "speakbill",
@@ -126,9 +110,8 @@ export function PortfolioSection({ onOpenProject }: { onOpenProject: (slug: stri
           <span className="mb-3 inline-flex rounded-full border border-black/10 bg-[#F3F2ED] px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.14em] text-[#74695B] sm:mb-4 sm:text-xs sm:tracking-[0.16em]">Ready-to-deploy systems</span>
           <h2 className="text-2xl font-bold tracking-tight text-[#11100E] sm:text-3xl md:text-4xl lg:text-5xl">Start from a working system. Customize what matters.</h2>
           <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-[#74695B] sm:mt-4 sm:text-base sm:leading-relaxed lg:text-lg">
-            PropertyOS and WorkshopOS are ready systems you can see before committing.
+            TeraMotors is a ready system you can see before committing.
             SpeakBill and Gari show how we turn scattered workflows into one owned platform.
-            Every system replaced scattered tools with one owned platform.
           </p>
         </motion.div>
 

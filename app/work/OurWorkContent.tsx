@@ -4,7 +4,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, ArrowUpRight, Play, TrendingUp, Clock, Shield, BarChart3, Zap } from "lucide-react";
+import { ArrowRight, Play, TrendingUp, Clock, Shield, Zap } from "lucide-react";
 import { VideoModal } from "../components/VideoModal";
 
 const METRICS = [
@@ -24,21 +24,6 @@ const CLIENTS = [
 ];
 
 const CASE_STUDIES = [
-  {
-    name: "PropertyOS",
-    subtitle: "A ready operating system for property management teams.",
-    outcome: "Demo-first property management workflows",
-    metrics: [
-      { value: "80%", label: "Start from a working system" },
-      { value: "1 OS", label: "Tenant, owner, manager, and maintenance workflows" },
-      { value: "20%", label: "Customize around the client process" },
-    ],
-    description:
-      "PropertyOS is a ready system for property management companies: tenant portal, owner portal, property manager dashboard, maintenance tickets, work orders, contractor tracking, lease records, reporting, and role-based access. Instead of selling an abstract software project, we show a working system first, then customize it around the business.",
-    image: "/media/propertyos-dashboard.png",
-    href: "https://propertyos.vantlaunch.com",
-    external: true,
-  },
   {
     name: "TeraMotors",
     subtitle: "Saved 18 hours per week. Replaced 4 disconnected tools.",
@@ -112,7 +97,7 @@ export function OurWorkContent() {
             Ready systems. Custom workflows. Full ownership.
           </h1>
           <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-[#74695B] sm:text-lg">
-            PropertyOS starts from a working demo. TeraMotors, SpeakBill, and Gari were built around real workflows.
+            TeraMotors, SpeakBill, and Gari were built around real workflows.
             Each one replaced scattered tools with a single platform they own.
           </p>
         </motion.div>
@@ -184,8 +169,6 @@ export function OurWorkContent() {
                 {/* Screenshot */}
                 <Link
                   href={study.href}
-                  target={study.external ? "_blank" : undefined}
-                  rel={study.external ? "noreferrer" : undefined}
                   className="group relative block aspect-[16/10] bg-[#efe2c7] md:aspect-auto"
                 >
                   {study.image ? (
@@ -263,11 +246,9 @@ export function OurWorkContent() {
 
                   <Link
                     href={study.href}
-                    target={study.external ? "_blank" : undefined}
-                    rel={study.external ? "noreferrer" : undefined}
                     className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-[#004225] transition-colors hover:text-[#11100E]"
                   >
-                    {study.external ? "View product page" : "Read full case study"}
+                    Read full case study
                     <ArrowRight className="h-4 w-4" />
                   </Link>
                 </div>

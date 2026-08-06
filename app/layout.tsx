@@ -18,18 +18,18 @@ const siteUrl =
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "VantLaunch — Business Operating Systems",
+  title: "VantLaunch — Productized Business Systems",
   description:
-    "Start from proven business operating systems instead of building from zero. Featured system: PropertyOS for property management teams.",
+    "Productized business system builds for tracking, dashboards, landing pages, lead nurture, CRM, portals, workflows, and operating systems.",
   icons: {
     icon: "/brand/favicon.PNG",
     shortcut: "/brand/favicon.PNG",
     apple: "/brand/icon.PNG",
   },
   openGraph: {
-    title: "VantLaunch — Business Operating Systems",
+    title: "VantLaunch — Productized Business Systems",
     description:
-      "Ready and custom business operating systems. PropertyOS is our featured ready-to-deploy system for property management teams.",
+      "Fixed productized builds for tracking, dashboards, landing pages, lead nurture, CRM, portals, workflows, and operating systems.",
     images: [
       {
         url: "/brand/vantlaunch-og.png",
@@ -41,9 +41,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary",
-    title: "VantLaunch — Business Operating Systems",
+    title: "VantLaunch — Productized Business Systems",
     description:
-      "Start from proven operating systems instead of building from zero. Featured system: PropertyOS.",
+      "Choose a fixed business system build: tracking, dashboards, landing pages, CRM, portals, workflows, or a compact operating system.",
     images: ["/brand/vantlaunch-og.png"],
   },
 };

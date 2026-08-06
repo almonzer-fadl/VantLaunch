@@ -54,7 +54,7 @@ function AfterState() {
   );
 }
 
-export function HeroSection({ onOpenProject }: { onOpenProject: (slug: string) => void }) {
+export function HeroSection() {
   const { shouldReduceMotion } = useMobileMotion();
   const [demoOpen, setDemoOpen] = useState(false);
   const enterX = shouldReduceMotion ? 0 : -30;
@@ -77,29 +77,28 @@ export function HeroSection({ onOpenProject }: { onOpenProject: (slug: string) =
             className="text-left"
           >
             <h1 className="font-display text-balance text-2xl font-bold leading-[1.06] tracking-tight text-[#11100E] sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl">
-              Your business runs on too many tools.{' '}
-              <span className="sm:mt-2 sm:block">We build the operating system.</span>
+              Productized systems for businesses running on messy tools.
             </h1>
 
             <p className="mt-5 max-w-xl text-sm leading-relaxed text-[#74695B] sm:text-base">
-              Start from a proven system instead of building from zero. We set up, brand,
-              customize, deploy, and support operating systems your team can actually use.
+              Pick a fixed build from the catalog: tracking, dashboards, landing pages,
+              lead nurture, CRM, portals, staff workflows, or a compact operating system.
             </p>
 
             <p className="mt-5 max-w-xl text-base leading-relaxed text-[#74695B] sm:mt-6 sm:text-lg">
-              PropertyOS and WorkshopOS are our ready-to-deploy systems for property managers
-              and auto repair shops. TeraMotors, SpeakBill, and Gari show how we turn scattered
-              workflows into one owned platform. Lower risk. Faster launch. Real proof to build from.
+              This is not an open-ended agency call. Each product has a clear outcome,
+              starting price, and delivery path. You choose the system your business needs,
+              we configure and ship it.
             </p>
 
             <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 text-[10px] font-bold uppercase tracking-[0.14em] text-[#74695B] sm:mt-8 sm:gap-x-6 sm:text-[11px]">
-              <span>8+ Systems Shipped</span>
+              <span>8 Productized Builds</span>
               <span className="text-black/15 hidden sm:inline">|</span>
-              <span>18 Hours Saved Weekly</span>
+              <span>Fixed Starting Prices</span>
               <span className="text-black/15 hidden sm:inline">|</span>
-              <span>100% Source Ownership</span>
+              <span>Clear Deliverables</span>
               <span className="text-black/15 hidden sm:inline">|</span>
-              <span>Monthly Maintenance Included</span>
+              <span>Owned By You</span>
             </div>
 
             <motion.div
@@ -108,12 +107,12 @@ export function HeroSection({ onOpenProject }: { onOpenProject: (slug: string) =
               transition={{ delay: shouldReduceMotion ? 0.05 : 0.4, duration: shouldReduceMotion ? 0.3 : 0.6 }}
               className="mt-10 flex flex-col gap-4 sm:mt-12 sm:flex-row sm:items-center sm:gap-5"
             >
-              <Link href="#portfolio" className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#11100E] px-6 py-3.5 text-sm font-bold text-white transition-colors hover:bg-[#004225] sm:w-auto sm:px-8">
-                See ready systems
+              <Link href="#products" className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#11100E] px-6 py-3.5 text-sm font-bold text-white transition-colors hover:bg-[#004225] sm:w-auto sm:px-8">
+                Browse products
                 <ArrowRight className="h-5 w-5" />
               </Link>
-              <Link href="#services" className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-black/10 bg-transparent px-6 py-3.5 text-sm font-bold text-[#11100E] transition-colors hover:bg-black/[0.03] sm:w-auto sm:px-8">
-                View pricing
+              <Link href="#portfolio" className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-black/10 bg-transparent px-6 py-3.5 text-sm font-bold text-[#11100E] transition-colors hover:bg-black/[0.03] sm:w-auto sm:px-8">
+                See proof
               </Link>
             </motion.div>
           </motion.div>

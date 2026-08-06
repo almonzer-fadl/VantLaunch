@@ -5,39 +5,39 @@ import { useMobileMotion } from "@/app/hooks/use-mobile-motion";
 
 const FAQS = [
   {
-    question: "Do I own the code?",
+    question: "Am I buying a fixed product or hiring you hourly?",
     answer:
-      "Yes. After the build is complete, you receive full source access and the production handover details needed to run, maintain, or extend the system however you want. It's yours.",
+      "You are buying a fixed productized build. Each product has a clear starting price, deliverables, and outcome. If you need extra scope, we quote that add-on before work starts.",
   },
   {
-    question: "What happens if I stop the retainer?",
+    question: "Do I own the final system?",
     answer:
-      "You keep the system and the code. We stop providing hosting support, maintenance, updates, and fixes. If you have your own team or want to self-manage, you can. Most clients stay on retainer because we keep everything running and improving month to month.",
+      "Yes. For custom builds, portals, CRM systems, landing pages, and operating systems, you receive the handover details needed to run, maintain, or extend the system. It is built for your business, not rented as a generic template.",
   },
   {
-    question: "Can this replace my current tools?",
+    question: "What if I am not sure which product I need?",
     answer:
-      "In most cases, yes. We've replaced combinations of websites, CRMs, invoicing apps, spreadsheets, WhatsApp workflows, analytics dashboards, and file-sharing tools with one owned system. During scoping, we map what you currently use and show what gets replaced.",
+      "Choose the closest product and explain the situation in the request form. We will either confirm the fit, recommend a smaller build, or tell you which product matches the business need better.",
   },
   {
     question: "Can you integrate with tools I already use?",
     answer:
-      "Yes. If there's a tool you can't or don't want to replace — accounting software, payment processors, email providers — we build the integrations so your system talks to them.",
+      "Yes, when the selected product requires it. Common examples include ad platforms, analytics, CRMs, forms, payment processors, email providers, WhatsApp, SMS, and spreadsheets.",
   },
   {
-    question: "How long does a build take?",
+    question: "How long do these products take?",
     answer:
-      "Foundation projects typically take 2-4 weeks. Portal builds run 4-8 weeks. Command and OS engagements are scoped per project — usually 8-16 weeks depending on complexity. Every project starts with a roadmap so you know the timeline before we start.",
+      "Small builds like tracking, dashboards, CRM setup, and landing pages are usually measured in days. Portal, staff workflow, and operating system builds take longer depending on access, content, integrations, and review speed.",
   },
   {
-    question: "Do you build mobile apps too?",
+    question: "Can you customize one of the products?",
     answer:
-      "Yes. We build responsive web apps that work on every device, and native iOS and Android apps when the project needs them. If your clients need to log in from their phones, we design for that from day one.",
+      "Yes. The catalog gives you a starting point, not a vague conversation. Small adjustments are normal. Bigger changes are quoted as add-ons so the project stays clear.",
   },
   {
     question: "What is not included?",
     answer:
-      "We don't do branding or logo design. We don't run your social media or manage ad campaigns. We don't do SEO content writing (though we build the technical SEO structure). We build the operating system — the product layer your business runs on.",
+      "We do not run your ads, manage your social media, write long-form SEO content, or create full brand identities. We build the product layer: tracking, pages, dashboards, CRM, automation, portals, workflows, and operating systems.",
   },
 ];
 
@@ -54,9 +54,9 @@ export function FAQSection() {
           transition={{ duration: shouldReduceMotion ? 0.3 : 0.5 }}
         >
           <span className="mb-4 inline-flex rounded-full border border-black/10 bg-[#F3F2ED] px-3 py-1.5 text-xs font-bold uppercase tracking-[0.16em] text-[#74695B]">FAQ</span>
-          <h2 className="text-3xl font-bold tracking-tight text-[#11100E] sm:text-4xl md:text-5xl">Questions smart buyers ask before committing.</h2>
+          <h2 className="text-3xl font-bold tracking-tight text-[#11100E] sm:text-4xl md:text-5xl">Questions before you buy a build.</h2>
           <p className="mt-4 max-w-2xl text-base leading-relaxed text-[#74695B] sm:text-lg">
-            Clear answers so there are no surprises — before you even reach the contact form.
+            The point is clarity before payment: what you get, what can be customized, and what is outside the product.
           </p>
         </motion.div>
 

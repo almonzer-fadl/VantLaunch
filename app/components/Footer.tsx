@@ -22,17 +22,17 @@ export function Footer() {
             </span>
           </Link>
           <p className="text-sm leading-relaxed text-[#74695B]">
-            One owned operating system — built around how your company actually works.
+            Fixed productized builds for tracking, dashboards, pages, CRM, portals, workflows, and operating systems.
           </p>
         </div>
 
         <div className="grid w-full grid-cols-2 gap-10 sm:grid-cols-3 md:w-auto md:gap-16">
           <div className="flex flex-col gap-4">
-            <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#74695B]">Services</span>
-            <FooterLink href="/#services">Foundation</FooterLink>
-            <FooterLink href="/#services">Portal</FooterLink>
-            <FooterLink href="/#services">Command</FooterLink>
-            <FooterLink href="/#services">OS</FooterLink>
+            <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#74695B]">Products</span>
+            <FooterLink href="/#products">Tracking</FooterLink>
+            <FooterLink href="/#products">Landing Page</FooterLink>
+            <FooterLink href="/#products">CRM</FooterLink>
+            <FooterLink href="/#products">Operating System</FooterLink>
           </div>
           <div className="flex flex-col gap-4">
             <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#74695B]">Work</span>

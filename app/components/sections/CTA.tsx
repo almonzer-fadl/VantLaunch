@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { ArrowRight, Check } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { sendContactEmail } from "../../actions/contact";
 import { useMobileMotion } from "@/app/hooks/use-mobile-motion";
 
@@ -10,7 +10,7 @@ export function CTASection() {
   const { shouldReduceMotion } = useMobileMotion();
 
   return (
-    <section id="contact" className="border-t border-black/10 bg-[#F8F6EF] px-6 py-16 text-[#11100E] sm:py-24 md:py-32">
+    <section id="contact" className="scroll-mt-20 border-t border-black/10 bg-[#F8F6EF] px-6 py-16 text-[#11100E] sm:py-24 md:py-32">
       <div className="mx-auto max-w-7xl">
         <motion.div
           initial={{ opacity: 0, y: shouldReduceMotion ? 8 : 16 }}
@@ -20,11 +20,10 @@ export function CTASection() {
           className="mb-16 text-center"
         >
           <span className="mb-4 inline-flex rounded-full border border-black/10 bg-[#F3F2ED] px-3 py-1.5 text-xs font-bold uppercase tracking-[0.16em] text-[#74695B]">Contact</span>
-          <h2 className="text-3xl font-bold tracking-tight text-[#11100E] sm:text-4xl md:text-5xl">Tell us what tools you&apos;re piecing together.</h2>
+          <h2 className="text-3xl font-bold tracking-tight text-[#11100E] sm:text-4xl md:text-5xl">Request the product you want built.</h2>
           <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-[#74695B] sm:text-lg">
-            We did it for a workshop running on paper, Excel, and WhatsApp.
-            We&apos;ll show you what one owned system looks like for your business.
-            Response within 24 hours — with a rough timeline.
+            Choose the productized build, send the context, and we&apos;ll confirm fit,
+            timeline, and any add-ons before payment. No vague discovery funnel.
           </p>
           <p className="mx-auto mt-3 max-w-2xl text-sm text-[#74695B]">
             Or email us directly:{' '}
@@ -47,6 +46,29 @@ export function CTASection() {
 function ContactForm() {
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
+  const [selectedProduct, setSelectedProduct] = useState("");
+
+  useEffect(() => {
+    const product = new URLSearchParams(window.location.search).get("product");
+    if (!product) return;
+
+    const productToValue: Record<string, string> = {
+      "Meta & Google Conversion Tracking": "conversion-tracking",
+      "Custom Marketing & ROI Dashboard": "marketing-roi-dashboard",
+      "Automated WhatsApp & SMS Lead Nurture System": "lead-nurture",
+      "High-Converting Landing Page": "landing-page",
+      "Branded Client & Partner Portal System": "client-portal",
+      "Staff Portal & Internal Workflow": "staff-portal",
+      "Custom CRM Setup & Sales Pipeline Build": "crm-pipeline",
+      "Custom-Built Operating System": "operating-system",
+    };
+
+    const timeout = window.setTimeout(() => {
+      setSelectedProduct(productToValue[product] ?? "");
+    }, 0);
+
+    return () => window.clearTimeout(timeout);
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -133,6 +155,7 @@ function ContactForm() {
             Company
           </label>
           <input
+            required
             name="company"
             type="text"
             placeholder="Acme Inc."
@@ -141,19 +164,26 @@ function ContactForm() {
         </div>
         <div>
           <label className="mb-2 block text-xs font-bold uppercase tracking-wider text-[#74695B]">
-            Project tier
+            Product
           </label>
           <select
             name="product_interest"
-            defaultValue=""
+            value={selectedProduct}
+            onChange={(e) => setSelectedProduct(e.target.value)}
+            required
             className="w-full rounded-xl border border-black/10 bg-[#F8F6EF] px-4 py-3 text-sm font-medium text-[#11100E] transition-all focus:border-[#004225]/40 focus:outline-none focus:ring-1 focus:ring-[#004225]/20"
           >
             <option value="" disabled className="bg-white text-[#74695B]">
-              Select tier
+              Select product
             </option>
-            <option value="propertyos" className="bg-white text-[#11100E]">PropertyOS — Ready-to-Deploy</option>
-            <option value="workshopos" className="bg-white text-[#11100E]">WorkshopOS — Ready-to-Deploy</option>
-            <option value="custom" className="bg-white text-[#11100E]">Custom — Built From Scratch</option>
+            <option value="conversion-tracking" className="bg-white text-[#11100E]">Meta & Google Conversion Tracking</option>
+            <option value="marketing-roi-dashboard" className="bg-white text-[#11100E]">Custom Marketing & ROI Dashboard</option>
+            <option value="lead-nurture" className="bg-white text-[#11100E]">Automated WhatsApp & SMS Lead Nurture</option>
+            <option value="landing-page" className="bg-white text-[#11100E]">High-Converting Landing Page</option>
+            <option value="client-portal" className="bg-white text-[#11100E]">Branded Client & Partner Portal</option>
+            <option value="staff-portal" className="bg-white text-[#11100E]">Staff Portal & Internal Workflow</option>
+            <option value="crm-pipeline" className="bg-white text-[#11100E]">Custom CRM Setup & Sales Pipeline</option>
+            <option value="operating-system" className="bg-white text-[#11100E]">Custom-Built Operating System</option>
             <option value="not-sure" className="bg-white text-[#11100E]">Not sure yet</option>
           </select>
         </div>
@@ -166,6 +196,7 @@ function ContactForm() {
         <select
           name="timeline"
           defaultValue=""
+          required
           className="w-full rounded-xl border border-black/10 bg-[#F8F6EF] px-4 py-3 text-sm font-medium text-[#11100E] transition-all focus:border-[#004225]/40 focus:outline-none focus:ring-1 focus:ring-[#004225]/20"
         >
           <option value="" disabled className="bg-white text-[#74695B]">
@@ -180,13 +211,13 @@ function ContactForm() {
 
       <div>
         <label className="mb-2 block text-xs font-bold uppercase tracking-wider text-[#74695B]">
-          Tell us about your project
+          Build context
         </label>
         <textarea
           required
           name="message"
           rows={4}
-          placeholder="What do you need built? Who will use it? Any specific features or integrations required?"
+          placeholder="Which product do you want? What tools, pages, forms, workflows, or accounts need to be connected?"
           className="w-full resize-none rounded-xl border border-black/10 bg-[#F8F6EF] px-4 py-3 text-sm font-medium text-[#11100E] placeholder:text-[#a89472] transition-all focus:border-[#004225]/40 focus:outline-none focus:ring-1 focus:ring-[#004225]/20"
         />
       </div>
@@ -207,7 +238,7 @@ function ContactForm() {
       )}
 
       <p className="text-center text-xs text-[#74695B]">
-        No spam. We respond to genuine project inquiries only.
+        No spam. Product requests and relevant build questions only.
       </p>
     </form>
   );

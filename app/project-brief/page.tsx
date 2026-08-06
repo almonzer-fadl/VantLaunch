@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft, ArrowRight, Check, Loader2 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { submitProjectBrief } from "@/app/actions/submit-project";
+import { LocaleProvider, useLocaleFromCookie, useT } from "../lib/LocaleContext";
 
 const INTEGRATIONS = [
   "Google Ads", "Meta Ads", "GA4", "Stripe", "Shopify",
@@ -51,6 +52,16 @@ const initialFormData: FormData = {
 };
 
 export default function ProjectBriefPage() {
+  const locale = useLocaleFromCookie();
+  return (
+    <LocaleProvider locale={locale}>
+      <ProjectBriefContent />
+    </LocaleProvider>
+  );
+}
+
+function ProjectBriefContent() {
+  const t = useT().t;
   const router = useRouter();
   const [step, setStep] = useState(0);
   const [formData, setFormData] = useState<FormData>(initialFormData);
@@ -296,10 +307,10 @@ export default function ProjectBriefPage() {
                   {submitting ? (
                     <>
                       <Loader2 className="h-4 w-4 animate-spin" />
-                      Submitting...
+                      {t.form.sending}
                     </>
                   ) : (
-                    "Submit Questionnaire"
+                    t.form.submit
                   )}
                 </button>
                 {submitError && (

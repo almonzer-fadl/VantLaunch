@@ -30,7 +30,7 @@ export async function createMeeting(input: {
 export async function getMeetings() {
   try {
     await connectDB();
-    const meetings = await Meeting.find().sort({ createdAt: -1 }).lean();
+    const meetings = await Meeting.find({ deleted: { $ne: true } }).sort({ createdAt: -1 }).lean();
     return JSON.parse(JSON.stringify(meetings));
   } catch (error) {
     console.error("Failed to fetch meetings:", error);
@@ -41,7 +41,7 @@ export async function getMeetings() {
 export async function getMeetingBySlug(slug: string) {
   try {
     await connectDB();
-    const meeting = await Meeting.findOne({ slug }).lean();
+    const meeting = await Meeting.findOne({ slug, deleted: { $ne: true } }).lean();
     if (!meeting) return null;
     return JSON.parse(JSON.stringify(meeting));
   } catch (error) {
@@ -58,6 +58,17 @@ export async function cancelMeeting(slug: string) {
   } catch (error) {
     console.error("Failed to cancel meeting:", error);
     return { success: false, error: "Failed to cancel meeting" };
+  }
+}
+
+export async function deleteMeeting(slug: string) {
+  try {
+    await connectDB();
+    await Meeting.findOneAndUpdate({ slug }, { deleted: true });
+    return { success: true };
+  } catch (error) {
+    console.error("Failed to delete meeting:", error);
+    return { success: false, error: "Failed to delete" };
   }
 }
 

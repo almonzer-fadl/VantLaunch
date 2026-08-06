@@ -9,6 +9,7 @@ export interface IContact {
   timeline: string;
   message: string;
   status: "new" | "contacted" | "in_progress" | "completed";
+  deleted: boolean;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -29,6 +30,7 @@ const ContactSchema = new Schema<IContactDocument>(
       enum: ["new", "contacted", "in_progress", "completed"],
       default: "new",
     },
+    deleted: { type: Boolean, default: false },
   },
   { timestamps: true }
 );

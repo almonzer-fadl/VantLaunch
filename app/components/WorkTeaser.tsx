@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, TrendingUp } from "lucide-react";
+import { useT } from "@/app/lib/LocaleContext";
 
 const SHOWCASE = [
   { name: "TeraMotors", metric: "18 hrs/week saved", href: "/work/teramotors" },
@@ -11,6 +12,7 @@ const SHOWCASE = [
 ];
 
 export function WorkTeaser() {
+  const t = useT().t;
   return (
     <section className="border-t border-black/10 bg-[#F8F6EF] px-6 py-16 text-[#11100E] sm:py-20 md:py-28">
       <div className="mx-auto max-w-5xl">
@@ -22,10 +24,10 @@ export function WorkTeaser() {
           className="mb-10 text-center"
         >
           <span className="mb-4 inline-flex rounded-full border border-black/10 bg-[#F3F2ED] px-3 py-1.5 text-xs font-bold uppercase tracking-[0.16em] text-[#74695B]">
-            Our Work
+            {t.work.tag}
           </span>
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-            Real systems. Measurable outcomes.
+            {t.work.heading}
           </h2>
         </motion.div>
 
@@ -64,7 +66,7 @@ export function WorkTeaser() {
             href="/work"
             className="inline-flex items-center gap-2 text-sm font-bold text-[#004225] transition-colors hover:text-[#11100E]"
           >
-            View all case studies
+            {t.work.viewAll}
             <ArrowRight className="h-4 w-4" />
           </Link>
         </motion.div>

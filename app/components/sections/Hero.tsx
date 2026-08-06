@@ -7,6 +7,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useMobileMotion } from "@/app/hooks/use-mobile-motion";
 import { BeforeAfterSlider } from "../BeforeAfterSlider";
+import { useT } from "@/app/lib/LocaleContext";
 
 function BeforeState() {
   return (
@@ -38,6 +39,7 @@ function AfterState() {
 
 export function HeroSection() {
   const { shouldReduceMotion } = useMobileMotion();
+  const t = useT().t;
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -85,7 +87,7 @@ export function HeroSection() {
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
               >
-                Custom Internal Business Systems
+                {t.hero.heading1}
               </motion.span>
               <br />
               <motion.span
@@ -94,7 +96,7 @@ export function HeroSection() {
                 transition={{ duration: 0.6, delay: 0.45 }}
                 className="text-[#004225]"
               >
-                for Growing Service Businesses
+                {t.hero.heading2}
               </motion.span>
             </motion.h1>
 
@@ -104,7 +106,7 @@ export function HeroSection() {
               transition={{ duration: 0.6, delay: 0.6 }}
               className="mt-5 max-w-xl text-sm leading-relaxed text-[#74695B] sm:text-base"
             >
-              Replace scattered tools, repetitive work, and disconnected workflows with one system built around the way your business operates.
+              {t.hero.subheadline}
             </motion.p>
 
             <motion.div
@@ -134,13 +136,13 @@ export function HeroSection() {
             >
               <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                 <Link href="/contact" className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#11100E] px-6 py-3.5 text-sm font-bold text-white transition-all hover:bg-[#004225] hover:shadow-lg sm:w-auto sm:px-8">
-                  Book Discovery Call
+                  {t.hero.cta1}
                   <ArrowRight className="h-5 w-5" />
                 </Link>
               </motion.div>
               <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                 <Link href="#engagement-options" className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-black/10 bg-transparent px-6 py-3.5 text-sm font-bold text-[#11100E] transition-all hover:bg-black/[0.03] hover:border-black/20 sm:w-auto sm:px-8">
-                  View Engagement Options
+                  {t.hero.cta2}
                 </Link>
               </motion.div>
             </motion.div>

@@ -3,45 +3,20 @@
 import { useRef, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { InteractiveDashboard } from "@/app/components/InteractiveDashboard";
-
-const PROBLEMS = [
-  {
-    text: "Information is scattered across multiple platforms.",
-    icon: "01",
-    visual: "Disconnected tools, tabs, and logins.",
-  },
-  {
-    text: "Teams waste hours on repetitive manual work.",
-    icon: "02",
-    visual: "Copying data. Pulling reports. Updating sheets.",
-  },
-  {
-    text: "Reporting takes too long and is never up to date.",
-    icon: "03",
-    visual: "Hours of manual work for reports already outdated.",
-  },
-  {
-    text: "Client communication is inconsistent and hard to track.",
-    icon: "04",
-    visual: "Emails, calls, messages — no single source of truth.",
-  },
-  {
-    text: "Leadership lacks real-time visibility into operations.",
-    icon: "05",
-    visual: "Decisions made from gut feel, not real data.",
-  },
-  {
-    text: "Operations become harder and more chaotic as the business grows.",
-    icon: "06",
-    visual: "Growth amplifies the cracks in your operations.",
-  },
-];
+import { useT } from "@/app/lib/LocaleContext";
 
 export function SpreadsheetsSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
   const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const t = useT().t;
+
+  const PROBLEMS = t.problem.items.map((text, i) => ({
+    text,
+    icon: String(i + 1).padStart(2, "0"),
+    visual: "",
+  }));
 
   // Detect mobile for switching interaction mode
   useEffect(() => {
@@ -92,13 +67,13 @@ export function SpreadsheetsSection() {
           className="mb-12 text-center sm:mb-16"
         >
           <span className="mb-4 inline-flex rounded-full border border-black/10 bg-[#F3F2ED] px-3 py-1.5 text-xs font-bold uppercase tracking-[0.16em] text-[#74695B]">
-            The Problem
+            {t.problem.tag}
           </span>
           <h2 className="font-display text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
-            Growing businesses outgrow their tools
+            {t.problem.heading}
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-[#74695B] sm:text-lg">
-            As your service business grows, operational complexity grows with it. What started as manageable quickly becomes a drain on time, visibility, and profitability.
+            {t.problem.sub}
           </p>
         </motion.div>
 
@@ -204,7 +179,7 @@ export function SpreadsheetsSection() {
               >
                 <div className="rounded-2xl border border-[#004225]/20 bg-gradient-to-br from-[#004225]/[0.03] to-[#004225]/[0.01] p-5 text-center sm:p-6">
                   <p className="text-base font-bold tracking-tight text-[#004225] sm:text-lg">
-                    We build software around your workflow — not the other way around.
+                    {t.problem.tagline}
                   </p>
                 </div>
               </motion.div>

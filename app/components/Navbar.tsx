@@ -6,17 +6,21 @@ import { Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useMobileMotion } from "../hooks/use-mobile-motion";
+import { useT } from "../lib/LocaleContext";
 
-const NAV_LINKS = [
-  { href: "#systems", label: "Solutions" },
-  { href: "#engagement-options", label: "Engagements" },
-  { href: "#process", label: "Process" },
-  { href: "/faq", label: "FAQ" },
-];
+const NAV_KEYS = ["solutions", "engagements", "process", "faq"] as const;
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
   const { shouldReduceMotion } = useMobileMotion();
+  const t = useT().t;
+
+  const NAV_LINKS = [
+    { href: "#systems", label: t.navbar.solutions, key: "solutions" },
+    { href: "#engagement-options", label: t.navbar.engagements, key: "engagements" },
+    { href: "#process", label: t.navbar.process, key: "process" },
+    { href: "/faq", label: t.navbar.faq, key: "faq" },
+  ];
 
   useEffect(() => {
     if (open) {
@@ -75,7 +79,7 @@ export function Navbar() {
                 href="/contact"
                 className="inline-flex items-center justify-center rounded-xl bg-[#004225] px-4 py-2 text-xs font-bold text-white transition-colors hover:bg-[#11100E]"
               >
-                Book a Call
+                {t.navbar.cta}
               </Link>
             </motion.div>
 
@@ -139,7 +143,7 @@ export function Navbar() {
                     onClick={() => setOpen(false)}
                     className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#004225] px-6 py-3.5 text-sm font-bold text-white transition-colors hover:bg-[#11100E]"
                   >
-                    Book a Call
+                    {t.navbar.cta}
                   </Link>
                 </motion.div>
 
@@ -149,7 +153,7 @@ export function Navbar() {
                   transition={{ delay: shouldReduceMotion ? 0.08 : 0.45 }}
                   className="mt-8 text-center text-xs font-medium text-[#74695B]"
                 >
-                  Custom internal business systems for growing service businesses.
+                  {t.footer.tagline}
                 </motion.p>
               </div>
             </motion.div>

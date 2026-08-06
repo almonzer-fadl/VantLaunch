@@ -6,6 +6,7 @@ import {
   BarChart3, Globe, Users, Workflow, FileText, Layers, ShieldCheck, Smartphone,
 } from "lucide-react";
 import { SystemsDashboard } from "@/app/components/SystemsDashboard";
+import { useT } from "@/app/lib/LocaleContext";
 
 const CATEGORIES = [
   { id: "executive" as const, label: "Executive Hub", icon: BarChart3 },
@@ -25,6 +26,7 @@ const RESUME_DELAY = 8000;
 
 export function SolutionsSection() {
   const [activeSystem, setActiveSystem] = useState<SystemId>("executive");
+  const t = useT().t;
   const [isPaused, setIsPaused] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
   const [inView, setInView] = useState(false);
@@ -87,13 +89,13 @@ export function SolutionsSection() {
           className="mb-10 text-center sm:mb-14"
         >
           <span className="mb-4 inline-flex rounded-full border border-black/10 bg-[#F3F2ED] px-3 py-1.5 text-xs font-bold uppercase tracking-[0.16em] text-[#74695B]">
-            Systems We Build
+            {t.systems.tag}
           </span>
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
-            Custom systems designed around your operations
+            {t.systems.heading}
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-[#74695B] sm:text-lg">
-            Every business operates differently. These are examples of the internal systems we typically build — each one designed to solve real operational problems, not sell you a feature list.
+            {t.systems.sub}
           </p>
         </motion.div>
 

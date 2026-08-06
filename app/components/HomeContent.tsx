@@ -13,9 +13,11 @@ import { CTABanner } from "@/app/components/CTABanner";
 import { Footer } from "@/app/components/Footer";
 import type { Locale } from "@/app/lib/locales";
 import { LOCALE_DATA } from "@/app/lib/locales";
+import { LocaleProvider } from "@/app/lib/LocaleContext";
 
 export function HomeContent({ locale }: { locale: Locale }) {
   const data = LOCALE_DATA[locale];
+  const t = data.t;
 
   useEffect(() => {
     document.documentElement.dir = data.dir;
@@ -27,23 +29,25 @@ export function HomeContent({ locale }: { locale: Locale }) {
   }, [data.dir, data.lang]);
 
   return (
-    <div className="flex min-h-screen flex-col bg-canvas text-[#11100E] antialiased">
-      <Navbar />
-      <main>
-        <HeroSection />
-        <SpreadsheetsSection />
-        <SolutionsSection />
-        <EngagementOptionsSection locale={locale} />
-        <BuiltForSection />
-        <ProcessSection />
-        <WorkTeaser />
-        <CTABanner
-          heading={data.ctaHeading}
-          sub={data.ctaSub}
-          cta={data.ctaButton}
-        />
-      </main>
-      <Footer />
-    </div>
+    <LocaleProvider locale={locale}>
+      <div className="flex min-h-screen flex-col bg-canvas text-[#11100E] antialiased">
+        <Navbar />
+        <main>
+          <HeroSection />
+          <SpreadsheetsSection />
+          <SolutionsSection />
+          <EngagementOptionsSection locale={locale} />
+          <BuiltForSection />
+          <ProcessSection />
+          <WorkTeaser />
+          <CTABanner
+            heading={t.cta.heading}
+            sub={t.cta.sub}
+            cta={t.cta.button}
+          />
+        </main>
+        <Footer />
+      </div>
+    </LocaleProvider>
   );
 }

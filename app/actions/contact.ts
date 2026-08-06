@@ -5,7 +5,6 @@ import { connectDB } from "@/app/lib/db";
 import { Contact } from "@/app/lib/models/Contact";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
-const internalContactEmail = process.env.INTERNAL_CONTACT_EMAIL ?? "vantlaunch@gmail.com";
 
 function escapeHtml(value: string) {
   return value.replace(/[<>&"]/g, (char) => {
@@ -113,7 +112,7 @@ export async function sendContactEmail(formData: FormData) {
     // 2. Notification to admin
     await resend.emails.send({
       from: "VantLaunch System <noreply@vantlaunch.com>",
-      to: internalContactEmail,
+      to: "vantlaunch@gmail.com",
       subject: `New Inquiry: ${name} from ${company}`,
       text: `Name: ${name}\nEmail: ${email}\nCompany: ${company}\nRole: ${role}\nProduct: ${productInterest}\nTimeline: ${timeline}\n\nMessage:\n${message}`,
       replyTo: email,

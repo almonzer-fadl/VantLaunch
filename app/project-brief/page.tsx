@@ -209,7 +209,7 @@ export default function ProjectBriefPage() {
             {/* Step 1: Project */}
             {step === 1 && (
               <div className="space-y-5">
-                <h2 className="text-xl font-bold tracking-tight">Project Information</h2>
+                <h2 className="text-xl font-bold tracking-tight">What you need built</h2>
                 <div>
                   <label className="mb-1.5 block text-xs font-bold uppercase tracking-wider text-[#74695B]">Describe what you want us to build</label>
                   <textarea className={inputClass("projectDescription")} rows={3} placeholder="A dashboard that combines our ad spend, revenue, and customer data into one view..." value={formData.projectDescription} onChange={(e) => updateField("projectDescription", e.target.value)} />
@@ -259,8 +259,8 @@ export default function ProjectBriefPage() {
             {/* Step 3: Assets */}
             {step === 3 && (
               <div className="space-y-5">
-                <h2 className="text-xl font-bold tracking-tight">Assets Folder</h2>
-                <p className="text-sm text-[#74695B]">Paste a link to a cloud folder containing your logos, brand guidelines, documents, screenshots, or anything relevant to the project.</p>
+                <h2 className="text-xl font-bold tracking-tight">Google Drive Folder</h2>
+                <p className="text-sm text-[#74695B]">Share a link to a cloud folder containing your logos, brand guidelines, documents, screenshots, or anything relevant to the build.</p>
                 <div>
                   <label className="mb-1.5 block text-xs font-bold uppercase tracking-wider text-[#74695B]">Folder Link</label>
                   <input type="url" className={inputClass("assetsFolder")} placeholder="https://drive.google.com/..." value={formData.assetsFolder} onChange={(e) => updateField("assetsFolder", e.target.value)} />
@@ -299,7 +299,7 @@ export default function ProjectBriefPage() {
                       Submitting...
                     </>
                   ) : (
-                    "Submit Project Brief"
+                    "Submit Questionnaire"
                   )}
                 </button>
                 {submitError && (

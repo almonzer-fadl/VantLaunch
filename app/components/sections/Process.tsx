@@ -1,90 +1,78 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ClipboardCheck, Code2, Eye, Rocket, CheckCircle2 } from "lucide-react";
-import { useMobileMotion } from "@/app/hooks/use-mobile-motion";
+import { ClipboardCheck, PencilRuler, Code2, Rocket, Repeat } from "lucide-react";
 
 const STEPS = [
-  {
-    icon: ClipboardCheck,
-    title: "01. Discovery & Scoping",
-    description:
-      "We map your current tools, data sources, and what metrics matter most. Clear requirements before any build starts.",
-  },
-  {
-    icon: Code2,
-    title: "02. Build & Integrate",
-    description:
-      "We build your dashboard or system, connect your data sources, and configure every integration to work seamlessly.",
-  },
-  {
-    icon: Eye,
-    title: "03. Review & Refine",
-    description:
-      "You review the working system. We fine-tune based on your feedback until it fits your workflow perfectly.",
-  },
-  {
-    icon: Rocket,
-    title: "04. Launch & Train",
-    description:
-      "Your system goes live with full training and documentation. Your team can use it from day one with confidence.",
-  },
+  { icon: ClipboardCheck, title: "Discovery", num: "01" },
+  { icon: PencilRuler, title: "Design", num: "02" },
+  { icon: Code2, title: "Build", num: "03" },
+  { icon: Rocket, title: "Launch", num: "04" },
+  { icon: Repeat, title: "Improve", num: "05" },
 ];
 
 export function ProcessSection() {
-  const { shouldReduceMotion } = useMobileMotion();
-
   return (
-    <section id="process" className="border-t border-black/10 bg-[#F8F6EF] px-6 py-16 text-[#11100E] sm:py-24 md:py-32">
-      <div className="mx-auto max-w-7xl">
+    <section id="process" className="border-t border-black/10 bg-[#F8F6EF] px-6 py-16 text-[#11100E] sm:py-20 md:py-28">
+      <div className="mx-auto max-w-5xl">
         <motion.div
-          initial={{ opacity: 0, y: shouldReduceMotion ? 8 : 16 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: shouldReduceMotion ? 0.3 : 0.5 }}
-          className="mb-16 text-center"
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="mb-12 text-center"
         >
-          <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-3 py-1 text-[10px] font-bold uppercase tracking-[0.2em] text-[#74695B]">
-            <CheckCircle2 className="h-3 w-3 text-[#004225]" />
-            How we work
+          <span className="mb-4 inline-flex rounded-full border border-black/10 bg-[#F3F2ED] px-3 py-1.5 text-xs font-bold uppercase tracking-[0.16em] text-[#74695B]">
+            Our Process
           </span>
-          <h2 className="text-3xl font-bold tracking-tight text-[#11100E] sm:text-4xl md:text-5xl">
-            From discovery to launch in four steps.
+          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
+            From discovery to continuous improvement
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-[#74695B] sm:text-lg">
-            No vague scoping. No surprise bills. A clear process that takes you from scattered tools to a unified business system.
-          </p>
         </motion.div>
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {STEPS.map((step, i) => (
+        <div className="relative">
+          {/* Horizontal connector line — desktop */}
+          <div className="hidden md:block absolute top-9 left-[10%] right-[10%] h-px bg-black/[0.06]">
             <motion.div
-              key={step.title}
-              initial={{ opacity: 0, y: shouldReduceMotion ? 8 : 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: shouldReduceMotion ? 0.3 : 0.5, delay: shouldReduceMotion ? 0 : i * 0.1 }}
-              className="relative overflow-hidden rounded-2xl border border-black/10 bg-white p-5 shadow-mid transition-all hover:bg-black/[0.03] sm:p-6"
-            >
-              <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-black/[0.03]">
-                <step.icon className="h-6 w-6 text-[#11100E]" />
-              </div>
-              <h3 className="text-base font-bold tracking-tight text-[#11100E]">{step.title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-[#74695B]">
-                {step.description}
-              </p>
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+              className="h-full bg-[#004225] origin-left"
+            />
+          </div>
 
-              <div className="mt-6 h-1 w-full overflow-hidden rounded-full bg-black/10">
+          <div className="grid grid-cols-2 gap-4 md:grid-cols-5">
+            {STEPS.map((step, i) => (
+              <motion.div
+                key={step.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ duration: 0.5, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
+                whileHover={{ y: -4 }}
+                className="flex flex-col items-center text-center"
+              >
+                {/* Icon circle */}
                 <motion.div
-                  initial={{ width: 0 }}
-                  whileInView={{ width: "100%" }}
-                  viewport={{ once: true }}
-                  transition={{ duration: shouldReduceMotion ? 0.45 : 1, delay: shouldReduceMotion ? 0.1 : i * 0.2 + 0.3 }}
-                  className="h-full bg-[#11100E]"
-                />
-              </div>
-            </motion.div>
-          ))}
+                  whileHover={{ scale: 1.1 }}
+                  className="relative z-10 flex h-16 w-16 items-center justify-center rounded-2xl bg-white border border-black/10 shadow-mid mb-4 transition-shadow hover:shadow-lg"
+                >
+                  <step.icon className="h-7 w-7 text-[#004225]" />
+                </motion.div>
+
+                {/* Number */}
+                <span className="text-[10px] font-bold uppercase tracking-[0.12em] text-[#74695B]">
+                  {step.num}
+                </span>
+
+                {/* Title */}
+                <h3 className="mt-1 text-base font-bold tracking-tight text-[#11100E]">
+                  {step.title}
+                </h3>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

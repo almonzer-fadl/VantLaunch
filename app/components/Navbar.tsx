@@ -8,10 +8,10 @@ import Link from "next/link";
 import { useMobileMotion } from "../hooks/use-mobile-motion";
 
 const NAV_LINKS = [
-  { href: "/#solutions", label: "Solutions" },
+  { href: "/#systems", label: "Solutions" },
+  { href: "/#engagement-options", label: "Engagements" },
   { href: "/#process", label: "Process" },
-  { href: "/#faq", label: "FAQ" },
-  { href: "/#contact", label: "Contact" },
+  { href: "/faq", label: "FAQ" },
 ];
 
 export function Navbar() {
@@ -52,7 +52,6 @@ export function Navbar() {
             </Link>
           </motion.div>
 
-          {/* Desktop links */}
           <div className="hidden items-center gap-8 md:flex">
             {NAV_LINKS.map((link) => (
               <Link
@@ -66,7 +65,6 @@ export function Navbar() {
           </div>
 
           <div className="flex items-center gap-3">
-            {/* Desktop CTA */}
             <motion.div
               initial={{ opacity: 0, x: 12 }}
               animate={{ opacity: 1, x: 0 }}
@@ -74,14 +72,13 @@ export function Navbar() {
               className="hidden sm:block"
             >
               <Link
-                href="/#contact"
+                href="/contact"
                 className="inline-flex items-center justify-center rounded-xl bg-[#004225] px-4 py-2 text-xs font-bold text-white transition-colors hover:bg-[#11100E]"
               >
-                Book a Discovery Call
+                Book a Call
               </Link>
             </motion.div>
 
-            {/* Hamburger */}
             <button
               onClick={() => setOpen(!open)}
               className="flex h-10 w-10 items-center justify-center rounded-xl border border-black/10 bg-white md:hidden"
@@ -93,11 +90,9 @@ export function Navbar() {
         </div>
       </nav>
 
-      {/* Mobile drawer */}
       <AnimatePresence>
         {open && (
           <>
-            {/* Backdrop */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -106,8 +101,6 @@ export function Navbar() {
               onClick={() => setOpen(false)}
               className="fixed inset-0 z-40 bg-black/40 md:hidden sm:backdrop-blur-sm"
             />
-
-            {/* Drawer panel */}
             <motion.div
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
@@ -142,11 +135,11 @@ export function Navbar() {
                   className="mt-8"
                 >
                   <Link
-                    href="/#contact"
+                    href="/contact"
                     onClick={() => setOpen(false)}
                     className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#004225] px-6 py-3.5 text-sm font-bold text-white transition-colors hover:bg-[#11100E]"
                   >
-                    Book a Discovery Call
+                    Book a Call
                   </Link>
                 </motion.div>
 
@@ -156,7 +149,7 @@ export function Navbar() {
                   transition={{ delay: shouldReduceMotion ? 0.08 : 0.45 }}
                   className="mt-8 text-center text-xs font-medium text-[#74695B]"
                 >
-                  Custom dashboards and business systems.
+                  Custom internal business systems for growing service businesses.
                 </motion.p>
               </div>
             </motion.div>

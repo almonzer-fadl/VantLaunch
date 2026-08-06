@@ -2,7 +2,10 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useMobileMotion } from "@/app/hooks/use-mobile-motion";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
+import { Navbar } from "../components/Navbar";
+import { Footer } from "../components/Footer";
 
 const FAQS = [
   {
@@ -51,13 +54,8 @@ function FaqItem({ item, isOpen, onToggle }: { item: (typeof FAQS)[number]; isOp
       transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
       className="rounded-2xl border border-black/10 bg-white shadow-mid overflow-hidden"
     >
-      <button
-        onClick={onToggle}
-        className="flex w-full items-center justify-between gap-5 p-6 text-left"
-      >
-        <span className="text-base font-bold tracking-tight text-[#11100E] sm:text-lg">
-          {item.question}
-        </span>
+      <button onClick={onToggle} className="flex w-full items-center justify-between gap-5 p-6 text-left">
+        <span className="text-base font-bold tracking-tight text-[#11100E] sm:text-lg">{item.question}</span>
         <motion.div
           animate={{ rotate: isOpen ? 45 : 0 }}
           transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
@@ -67,12 +65,7 @@ function FaqItem({ item, isOpen, onToggle }: { item: (typeof FAQS)[number]; isOp
             backgroundColor: isOpen ? "rgba(0,66,37,0.05)" : "transparent",
           }}
         >
-          <motion.span
-            className="text-lg font-light leading-none"
-            style={{ color: isOpen ? "#004225" : "#74695B" }}
-          >
-            +
-          </motion.span>
+          <motion.span className="text-lg font-light leading-none" style={{ color: isOpen ? "#004225" : "#74695B" }}>+</motion.span>
         </motion.div>
       </button>
       <AnimatePresence initial={false}>
@@ -85,15 +78,8 @@ function FaqItem({ item, isOpen, onToggle }: { item: (typeof FAQS)[number]; isOp
             className="overflow-hidden"
           >
             <div className="px-6 pb-6">
-              <motion.div
-                initial={{ y: 8 }}
-                animate={{ y: 0 }}
-                transition={{ duration: 0.3, delay: 0.05 }}
-                className="h-px w-full bg-black/5 mb-4"
-              />
-              <p className="text-sm font-medium leading-relaxed text-[#74695B]">
-                {item.answer}
-              </p>
+              <motion.div initial={{ y: 8 }} animate={{ y: 0 }} transition={{ duration: 0.3, delay: 0.05 }} className="h-px w-full bg-black/5 mb-4" />
+              <p className="text-sm font-medium leading-relaxed text-[#74695B]">{item.answer}</p>
             </div>
           </motion.div>
         )}
@@ -102,37 +88,64 @@ function FaqItem({ item, isOpen, onToggle }: { item: (typeof FAQS)[number]; isOp
   );
 }
 
-export function FAQSection() {
-  const { shouldReduceMotion } = useMobileMotion();
+export default function FAQPage() {
   const [openIndex, setOpenIndex] = useState(0);
 
   return (
-    <section id="faq" className="border-t border-black/10 bg-[#F8F6EF] px-6 py-16 text-[#11100E] sm:py-24 md:py-32">
-      <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.8fr_1.2fr]">
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-        >
-          <span className="mb-4 inline-flex rounded-full border border-black/10 bg-[#F3F2ED] px-3 py-1.5 text-xs font-bold uppercase tracking-[0.16em] text-[#74695B]">FAQ</span>
-          <h2 className="text-3xl font-bold tracking-tight text-[#11100E] sm:text-4xl md:text-5xl">Questions you might be asking.</h2>
-          <p className="mt-4 max-w-2xl text-base leading-relaxed text-[#74695B] sm:text-lg">
-            From ownership to timelines to integrations — everything you need to know before starting.
-          </p>
-        </motion.div>
+    <div className="flex min-h-screen flex-col bg-[#F8F6EF]">
+      <Navbar />
+      <main className="flex-1 px-6 py-16 sm:py-24 md:py-32">
+        <div className="mx-auto max-w-3xl">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            className="mb-12 text-center"
+          >
+            <span className="mb-4 inline-flex rounded-full border border-black/10 bg-[#F3F2ED] px-3 py-1.5 text-xs font-bold uppercase tracking-[0.16em] text-[#74695B]">FAQ</span>
+            <h1 className="font-display text-3xl font-bold tracking-tight text-[#11100E] sm:text-4xl md:text-5xl">
+              Questions you might be asking.
+            </h1>
+            <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-[#74695B]">
+              From ownership to timelines to integrations — everything you need to know before starting.
+            </p>
+          </motion.div>
 
-        <div className="space-y-3">
-          {FAQS.map((item, index) => (
-            <FaqItem
-              key={item.question}
-              item={item}
-              isOpen={openIndex === index}
-              onToggle={() => setOpenIndex(openIndex === index ? -1 : index)}
-            />
-          ))}
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="space-y-3"
+          >
+            {FAQS.map((item, index) => (
+              <FaqItem
+                key={item.question}
+                item={item}
+                isOpen={openIndex === index}
+                onToggle={() => setOpenIndex(openIndex === index ? -1 : index)}
+              />
+            ))}
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="mt-12 rounded-2xl border border-[#004225]/20 bg-white p-8 text-center shadow-mid"
+          >
+            <h2 className="text-xl font-bold tracking-tight text-[#11100E]">Still have questions?</h2>
+            <p className="mt-2 text-sm text-[#74695B]">Book a discovery call and we will answer everything.</p>
+            <Link
+              href="/contact"
+              className="mt-6 inline-flex items-center gap-2 rounded-xl bg-[#004225] px-6 py-3 text-sm font-bold text-white transition-all hover:bg-[#11100E] hover:shadow-lg"
+            >
+              Book Discovery Call
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </motion.div>
         </div>
-      </div>
-    </section>
+      </main>
+      <Footer />
+    </div>
   );
 }

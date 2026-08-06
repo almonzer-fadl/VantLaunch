@@ -22,37 +22,47 @@ export function Footer() {
             </span>
           </Link>
           <p className="text-sm leading-relaxed text-[#74695B]">
-            Custom dashboards and business systems built for growing companies.
+            Custom internal business systems for growing service businesses. Built around your workflow, delivered in weeks.
           </p>
         </div>
 
-        <div className="grid w-full grid-cols-2 gap-10 sm:grid-cols-3 md:w-auto md:gap-16">
+        <div className="grid w-full grid-cols-2 gap-10 sm:grid-cols-4 md:w-auto md:gap-16">
           <div className="flex flex-col gap-4">
-            <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#74695B]">Solutions</span>
-            <FooterLink href="/#solutions">Executive Dashboard</FooterLink>
-            <FooterLink href="/#solutions">Business Dashboard Pro</FooterLink>
-            <FooterLink href="/#solutions">Business Operating System</FooterLink>
+            <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#74695B]">Engagements</span>
+            <FooterLink href="/#engagement-options">Starter</FooterLink>
+            <FooterLink href="/#engagement-options">Pro</FooterLink>
+            <FooterLink href="/#engagement-options">Mobile</FooterLink>
+            <FooterLink href="/#engagement-options">Enterprise</FooterLink>
           </div>
           <div className="flex flex-col gap-4">
             <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#74695B]">Company</span>
             <FooterLink href="/#process">Process</FooterLink>
-            <FooterLink href="/#faq">FAQ</FooterLink>
-            <FooterLink href="/#contact">Contact</FooterLink>
+            <FooterLink href="/work">Our Work</FooterLink>
+            <FooterLink href="/faq">FAQ</FooterLink>
+            <FooterLink href="/contact">Contact</FooterLink>
           </div>
           <div className="flex flex-col gap-4">
             <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#74695B]">Connect</span>
             <FooterLink href={SOCIAL_LINKS.github}>GitHub</FooterLink>
             <FooterLink href={SOCIAL_LINKS.linkedin}>LinkedIn</FooterLink>
+            <FooterLink href={SOCIAL_LINKS.x}>X</FooterLink>
             <a href="mailto:vantlaunch@gmail.com" className="text-sm font-bold text-[#74695B] transition-colors hover:text-[#004225]">
               Email
             </a>
+          </div>
+          <div className="flex flex-col gap-4">
+            <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#74695B]">Built With</span>
+            <span className="text-sm font-medium text-[#74695B]">React</span>
+            <span className="text-sm font-medium text-[#74695B]">Next.js</span>
+            <span className="text-sm font-medium text-[#74695B]">Supabase</span>
+            <span className="text-sm font-medium text-[#74695B]">AI & Integrations</span>
           </div>
         </div>
       </div>
 
       <div className="mx-auto mt-16 flex max-w-7xl flex-col items-center justify-between gap-4 border-t border-black/10 pt-10 md:mt-24 md:flex-row">
         <p className="text-xs text-[#74695B]">
-          © 2026 VantLaunch. All rights reserved.
+          &copy; 2026 VantLaunch. All rights reserved.
         </p>
         <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
           <Link href="/privacy" className="text-xs text-[#74695B] transition-colors hover:text-[#004225]">

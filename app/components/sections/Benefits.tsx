@@ -1,29 +1,24 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { BarChart3, Zap, ShieldCheck, RefreshCw } from "lucide-react";
+import { Cog, Zap, Layers } from "lucide-react";
 import { useMobileMotion } from "@/app/hooks/use-mobile-motion";
 
-const BENEFITS = [
+const REASONS = [
   {
-    icon: BarChart3,
-    title: "Complete visibility",
-    body: "See all of your business data in one dashboard. No more switching between 8 different tools just to understand how your company is performing.",
+    icon: Cog,
+    title: "Built Around Your Business",
+    body: "Every system is designed around your existing workflow instead of forcing you into generic software. We learn how you operate and build software that fits — not the other way around.",
   },
   {
     icon: Zap,
-    title: "Stop wasting time on manual reports",
-    body: "Your team spends hours pulling data from different platforms. Automate reporting so they can focus on what actually moves the business forward.",
+    title: "Fast Delivery",
+    body: "Custom internal systems delivered in weeks, not months. We move quickly because we understand business operations — not just code. You see working software early and often.",
   },
   {
-    icon: ShieldCheck,
-    title: "You own the system",
-    body: "Unlike SaaS subscriptions that lock you in and increase prices, our systems are built for your business with full source ownership. No vendor lock-in.",
-  },
-  {
-    icon: RefreshCw,
-    title: "Automated, always-on reporting",
-    body: "Real-time dashboards that update automatically. Integrations that work without manual intervention. Reports that arrive in your inbox, not your to-do list.",
+    icon: Layers,
+    title: "One Connected Workspace",
+    body: "Bring your tools, data, and operations together in one place. No more switching between platforms, exporting spreadsheets, or manually connecting the dots between disconnected systems.",
   },
 ];
 
@@ -34,38 +29,51 @@ export function BenefitsSection() {
     <section className="border-t border-black/10 bg-[#F8F6EF] px-6 py-16 text-[#11100E] sm:py-24 md:py-32">
       <div className="mx-auto max-w-7xl">
         <motion.div
-          initial={{ opacity: 0, y: shouldReduceMotion ? 8 : 16 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: shouldReduceMotion ? 0.3 : 0.5 }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           className="mb-14 text-center"
         >
           <span className="mb-4 inline-flex rounded-full border border-black/10 bg-[#F3F2ED] px-3 py-1.5 text-xs font-bold uppercase tracking-[0.16em] text-[#74695B]">
-            Benefits
+            Why VantLaunch
           </span>
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
-            Why growing companies choose VantLaunch
+            Custom systems that understand your business
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-[#74695B] sm:text-lg">
-            We build software that fits around your business — not subscriptions that force your business to fit around software.
+            We are not a software agency shipping features. We are an operations studio that builds internal systems designed around how growing businesses actually work.
           </p>
         </motion.div>
 
-        <div className="grid gap-6 sm:grid-cols-2">
-          {BENEFITS.map((benefit, i) => (
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {REASONS.map((reason, i) => (
             <motion.div
-              key={benefit.title}
-              initial={{ opacity: 0, y: shouldReduceMotion ? 8 : 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              key={reason.title}
+              initial={{ opacity: 0, y: 24, scale: 0.95 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: shouldReduceMotion ? 0.3 : 0.5, delay: shouldReduceMotion ? 0 : i * 0.08 }}
-              className="rounded-2xl border border-black/10 bg-white p-6 shadow-mid sm:p-8"
+              transition={{ duration: 0.5, delay: i * 0.12, ease: [0.16, 1, 0.3, 1] }}
+              whileHover={{ y: -6, scale: 1.02 }}
+              className="group relative overflow-hidden rounded-2xl border border-black/10 bg-white p-6 shadow-mid transition-all duration-300 hover:shadow-lg hover:border-[#004225]/20 sm:p-8"
             >
-              <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-black/[0.03]">
-                <benefit.icon className="h-6 w-6 text-[#11100E]" />
+              <motion.div
+                className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                style={{
+                  background: "radial-gradient(400px circle at 30% 20%, rgba(0,66,37,0.04), transparent 70%)",
+                }}
+              />
+              <div className="relative">
+                <motion.div
+                  whileHover={{ scale: 1.1, rotate: -3 }}
+                  transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                  className="mb-5 flex h-14 w-14 items-center justify-center rounded-xl bg-[#004225]/10 group-hover:bg-[#004225]/15 transition-colors"
+                >
+                  <reason.icon className="h-7 w-7 text-[#004225]" />
+                </motion.div>
+                <h3 className="text-lg font-bold tracking-tight text-[#11100E]">{reason.title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-[#74695B]">{reason.body}</p>
               </div>
-              <h3 className="text-lg font-bold tracking-tight text-[#11100E]">{benefit.title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-[#74695B]">{benefit.body}</p>
             </motion.div>
           ))}
         </div>

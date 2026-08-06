@@ -18,32 +18,32 @@ const siteUrl =
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "VantLaunch | Custom Dashboards & Business Systems",
+  title: "VantLaunch | Custom Internal Business Systems for Growing Service Businesses",
   description:
-    "Custom dashboards and business systems for growing companies. Replace spreadsheets and disconnected software with software built around your business.",
+    "Stop losing hours to scattered tools, manual reporting, and disconnected workflows. We build custom internal business systems that give you operational clarity, save your team time, and grow with your business — delivered in weeks, not months.",
   icons: {
     icon: "/brand/favicon.PNG",
     shortcut: "/brand/favicon.PNG",
     apple: "/brand/icon.PNG",
   },
   openGraph: {
-    title: "VantLaunch | Custom Dashboards & Business Systems",
+    title: "Your Business Has Outgrown Its Tools — VantLaunch",
     description:
-      "Custom dashboards and business systems for growing companies. Replace spreadsheets and disconnected software with software built around your business.",
+      "Scattered platforms. Manual reporting. No visibility. We build custom internal business systems that replace the chaos with one connected workspace you own.",
     images: [
       {
         url: "/brand/vantlaunch-og.png",
         width: 1200,
         height: 630,
-        alt: "VantLaunch logo",
+        alt: "VantLaunch — Custom Internal Business Systems",
       },
     ],
   },
   twitter: {
     card: "summary",
-    title: "VantLaunch | Custom Dashboards & Business Systems",
+    title: "Your Business Has Outgrown Its Tools — VantLaunch",
     description:
-      "Custom dashboards and business systems for growing companies. Replace spreadsheets and disconnected software with software built around your business.",
+      "Scattered platforms. Manual reporting. No visibility. We build custom internal business systems that replace the chaos with one connected workspace you own.",
     images: ["/brand/vantlaunch-og.png"],
   },
 };

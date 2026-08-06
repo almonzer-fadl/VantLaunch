@@ -8,6 +8,7 @@ import Link from "next/link";
 import { useMobileMotion } from "../hooks/use-mobile-motion";
 import { useT } from "../lib/LocaleContext";
 import { useIsRTL } from "../lib/LocaleContext";
+import { ThemeToggle } from "./ThemeToggle";
 
 const NAV_KEYS = ["solutions", "engagements", "process", "faq"] as const;
 
@@ -71,6 +72,7 @@ export function Navbar() {
           </div>
 
           <div className="flex items-center gap-3">
+            <ThemeToggle />
             <motion.div
               initial={{ opacity: 0, x: 12 }}
               animate={{ opacity: 1, x: 0 }}

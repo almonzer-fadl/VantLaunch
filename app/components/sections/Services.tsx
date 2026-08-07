@@ -39,7 +39,7 @@ type Product = {
 const PRODUCTS = [
   {
     name: "Meta & Google Conversion Tracking",
-    price: "$249",
+    price: "$199",
     eyebrow: "Tracking setup",
     description: "Clean Meta Pixel, Google Ads, GA4, events, and conversion tracking so ad spend has real numbers behind it.",
     outcome: "Know which ads, pages, and actions are creating leads.",
@@ -53,8 +53,7 @@ const PRODUCTS = [
   },
   {
     name: "Custom Marketing & ROI Dashboard",
-    price: "$499",
-    eyebrow: "Marketing dashboard",
+    price: "$399",
     description: "A focused dashboard that connects campaign spend, traffic, leads, and revenue into one view.",
     outcome: "See ROI without stitching reports together manually.",
     features: ["Campaign KPI dashboard", "Lead source reporting", "Revenue and spend views", "Owner-friendly summary screen"],
@@ -67,7 +66,7 @@ const PRODUCTS = [
   },
   {
     name: "Automated WhatsApp & SMS Lead Nurture System",
-    price: "$890",
+    price: "$699",
     eyebrow: "Lead nurture",
     description: "Automated follow-up flows for new leads, missed replies, quote nudges, appointment reminders, and reactivation.",
     outcome: "Turn more inquiries into booked calls, visits, or paid work.",
@@ -82,7 +81,7 @@ const PRODUCTS = [
   },
   {
     name: "High-Converting Landing Page",
-    price: "$599",
+    price: "$449",
     eyebrow: "Landing page",
     description: "A conversion-focused page for one offer, built with clear positioning, proof, forms, tracking, and responsive polish.",
     outcome: "Send traffic to a page that explains, proves, and captures demand.",
@@ -96,7 +95,7 @@ const PRODUCTS = [
   },
   {
     name: "Branded Client & Partner Portal System",
-    price: "$1,499",
+    price: "$999",
     eyebrow: "Client portal",
     description: "A branded portal where clients or partners can log in, submit requests, see status, and access shared records.",
     outcome: "Replace scattered email updates with one clean client-facing workspace.",
@@ -110,7 +109,7 @@ const PRODUCTS = [
   },
   {
     name: "Staff Portal & Internal Workflow",
-    price: "$1,499",
+    price: "$999",
     eyebrow: "Internal operations",
     description: "An internal tool for teams that need task flow, approvals, records, staff roles, and daily operational visibility.",
     outcome: "Move repeatable internal work out of spreadsheets and chats.",
@@ -124,7 +123,7 @@ const PRODUCTS = [
   },
   {
     name: "Custom CRM Setup & Sales Pipeline Build",
-    price: "$698.92",
+    price: "$549",
     eyebrow: "CRM pipeline",
     description: "A practical CRM and sales pipeline setup for tracking leads, stages, follow-ups, deal values, and next actions.",
     outcome: "Stop losing leads and see what is moving toward revenue.",
@@ -138,7 +137,7 @@ const PRODUCTS = [
   },
   {
     name: "Custom-Built Operating System",
-    price: "$2,499",
+    price: "$1,999",
     eyebrow: "Full OS build",
     description: "A compact custom operating system for one business workflow: dashboard, records, roles, automation, and reporting.",
     outcome: "One owned system around the workflow that matters most.",

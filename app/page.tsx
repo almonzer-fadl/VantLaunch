@@ -7,7 +7,7 @@ import { SolutionsSection } from "./components/sections/Solutions";
 import { ComparisonSection } from "./components/sections/Comparison";
 import { BenefitsSection } from "./components/sections/Benefits";
 import { ProcessSection } from "./components/sections/Process";
-import { TestimonialsSection } from "./components/sections/Testimonials";
+import { CaseStudiesSection } from "./components/sections/CaseStudies";
 import { FAQSection } from "./components/sections/FAQ";
 import { CTASection } from "./components/sections/CTA";
 import { Footer } from "./components/Footer";
@@ -23,7 +23,7 @@ export default function Home() {
         <ComparisonSection />
         <BenefitsSection />
         <ProcessSection />
-        <TestimonialsSection />
+        <CaseStudiesSection />
         <FAQSection />
         <CTASection />
       </main>

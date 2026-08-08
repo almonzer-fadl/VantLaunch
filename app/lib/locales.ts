@@ -365,43 +365,43 @@ function makeTR(prices: { starter: string; pro: string; mobile: string }): Local
 }
 
 export const LOCALE_DATA: Record<Locale, LocaleData> = {
-  us: makeEN({ starter: "$999", pro: "$1,699", mobile: "$2,499" }),
-  uk: makeEN({ starter: "£799", pro: "£1,399", mobile: "£1,999" }, {
+  us: makeEN({ starter: "From $2,500", pro: "From $5,000", mobile: "From $10,000" }),
+  uk: makeEN({ starter: "From £2,000", pro: "From £4,000", mobile: "From £8,000" }, {
     hero: { ...EN_T.hero, subheadline: "Built for UK agencies, consultancies and professional service firms. Replace scattered tools with one system built around your operations." },
   }),
-  ca: makeEN({ starter: "1,349 CAD", pro: "2,299 CAD", mobile: "3,399 CAD" }, {
+  ca: makeEN({ starter: "From 3,500 CAD", pro: "From 7,000 CAD", mobile: "From 14,000 CAD" }, {
     hero: { ...EN_T.hero, subheadline: "Helping Canadian service businesses replace manual operations with one connected system built around the way you work." },
   }),
-  au: makeEN({ starter: "1,549 AUD", pro: "2,649 AUD", mobile: "3,899 AUD" }, {
+  au: makeEN({ starter: "From 4,000 AUD", pro: "From 8,000 AUD", mobile: "From 16,000 AUD" }, {
     hero: { ...EN_T.hero, subheadline: "Built for Australian agencies, consultancies and growing service businesses. One connected system around your operations." },
   }),
-  nz: makeEN({ starter: "1,699 NZD", pro: "2,899 NZD", mobile: "4,299 NZD" }, {
+  nz: makeEN({ starter: "From 4,500 NZD", pro: "From 9,000 NZD", mobile: "From 18,000 NZD" }, {
     hero: { ...EN_T.hero, subheadline: "Built for New Zealand service businesses ready to replace scattered tools with one connected system." },
   }),
-  sg: makeEN({ starter: "1,349 SGD", pro: "2,299 SGD", mobile: "3,399 SGD" }, {
+  sg: makeEN({ starter: "From 3,500 SGD", pro: "From 7,000 SGD", mobile: "From 14,000 SGD" }, {
     hero: { ...EN_T.hero, subheadline: "Helping Singapore businesses automate operations and centralise workflows into one connected platform." },
   }),
-  ie: makeEN({ starter: "899 €", pro: "1,499 €", mobile: "2,199 €" }, {
+  ie: makeEN({ starter: "From 2,500 €", pro: "From 5,000 €", mobile: "From 10,000 €" }, {
     hero: { ...EN_T.hero, subheadline: "Built for Irish agencies, consultancies and professional service firms ready to replace disconnected tools." },
   }),
-  de: makeEN({ starter: "899 €", pro: "1,499 €", mobile: "2,199 €" }, {
+  de: makeEN({ starter: "From 2,500 €", pro: "From 5,000 €", mobile: "From 10,000 €" }, {
     hero: { ...EN_T.hero, subheadline: "Helping German businesses replace disconnected software with custom operational systems built around their workflow." },
   }),
-  nl: makeEN({ starter: "899 €", pro: "1,499 €", mobile: "2,199 €" }, {
+  nl: makeEN({ starter: "From 2,500 €", pro: "From 5,000 €", mobile: "From 10,000 €" }, {
     hero: { ...EN_T.hero, subheadline: "Built for Dutch agencies, consultancies and growing service businesses. Replace scattered tools with one system." },
   }),
-  se: makeEN({ starter: "9,900 SEK", pro: "16,900 SEK", mobile: "24,900 SEK" }),
-  no: makeEN({ starter: "10,900 NOK", pro: "18,500 NOK", mobile: "27,500 NOK" }),
-  dk: makeEN({ starter: "6,900 DKK", pro: "11,900 DKK", mobile: "17,500 DKK" }),
-  tr: makeTR({ starter: "₺29,900", pro: "₺49,900", mobile: "₺74,900" }),
-  my: makeEN({ starter: "RM2,990", pro: "RM5,490", mobile: "RM8,490" }, {
+  se: makeEN({ starter: "From 25,000 SEK", pro: "From 50,000 SEK", mobile: "From 100,000 SEK" }),
+  no: makeEN({ starter: "From 27,500 NOK", pro: "From 55,000 NOK", mobile: "From 110,000 NOK" }),
+  dk: makeEN({ starter: "From 18,500 DKK", pro: "From 37,000 DKK", mobile: "From 74,000 DKK" }),
+  tr: makeTR({ starter: "From ₺75,000", pro: "From ₺150,000", mobile: "From ₺300,000" }),
+  my: makeEN({ starter: "From RM10,000", pro: "From RM20,000", mobile: "From RM40,000" }, {
     hero: { ...EN_T.hero, subheadline: "Helping Malaysian service businesses centralize operations with custom internal business systems built around their workflow." },
   }),
-  sa: makeAR({ starter: "3,950 SAR", pro: "6,450 SAR", mobile: "9,450 SAR" }, "ar-SA", "نساعد الشركات السعودية على تبسيط العمليات من خلال برمجيات مخصصة مبنية حول سير عملها."),
-  ae: makeAR({ starter: "3,850 AED", pro: "6,450 AED", mobile: "9,450 AED" }, "ar-AE", "نساعد شركات الإمارات على مركزة العمليات في منصة واحدة مخصصة."),
-  qa: makeAR({ starter: "3,650 QAR", pro: "6,250 QAR", mobile: "9,150 QAR" }, "ar-QA", "نساعد الشركات القطرية على استبدال الأدوات المتفرقة بأنظمة تشغيلية مخصصة."),
-  kw: makeAR({ starter: "305 KWD", pro: "520 KWD", mobile: "760 KWD" }, "ar-KW", "نساعد الشركات الكويتية على أتمتة العمليات ومركزة البيانات في نظام واحد."),
-  bh: makeAR({ starter: "375 BHD", pro: "635 BHD", mobile: "935 BHD" }, "ar-BH", "نساعد الشركات البحرينية على استبدال العمليات اليدوية بأنظمة رقمية مخصصة."),
-  om: makeAR({ starter: "390 OMR", pro: "650 OMR", mobile: "950 OMR" }, "ar-OM", "نساعد الشركات العمانية على بناء أنظمة داخلية مخصصة تدعم نموها التشغيلي."),
-  global: makeEN({ starter: "$999", pro: "$1,699", mobile: "$2,499" }),
+  sa: makeAR({ starter: "From 9,500 SAR", pro: "From 19,000 SAR", mobile: "From 37,500 SAR" }, "ar-SA", "نساعد الشركات السعودية على تبسيط العمليات من خلال برمجيات مخصصة مبنية حول سير عملها."),
+  ae: makeAR({ starter: "From 9,500 AED", pro: "From 19,000 AED", mobile: "From 37,500 AED" }, "ar-AE", "نساعد شركات الإمارات على مركزة العمليات في منصة واحدة مخصصة."),
+  qa: makeAR({ starter: "From 9,000 QAR", pro: "From 18,000 QAR", mobile: "From 36,500 QAR" }, "ar-QA", "نساعد الشركات القطرية على استبدال الأدوات المتفرقة بأنظمة تشغيلية مخصصة."),
+  kw: makeAR({ starter: "From 750 KWD", pro: "From 1,500 KWD", mobile: "From 3,000 KWD" }, "ar-KW", "نساعد الشركات الكويتية على أتمتة العمليات ومركزة البيانات في نظام واحد."),
+  bh: makeAR({ starter: "From 950 BHD", pro: "From 1,900 BHD", mobile: "From 3,750 BHD" }, "ar-BH", "نساعد الشركات البحرينية على استبدال العمليات اليدوية بأنظمة رقمية مخصصة."),
+  om: makeAR({ starter: "From 950 OMR", pro: "From 1,900 OMR", mobile: "From 3,850 OMR" }, "ar-OM", "نساعد الشركات العمانية على بناء أنظمة داخلية مخصصة تدعم نموها التشغيلي."),
+  global: makeEN({ starter: "From $2,500", pro: "From $5,000", mobile: "From $10,000" }),
 };

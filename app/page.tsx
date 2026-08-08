@@ -1,42 +1,33 @@
 "use client";
 
-import { useState } from "react";
 import { Navbar } from "./components/Navbar";
 import { HeroSection } from "./components/sections/Hero";
-import { ProofStripSection } from "./components/sections/ProofStrip";
-import { WorkReelSection } from "./components/sections/WorkReel";
-import { ServicesSection } from "./components/sections/Services";
-import { PortfolioSection } from "./components/sections/Portfolio";
-import { StudioProofSection } from "./components/sections/StudioProof";
-import { OwnershipSection } from "./components/sections/Ownership";
+import { SpreadsheetsSection } from "./components/sections/Spreadsheets";
+import { SolutionsSection } from "./components/sections/Solutions";
+import { ComparisonSection } from "./components/sections/Comparison";
+import { BenefitsSection } from "./components/sections/Benefits";
 import { ProcessSection } from "./components/sections/Process";
-import { FounderSection } from "./components/sections/Founder";
+import { TestimonialsSection } from "./components/sections/Testimonials";
 import { FAQSection } from "./components/sections/FAQ";
 import { CTASection } from "./components/sections/CTA";
 import { Footer } from "./components/Footer";
-import { ProjectOverlay } from "./components/ProjectOverlay";
 
 export default function Home() {
-  const [activeProject, setActiveProject] = useState<string | null>(null);
-
   return (
     <div className="flex min-h-screen flex-col bg-canvas text-[#11100E] antialiased">
       <Navbar />
       <main>
         <HeroSection />
-        <ProofStripSection />
-        <ServicesSection />
-        <PortfolioSection onOpenProject={setActiveProject} />
-        <WorkReelSection />
-        <FounderSection />
-        <OwnershipSection />
-        <StudioProofSection />
+        <SpreadsheetsSection />
+        <SolutionsSection />
+        <ComparisonSection />
+        <BenefitsSection />
         <ProcessSection />
+        <TestimonialsSection />
         <FAQSection />
         <CTASection />
       </main>
       <Footer />
-      <ProjectOverlay activeSlug={activeProject} onClose={() => setActiveProject(null)} />
     </div>
   );
 }

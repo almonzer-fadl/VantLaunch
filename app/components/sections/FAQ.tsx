@@ -5,39 +5,39 @@ import { useMobileMotion } from "@/app/hooks/use-mobile-motion";
 
 const FAQS = [
   {
-    question: "Am I buying a fixed product or hiring you hourly?",
+    question: "What exactly does VantLaunch build?",
     answer:
-      "You are buying a fixed productized build. Each product has a clear starting price, deliverables, and outcome. If you need extra scope, we quote that add-on before work starts.",
+      "We build custom dashboards and business systems for growing companies. Our three solutions range from a single executive dashboard that combines all your business data, to a complete business operating system with custom software, automation and reporting.",
   },
   {
     question: "Do I own the final system?",
     answer:
-      "Yes. For custom builds, portals, CRM systems, landing pages, and operating systems, you receive the handover details needed to run, maintain, or extend the system. It is built for your business, not rented as a generic template.",
+      "Yes. You receive full access and ownership of the system we build for your business. It is built around your operations, not rented as a generic SaaS subscription.",
   },
   {
-    question: "What if I am not sure which product I need?",
+    question: "What is the Founding Client Program?",
     answer:
-      "Choose the closest product and explain the situation in the request form. We will either confirm the fit, recommend a smaller build, or tell you which product matches the business need better.",
+      "Our Founding Client Program offers discounted pricing for the first two clients per solution. This is not a sale — we are looking for early portfolio clients who want a premium system and are willing to provide feedback during the build process. After the two spots are claimed, standard pricing applies.",
   },
   {
-    question: "Can you integrate with tools I already use?",
+    question: "How long does a build take?",
     answer:
-      "Yes, when the selected product requires it. Common examples include ad platforms, analytics, CRMs, forms, payment processors, email providers, WhatsApp, SMS, and spreadsheets.",
+      "Executive Dashboards typically take 1-2 weeks. Business Dashboard Pro builds take 2-3 weeks. A full Business Operating System takes 3-6 weeks depending on complexity. Timelines depend on data access, integrations, and review speed.",
   },
   {
-    question: "How long do these products take?",
+    question: "Can you integrate with the tools I already use?",
     answer:
-      "Small builds like tracking, dashboards, CRM setup, and landing pages are usually measured in days. Portal, staff workflow, and operating system builds take longer depending on access, content, integrations, and review speed.",
+      "Yes. We connect with Meta Ads, Google Ads, Stripe, HubSpot, GA4, CRMs, spreadsheets, and other business tools. The integrations are configured specifically for your stack.",
   },
   {
-    question: "Can you customize one of the products?",
+    question: "What if I need something more custom?",
     answer:
-      "Yes. The catalog gives you a starting point, not a vague conversation. Small adjustments are normal. Bigger changes are quoted as add-ons so the project stays clear.",
+      "Every solution can be customized. The standard package gives you a proven starting point. Additional customizations are scoped and quoted before any work starts, so there are no surprises.",
   },
   {
     question: "What is not included?",
     answer:
-      "We do not run your ads, manage your social media, write long-form SEO content, or create full brand identities. We build the product layer: tracking, pages, dashboards, CRM, automation, portals, workflows, and operating systems.",
+      "We do not run your ads, manage your social media, or provide ongoing marketing services. We build the software layer: dashboards, systems, integrations, and automation that give you visibility and control over your business.",
   },
 ];
 
@@ -54,9 +54,9 @@ export function FAQSection() {
           transition={{ duration: shouldReduceMotion ? 0.3 : 0.5 }}
         >
           <span className="mb-4 inline-flex rounded-full border border-black/10 bg-[#F3F2ED] px-3 py-1.5 text-xs font-bold uppercase tracking-[0.16em] text-[#74695B]">FAQ</span>
-          <h2 className="text-3xl font-bold tracking-tight text-[#11100E] sm:text-4xl md:text-5xl">Questions before you buy a build.</h2>
+          <h2 className="text-3xl font-bold tracking-tight text-[#11100E] sm:text-4xl md:text-5xl">Questions before you get started.</h2>
           <p className="mt-4 max-w-2xl text-base leading-relaxed text-[#74695B] sm:text-lg">
-            The point is clarity before payment: what you get, what can be customized, and what is outside the product.
+            Everything you need to know about how we work, what you get, and how the Founding Client Program operates.
           </p>
         </motion.div>
 

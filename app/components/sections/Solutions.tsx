@@ -185,8 +185,6 @@ export function SolutionsSection() {
 
                   <Link
                     href={solution.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
                     className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#004225] px-5 py-3 text-sm font-bold text-white transition-colors hover:bg-[#11100E]"
                   >
                     {i === 0 ? "Get Executive Dashboard" : i === 1 ? "Upgrade Your Business Dashboard" : "Build My Business System"}

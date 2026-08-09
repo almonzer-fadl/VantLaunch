@@ -113,8 +113,6 @@ export function ComparisonSection() {
                     <td key={col.name} className={`px-4 py-5 text-center ${col.featured ? "bg-[#004225]/[0.02]" : ""}`}>
                       <Link
                         href={col.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
                         className="inline-flex items-center gap-1.5 rounded-xl bg-[#004225] px-4 py-2 text-xs font-bold text-white transition-colors hover:bg-[#11100E]"
                       >
                         Choose <ArrowRight className="h-3 w-3" />

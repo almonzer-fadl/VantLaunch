@@ -35,7 +35,7 @@ export async function createCheckoutSession(
 
   const body: Record<string, unknown> = {
     product_id: productId,
-    success_redirect_url: `${siteUrl}/checkout/success?${successParams.toString()}`,
+    return_url: `${siteUrl}/checkout/success?${successParams.toString()}`,
   };
 
   if (options?.customerEmail) {

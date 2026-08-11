@@ -56,6 +56,7 @@ export default function ProjectBriefPage() {
   const [formData, setFormData] = useState<FormData>(initialFormData);
   const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>({});
   const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
 
   const updateField = useCallback(<K extends keyof FormData>(field: K, value: FormData[K]) => {
     setFormData((prev) => ({ ...prev, [field]: value }));
@@ -97,18 +98,25 @@ export default function ProjectBriefPage() {
 
   const handleSubmit = async () => {
     setSubmitting(true);
+    setSubmitError("");
     const params = new URLSearchParams(window.location.search);
-    const result = await submitProjectBrief({
-      customerId: params.get("customer_id") || "",
-      polarOrderId: params.get("order_id") || "",
-      product: params.get("product") || "Unknown",
-      amountPaid: params.get("amount") || "Unknown",
-      ...formData,
-    });
+    try {
+      const result = await submitProjectBrief({
+        customerId: params.get("customer_id") || "",
+        polarOrderId: params.get("order_id") || "",
+        product: params.get("product") || "Unknown",
+        amountPaid: params.get("amount") || "Unknown",
+        ...formData,
+      });
 
-    if (result.success) {
-      router.push("/project-brief/confirmation");
-    } else {
+      if (result.success) {
+        router.push("/project-brief/confirmation");
+      } else {
+        setSubmitError(result.error || "Something went wrong. Please try again.");
+        setSubmitting(false);
+      }
+    } catch {
+      setSubmitError("Failed to submit. Please check your connection and try again.");
       setSubmitting(false);
     }
   };
@@ -294,6 +302,9 @@ export default function ProjectBriefPage() {
                     "Submit Project Brief"
                   )}
                 </button>
+                {submitError && (
+                  <p className="mt-3 text-center text-xs font-medium text-red-500">{submitError}</p>
+                )}
               </div>
             )}
 

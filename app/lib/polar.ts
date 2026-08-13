@@ -34,10 +34,11 @@ export async function createCheckoutSession(
   const successParams = new URLSearchParams();
   if (meta.product_name) successParams.set("product", meta.product_name);
   if (meta.product_amount) successParams.set("amount", meta.product_amount);
+  successParams.set("checkout_id", "{CHECKOUT_ID}");
 
   const body: Record<string, unknown> = {
-    product_id: productId,
-    return_url: `${siteUrl}/checkout/success?${successParams.toString()}`,
+    products: [productId],
+    success_url: `${siteUrl}/checkout/success?${successParams.toString()}`,
   };
 
   if (options?.customerEmail) {

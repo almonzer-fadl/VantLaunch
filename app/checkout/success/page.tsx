@@ -10,6 +10,7 @@ interface OrderData {
   amount?: string;
   orderId?: string;
   customerId?: string;
+  checkoutId?: string;
 }
 
 function useOrderParams(): OrderData {
@@ -20,8 +21,9 @@ function useOrderParams(): OrderData {
     setData({
       product: params.get("product") || undefined,
       amount: params.get("amount") || undefined,
-      orderId: params.get("order_id") || undefined,
+      orderId: params.get("order_id") || params.get("checkout_id") || undefined,
       customerId: params.get("customer_id") || undefined,
+      checkoutId: params.get("checkout_id") || undefined,
     });
   }, []);
 
@@ -86,7 +88,7 @@ function SuccessContent() {
 
         <div className="mt-8">
           <Link
-            href={`/project-brief?${new URLSearchParams({ product: order.product || "", amount: order.amount || "", order_id: order.orderId || "", customer_id: order.customerId || "" }).toString()}`}
+            href={`/project-brief?${new URLSearchParams({ product: order.product || "", amount: order.amount || "", order_id: order.orderId || "", checkout_id: order.checkoutId || "", customer_id: order.customerId || "" }).toString()}`}
             className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#004225] px-8 py-4 text-base font-bold text-white transition-colors hover:bg-[#11100E] sm:w-auto"
           >
             Start Project Brief

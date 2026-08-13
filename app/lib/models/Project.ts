@@ -26,7 +26,7 @@ export interface IProjectDocument extends IProject, Document {}
 
 const ProjectSchema = new Schema<IProjectDocument>(
   {
-    customerId: { type: String, required: true },
+    customerId: { type: String, default: "" },
     polarOrderId: { type: String, required: true },
     product: { type: String, required: true },
     amountPaid: { type: String, required: true },

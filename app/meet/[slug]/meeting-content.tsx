@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Calendar, Clock, MapPin, User, Video, XCircle, Pencil } from "lucide-react";
+import { Calendar, Clock, MapPin, User, Video, XCircle, Pencil, RotateCw } from "lucide-react";
 import { rescheduleMeeting } from "@/app/actions/meetings";
 import type { IMeeting } from "@/app/lib/models/Meeting";
 
@@ -148,6 +148,47 @@ export function MeetingContent({ meeting }: { meeting: IMeeting & { _id: string 
               <p className="text-[10px] font-bold uppercase tracking-[0.1em] text-[#74695B]">Meeting Link</p>
               <code className="mt-1 block text-xs text-[#11100E] break-all">{meeting.meetingLink}</code>
             </div>
+
+            {meeting.history && meeting.history.length > 0 && (
+              <div className="mt-6">
+                <p className="text-[10px] font-bold uppercase tracking-[0.1em] text-[#74695B] mb-3">Change Log</p>
+                <div className="space-y-2">
+                  {meeting.history.map((entry, i) => {
+                    const ts = new Date(entry.timestamp);
+                    const tsStr = ts.toLocaleString(undefined, {
+                      month: "short",
+                      day: "numeric",
+                      hour: "numeric",
+                      minute: "2-digit",
+                    });
+                    const oldDt = new Date(entry.oldValue);
+                    const newDt = new Date(entry.newValue);
+                    const fmt = (d: Date) =>
+                      d.toLocaleString(undefined, {
+                        month: "short",
+                        day: "numeric",
+                        hour: "numeric",
+                        minute: "2-digit",
+                        timeZoneName: "short",
+                      });
+                    return (
+                      <div key={i} className="flex items-start gap-2 rounded-lg border border-black/[0.06] bg-white px-3 py-2 text-xs">
+                        <RotateCw className="h-3.5 w-3.5 mt-0.5 shrink-0 text-[#004225]" />
+                        <div>
+                          <p className="text-[#11100E]">
+                            <span className="font-bold">Rescheduled</span>{" "}
+                            <span className="text-[#74695B]">from {fmt(oldDt)}</span>
+                            {" → "}
+                            <span className="text-[#004225] font-medium">to {fmt(newDt)}</span>
+                          </p>
+                          <p className="mt-0.5 text-[#74695B]">{tsStr}</p>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
           </div>
         )}
 

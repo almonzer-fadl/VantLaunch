@@ -5,7 +5,6 @@ import { connectDB } from "@/app/lib/db";
 import { Project } from "@/app/lib/models/Project";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
-const internalEmail = process.env.INTERNAL_CONTACT_EMAIL ?? "vantlaunch@gmail.com";
 
 interface SubmitProjectInput {
   customerId: string;
@@ -46,7 +45,7 @@ export async function submitProjectBrief(input: SubmitProjectInput) {
 
     await resend.emails.send({
       from: "VantLaunch <noreply@vantlaunch.com>",
-      to: internalEmail,
+      to: "vantlaunch@gmail.com",
       subject: `New Project: ${input.product} — ${input.fullName}`,
       html: adminNotificationHtml(input),
     });

@@ -2,8 +2,8 @@
 
 import { useState, useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
-import { Copy, ExternalLink, Eye, Loader2, Lock, CalendarPlus, Video, Trash2 } from "lucide-react";
-import { getProjects, updateProjectStatus } from "@/app/actions/admin";
+import { Copy, ExternalLink, Eye, Loader2, Lock, CalendarPlus, Video, Trash2, Mail, Phone } from "lucide-react";
+import { getProjects, updateProjectStatus, getContacts, updateContactStatus } from "@/app/actions/admin";
 import { createMeeting, getMeetings, cancelMeeting } from "@/app/actions/meetings";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://vantlaunch.com";
@@ -81,6 +81,19 @@ type MeetingData = {
   createdAt: string;
 };
 
+type ContactData = {
+  _id: string;
+  name: string;
+  email: string;
+  company: string;
+  role: string;
+  productInterest: string;
+  timeline: string;
+  message: string;
+  status: string;
+  createdAt: string;
+};
+
 const STATUS_OPTIONS = [
   { value: "new", label: "New", color: "bg-blue-100 text-blue-800" },
   { value: "contacted", label: "Contacted", color: "bg-yellow-100 text-yellow-800" },
@@ -106,16 +119,21 @@ function MeetingStatusBadge({ status }: { status: string }) {
   );
 }
 
-const TABS = ["Projects", "Meetings"] as const;
+const TABS = ["Contacts", "Projects", "Meetings"] as const;
 
 export default function AdminPage() {
   const [authenticated, setAuthenticated] = useState(false);
-  const [tab, setTab] = useState<typeof TABS[number]>("Projects");
+  const [tab, setTab] = useState<typeof TABS[number]>("Contacts");
 
   const [projects, setProjects] = useState<ProjectData[]>([]);
   const [loadingProjects, setLoadingProjects] = useState(true);
   const [selectedProject, setSelectedProject] = useState<ProjectData | null>(null);
-  const [updatingId, setUpdatingId] = useState<string | null>(null);
+  const [updatingProjectId, setUpdatingProjectId] = useState<string | null>(null);
+
+  const [contacts, setContacts] = useState<ContactData[]>([]);
+  const [loadingContacts, setLoadingContacts] = useState(true);
+  const [selectedContact, setSelectedContact] = useState<ContactData | null>(null);
+  const [updatingContactId, setUpdatingContactId] = useState<string | null>(null);
 
   const [meetings, setMeetings] = useState<MeetingData[]>([]);
   const [loadingMeetings, setLoadingMeetings] = useState(true);
@@ -138,6 +156,12 @@ export default function AdminPage() {
     setLoadingProjects(false);
   }, []);
 
+  const fetchContacts = useCallback(async () => {
+    const data = await getContacts();
+    setContacts(data as ContactData[]);
+    setLoadingContacts(false);
+  }, []);
+
   const fetchMeetings = useCallback(async () => {
     const data = await getMeetings();
     setMeetings(data as MeetingData[]);
@@ -146,16 +170,24 @@ export default function AdminPage() {
 
   useEffect(() => {
     if (authenticated) {
+      fetchContacts();
       fetchProjects();
       fetchMeetings();
     }
-  }, [authenticated, fetchProjects, fetchMeetings]);
+  }, [authenticated, fetchContacts, fetchProjects, fetchMeetings]);
 
-  const handleStatusChange = async (projectId: string, status: string) => {
-    setUpdatingId(projectId);
+  const handleProjectStatusChange = async (projectId: string, status: string) => {
+    setUpdatingProjectId(projectId);
     await updateProjectStatus(projectId, status as "new" | "contacted" | "in_progress" | "completed");
     await fetchProjects();
-    setUpdatingId(null);
+    setUpdatingProjectId(null);
+  };
+
+  const handleContactStatusChange = async (contactId: string, status: string) => {
+    setUpdatingContactId(contactId);
+    await updateContactStatus(contactId, status as "new" | "contacted" | "in_progress" | "completed");
+    await fetchContacts();
+    setUpdatingContactId(null);
   };
 
   const copyToClipboard = (text: string) => {
@@ -202,11 +234,85 @@ export default function AdminPage() {
                 }`}
               >
                 {t}
+                {t === "Contacts" && contacts.filter(c => c.status === "new").length > 0 && (
+                  <span className="ml-1.5 inline-flex h-4 min-w-4 items-center justify-center rounded-full bg-[#004225] px-1 text-[9px] font-bold text-white">
+                    {contacts.filter(c => c.status === "new").length}
+                  </span>
+                )}
               </button>
             ))}
           </div>
         </div>
 
+        {/* Contacts Tab */}
+        {tab === "Contacts" && (
+          <>
+            {loadingContacts ? (
+              <div className="flex min-h-[200px] items-center justify-center">
+                <Loader2 className="h-8 w-8 animate-spin text-[#004225]" />
+              </div>
+            ) : contacts.length === 0 ? (
+              <div className="rounded-2xl border border-black/10 bg-white p-12 text-center shadow-mid">
+                <p className="text-[#74695B]">No contact submissions yet.</p>
+              </div>
+            ) : (
+              <div className="grid gap-4">
+                {contacts.map((contact) => (
+                  <motion.div
+                    key={contact._id}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="rounded-2xl border border-black/10 bg-white p-5 shadow-mid sm:p-6"
+                  >
+                    <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                      <div className="flex-1">
+                        <div className="mb-2 flex items-center gap-3">
+                          <h3 className="text-lg font-bold">{contact.name}</h3>
+                          <StatusBadge status={contact.status} />
+                        </div>
+                        <div className="flex flex-wrap gap-x-4 gap-y-1 text-sm text-[#74695B]">
+                          <span>{contact.company}</span>
+                          <span className="hidden sm:inline">|</span>
+                          <span className="font-medium text-[#004225]">{contact.productInterest}</span>
+                          <span className="hidden sm:inline">|</span>
+                          <span>{contact.timeline}</span>
+                          <span className="hidden sm:inline">|</span>
+                          <span>{new Date(contact.createdAt).toLocaleDateString()}</span>
+                        </div>
+                        <p className="mt-2 text-sm text-[#74695B] line-clamp-2">{contact.message}</p>
+                      </div>
+                      <div className="flex flex-wrap items-center gap-2">
+                        <button onClick={() => setSelectedContact(contact)} className="inline-flex items-center gap-1.5 rounded-lg border border-black/10 bg-white px-3 py-2 text-xs font-bold text-[#11100E] transition-colors hover:bg-black/[0.03]">
+                          <Eye className="h-3.5 w-3.5" /> Details
+                        </button>
+                        <a href={`mailto:${contact.email}`} className="inline-flex items-center gap-1.5 rounded-lg border border-black/10 bg-[#004225] px-3 py-2 text-xs font-bold text-white transition-colors hover:bg-[#11100E]">
+                          <Mail className="h-3.5 w-3.5" /> Reply
+                        </a>
+                      </div>
+                    </div>
+                    <div className="mt-4 flex flex-wrap items-center gap-2 border-t border-black/[0.06] pt-4">
+                      <span className="text-[10px] font-bold uppercase tracking-[0.1em] text-[#74695B]">Status:</span>
+                      {STATUS_OPTIONS.map((opt) => (
+                        <button
+                          key={opt.value}
+                          onClick={() => handleContactStatusChange(contact._id, opt.value)}
+                          disabled={updatingContactId === contact._id}
+                          className={`rounded-lg px-2.5 py-1.5 text-[10px] font-bold uppercase tracking-[0.06em] transition-colors ${
+                            contact.status === opt.value ? "bg-[#004225] text-white" : "bg-black/[0.04] text-[#74695B] hover:bg-black/[0.08]"
+                          }`}
+                        >
+                          {opt.label}
+                        </button>
+                      ))}
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            )}
+          </>
+        )}
+
+        {/* Projects Tab */}
         {tab === "Projects" && (
           <>
             {loadingProjects ? (
@@ -259,8 +365,8 @@ export default function AdminPage() {
                       {STATUS_OPTIONS.map((opt) => (
                         <button
                           key={opt.value}
-                          onClick={() => handleStatusChange(project._id, opt.value)}
-                          disabled={updatingId === project._id}
+                          onClick={() => handleProjectStatusChange(project._id, opt.value)}
+                          disabled={updatingProjectId === project._id}
                           className={`rounded-lg px-2.5 py-1.5 text-[10px] font-bold uppercase tracking-[0.06em] transition-colors ${
                             project.status === opt.value ? "bg-[#004225] text-white" : "bg-black/[0.04] text-[#74695B] hover:bg-black/[0.08]"
                           }`}
@@ -276,6 +382,7 @@ export default function AdminPage() {
           </>
         )}
 
+        {/* Meetings Tab */}
         {tab === "Meetings" && (
           <div className="space-y-6">
             {createdSlug && (
@@ -413,6 +520,36 @@ export default function AdminPage() {
           </div>
         )}
       </div>
+
+      {/* Contact Detail Modal */}
+      {selectedContact && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+          <div className="absolute inset-0 bg-[#11100E]/35" onClick={() => setSelectedContact(null)} />
+          <div className="relative max-h-[90vh] w-full max-w-xl overflow-y-auto rounded-2xl border border-black/10 bg-white p-6 shadow-high sm:p-8">
+            <button onClick={() => setSelectedContact(null)} className="absolute right-4 top-4 text-sm font-bold text-[#74695B] hover:text-[#11100E]">
+              Close
+            </button>
+            <h2 className="text-xl font-bold">{selectedContact.name}</h2>
+            <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-sm text-[#74695B]">
+              <a href={`mailto:${selectedContact.email}`} className="font-medium text-[#004225] hover:underline">{selectedContact.email}</a>
+              <span>|</span>
+              <span>{selectedContact.company}</span>
+              <span>|</span>
+              <span>{selectedContact.timeline}</span>
+            </div>
+            <div className="mt-4 space-y-3">
+              <DetailBlock label="Role" text={selectedContact.role || "Not provided"} />
+              <DetailBlock label="Engagement Interest" text={selectedContact.productInterest} />
+              <DetailBlock label="Message" text={selectedContact.message} />
+            </div>
+            <div className="mt-6 flex gap-2">
+              <a href={`mailto:${selectedContact.email}`} className="inline-flex items-center gap-1.5 rounded-xl bg-[#004225] px-5 py-2.5 text-sm font-bold text-white transition-colors hover:bg-[#11100E]">
+                <Mail className="h-4 w-4" /> Reply via Email
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Project Detail Modal */}
       {selectedProject && (

@@ -1,6 +1,8 @@
 "use server";
 
 import { Resend } from "resend";
+import { connectDB } from "@/app/lib/db";
+import { Contact } from "@/app/lib/models/Contact";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 const internalContactEmail = process.env.INTERNAL_CONTACT_EMAIL ?? "vantlaunch@gmail.com";
@@ -28,12 +30,30 @@ export async function sendContactEmail(formData: FormData) {
     return { success: true };
   }
 
-  if (!name || !email || !company || !message || !productInterest || !timeline) {
-    return { success: false, error: "All fields are required." };
+  if (!name || !email || !company || !message) {
+    return { success: false, error: "All required fields must be filled." };
   }
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!emailRegex.test(email)) {
     return { success: false, error: "Please enter a valid email address." };
+  }
+
+  try {
+    // Save to MongoDB for admin dashboard
+    await connectDB();
+    await Contact.create({
+      name,
+      email,
+      company,
+      role,
+      productInterest,
+      timeline,
+      message,
+      status: "new",
+    });
+  } catch (dbError) {
+    console.error("Failed to save contact to DB:", dbError);
+    // Don't block — still try to send emails
   }
 
   try {
@@ -45,7 +65,7 @@ export async function sendContactEmail(formData: FormData) {
     const safeTimeline = escapeHtml(timeline);
     const safeMessage = escapeHtml(message);
 
-    // 1. Send confirmation to the user
+    // 1. Confirmation to the person who submitted
     await resend.emails.send({
       from: "VantLaunch <noreply@vantlaunch.com>",
       to: email,
@@ -90,36 +110,19 @@ export async function sendContactEmail(formData: FormData) {
       `,
     });
 
-    // 2. Send notification to the VantLaunch team
+    // 2. Notification to admin
     await resend.emails.send({
       from: "VantLaunch System <noreply@vantlaunch.com>",
       to: internalContactEmail,
-      subject: `New Project Inquiry: ${name}`,
-      text: `Name: ${name}\nEmail: ${email}\nCompany: ${company}\nRole: ${role}\nProduct: ${productInterest}\nTimeline: ${timeline}\nUse case: ${message}`,
+      subject: `New Inquiry: ${name} from ${company}`,
+      text: `Name: ${name}\nEmail: ${email}\nCompany: ${company}\nRole: ${role}\nProduct: ${productInterest}\nTimeline: ${timeline}\n\nMessage:\n${message}`,
       replyTo: email,
-    });
-
-    // 3. Send a copy of the customer confirmation to the internal inbox
-    await resend.emails.send({
-      from: "VantLaunch <noreply@vantlaunch.com>",
-      to: internalContactEmail,
-      subject: `Customer Confirmation Copy: ${name}`,
-      text: [
-        "Customer-facing confirmation was sent.",
-        "",
-        `Lead: ${name} <${email}>`,
-        `Company: ${company}`,
-        `Role: ${role}`,
-        `Product: ${productInterest}`,
-        `Timeline: ${timeline}`,
-        "",
-        `Use case: "${message}"`,
-      ].join("\n"),
       html: `
         <div style="background:#F8F6EF;padding:28px 16px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;">
           <div style="max-width:560px;margin:0 auto;background:#F8F6EF;border:1px solid rgba(17,16,14,0.1);border-radius:14px;padding:24px;">
-            <h2 style="margin:0 0 14px 0;color:#11100E;font-size:20px;">Customer Confirmation Copy</h2>
-            <p style="margin:0 0 8px 0;color:#11100E;"><strong>Lead:</strong> ${safeName} (${safeEmail})</p>
+            <h2 style="margin:0 0 14px 0;color:#11100E;font-size:20px;">New Contact Inquiry</h2>
+            <p style="margin:0 0 8px 0;color:#11100E;"><strong>Name:</strong> ${safeName}</p>
+            <p style="margin:0 0 8px 0;color:#11100E;"><strong>Email:</strong> ${safeEmail}</p>
             <p style="margin:0 0 8px 0;color:#74695B;"><strong style="color:#11100E;">Company:</strong> ${safeCompany}</p>
             <p style="margin:0 0 8px 0;color:#74695B;"><strong style="color:#11100E;">Role:</strong> ${safeRole}</p>
             <p style="margin:0 0 8px 0;color:#74695B;"><strong style="color:#11100E;">Product:</strong> ${safeProductInterest}</p>
@@ -127,10 +130,10 @@ export async function sendContactEmail(formData: FormData) {
             <div style="margin-top:14px;padding:12px 14px;border-left:3px solid #004225;background:#f3ead3;border-radius:8px;">
               <p style="margin:0;color:#11100E;">${safeMessage}</p>
             </div>
+            <p style="margin-top:16px;color:#74695B;font-size:12px;">Reply directly to this email to respond to ${safeName}.</p>
           </div>
         </div>
       `,
-      replyTo: email,
     });
 
     return { success: true };

@@ -3,8 +3,8 @@
 import { useState, useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
 import { Copy, ExternalLink, Eye, Loader2, Lock, CalendarPlus, Video, Trash2, Mail, Phone } from "lucide-react";
-import { getProjects, updateProjectStatus, getContacts, updateContactStatus } from "@/app/actions/admin";
-import { createMeeting, getMeetings, cancelMeeting } from "@/app/actions/meetings";
+import { getProjects, updateProjectStatus, getContacts, updateContactStatus, deleteContact, deleteProject } from "@/app/actions/admin";
+import { createMeeting, getMeetings, cancelMeeting, deleteMeeting } from "@/app/actions/meetings";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://vantlaunch.com";
 
@@ -215,6 +215,21 @@ export default function AdminPage() {
     await fetchMeetings();
   };
 
+  const handleDeleteContact = async (id: string) => {
+    await deleteContact(id);
+    await fetchContacts();
+  };
+
+  const handleDeleteProject = async (id: string) => {
+    await deleteProject(id);
+    await fetchProjects();
+  };
+
+  const handleDeleteMeeting = async (slug: string) => {
+    await deleteMeeting(slug);
+    await fetchMeetings();
+  };
+
   if (!authenticated) {
     return <AdminGate onUnlock={() => setAuthenticated(true)} />;
   }
@@ -288,6 +303,9 @@ export default function AdminPage() {
                         <a href={`mailto:${contact.email}`} className="inline-flex items-center gap-1.5 rounded-lg border border-black/10 bg-[#004225] px-3 py-2 text-xs font-bold text-white transition-colors hover:bg-[#11100E]">
                           <Mail className="h-3.5 w-3.5" /> Reply
                         </a>
+                        <button onClick={() => handleDeleteContact(contact._id)} className="inline-flex items-center gap-1.5 rounded-lg border border-red-200 bg-white px-3 py-2 text-xs font-bold text-red-600 transition-colors hover:bg-red-50">
+                          <Trash2 className="h-3.5 w-3.5" />
+                        </button>
                       </div>
                     </div>
                     <div className="mt-4 flex flex-wrap items-center gap-2 border-t border-black/[0.06] pt-4">
@@ -358,6 +376,9 @@ export default function AdminPage() {
                             <ExternalLink className="h-3.5 w-3.5" /> Assets
                           </a>
                         )}
+                        <button onClick={() => handleDeleteProject(project._id)} className="inline-flex items-center gap-1.5 rounded-lg border border-red-200 bg-white px-3 py-2 text-xs font-bold text-red-600 transition-colors hover:bg-red-50">
+                          <Trash2 className="h-3.5 w-3.5" />
+                        </button>
                       </div>
                     </div>
                     <div className="mt-4 flex flex-wrap items-center gap-2 border-t border-black/[0.06] pt-4">
@@ -506,6 +527,9 @@ export default function AdminPage() {
                             <Trash2 className="h-3.5 w-3.5" /> Cancel
                           </button>
                         )}
+                        <button onClick={() => handleDeleteMeeting(meeting.slug)} className="inline-flex items-center gap-1.5 rounded-lg border border-red-200 bg-white px-3 py-2 text-xs font-bold text-red-600 transition-colors hover:bg-red-50">
+                          <Trash2 className="h-3.5 w-3.5" />
+                        </button>
                       </div>
                     </div>
                     {meeting.description && (

@@ -18,6 +18,7 @@ export interface IProject {
   assetsFolder: string;
   additionalNotes: string;
   status: "new" | "contacted" | "in_progress" | "completed";
+  deleted: boolean;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -47,6 +48,7 @@ const ProjectSchema = new Schema<IProjectDocument>(
       enum: ["new", "contacted", "in_progress", "completed"],
       default: "new",
     },
+    deleted: { type: Boolean, default: false },
   },
   { timestamps: true }
 );

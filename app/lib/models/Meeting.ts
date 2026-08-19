@@ -16,6 +16,7 @@ export interface IMeeting {
   recipientName: string;
   recipientEmail: string;
   status: "scheduled" | "cancelled";
+  deleted: boolean;
   history: IMeetingHistory[];
   createdAt: Date;
   updatedAt: Date;
@@ -47,6 +48,7 @@ const MeetingSchema = new Schema<IMeetingDocument>(
       enum: ["scheduled", "cancelled"],
       default: "scheduled",
     },
+    deleted: { type: Boolean, default: false },
     history: { type: [HistorySchema], default: [] },
   },
   { timestamps: true }

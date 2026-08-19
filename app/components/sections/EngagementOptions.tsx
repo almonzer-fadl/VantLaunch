@@ -6,6 +6,8 @@ import {
   ArrowRight, Check, Zap, Bell, TrendingUp,
   DollarSign, Users, Target, ShieldCheck, Activity,
 } from "lucide-react";
+import type { Locale } from "@/app/lib/locales";
+import { LOCALE_DATA } from "@/app/lib/locales";
 
 /* ------------------------------------------------------------------ */
 /*  Preview: Fix One Bottleneck — one focused dashboard                  */
@@ -498,10 +500,16 @@ const ENGAGEMENTS = [
 /*  Section                                                            */
 /* ------------------------------------------------------------------ */
 
-export function EngagementOptionsSection() {
+export function EngagementOptionsSection({ locale = "global" }: { locale?: Locale }) {
   const [selected, setSelected] = useState<string>("pro");
+  const prices = LOCALE_DATA[locale].engagementPrices;
 
-  const active = ENGAGEMENTS.find((e) => e.id === selected) || ENGAGEMENTS[1];
+  const localizedEngagements = ENGAGEMENTS.map((eng) => ({
+    ...eng,
+    price: eng.id === "starter" ? prices.starter : eng.id === "pro" ? prices.pro : eng.id === "mobile" ? prices.mobile : eng.price,
+  }));
+
+  const active = localizedEngagements.find((e) => e.id === selected) || localizedEngagements[1];
   const ActivePreview = active.preview;
 
   return (

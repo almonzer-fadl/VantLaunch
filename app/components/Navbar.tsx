@@ -8,9 +8,9 @@ import Link from "next/link";
 import { useMobileMotion } from "../hooks/use-mobile-motion";
 
 const NAV_LINKS = [
-  { href: "/#systems", label: "Solutions" },
-  { href: "/#engagement-options", label: "Engagements" },
-  { href: "/#process", label: "Process" },
+  { href: "#systems", label: "Solutions" },
+  { href: "#engagement-options", label: "Engagements" },
+  { href: "#process", label: "Process" },
   { href: "/faq", label: "FAQ" },
 ];
 

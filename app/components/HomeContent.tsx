@@ -12,7 +12,7 @@ import { WorkTeaser } from "@/app/components/WorkTeaser";
 import { CTABanner } from "@/app/components/CTABanner";
 import { Footer } from "@/app/components/Footer";
 import type { Locale } from "@/app/lib/locales";
-import { LOCALE_DATA, isRTL, langCode } from "@/app/lib/locales";
+import { LOCALE_DATA } from "@/app/lib/locales";
 
 export function HomeContent({ locale }: { locale: Locale }) {
   const data = LOCALE_DATA[locale];

@@ -64,6 +64,7 @@ export default function RootLayout({
     >
       <head>
         <link href="https://api.fontshare.com/v2/css?f[]=clash-display@600,700&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet" />
       </head>
       <body className="flex min-h-full flex-col bg-canvas">
         {children}

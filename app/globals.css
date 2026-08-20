@@ -28,6 +28,11 @@ body {
   @apply text-[15px] leading-relaxed tracking-normal text-[#74695B] antialiased;
 }
 
+[dir="rtl"] {
+  --font-sans: "Tajawal", ui-sans-serif, system-ui;
+  --font-display: "Tajawal", ui-sans-serif, system-ui;
+}
+
 @layer base {
   * {
     @apply border-border-subtle;

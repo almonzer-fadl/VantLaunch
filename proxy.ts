@@ -5,11 +5,11 @@ const LOCALE_REDIRECTS: Record<string, string> = {
   GB: "/uk", AU: "/au", NZ: "/nz",
   IE: "/ie", DE: "/de", NL: "/nl",
   SE: "/se", NO: "/no", DK: "/dk",
-  SG: "/sg",
+  SG: "/sg", MY: "/my", TR: "/tr",
   SA: "/sa", AE: "/ae", QA: "/qa", KW: "/kw", BH: "/bh", OM: "/om",
 };
 
-const ALL_LOCALE_PATHS = "/us|/uk|/ca|/au|/nz|/sg|/ie|/de|/nl|/se|/no|/dk|/sa|/ae|/qa|/kw|/bh|/om";
+const ALL_LOCALE_PATHS = "/us|/uk|/ca|/au|/nz|/sg|/my|/tr|/ie|/de|/nl|/se|/no|/dk|/sa|/ae|/qa|/kw|/bh|/om";
 
 function getCountry(request: NextRequest): string {
   return request.headers.get("x-vercel-ip-country") ?? "";
@@ -41,5 +41,5 @@ export default function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/((?!_next|api|admin|meet|project-brief|checkout|favicon|brand|media|logos|portfolio|us|uk|ca|au|nz|sg|ie|de|nl|se|no|dk|sa|ae|qa|kw|bh|om).*)"],
+  matcher: ["/((?!_next|api|admin|meet|project-brief|checkout|favicon|brand|media|logos|portfolio|us|uk|ca|au|nz|sg|my|tr|ie|de|nl|se|no|dk|sa|ae|qa|kw|bh|om).*)"],
 };

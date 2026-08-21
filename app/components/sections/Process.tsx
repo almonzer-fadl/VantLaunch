@@ -2,16 +2,18 @@
 
 import { motion } from "framer-motion";
 import { ClipboardCheck, PencilRuler, Code2, Rocket, Repeat } from "lucide-react";
-
-const STEPS = [
-  { icon: ClipboardCheck, title: "Discovery", num: "01" },
-  { icon: PencilRuler, title: "Design", num: "02" },
-  { icon: Code2, title: "Build", num: "03" },
-  { icon: Rocket, title: "Launch", num: "04" },
-  { icon: Repeat, title: "Improve", num: "05" },
-];
+import { useT } from "@/app/lib/LocaleContext";
 
 export function ProcessSection() {
+  const t = useT().t;
+
+  const STEPS = [
+    { icon: ClipboardCheck, title: t.process.steps[0], num: "01" },
+    { icon: PencilRuler, title: t.process.steps[1], num: "02" },
+    { icon: Code2, title: t.process.steps[2], num: "03" },
+    { icon: Rocket, title: t.process.steps[3], num: "04" },
+    { icon: Repeat, title: t.process.steps[4], num: "05" },
+  ];
   return (
     <section id="process" className="border-t border-black/10 bg-[#F8F6EF] px-6 py-16 text-[#11100E] sm:py-20 md:py-28">
       <div className="mx-auto max-w-5xl">
@@ -23,10 +25,10 @@ export function ProcessSection() {
           className="mb-12 text-center"
         >
           <span className="mb-4 inline-flex rounded-full border border-black/10 bg-[#F3F2ED] px-3 py-1.5 text-xs font-bold uppercase tracking-[0.16em] text-[#74695B]">
-            Our Process
+            {t.process.tag}
           </span>
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
-            From discovery to continuous improvement
+            {t.process.heading}
           </h2>
         </motion.div>
 

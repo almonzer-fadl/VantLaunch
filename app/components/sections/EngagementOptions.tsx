@@ -8,6 +8,7 @@ import {
 } from "lucide-react";
 import type { Locale } from "@/app/lib/locales";
 import { LOCALE_DATA } from "@/app/lib/locales";
+import { useT } from "@/app/lib/LocaleContext";
 
 /* ------------------------------------------------------------------ */
 /*  Preview: Fix One Bottleneck — one focused dashboard                  */
@@ -503,6 +504,7 @@ const ENGAGEMENTS = [
 export function EngagementOptionsSection({ locale = "global" }: { locale?: Locale }) {
   const [selected, setSelected] = useState<string>("pro");
   const prices = LOCALE_DATA[locale].engagementPrices;
+  const t = useT().t;
 
   const localizedEngagements = ENGAGEMENTS.map((eng) => ({
     ...eng,
@@ -523,13 +525,13 @@ export function EngagementOptionsSection({ locale = "global" }: { locale?: Local
           className="mb-10 text-center"
         >
           <span className="mb-4 inline-flex rounded-full border border-black/10 bg-[#F3F2ED] px-3 py-1.5 text-xs font-bold uppercase tracking-[0.16em] text-[#74695B]">
-            Where To Start
+            {t.engagement.tag}
           </span>
           <h2 className="font-display text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
-            Choose how we begin
+            {t.engagement.heading}
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-[#74695B]">
-            Every engagement is custom-built around your operations. Pick where you want to start — we handle the rest.
+            {t.engagement.sub}
           </p>
         </motion.div>
 
@@ -622,7 +624,7 @@ export function EngagementOptionsSection({ locale = "global" }: { locale?: Local
                     href="/contact"
                     className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#004225] px-6 py-3 text-sm font-bold text-white transition-all hover:bg-[#11100E] hover:shadow-lg"
                   >
-                    Book Discovery Call
+                    {t.engagement.cta}
                     <ArrowRight className="h-4 w-4" />
                   </a>
                 </motion.div>
@@ -644,10 +646,10 @@ export function EngagementOptionsSection({ locale = "global" }: { locale?: Local
           className="mt-8 rounded-2xl border border-[#004225]/15 bg-gradient-to-br from-[#004225]/[0.02] to-transparent p-6 text-center sm:p-8"
         >
           <p className="text-sm font-bold text-[#004225]">
-            After your discovery call, we send a tailored proposal or checkout link.
+            {t.engagement.flowTitle}
           </p>
           <p className="mt-1 text-xs text-[#74695B]">
-            Payment → Onboarding questionnaire → Google Drive folder → Kickoff.
+            {t.engagement.flowText}
           </p>
         </motion.div>
       </div>

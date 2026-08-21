@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, TrendingUp, DollarSign, Users, CheckCircle2 } from "lucide-react";
 import Link from "next/link";
+import { useT } from "@/app/lib/LocaleContext";
 
 /* Floating KPI cards that drift around the section */
 function FloatingKPI({ x, y, delay, children }: { x: number; y: number; delay: number; children: React.ReactNode }) {
@@ -32,6 +33,7 @@ export function CTABanner({ heading, sub, cta }: {
   cta: string;
 }) {
   const ref = useRef<HTMLElement>(null);
+  const t = useT().t;
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ["start end", "end start"],
@@ -147,11 +149,7 @@ export function CTABanner({ heading, sub, cta }: {
             transition={{ duration: 0.5, delay: 0.35 }}
             className="mt-6 flex flex-wrap justify-center gap-x-6 gap-y-2"
           >
-            {[
-              "We map your operations",
-              "We identify bottlenecks",
-              "We recommend the right system",
-            ].map((point, i) => (
+            {t.cta.points.map((point, i) => (
               <motion.span
                 key={point}
                 initial={{ opacity: 0, y: 6 }}
@@ -183,7 +181,7 @@ export function CTABanner({ heading, sub, cta }: {
               </Link>
             </motion.div>
             <p className="mt-3 text-xs text-[#74695B]">
-              No obligation. No pressure. Just clarity.
+              {t.cta.subtext}
             </p>
           </motion.div>
         </motion.div>

@@ -6,6 +6,7 @@ import {
   BarChart3, Briefcase, Calculator, Building2,
   CheckCircle2, AlertCircle,
 } from "lucide-react";
+import { useT } from "@/app/lib/LocaleContext";
 
 /* ------------------------------------------------------------------ */
 /*  Marketing Agency — Campaign dashboard                               */
@@ -268,6 +269,7 @@ export function BuiltForSection() {
   const [selected, setSelected] = useState<string>("marketing");
   const active = INDUSTRIES.find((i) => i.id === selected) || INDUSTRIES[0];
   const ActivePreview = active.preview;
+  const t = useT().t;
 
   return (
     <section className="border-t border-black/10 bg-[#F8F6EF] px-4 py-16 text-[#11100E] sm:px-6 sm:py-24 md:py-32">
@@ -280,13 +282,13 @@ export function BuiltForSection() {
           className="mb-10 text-center"
         >
           <span className="mb-4 inline-flex rounded-full border border-black/10 bg-[#F3F2ED] px-3 py-1.5 text-xs font-bold uppercase tracking-[0.16em] text-[#74695B]">
-            Built For
+            {t.builtFor.tag}
           </span>
           <h2 className="font-display text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
-            Built around how you operate
+            {t.builtFor.heading}
           </h2>
           <p className="mx-auto mt-4 max-w-lg text-base leading-relaxed text-[#74695B]">
-            Select your industry and see how VantLaunch adapts to your workflows.
+            {t.builtFor.sub}
           </p>
         </motion.div>
 

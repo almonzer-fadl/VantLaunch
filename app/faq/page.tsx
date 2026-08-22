@@ -6,6 +6,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Navbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
+import { LocaleProvider, useLocaleFromCookie, useT } from "../lib/LocaleContext";
 
 const FAQS = [
   {
@@ -89,7 +90,17 @@ function FaqItem({ item, isOpen, onToggle }: { item: (typeof FAQS)[number]; isOp
 }
 
 export default function FAQPage() {
+  const locale = useLocaleFromCookie();
+  return (
+    <LocaleProvider locale={locale}>
+      <FAQContent />
+    </LocaleProvider>
+  );
+}
+
+function FAQContent() {
   const [openIndex, setOpenIndex] = useState(0);
+  const t = useT().t;
 
   return (
     <div className="flex min-h-screen flex-col bg-[#F8F6EF]">

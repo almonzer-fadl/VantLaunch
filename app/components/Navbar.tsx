@@ -7,6 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useMobileMotion } from "../hooks/use-mobile-motion";
 import { useT } from "../lib/LocaleContext";
+import { useIsRTL } from "../lib/LocaleContext";
 
 const NAV_KEYS = ["solutions", "engagements", "process", "faq"] as const;
 
@@ -14,6 +15,7 @@ export function Navbar() {
   const [open, setOpen] = useState(false);
   const { shouldReduceMotion } = useMobileMotion();
   const t = useT().t;
+  const isRTL = useIsRTL();
 
   const NAV_LINKS = [
     { href: "#systems", label: t.navbar.solutions, key: "solutions" },
@@ -106,9 +108,9 @@ export function Navbar() {
               className="fixed inset-0 z-40 bg-black/40 md:hidden sm:backdrop-blur-sm"
             />
             <motion.div
-              initial={{ x: "100%" }}
+              initial={{ x: isRTL ? "-100%" : "100%" }}
               animate={{ x: 0 }}
-              exit={{ x: "100%" }}
+              exit={{ x: isRTL ? "-100%" : "100%" }}
               transition={{ duration: shouldReduceMotion ? 0.2 : 0.3, ease: [0.22, 1, 0.36, 1] }}
               className="fixed bottom-0 right-0 top-0 z-50 w-[280px] max-w-[85vw] bg-[#F8F6EF] shadow-mid md:hidden"
             >

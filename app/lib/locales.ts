@@ -75,6 +75,14 @@ export interface Translations {
   footer: {
     tagline: string;
   };
+  form: {
+    name: string; email: string; company: string; engagement: string;
+    timeline: string; message: string; submit: string;
+    sending: string; received: string; receivedSub: string;
+    sendAnother: string; selectEngagement: string; notSure: string;
+    timelineOptions: string[];
+    engagementOptions: string[];
+  };
 }
 
 /* ------------------------------------------------------------------ */
@@ -151,6 +159,15 @@ const EN_T: Translations = {
   },
   navbar: { solutions: "Solutions", engagements: "Engagements", process: "Process", faq: "FAQ", cta: "Book a Call" },
   footer: { tagline: "Custom internal business systems for growing service businesses. Built around your workflow, delivered in weeks." },
+  form: {
+    name: "Your name", email: "Email address", company: "Company", engagement: "Engagement",
+    timeline: "Timeline", message: "Tell us about your business and what you need",
+    submit: "Send inquiry", sending: "Sending...",
+    received: "Request received.", receivedSub: "We will review the details and follow up within 24 hours.",
+    sendAnother: "Send another request", selectEngagement: "Select engagement", notSure: "Not sure yet",
+    timelineOptions: ["Expected timeline", "ASAP", "Within 1 month", "This quarter", "Just exploring"],
+    engagementOptions: ["Select engagement", "Starter", "Pro", "Mobile", "Enterprise", "Not sure yet"],
+  },
 };
 
 const AR_T: Translations = {
@@ -223,6 +240,15 @@ const AR_T: Translations = {
   },
   navbar: { solutions: "الحلول", engagements: "التعاقدات", process: "العمليـة", faq: "أسئلة", cta: "احجز مكالمة" },
   footer: { tagline: "أنظمة أعمال داخلية مخصصة للشركات الخدمية المتنامية. مبنية حول سير عملك، تُسلم في أسابيع." },
+  form: {
+    name: "اسمك", email: "البريد الإلكتروني", company: "الشركة", engagement: "نوع التعاقد",
+    timeline: "الجدول الزمني", message: "أخبرنا عن عملك وما تحتاجه",
+    submit: "إرسال", sending: "جارٍ الإرسال...",
+    received: "تم استلام الطلب.", receivedSub: "سنراجع التفاصيل ونتواصل معك خلال ٢٤ ساعة.",
+    sendAnother: "إرسال طلب آخر", selectEngagement: "اختر نوع التعاقد", notSure: "لست متأكداً",
+    timelineOptions: ["الجدول المتوقع", "في أقرب وقت", "خلال شهر", "هذا الربع", "للاستكشاف فقط"],
+    engagementOptions: ["اختر نوع التعاقد", "أساسي", "برو", "جوال", "مؤسسي", "لست متأكداً"],
+  },
 };
 
 const TR_T: Translations = {
@@ -295,6 +321,15 @@ const TR_T: Translations = {
   },
   navbar: { solutions: "Çözümler", engagements: "Anlaşmalar", process: "Süreç", faq: "SSS", cta: "Görüşme Ayarla" },
   footer: { tagline: "Büyüyen hizmet işletmeleri için özel iç iş sistemleri. İş akışınıza göre inşa edilir, haftalar içinde teslim edilir." },
+  form: {
+    name: "Adınız", email: "E-posta adresi", company: "Şirket", engagement: "Anlaşma Türü",
+    timeline: "Zaman Çizelgesi", message: "İşletmeniz ve ihtiyaçlarınız hakkında bilgi verin",
+    submit: "Gönder", sending: "Gönderiliyor...",
+    received: "Talep alındı.", receivedSub: "Detayları inceleyip 24 saat içinde dönüş yapacağız.",
+    sendAnother: "Başka bir talep gönder", selectEngagement: "Anlaşma seçin", notSure: "Emin değilim",
+    timelineOptions: ["Beklenen zaman", "En kısa sürede", "1 ay içinde", "Bu çeyrek", "Sadece keşif"],
+    engagementOptions: ["Anlaşma seçin", "Başlangıç", "Pro", "Mobil", "Kurumsal", "Emin değilim"],
+  },
 };
 
 /* ------------------------------------------------------------------ */

@@ -11,6 +11,7 @@ import { ProcessSection } from "@/app/components/sections/Process";
 import { WorkTeaser } from "@/app/components/WorkTeaser";
 import { CTABanner } from "@/app/components/CTABanner";
 import { Footer } from "@/app/components/Footer";
+import { StickyCTA } from "@/app/components/StickyCTA";
 import type { Locale } from "@/app/lib/locales";
 import { LOCALE_DATA } from "@/app/lib/locales";
 import { LocaleProvider } from "@/app/lib/LocaleContext";
@@ -45,9 +46,10 @@ export function HomeContent({ locale }: { locale: Locale }) {
             sub={t.cta.sub}
             cta={t.cta.button}
           />
-        </main>
-        <Footer />
-      </div>
+      </main>
+      <Footer />
+      <StickyCTA />
+    </div>
     </LocaleProvider>
   );
 }

@@ -22,6 +22,17 @@
   --foreground: #11100E;
 }
 
+.dark {
+  --background: #0d0d0c;
+  --foreground: #F8F6EF;
+  --color-canvas: #0d0d0c;
+  --color-surface: #1a1a18;
+  --color-surface-raised: #242422;
+  --color-border-subtle: rgba(248, 246, 239, 0.08);
+  --color-border: rgba(248, 246, 239, 0.12);
+  --color-accent-glow: rgba(0, 66, 37, 0.15);
+}
+
 body {
   background: var(--background);
   font-family: var(--font-sans), sans-serif;

@@ -19,18 +19,25 @@ function getLocaleForCountry(country: string): string {
   return LOCALE_REDIRECTS[country]?.replace("/", "") || "";
 }
 
+const BYPASS_PREFIXES = [
+  "/admin", "/api", "/_next", "/meet", "/project-brief", "/checkout",
+  "/contact", "/faq", "/book", "/thank-you", "/operations-audit",
+  "/gallery", "/industries", "/resources", "/blog", "/solutions",
+  "/templates", "/tools", "/roadmap", "/case-studies", "/work",
+  "/lead-magnets", "/privacy", "/terms", "/feed.xml",
+];
+
+function shouldBypass(pathname: string): boolean {
+  return BYPASS_PREFIXES.some((p) => pathname === p || pathname.startsWith(p + "/")) || pathname.includes(".");
+}
+
 export default function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   const localePrefix = pathname.match(new RegExp(`^(${ALL_LOCALE_PATHS})(/|$)`));
   if (localePrefix) return NextResponse.next();
 
-  if (
-    pathname.startsWith("/admin") || pathname.startsWith("/api") ||
-    pathname.startsWith("/_next") || pathname.startsWith("/meet") ||
-    pathname.startsWith("/project-brief") || pathname.startsWith("/checkout") ||
-    pathname.includes(".")
-  ) {
+  if (shouldBypass(pathname)) {
     const country = getCountry(request);
     const locale = getLocaleForCountry(country);
     const response = NextResponse.next();

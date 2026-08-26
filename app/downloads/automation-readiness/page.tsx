@@ -1,0 +1,2 @@
+"use client"; import { DownloadPage } from "@/app/components/DownloadPage";
+export default function(){return<DownloadPage title="Automation Readiness Checklist" desc="Assess your business readiness for workflow automation." items={["Manual task inventory","Repetition frequency scoring","Integration feasibility check","Quick-win prioritization","Automation complexity matrix","ROI estimation framework"]}/>;}

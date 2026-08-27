@@ -56,7 +56,7 @@ export default function OpsScore() {
 
         <section className="border-t border-black/10 px-6 py-12 sm:py-16">
           <div className="mx-auto max-w-2xl">
-            {!answers.length ? null : step >= QUESTIONS.length ? (
+            {step >= QUESTIONS.length ? (
               <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} className="rounded-2xl border border-[#004225]/20 bg-white p-8 shadow-mid text-center">
                 <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-[#004225]/10"><Zap className="h-8 w-8 text-[#004225]" /></div>
                 <h2 className="text-2xl font-bold">Your Operations Score: <span className="text-[#004225]">{score}/100</span></h2>

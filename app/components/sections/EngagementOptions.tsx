@@ -11,7 +11,7 @@ import { LOCALE_DATA } from "@/app/lib/locales";
 import { useT } from "@/app/lib/LocaleContext";
 
 /* ------------------------------------------------------------------ */
-/*  Preview: Fix One Bottleneck — one focused dashboard                  */
+/*  Preview: Starter System — one painful workflow                       */
 /* ------------------------------------------------------------------ */
 function StarterPreview() {
   return (
@@ -23,19 +23,17 @@ function StarterPreview() {
       transition={{ duration: 0.3 }}
       className="space-y-2.5"
     >
-      {/* Top bar */}
       <div className="flex items-center gap-2 mb-1">
         <div className="h-5 w-5 rounded-md bg-[#004225] flex items-center justify-center">
           <Zap className="h-3 w-3 text-white" />
         </div>
-        <span className="text-[9px] font-bold text-[#11100E]">Operations Hub</span>
+        <span className="text-[9px] font-bold text-[#11100E]">Workflow Fix</span>
         <span className="ml-auto flex items-center gap-1 text-[8px] text-[#74695B]">
           <span className="h-1.5 w-1.5 rounded-full bg-[#004225]" />
-          Live
+          Scoped
         </span>
       </div>
 
-      {/* Main focused widget with solve animation */}
       <motion.div
         initial={{ borderColor: "rgba(255,165,0,0.3)", backgroundColor: "rgba(255,165,0,0.02)" }}
         animate={{ borderColor: "rgba(0,66,37,0.15)", backgroundColor: "rgb(255,255,255)" }}
@@ -44,7 +42,7 @@ function StarterPreview() {
       >
         <div className="flex items-center justify-between mb-2">
           <p className="text-[8px] font-bold uppercase tracking-[0.08em] text-[#74695B]">
-            Weekly Reporting
+            Manual Report Flow
           </p>
           <motion.span
             initial={{ opacity: 0, scale: 0 }}
@@ -52,11 +50,11 @@ function StarterPreview() {
             transition={{ delay: 0.6, type: "spring" }}
             className="flex items-center gap-1 text-[7px] font-bold text-[#004225]"
           >
-            <Activity className="h-2.5 w-2.5" /> Automated
+            <Activity className="h-2.5 w-2.5" /> Rebuilt
           </motion.span>
         </div>
-        <div className="flex items-end gap-1 h-10">
-          {[28, 35, 32, 45, 38, 52, 48].map((v, i) => (
+        <div className="flex items-end gap-1 h-11">
+          {[18, 24, 31, 44, 52, 68, 84].map((v, i) => (
             <motion.div
               key={i}
               initial={{ height: 0 }}
@@ -74,7 +72,6 @@ function StarterPreview() {
         </div>
       </motion.div>
 
-      {/* Simple KPI row */}
       <div className="grid grid-cols-2 gap-2">
         <motion.div
           initial={{ opacity: 0, y: 8 }}
@@ -82,16 +79,16 @@ function StarterPreview() {
           transition={{ delay: 0.3 }}
           className="rounded-lg border border-black/[0.06] bg-white p-2.5"
         >
-          <p className="text-[8px] font-bold uppercase tracking-[0.08em] text-[#74695B]">Revenue (MTD)</p>
+          <p className="text-[8px] font-bold uppercase tracking-[0.08em] text-[#74695B]">Admin Hours</p>
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
             className="text-base font-bold text-[#11100E] mt-0.5"
           >
-            $62.4K
+            -7.5/wk
           </motion.p>
-          <p className="text-[8px] text-[#004225] mt-0.5">+12.3%</p>
+          <p className="text-[8px] text-[#004225] mt-0.5">manual steps removed</p>
         </motion.div>
         <motion.div
           initial={{ opacity: 0, y: 8 }}
@@ -99,8 +96,8 @@ function StarterPreview() {
           transition={{ delay: 0.4 }}
           className="rounded-lg border border-black/[0.06] bg-white p-2.5"
         >
-          <p className="text-[8px] font-bold uppercase tracking-[0.08em] text-[#74695B]">Tasks Done</p>
-          <p className="text-base font-bold text-[#11100E] mt-0.5">8/10</p>
+          <p className="text-[8px] font-bold uppercase tracking-[0.08em] text-[#74695B]">Scope</p>
+          <p className="text-base font-bold text-[#11100E] mt-0.5">1 flow</p>
           <div className="h-1.5 w-full rounded-full bg-black/5 overflow-hidden mt-1.5">
             <motion.div initial={{ width: 0 }} animate={{ width: "80%" }} transition={{ duration: 0.6, delay: 0.5 }} className="h-full rounded-full bg-[#004225]" />
           </div>
@@ -111,7 +108,7 @@ function StarterPreview() {
 }
 
 /* ------------------------------------------------------------------ */
-/*  Preview: Connect Your Operations — widgets wiring together          */
+/*  Preview: Operations System — connected workflow layer               */
 /* ------------------------------------------------------------------ */
 function ProPreview() {
   return (
@@ -150,9 +147,9 @@ function ProPreview() {
         <div className="h-5 w-5 rounded-md bg-[#004225] flex items-center justify-center">
           <Zap className="h-3 w-3 text-white" />
         </div>
-        <span className="text-[9px] font-bold text-[#11100E]">VantLaunch OS</span>
+        <span className="text-[9px] font-bold text-[#11100E]">Operations System</span>
         <div className="ml-auto flex gap-1.5">
-          {["Dashboard", "Reports", "Team"].map((t) => (
+          {["CRM", "Reports", "Team"].map((t) => (
             <span key={t} className="text-[7px] font-bold text-[#74695B]">{t}</span>
           ))}
         </div>
@@ -165,11 +162,11 @@ function ProPreview() {
         transition={{ delay: 0.15 }}
         className="rounded-lg border border-black/[0.06] bg-white p-2.5 relative z-10"
       >
-        <p className="text-[8px] font-bold uppercase tracking-[0.08em] text-[#74695B]">Revenue</p>
-        <p className="text-sm font-bold text-[#11100E] mt-0.5">$847.2K</p>
+        <p className="text-[8px] font-bold uppercase tracking-[0.08em] text-[#74695B]">Shared Visibility</p>
+        <p className="text-sm font-bold text-[#11100E] mt-0.5">4 workflows</p>
         <div className="flex items-center gap-1 mt-1">
           <TrendingUp className="h-2.5 w-2.5 text-[#004225]" />
-          <span className="text-[8px] font-bold text-[#004225]">+18.2%</span>
+          <span className="text-[8px] font-bold text-[#004225]">connected</span>
         </div>
       </motion.div>
 
@@ -180,10 +177,10 @@ function ProPreview() {
         className="rounded-lg border border-black/[0.06] bg-white p-2.5 relative z-10"
       >
         <p className="text-[8px] font-bold uppercase tracking-[0.08em] text-[#74695B] mb-2">Automation</p>
-        {[
-          { label: "Invoice generation", done: true },
-          { label: "Client report sync", done: true },
-          { label: "Slack notification", done: true },
+          {[
+          { label: "Lead intake to CRM", done: true },
+          { label: "Client status reports", done: true },
+          { label: "Team handoff alerts", done: true },
         ].map((a, i) => (
           <motion.div
             key={i}
@@ -211,7 +208,7 @@ function ProPreview() {
         transition={{ delay: 0.35 }}
         className="rounded-lg border border-black/[0.06] bg-white p-2.5 relative z-10"
       >
-        <p className="text-[8px] font-bold uppercase tracking-[0.08em] text-[#74695B]">Team</p>
+        <p className="text-[8px] font-bold uppercase tracking-[0.08em] text-[#74695B]">Roles</p>
         <div className="flex items-center gap-1.5 mt-1.5">
           {["JD", "MK", "SC", "DO"].map((init, i) => (
             <motion.div
@@ -231,7 +228,7 @@ function ProPreview() {
 }
 
 /* ------------------------------------------------------------------ */
-/*  Preview: Leadership On the Go — desktop + phone, notifications      */
+/*  Preview: Custom Platform — portal plus mobile approvals             */
 /* ------------------------------------------------------------------ */
 function MobilePreview() {
   return (
@@ -249,7 +246,7 @@ function MobilePreview() {
           <div className="h-5 w-5 rounded-md bg-[#004225] flex items-center justify-center">
             <Zap className="h-3 w-3 text-white" />
           </div>
-          <span className="text-[9px] font-bold text-[#11100E]">Dashboard</span>
+          <span className="text-[9px] font-bold text-[#11100E]">Client Portal</span>
         </div>
 
         <motion.div
@@ -258,7 +255,7 @@ function MobilePreview() {
           transition={{ delay: 0.2 }}
           className="rounded-lg border border-black/[0.06] bg-white p-2.5"
         >
-          <p className="text-[8px] font-bold uppercase tracking-[0.08em] text-[#74695B]">Monthly Revenue</p>
+          <p className="text-[8px] font-bold uppercase tracking-[0.08em] text-[#74695B]">Request Pipeline</p>
           <div className="flex items-end gap-0.5 h-10 mt-2">
             {[40, 55, 48, 65, 58, 72, 65, 78, 70, 85].map((v, i) => (
               <motion.div
@@ -281,7 +278,7 @@ function MobilePreview() {
         >
           <div className="flex items-center gap-1.5">
             <Bell className="h-3 w-3 text-[#004225]" />
-            <span className="text-[8px] font-bold text-[#11100E]">Budget approval needed</span>
+            <span className="text-[8px] font-bold text-[#11100E]">Approval needed</span>
           </div>
           <div className="flex gap-2 mt-2">
             <span className="flex-1 rounded-md bg-[#004225] py-1 text-center text-[7px] font-bold text-white">Approve</span>
@@ -317,7 +314,7 @@ function MobilePreview() {
           <div className="h-0.5 rounded bg-[#004225]/20 w-full" />
           <div className="h-0.5 rounded bg-[#004225]/20 w-3/4" />
           <div className="h-0.5 rounded bg-[#004225]/20 w-1/2" />
-          <div className="mt-auto text-[5px] font-bold text-[#004225]">$28.4K ↑</div>
+          <div className="mt-auto text-[5px] font-bold text-[#004225]">Approve</div>
         </motion.div>
         <motion.div
           initial={{ opacity: 0 }}
@@ -327,7 +324,7 @@ function MobilePreview() {
         >
           <div className="h-0.5 rounded bg-black/20 w-full" />
           <div className="h-0.5 rounded bg-black/20 w-2/3" />
-          <div className="mt-auto text-[5px] font-bold text-[#11100E]">12 tasks</div>
+          <div className="mt-auto text-[5px] font-bold text-[#11100E]">8 clients</div>
         </motion.div>
       </motion.div>
     </motion.div>
@@ -335,7 +332,7 @@ function MobilePreview() {
 }
 
 /* ------------------------------------------------------------------ */
-/*  Preview: Full Platform — complete operating system                   */
+/*  Preview: Full Business OS — owned company operating layer             */
 /* ------------------------------------------------------------------ */
 function EnterprisePreview() {
   return (
@@ -352,7 +349,7 @@ function EnterprisePreview() {
         <div className="h-5 w-5 rounded-md bg-[#11100E] flex items-center justify-center">
           <ShieldCheck className="h-3 w-3 text-white" />
         </div>
-        <span className="text-[9px] font-bold text-[#11100E]">VantLaunch Enterprise</span>
+        <span className="text-[9px] font-bold text-[#11100E]">Owned Business OS</span>
         <div className="ml-auto flex gap-1">
           {["Hub", "CRM", "Reports", "Ops", "Team"].map((t, i) => (
             <motion.span
@@ -371,10 +368,10 @@ function EnterprisePreview() {
       {/* KPI grid */}
       <div className="grid grid-cols-4 gap-1.5">
         {[
-          { label: "Revenue", value: "$1.2M", icon: DollarSign },
-          { label: "Projects", value: "47", icon: Target },
-          { label: "Team", value: "32", icon: Users },
-          { label: "NPS", value: "86", icon: TrendingUp },
+          { label: "Tools", value: "10", icon: DollarSign },
+          { label: "Flows", value: "12", icon: Target },
+          { label: "Roles", value: "6", icon: Users },
+          { label: "Owned", value: "100%", icon: TrendingUp },
         ].map((k, i) => (
           <motion.div
             key={k.label}
@@ -407,9 +404,9 @@ function EnterprisePreview() {
         >
           <p className="text-[8px] font-bold uppercase tracking-[0.08em] text-[#74695B] mb-2">Workflows</p>
           {[
-            { name: "Client Onboarding", status: "Running" },
-            { name: "Invoice Processing", status: "Running" },
-            { name: "Weekly Reports", status: "Scheduled" },
+            { name: "Client Onboarding", status: "Live" },
+            { name: "Invoice Processing", status: "Live" },
+            { name: "Weekly Reports", status: "Auto" },
           ].map((w, i) => (
             <motion.div
               key={i}
@@ -433,7 +430,7 @@ function EnterprisePreview() {
           transition={{ delay: 0.35 }}
           className="rounded-lg border border-black/[0.06] bg-white p-2.5"
         >
-          <p className="text-[8px] font-bold uppercase tracking-[0.08em] text-[#74695B] mb-1">Quarterly</p>
+          <p className="text-[8px] font-bold uppercase tracking-[0.08em] text-[#74695B] mb-1">Manual Load</p>
           <div className="flex items-end gap-1 h-12">
             {[50, 62, 58, 75].map((v, i) => (
               <motion.div
@@ -464,35 +461,35 @@ function EnterprisePreview() {
 const ENGAGEMENTS = [
   {
     id: "starter" as const,
-    heading: "Fix One Bottleneck",
-    sub: "Solve a specific operational problem that is costing your team hours every week.",
-    price: "$999",
-    features: ["One connected system", "Custom integrations", "Setup & training", "Source code ownership", "30-day support"],
+    heading: "Starter System",
+    sub: "Fix one painful workflow that should not live in spreadsheets, WhatsApp, or disconnected tools.",
+    price: "From $2,500",
+    features: ["Workflow mapping", "One focused internal tool", "Dashboard, CRM cleanup, or automation", "Deployment and handover", "Source code ownership"],
     preview: StarterPreview,
   },
   {
     id: "pro" as const,
-    heading: "Connect Your Operations",
-    sub: "Bring multiple workflows, team dashboards, and automation into one shared workspace.",
-    price: "$1,699",
-    features: ["Everything in Fix One Bottleneck", "Multiple team workspaces", "Workflow automation", "Advanced integrations", "60-day support"],
+    heading: "Operations System",
+    sub: "Connect multiple workflows into one shared workspace so your team can see work, clients, and reporting in one place.",
+    price: "From $5,000",
+    features: ["Everything in Starter System", "Internal CRM or team dashboard", "Reporting and workflow automation", "Role-aware team views", "Launch support"],
     preview: ProPreview,
     featured: true,
   },
   {
     id: "mobile" as const,
-    heading: "Leadership On the Go",
-    sub: "Full operational visibility plus a dedicated mobile experience for owners and leadership.",
-    price: "$2,499",
-    features: ["Everything in Connect", "Dedicated mobile app", "Push notifications", "Approval workflows", "90-day support"],
+    heading: "Custom Platform",
+    sub: "Build a larger custom platform such as a client portal, internal OS, approval system, or multi-role dashboard.",
+    price: "From $10,000",
+    features: ["Client portal or internal platform", "Multi-role dashboards", "Approval and request flows", "Advanced integrations", "Post-launch support plan"],
     preview: MobilePreview,
   },
   {
     id: "enterprise" as const,
-    heading: "Full Platform",
-    sub: "A complete business operating system built around your company workflows — scoped and quoted individually.",
+    heading: "Full Business OS",
+    sub: "Replace multiple tools with one owned operating system built around how the company actually works.",
     price: "Custom Quote",
-    features: ["Fully custom architecture", "Company-wide deployment", "Advanced integrations", "Dedicated support", "Ongoing optimization"],
+    features: ["Company-wide workflow architecture", "Staff and client roles", "CRM, reporting, portals, and automations", "Priority support", "Ongoing optimization"],
     preview: EnterprisePreview,
   },
 ];
@@ -530,8 +527,8 @@ export function EngagementOptionsSection({ locale = "global" }: { locale?: Local
           <h2 className="font-display text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
             {t.engagement.heading}
           </h2>
-          <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-[#74695B]">
-            {t.engagement.sub}
+          <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-[#74695B]">
+            Every system is scoped around your workflow. These starting points give you a realistic entry point before we map the exact build.
           </p>
         </motion.div>
 
@@ -614,9 +611,12 @@ export function EngagementOptionsSection({ locale = "global" }: { locale?: Local
                   <div className="flex items-baseline gap-1">
                     <span className="text-2xl font-bold tracking-tight text-[#11100E]">{active.price}</span>
                     {selected !== "enterprise" && (
-                      <span className="text-xs font-medium text-[#74695B]">one-time</span>
+                      <span className="text-xs font-medium text-[#74695B]">starting point</span>
                     )}
                   </div>
+                  <p className="mt-2 text-xs leading-relaxed text-[#74695B]">
+                    Final scope is fixed after discovery, workflow mapping, and a clear build plan.
+                  </p>
                 </div>
 
                 <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="mt-5">
@@ -630,7 +630,7 @@ export function EngagementOptionsSection({ locale = "global" }: { locale?: Local
                 </motion.div>
 
                 <p className="mt-3 text-center text-[10px] text-[#74695B]">
-                  Free call. We recommend the right fit. No pressure.
+                  Free call. We map the workflow and recommend the smallest useful scope.
                 </p>
               </motion.div>
             </div>
@@ -646,10 +646,10 @@ export function EngagementOptionsSection({ locale = "global" }: { locale?: Local
           className="mt-8 rounded-2xl border border-[#004225]/15 bg-gradient-to-br from-[#004225]/[0.02] to-transparent p-6 text-center sm:p-8"
         >
           <p className="text-sm font-bold text-[#004225]">
-            {t.engagement.flowTitle}
+            Discovery call first. Fixed proposal second.
           </p>
           <p className="mt-1 text-xs text-[#74695B]">
-            {t.engagement.flowText}
+            We map the workflow, define the smallest useful system, then send a clear scope, timeline, and price.
           </p>
         </motion.div>
       </div>

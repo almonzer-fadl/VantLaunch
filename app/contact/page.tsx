@@ -7,6 +7,7 @@ import { Navbar } from "../components/Navbar";
 import { Footer } from "../components/Footer";
 import { LocaleProvider, useLocaleFromCookie, useT } from "../lib/LocaleContext";
 import { sendContactEmail } from "../actions/contact";
+import posthog from "posthog-js";
 
 export default function ContactPage() {
   const locale = useLocaleFromCookie();
@@ -86,7 +87,14 @@ function ContactForm() {
     setStatus("submitting");
     const formData = new FormData(e.currentTarget);
     const result = await sendContactEmail(formData);
-    if (result.success) { setStatus("success"); }
+    if (result.success) {
+      posthog.capture("contact_form_submitted", {
+        role: formData.get("role"),
+        product_interest: formData.get("product_interest"),
+        timeline: formData.get("timeline"),
+      });
+      setStatus("success");
+    }
     else { setStatus("error"); setErrorMessage(result.error || "Something went wrong."); setTimeout(() => setStatus("idle"), 4000); }
   };
 

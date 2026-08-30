@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft, ArrowRight, Check, Loader2 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { submitProjectBrief } from "@/app/actions/submit-project";
+import posthog from "posthog-js";
 import { LocaleProvider, useLocaleFromCookie, useT } from "../lib/LocaleContext";
 
 const INTEGRATIONS = [
@@ -121,6 +122,10 @@ function ProjectBriefContent() {
       });
 
       if (result.success) {
+        posthog.capture("project_brief_submitted", {
+          product: params.get("product") || "unknown",
+          integration_count: formData.selectedIntegrations.length,
+        });
         router.push("/project-brief/confirmation");
       } else {
         setSubmitError(result.error || "Something went wrong. Please try again.");

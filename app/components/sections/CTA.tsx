@@ -5,6 +5,7 @@ import { ArrowRight, Check } from "lucide-react";
 import { useEffect, useState } from "react";
 import { sendContactEmail } from "../../actions/contact";
 import { useMobileMotion } from "@/app/hooks/use-mobile-motion";
+import posthog from "posthog-js";
 
 export function CTASection() {
   const { shouldReduceMotion } = useMobileMotion();
@@ -73,6 +74,11 @@ function ContactForm() {
     const result = await sendContactEmail(formData);
 
     if (result.success) {
+      posthog.capture("contact_form_submitted", {
+        role: formData.get("role"),
+        product_interest: formData.get("product_interest"),
+        timeline: formData.get("timeline"),
+      });
       setStatus("success");
     } else {
       setStatus("error");

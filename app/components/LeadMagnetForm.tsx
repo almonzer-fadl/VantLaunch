@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Check, Loader2 } from "lucide-react";
 import { submitLeadMagnet } from "@/app/actions/submit-lead-magnet";
+import posthog from "posthog-js";
 
 export function LeadMagnetForm({ resource, resourceName }: { resource: string; resourceName: string }) {
   const [email, setEmail] = useState("");
@@ -16,6 +17,9 @@ export function LeadMagnetForm({ resource, resourceName }: { resource: string; r
     fd.set("email", email);
     fd.set("resource", resource);
     const result = await submitLeadMagnet(fd);
+    if (result.success) {
+      posthog.capture("lead_magnet_requested", { resource });
+    }
     setStatus(result.success ? "done" : "idle");
   };
 

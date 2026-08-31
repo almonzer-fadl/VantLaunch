@@ -464,7 +464,7 @@ const ENGAGEMENTS = [
     heading: "Starter System",
     sub: "Fix one painful workflow that should not live in spreadsheets, WhatsApp, or disconnected tools.",
     price: "From $2,500",
-    features: ["Workflow mapping", "One focused internal tool", "Dashboard, CRM cleanup, or automation", "Deployment and handover", "Source code ownership"],
+    features: ["Workflow mapping", "One focused internal tool", "Deployment and handover", "Source code ownership"],
     preview: StarterPreview,
   },
   {
@@ -606,7 +606,7 @@ export function EngagementOptionsSection({ locale = "global" }: { locale?: Local
 
                 <div className="mt-6 rounded-xl border border-black/[0.06] bg-[#F8F6EF] p-4">
                   <div className="flex items-baseline justify-between mb-1">
-                    <span className="text-[10px] font-bold uppercase tracking-[0.1em] text-[#74695B]">Investment</span>
+                    <span className="text-[10px] font-bold uppercase tracking-[0.1em] text-[#74695B]">Starting investment</span>
                   </div>
                   <div className="flex items-baseline gap-1">
                     <span className="text-2xl font-bold tracking-tight text-[#11100E]">{active.price}</span>

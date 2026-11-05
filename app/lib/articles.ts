@@ -157,7 +157,7 @@ export const ARTICLES: Record<string, ArticleData> = {
       { heading: "The compounding effect", content: "Manual reporting costs compound as the business grows. Each new client adds reporting requirements. Each new data source adds pulling time. Each new stakeholder adds distribution time. What cost $10,000 per year at 5 people costs $50,000 at 20 people. The problem scales faster than headcount." },
       { heading: "What automation saves", content: "An automated reporting system eliminates the entire manual pipeline. Data is pulled automatically from every source. Reports are generated on a schedule. Distribution happens without human intervention. The time spent drops from hours per week to minutes per month — typically a 95% reduction." },
     ],
-    faq: [{ q: "How much does automated reporting cost to build?", a: "A custom reporting system typically costs $999-$2,499 depending on complexity — less than the annual cost of the manual work it replaces." }],
+    faq: [{ q: "How much does automated reporting cost to build?", a: "A custom reporting system is scoped and quoted individually — most start at $2,500 depending on complexity, which is typically less than the annual cost of the manual work it replaces." }],
     related: [{ title: "Signs You Have Outgrown Spreadsheets", href: "/blog/signs-outgrown-spreadsheets" }],
     resources: [{ title: "ROI Calculator", href: "/tools/roi-calculator" }],
     caseStudies: [],

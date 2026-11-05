@@ -20,7 +20,7 @@ function getLocaleForCountry(country: string): string {
 }
 
 const BYPASS_PREFIXES = [
-  "/admin", "/api", "/_next", "/meet", "/project-brief", "/checkout",
+  "/admin", "/api", "/_next", "/meet", "/project-brief",
   "/contact", "/faq", "/book", "/thank-you", "/operations-audit",
   "/gallery", "/industries", "/resources", "/blog", "/solutions",
   "/templates", "/tools", "/roadmap", "/case-studies", "/work",
@@ -63,5 +63,5 @@ export default function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/((?!_next|api|admin|meet|project-brief|checkout|favicon|brand|media|logos|portfolio|us|uk|ca|au|nz|sg|my|tr|ie|de|nl|se|no|dk|sa|ae|qa|kw|bh|om).*)"],
+  matcher: ["/((?!_next|api|admin|meet|project-brief|favicon|brand|media|logos|portfolio|us|uk|ca|au|nz|sg|my|tr|ie|de|nl|se|no|dk|sa|ae|qa|kw|bh|om).*)"],
 };

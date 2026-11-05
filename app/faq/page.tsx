@@ -22,7 +22,7 @@ const FAQS = [
   {
     question: "What happens after payment?",
     answer:
-      "Once you choose an engagement option and complete checkout, we begin the Discovery phase. We learn your business, map your workflows, and confirm the scope. You see progress throughout the build — not just at the end. Each engagement includes post-launch support.",
+      "After your discovery call, we send a clear scope, timeline, and price. Once agreed and payment is made, we begin the Discovery phase. We learn your business, map your workflows, and confirm the scope. You see progress throughout the build — not just at the end. Each engagement includes post-launch support.",
   },
   {
     question: "Can it integrate with our existing software?",
